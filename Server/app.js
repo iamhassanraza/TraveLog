@@ -1,16 +1,22 @@
 const express = require('express');
 
 const app = express();
+var mysql = require('mysql');
 
-app.use((req,res,next) => {
-    console.log('Working');
-    next();    
-});
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database:'testing'
+  });
+
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM names", function (err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
 
 
-app.use((req,res,next) => {
-    console.log("Working");
-    res.send('<h1>Hello from the server</h1>');    
-});
-
-app.listen(3000);
+app.listen(3000,()=>console.log('Server connected successfully'));
