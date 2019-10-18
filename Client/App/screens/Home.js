@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 
 
 
 import TourCard from '../components/TourCard'
+import OperatorCard from '../components/OperatorCard'
+import DestinationCard from '../components/DestinationCard'
 
 export default class Home extends Component {
     render() {
         return (
-            <View style={{padding:20}}>
+            <ScrollView style={{}}>
+              <OperatorCard></OperatorCard>
               <TourCard></TourCard>
-            </View>
+              <OperatorCard></OperatorCard>
+              <TourCard></TourCard>
+            </ScrollView>
         )
     }
 }

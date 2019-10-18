@@ -1,9 +1,8 @@
 import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
-import {View, Text, ImageBackground, StyleSheet, Image} from 'react-native';
+import {View, Text, ImageBackground, StyleSheet, Image, Dimensions} from 'react-native';
 import image from '../assets/images/2.jpg';
 import logo from '../assets/images/1.jpg';
-import { Button } from 'native-base';
 import  { ThemeColor } from '../assets/Colors/Colors';
 import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,7 +16,7 @@ class OperatorCard extends React.Component{
     render() {
         return (
             <>  
-            <View style={{borderColor: ThemeColor, alignSelf: 'center',borderWidth: 2, marginTop: 60, height: 260, width: '80%'}}>
+            <View style={{borderColor: ThemeColor, alignSelf: 'center',borderWidth: 2, marginTop: 60, height: Dimensions.get("window").height/2.4, width: '80%'}}>
                 <ImageBackground source={image} style={{height: 100}}>
 
                 </ImageBackground>

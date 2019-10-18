@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ImageBackground, Button , Image} from 'react-native';
 import { Card , Icon} from 'native-base';
-import image from "../../ccc.jpg";
+import image from "../assets/images/1.jpg";
 
 const DestinationCard = (props) => {
 
