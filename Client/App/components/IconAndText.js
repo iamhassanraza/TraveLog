@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
-import { Content, Icon } from 'native-base';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import  { ThemeColor } from '../assets/Colors/Colors';
+
 
 const IconWithText = props => {
 
     return(
-        <View style={{flexDirection: "row"}}>
-            <Icon style={{marginLeft: "4%", width: 13, fontSize:30, color: "#3399FF"}} type="Ionicons" name={props.icon} /> 
-            <Text style={{marginLeft: "3%"}}>{props.text} {"\n"}{props.anothertext} </Text>
+        <View style={{flexDirection: "row",marginLeft: '5%', alignItems: 'center'}}>
+            <View style={{flex: 1, alignItems: 'center'}}>
+                <Icon style={{color: ThemeColor,fontSize: 18,...props.iconstyle}} name={props.name} />
+            </View> 
+            <View style={{flex: 12, marginLeft: '2%'}}>
+                <Text style={{...props.textstyle}}>{props.text}</Text>
+            </View>
         </View> 
     );
 
