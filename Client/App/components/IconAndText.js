@@ -7,7 +7,7 @@ import  { ThemeColor } from '../assets/Colors/Colors';
 const IconWithText = props => {
 
     return(
-        <View style={{flexDirection: "row",marginLeft: '5%', alignItems: 'center'}}>
+        <View style={{flexDirection: "row", alignItems: 'center'}}>
             <View style={{flex: 1, alignItems: 'center'}}>
                 <Icon style={{color: ThemeColor,fontSize: 18,...props.iconstyle}} name={props.name} />
             </View> 
