@@ -21,11 +21,11 @@ export default class TourCard extends React.Component {
         return (
             <TouchableWithoutFeedback onPress={()=>alert('navigate to tour details')}>
             <View style={styles.Container} >
-        <HeaderImage></HeaderImage>
+         <HeaderImage></HeaderImage>
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
-                        <Text style={{color:'black',fontSize:20,fontWeight:'bold'}}>Trip to Kashmir</Text>
+                        <Text style={{color:'black',fontSize:20,fontWeight:'bold'}}>{this.props.title}</Text>
                         <Text style={styles.TourCardDate}><DateIcon name='date' color={ThemeColor}></DateIcon> From: 9 Oct to 20 Oct, 2019</Text>
                         <Text style={styles.TourCardDate}><SpecialityIcon color={ThemeColor} name='people' size={13}></SpecialityIcon> Speciality: Family</Text>
                         <Text style={styles.TourCardDate}><SeatsLeftIcon color={ThemeColor} name='airline-seat-recline-normal' size={15}></SeatsLeftIcon> Seats Left : 10</Text>
