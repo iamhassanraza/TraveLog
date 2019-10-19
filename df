@@ -1,0 +1,72 @@
+[33mcommit 4b3c33390262cfe0cd8eacdf7937ffdf9f30e467[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: iamhassanraza <m.h.raxa1@gmail.com>
+Date:   Wed Oct 16 13:39:01 2019 +0500
+
+    Tour Card added- partially completed
+
+[33mcommit 8cbd3a89ad7018e550dedd92fe7a13f9d389d158[m
+Merge: f362b5b 904e2fe
+Author: Ali Mehdi <salimehdi144@gmail.com>
+Date:   Thu Oct 10 15:25:46 2019 +0500
+
+    Merge branch 'master' of https://github.com/iamhassanraza/TraveLog
+
+[33mcommit f362b5bd8f446e8778978ffd93811482e17f5773[m
+Author: Ali Mehdi <salimehdi144@gmail.com>
+Date:   Thu Oct 10 15:25:00 2019 +0500
+
+    react native icons library added - Ali Mehdi
+
+[33mcommit 904e2fe80b963763654933084d567f2640bc7c21[m
+Author: faraznaqvi99 <faraznaqvi99@gmail.com>
+Date:   Thu Oct 10 15:20:22 2019 +0500
+
+    databse files included
+
+[33mcommit 583689dc251d3c90ad146cce166aa4166f0245c6[m
+Author: Ali Mehdi <salimehdi144@gmail.com>
+Date:   Wed Oct 9 16:25:28 2019 +0500
+
+    installed nodemon, body parser and server connection-Ali Mehdi
+
+[33mcommit 8988f95527acfed7663f0159b1156cf9ea2c7263[m
+Author: Hassan Raza <36694573+iamhassanraza@users.noreply.github.com>
+Date:   Wed Oct 9 15:54:42 2019 +0500
+
+    git ignore file added
+
+[33mcommit c361fbb86aa3ad9a19eb05f27584ef48f9482638[m
+Author: Hassan Raza <36694573+iamhassanraza@users.noreply.github.com>
+Date:   Wed Oct 9 15:49:36 2019 +0500
+
+    node module folder deleted
+
+[33mcommit 8f5a7fce95dd36f7ef8dfb8730d981b6a16b617f[m
+Author: Hassan Raza <36694573+iamhassanraza@users.noreply.github.com>
+Date:   Wed Oct 9 14:56:00 2019 +0500
+
+    node ,express ,mysql packages intalled
+
+[33mcommit 17c03454809d7f2a1c962310f51def4c44007a4e[m
+Author: Ali Mehdi <salimehdi144@gmail.com>
+Date:   Tue Oct 8 19:42:38 2019 +0500
+
+    Update package-lock.json
+
+[33mcommit c171ebc8c3d93ade72427067d887c439014f7e99[m
+Author: Hassan Raza <36694573+iamhassanraza@users.noreply.github.com>
+Date:   Tue Oct 8 18:32:04 2019 +0500
+
+    redux added , debugger added , front end structure completed
+
+[33mcommit c9e99431f8e6119a0c023304813367310748fb6d[m
+Author: Hassan Raza <36694573+iamhassanraza@users.noreply.github.com>
+Date:   Tue Oct 8 17:03:06 2019 +0500
+
+    testing
+
+[33mcommit a99e57bd8ae3ec938cf64b0261e75f59a1994751[m
+Author: Hassan Raza <m.h.raxa1@gmail.com>
+Date:   Tue Oct 8 16:16:48 2019 +0500
+
+    folder structure
