@@ -1,14 +1,17 @@
 import React from 'react'
 import { View, Text , StyleSheet,ImageBackground, Dimensions,Image,TouchableWithoutFeedback} from 'react-native'
 import  { ThemeColor } from '../assets/Colors/Colors'
-import image from '../assets/images/2.jpg'
+
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { VerifiedIcon } from "../assets/icons/Icons";
+import image from "../assets/images/1.jpg"
 import HeaderImage from './HeaderImage';
 import DateIcon from 'react-native-vector-icons/Fontisto';
 import SpecialityIcon from 'react-native-vector-icons/SimpleLineIcons';
-import { Rating } from 'react-native-ratings';
+
 import SeatsLeftIcon from 'react-native-vector-icons/MaterialIcons';
+
+import IconWithText from './IconAndText'
+import OperatorIcon from './OperatorIcon';
 
 export default class TourCard extends React.Component {
 
@@ -25,51 +28,33 @@ export default class TourCard extends React.Component {
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
-                        <Text style={{color:'black',fontSize:20,fontWeight:'bold'}}>{this.props.title}</Text>
-                        <Text style={styles.TourCardDate}><DateIcon name='date' color={ThemeColor}></DateIcon> From: 9 Oct to 20 Oct, 2019</Text>
-                        <Text style={styles.TourCardDate}><SpecialityIcon color={ThemeColor} name='people' size={13}></SpecialityIcon> Speciality: Family</Text>
-                        <Text style={styles.TourCardDate}><SeatsLeftIcon color={ThemeColor} name='airline-seat-recline-normal' size={15}></SeatsLeftIcon> Seats Left : 10</Text>
-                       
+                        <Text style={{color:'black',fontSize:20,fontWeight:'bold'}}>{this.props.title} </Text>
+                        <IconWithText name="calendar-check" text={`From: ${this.props.startDate} to ${this.props.endDate}`} textstyle={styles.TourCardDate}></IconWithText>
+                        <IconWithText name="account-supervisor" text={`Speciality: ${this.props.speciality}`} textstyle={styles.TourCardDate}></IconWithText>
+                        <IconWithText name='seat-recline-normal' text={`Seats Left: ${this.props.seatsLeft}`} textstyle={styles.TourCardDate}></IconWithText>
+                        
                 </View>
 
 
 
-                <View style={{flex:1,alignItems:'center',paddingTop:'2.5%'}}>
+                <View style={{flex:1,alignItems:'center',paddingTop:'2%'}}>
 
                 <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
-                size={40} 
+                size={30} 
                 color={ThemeColor} 
                 onPress={()=>{
                     this.setState((prevState) => ({
                         saved: !prevState.saved
                       }));
                 }} />
-                <Text style={{marginTop:-6}}>{this.state.saved ? 'saved' : 'save'}</Text>
+                <Text style={{marginTop:-5,color:'grey', fontSize: 13,fontWeight:'bold'}}>{this.state.saved ? 'saved' : 'save'}</Text>
                     
                 </View>
         </View>
 
 
         {/* TourOperator */}
-        <TouchableWithoutFeedback onPress={()=>alert('navigate to tour operator profile')}>
-        <View style={{flex:1,flexDirection:'row',alignItems:'center',paddingLeft:'2%'}}>
-
-        <Image source={image} style={{height:50,width:50,borderRadius:50,marginRight:5}}></Image>
-                                <View style={{flexDirection:'column',width:'90%'}}>
-                                <Text style={styles.TourCardHeading,{fontWeight:'bold',fontSize:16} }>Nomads Adventure <VerifiedIcon size={17}></VerifiedIcon></Text> 
-                                <Rating
-                                    readonly={true}
-                                    ratingCount={5}
-                                    startingValue={3.5}
-                                    imageSize={15}
-                                   style={{alignItems:'flex-start'}}
-                                />
-                                </View>
-                                
-
-
-        </View>
-        </TouchableWithoutFeedback>
+        <OperatorIcon name="Greenland travel and tourss" image={this.props.operator.image} rating={this.props.operator.rating} verified={this.props.operator.verified} ></OperatorIcon>
     
     
     </View> 
@@ -83,8 +68,8 @@ export default class TourCard extends React.Component {
 const styles = StyleSheet.create({
     Container: {
      
-        width:'80%',
-        height:330,
+ 
+        height:Dimensions.get('window').height/2.3,
         borderColor:'black',
         borderWidth:1,
         borderBottomRightRadius:5,
