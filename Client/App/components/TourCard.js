@@ -54,7 +54,7 @@ export default class TourCard extends React.Component {
 
 
         {/* TourOperator */}
-        <OperatorIcon name="Greenland travel and tourss" image={this.props.operator.image} rating={this.props.operator.rating} verified={this.props.operator.verified} ></OperatorIcon>
+        <OperatorIcon name="Greenland travel and tours" image={this.props.operator.image} rating={this.props.operator.rating} verified={this.props.operator.verified} ></OperatorIcon>
     
     
     </View> 
@@ -68,8 +68,8 @@ export default class TourCard extends React.Component {
 const styles = StyleSheet.create({
     Container: {
         margin:10,
-        width:320,
-        height:320,
+        width:Dimensions.get('window').width/1.3,
+        height:Dimensions.get('window').height/2.1,
         borderColor:'black',
         borderWidth:1,
         borderBottomRightRadius:5,
