@@ -6,20 +6,82 @@ import OperatorCard from '../components/OperatorCard'
 import DestinationCard from '../components/DestinationCard'
 import { VerifiedIcon } from '../assets/icons/Icons'
 import image from "../assets/images/1.jpg"
+import OperatorIcon from "../components/OperatorIcon"
 
 export default class Home extends Component {
     render() {
+
+        const DATA = [
+           {
+               price:300,
+               daysLeft:2,
+               speciality:'Girls',
+               seatsLeft:10,
+               startDate:'9 oct',
+               endDate:'20 oct',
+               OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+           },
+           {
+            price:300,
+            daysLeft:2,
+            speciality:'Girls',
+            seatsLeft:10,
+            startDate:'9 oct',
+            endDate:'20 oct',
+            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+        },
+        {
+            price:300,
+            daysLeft:2,
+            speciality:'Girls',
+            seatsLeft:10,
+            startDate:'9 oct',
+            endDate:'20 oct',
+            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+        },
+        {
+            price:300,
+            daysLeft:2,
+            speciality:'Girls',
+            seatsLeft:10,
+            startDate:'9 oct',
+            endDate:'20 oct',
+            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+        },
+        {
+            price:300,
+            daysLeft:2,
+            speciality:'Girls',
+            seatsLeft:10,
+            startDate:'9 oct',
+            endDate:'20 oct',
+            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+        },
+          ];
+
+
         return (
-            <View style={{margin:'5%'}}>
-                 <TourCard title='Trip to Kashmirrrr' 
-                    price={400} 
-                    daysLeft={3} 
-                    speciality='Only For Girls' 
-                    seatsLeft={10} 
-                    startDate='9,oct 2019'
-                    endDate='21,oct 2019'
-                    operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>
-            </View>
+         
+            <View>
+
+                    <Text>Popular Tour</Text>
+                    <FlatList
+                    horizontal
+                    data={DATA}
+                    renderItem={({ item }) => <TourCard title='Trip to Kashmirrrr' 
+                    price={item.price} 
+                    daysLeft={item.daysLeft} 
+                    speciality={item.speciality} 
+                    seatsLeft={item.seatsLeft} 
+                    startDate={item.startDate}
+                    endDate={item.endDate}
+                    operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
+                    keyExtractor={item => item.name}
+                    />
+             </View>
+
+           
+         
 
         )
     }

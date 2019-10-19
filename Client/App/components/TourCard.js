@@ -67,9 +67,9 @@ export default class TourCard extends React.Component {
 
 const styles = StyleSheet.create({
     Container: {
-     
- 
-        height:Dimensions.get('window').height/2.3,
+        margin:10,
+        width:320,
+        height:320,
         borderColor:'black',
         borderWidth:1,
         borderBottomRightRadius:5,
