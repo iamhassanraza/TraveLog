@@ -1,69 +1,50 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ImageBackground, Button , Image} from 'react-native';
-import { Card , Icon} from 'native-base';
-import image from "../assets/images/1.jpg";
+import { Text, View, StyleSheet, ImageBackground, Button , Image,Dimensions} from 'react-native';
+import image from "../assets/images/2.jpg";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import  { ThemeColor } from '../assets/Colors/Colors';
 
-const DestinationCard = (props) => {
 
-   return(
+class DestinationCard extends React.Component{
+    render() {
+        return (
+           
+            <View style={{
+                        height:Dimensions.get('window').height/2.8,
+                        width:Dimensions.get('window').width/2.6,
+                        margin:5
+                       
+            }}>
+                <View style={{flex:7}}>
+                    <Image
+                     source={image}
+                     style={{width:"100%",
+                            height:"99%" ,
+                            borderTopLeftRadius:6, 
+                            borderTopRightRadius:6,
+                            borderBottomLeftRadius:6,
+                            borderBottomRightRadius:6
+                            }}>
+                    </Image>
+                </View>
 
-        <Card style={styles.DestinationCard}>
 
-            <Image style={styles.DestinationCardImage} source={image}></Image>
+                <View style={{flex:1}}>
+                    <View style={{flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
+                        <Text style={{
+                            textShadowColor: "grey",
+                            textShadowOffset: {width: 1, height: 1},
+                            textShadowRadius: 3,
+                            fontSize:16
+                        }}>Passu Cones</Text>
+                        <Icon name="bookmark" style={{fontSize:24}} color={ThemeColor} />
+                    </View>
+                </View>
 
-            <View style={styles.DestinationTextImage}>
-                <Text style={styles.DestinationText}> Passu Cones </Text>
-                <Icon style={styles.DestinationIcon} type="Ionicons" name="bookmark" /> 
+
             </View>
-            
-        </Card>
-                     
-   );
-}
-
-
-const styles = StyleSheet.create({
-
-    DestinationText: {
-        alignSelf:"center",
-        
-    },
-
-    DestinationIcon: {
-        
-        alignSelf:"center", 
-        marginRight:"3%",
-        fontSize:25, 
-        color: "#3399FF"
-    },
-
-    DestinationTextImage:{
-         
-        borderBottomLeftRadius:6, 
-        borderBottomRightRadius:6,
-        flexDirection:"row",
-        justifyContent:"space-between",
-        
-    },
-
-    DestinationCardImage : {
-        borderTopLeftRadius : 6,
-        borderTopRightRadius : 6,
-        borderBottomLeftRadius:6, 
-        borderBottomRightRadius:6,
-        width:  '100%',
-        height: "100%"
-    },
-
-    DestinationCard :{
-      
-        height:"30%",
-        width:"40%",
-        borderRadius: 6,
-        shadowColor: '#3399FF',
-        shadowOpacity: 1.0
+        );
     }
-
-});
+}
 
 export default DestinationCard;
