@@ -6,9 +6,10 @@ import logo from '../assets/images/1.jpg';
 import  { ThemeColor } from '../assets/Colors/Colors';
 import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import PhoneIcon from 'react-native-vector-icons/FontAwesome';
-import AddressIcon from 'react-native-vector-icons/FontAwesome';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import PhoneIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AddressIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
+import IconWithText from './IconAndText';
 
 
 
@@ -28,7 +29,7 @@ class OperatorCard extends React.Component{
                     </View>
                     <View style={{height: 50, width: '65%', justifyContent: 'center', alignItems: 'center'}}>
                         <View style={styles.FollowButton}>
-                            <Icon name="user-follow" color='white'/>
+                            <FollowIcon name="user-follow" color='white'/>
                             <Text style={{color: 'white'}}>
                                 Follow
                             </Text>
@@ -36,6 +37,18 @@ class OperatorCard extends React.Component{
                     </View>
                 </View>
                 <View style={{marginLeft: '5%', marginTop: '1%'}}>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                            Nomads Adventure Services <VerifiedIcon name="check-circle" style={{color: ThemeColor,fontSize: 16,alignSelf: 'center'}}></VerifiedIcon>     
+                        </Text>
+                    </View>
+                </View>
+                <View>
+                    <IconWithText name='phone' text='03492017052' iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='email' text='m.h.raxa1@yahoo.com' iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='map-marker' text="A-20, Block 15, North Nazmiabad" iconstyle={{}} textstyle={{}}></IconWithText>
+                </View>    
+                {/* <View style={{marginLeft: '5%', marginTop: '1%'}}>
                     <View style={{flexDirection: 'row'}}>
                         <Text style={{fontWeight: 'bold', fontSize: 16}}>
                             Nomads Adventure Services <VerifiedIcon name="check-circle" style={{color: ThemeColor,fontSize: 16,alignSelf: 'center'}}></VerifiedIcon>     
@@ -67,7 +80,7 @@ class OperatorCard extends React.Component{
                             A-5, Block 4, North Nazimabad, Karachi, Pakistan, Asia
                         </Text>
                     </View>
-                </View>
+                </View> */}
             </View>
             </>
         );
