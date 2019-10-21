@@ -18,7 +18,7 @@ class DestinationCard extends React.Component{
             }}>
                 <View style={{flex:7}}>
                     <Image
-                     source={image}
+                     source= {this.props.destinationImage}
                      style={{width:"100%",
                             height:"99%" ,
                             borderTopLeftRadius:6, 
