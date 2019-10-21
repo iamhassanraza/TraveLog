@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
 
 
+
 class DestinationCard extends React.Component{
     render() {
         return (
@@ -36,7 +37,7 @@ class DestinationCard extends React.Component{
                             textShadowOffset: {width: 1, height: 1},
                             textShadowRadius: 3,
                             fontSize:16
-                        }}>Passu Cones</Text>
+                        }}> {this.props.destinationName} </Text>
                         <Icon name="bookmark" style={{fontSize:24}} color={ThemeColor} />
                     </View>
                 </View>
