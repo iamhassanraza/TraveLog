@@ -12,7 +12,7 @@ const OperatorIcon = (props) => {
         <Image source={props.avatar} style={{height:50,width:50,borderRadius:50}}></Image> 
         </View> ): null}
         
-                                <View style={{flex:4}}>
+                                <View style={{flex:4, marginLeft:'2%'}}>
                                 <Text style={{fontWeight:'bold',fontSize:16} }>{props.name} {props.verified ?<VerifiedIcon size={17}></VerifiedIcon> : false }</Text> 
                                 <Rating
                                     readonly={true}
