@@ -134,6 +134,16 @@ export default class Home extends Component {
                         />
                 </FlatListContainer>
 
+                <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
+                        <FlatList
+                            horizontal
+                            data={DATA}
+                            renderItem={({item}) =>
+                            <DestinationCard destinationName={item.OperatorCard.name} destinationImage={image}   />
+                            }
+                        />
+                </FlatListContainer>
+
 
                 </View>
              </ScrollView>
