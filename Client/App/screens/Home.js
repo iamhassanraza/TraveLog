@@ -85,7 +85,7 @@ export default class Home extends Component {
         return (
          
                 
-                <View>
+                <ScrollView>
 
                 <FlatListContainer style={{marginLeft:10}} title="Popular Tours">
                     <FlatList
@@ -140,7 +140,7 @@ export default class Home extends Component {
 
 
                 
-             </View>
+             </ScrollView>
 
            
          

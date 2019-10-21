@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
         
     },
     ImageContainer:{
-    
         height:190,  
         flexDirection:'column',
         justifyContent:'flex-end'
