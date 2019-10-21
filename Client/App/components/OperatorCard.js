@@ -20,7 +20,7 @@ class OperatorCard extends React.Component{
     render() {
         return (
             <>  
-            <View style={{borderColor: ThemeColor,borderWidth: 2, marginTop: 60,paddingBottom: '2%' ,width: Dimensions.get("window").width/1.5}}>
+            <View style={[styles.Container, this.props.style]}>
                 <ImageBackground source={image} style={{height: 100}}>
 
                 </ImageBackground>
@@ -60,17 +60,10 @@ export default OperatorCard;
 
 const styles = StyleSheet.create({
     Container: {
-     
-        width: 250,
-        alignSelf: 'center',
-        height:200,
-        borderColor:'black',
-        borderRadius: 5,
-        borderWidth:0.7,
-        marginTop: 30,
-        borderBottomRightRadius:5,
-        borderBottomLeftRadius:5
-        
+        borderColor: ThemeColor,
+        borderWidth: 2, 
+        paddingBottom: '2%' , 
+        width: Dimensions.get("window").width/1.5   
     },
     ImageContainer:{
     
