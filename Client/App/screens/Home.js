@@ -20,7 +20,7 @@ export default class Home extends Component {
                seatsLeft:10,
                startDate:'9 oct',
                endDate:'20 oct',
-               OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+               OperatorCard:{name:'Travel and tours',image,rating:3.4,verified:true}
            },
            {
             price:300,
@@ -29,7 +29,7 @@ export default class Home extends Component {
             seatsLeft:10,
             startDate:'9 oct',
             endDate:'20 oct',
-            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+            OperatorCard:{name:'Greenland  tours',image,rating:3.4,verified:true}
         },
         {
             price:300,
@@ -38,7 +38,7 @@ export default class Home extends Component {
             seatsLeft:10,
             startDate:'9 oct',
             endDate:'20 oct',
-            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+            OperatorCard:{name:'Greenland Travel ',image,rating:3.4,verified:true}
         },
         {
             price:300,
@@ -47,7 +47,7 @@ export default class Home extends Component {
             seatsLeft:10,
             startDate:'9 oct',
             endDate:'20 oct',
-            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+            OperatorCard:{name:'Greenlan and tours',image,rating:3.4,verified:true}
         },
         {
             price:300,
@@ -56,7 +56,7 @@ export default class Home extends Component {
             seatsLeft:10,
             startDate:'9 oct',
             endDate:'20 oct',
-            OperatorCard:{name:'Greenland Travel and tours',image,rating:3.4,verified:true}
+            OperatorCard:{name:'GreenTravel and tours',image,rating:3.4,verified:true}
         },
           ];
 
@@ -64,20 +64,12 @@ export default class Home extends Component {
         return (
          
             <View>
-                    <OperatorCard
-                        name="PJP Travel and Tours"
-                        verified={true}
-                        rating={5}
-                        phone="0324112342"
-                        email="pjp@gmail.com"
-                        address="Office-304, Anum Empire, shahrah"
-                        followStatus={false}
-                    />
-                    <FlatListContainer>   
+
+                <FlatListContainer style={{marginLeft:10}} title="Popular Tours">
                     <FlatList
                     horizontal
                     data={DATA}
-                    renderItem={({ item }) => <TourCard title='Trip to Kashmirrrr' 
+                    renderItem={({ item }) => <TourCard style={{marginRight:10}} title='Trip to Kashmirrrr' 
                     price={item.price} 
                     daysLeft={item.daysLeft} 
                     speciality={item.speciality} 
@@ -85,9 +77,12 @@ export default class Home extends Component {
                     startDate={item.startDate}
                     endDate={item.endDate}
                     operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
-                    keyExtractor={item => item.name}
+                    keyExtractor={item => item.OperatorCard.name}
                     />
                     </FlatListContainer>
+
+
+                  
              </View>
 
            
