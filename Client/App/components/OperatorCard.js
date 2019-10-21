@@ -40,7 +40,7 @@ class OperatorCard extends React.Component{
                     </View>
                 </View>
                 <OperatorIcon 
-                    style={{marginLeft: '5%'}} 
+                    style={{marginLeft: '5%',marginBottom:'2%'}} 
                     name={this.props.name} 
                     rating={this.props.rating} 
                     verified={this.props.verified}
@@ -60,10 +60,12 @@ export default OperatorCard;
 
 const styles = StyleSheet.create({
     Container: {
-        borderColor: ThemeColor,
-        borderWidth: 2, 
-        paddingBottom: '2%' , 
-        width: Dimensions.get("window").width/1.5   
+        borderColor: '#8b8e8f',
+        borderWidth: 0.5, 
+        paddingBottom: 10 , 
+        width: Dimensions.get("window").width/1.4 ,
+        borderBottomEndRadius:5,
+        borderBottomLeftRadius:5 
     },
     ImageContainer:{
     

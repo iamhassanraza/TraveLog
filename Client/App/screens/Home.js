@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView,FlatList } from 'react-native'
+import { Text, View, ScrollView,FlatList,Dimensions } from 'react-native'
 
 import TourCard from '../components/TourCard'
 import OperatorCard from '../components/OperatorCard'
@@ -23,7 +23,7 @@ export default class Home extends Component {
                 followStatus: false
             },
             {
-                name: "PJP Travel and Tours",
+                name: "PJP Travel and Tours and advent",
                 verified: true,
                 rating: 5,
                 phone: "0324112342",
@@ -95,11 +95,13 @@ export default class Home extends Component {
          
                 
                 <ScrollView>
+                    <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1,height:Dimensions.get('window').height}}>
 
                 <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                     <FlatList
                     horizontal
                     data={DATA}
+                    showsHorizontalScrollIndicator={false}
                     renderItem={({ item }) => <TourCard style={{marginRight:10}} title='Trip to Kashmirrrr' 
                     price={item.price} 
                     daysLeft={item.daysLeft} 
@@ -107,7 +109,7 @@ export default class Home extends Component {
                     seatsLeft={item.seatsLeft} 
                     startDate={item.startDate}
                     endDate={item.endDate}
-                    operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
+                    operator={{name:item.OperatorCard.name,image,rating:3.4,verified:true}}></TourCard>}
                     keyExtractor={item => item.OperatorCard.name}
                     />
                 </FlatListContainer>
@@ -115,6 +117,8 @@ export default class Home extends Component {
                         <FlatList 
                             horizontal
                             data={operatorData}
+                            keyExtractor={item => item.name}
+                            showsHorizontalScrollIndicator={false}
                             renderItem= {({item}) => 
                             <OperatorCard
                                 style={{marginRight:10}}
@@ -125,14 +129,13 @@ export default class Home extends Component {
                                 email={item.email}
                                 address={item.address}
                                 followStatus={item.followStatus}
-                                keyExtractor={item => item.name}
                             />
                             }
                         />
                 </FlatListContainer>
 
 
-                
+                </View>
              </ScrollView>
 
            

@@ -7,16 +7,25 @@ const HeaderImage = () => {
     return (
    
         <ImageBackground source={image} style={styles.ImageContainer}>
+        
+        <View style={{flexDirection:'column',flex:1}}>
+        <View style={{borderWidth:1,borderColor:ThemeColor,flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>
+             <Text style={{fontSize:16}}>300$</Text>
+         </View>
+            <Text style={{fontWeight:'900',backgroundColor:ThemeColor,padding: '1%',alignSelf: 'flex-start', borderTopRightRadius:10, color:'white'}}>4 seats left nibbaa</Text>
+            <Text style={{marginTop:'3%',backgroundColor:ThemeColor,padding: '1%',alignSelf: 'flex-start', borderTopRightRadius:10, color:'white'}}>4 seats left</Text>
+        </View>
          
-                    
-                <View style={{width:80,height:27,backgroundColor: "rgba(47,161,230,1)",alignItems:'center',borderTopRightRadius:10,marginTop:'8%'}}>
-                    <Text style={{...styles.TourCardHeading,color:'white',fontSize:18,}}>300$</Text>
+
+{/*                     
+                <View style={{width:'21%',height:22,backgroundColor: "rgba(47,161,230,1)",alignItems:'center',borderTopRightRadius:10,marginTop:'8%',justifyContent:'center'}}>
+                    <Text style={{...styles.TourCardHeading,color:'white',fontSize:16,}}>300$</Text>
                 </View>
 
                     
                 <View style={{width:130,height:27,alignItems:'center',backgroundColor: "rgba(47,161,230,1)",borderTopRightRadius:10,marginTop:'2%'}}>
-                    <Text style={{...styles.TourCardHeading,color:'white',fontSize:18,}}>4 Days Left</Text>
-                </View>
+                    <Text style={{...styles.TourCardHeading,color:'white',fontSize:16,}}>4 Days Left</Text>
+                </View> */}
 
 {/* 
             <View style={{padding:2,backgroundColor: "rgba(0,0,0,0.2)",height:32,flexDirection:'column',justifyContent:'flex-end',}}>
@@ -45,9 +54,9 @@ const styles = StyleSheet.create({
     },
     ImageContainer:{
     
-        height:160,  
+        height:140,  
      
-        flexDirection:'column',
+    
     
         
       

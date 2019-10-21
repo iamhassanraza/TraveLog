@@ -11,7 +11,7 @@ const FlatListContainer = (props) => {
         <Text style={{fontSize:20, fontWeight:'bold'}}>{props.title}</Text>
         <View style={{flexDirection:'row',alignItems:'center'}}>
         <Text style={{fontWeight:'bold',color:ThemeColor}}>View all </Text> 
-        <Text><Icon name="dots-horizontal" style={{fontSize:25,color:'grey'}}></Icon></Text>
+        <Text style={{marginRight:5}}><Icon name="dots-horizontal" style={{fontSize:25,color:'grey'}}></Icon></Text>
         </View>
         </View>
         {props.children}
