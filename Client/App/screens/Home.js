@@ -30,6 +30,15 @@ export default class Home extends Component {
                 email: "pjp@gmail.com",
                 address: "Office-304, Anum Empire, shahrah",
                 followStatus: false
+            },
+            {
+                name: "PJP and Tours",
+                verified: true,
+                rating: 5,
+                phone: "0324112342",
+                email: "pjp@gmail.com",
+                address: "Office-304, Anum Empire, shahrah",
+                followStatus: false
             }
         ]
 
@@ -87,7 +96,7 @@ export default class Home extends Component {
                 
                 <ScrollView>
 
-                <FlatListContainer style={{marginLeft:10}} title="Popular Tours">
+                <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                     <FlatList
                     horizontal
                     data={DATA}
@@ -101,14 +110,14 @@ export default class Home extends Component {
                     operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
                     keyExtractor={item => item.OperatorCard.name}
                     />
-
-                 </FlatListContainer>
-                    <FlatListContainer title="Tour Operators">
+                </FlatListContainer>
+                <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
                         <FlatList 
                             horizontal
                             data={operatorData}
-                            renderItem={({item}) => 
-                            <OperatorCard 
+                            renderItem= {({item}) => 
+                            <OperatorCard
+                                style={{marginRight:10}}
                                 name={item.name}
                                 verified={item.verified}
                                 rating={item.rating}
@@ -120,23 +129,7 @@ export default class Home extends Component {
                             />
                             }
                         />
-                    </FlatListContainer>
-                    <FlatListContainer>   
-                        <FlatList
-                            horizontal
-                            data={DATA}
-                            renderItem={({ item }) => <TourCard title='Trip to Kashmirrrr' 
-                            price={item.price} 
-                            daysLeft={item.daysLeft} 
-                            speciality={item.speciality} 
-                            seatsLeft={item.seatsLeft} 
-                            startDate={item.startDate}
-                            endDate={item.endDate}
-                            operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
-                            keyExtractor={item => item.name}
-                        />
-
-                    </FlatListContainer>
+                </FlatListContainer>
 
 
                 
