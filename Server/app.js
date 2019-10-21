@@ -7,12 +7,15 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database:'testing'
+    database:'rn-db'
   });
+
+
+  adsa
 
   con.connect(function(err) {
     if (err) throw err;
-    con.query("SELECT * FROM names", function (err, result) {
+    con.query("SELECT * FROM title", function (err, result) {
       if (err) throw err;
       console.log(result);
     });
