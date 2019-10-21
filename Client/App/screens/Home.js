@@ -12,6 +12,27 @@ import FlatListContainer from '../components/FlatListContainer'
 export default class Home extends Component {
     render() {
 
+        const operatorData = [
+            {
+                name: "PJP Travel and Tour",
+                verified: true,
+                rating: 5,
+                phone: "0324112342",
+                email: "pjp@gmail.com",
+                address: "Office-304, Anum Empire, shahrah",
+                followStatus: false
+            },
+            {
+                name: "PJP Travel and Tours",
+                verified: true,
+                rating: 5,
+                phone: "0324112342",
+                email: "pjp@gmail.com",
+                address: "Office-304, Anum Empire, shahrah",
+                followStatus: false
+            }
+        ]
+
         const DATA = [
            {
                price:300,
@@ -63,7 +84,8 @@ export default class Home extends Component {
 
         return (
          
-            <View>
+                
+                <View>
 
                 <FlatListContainer style={{marginLeft:10}} title="Popular Tours">
                     <FlatList
@@ -79,10 +101,45 @@ export default class Home extends Component {
                     operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
                     keyExtractor={item => item.OperatorCard.name}
                     />
+
+                 </FlatListContainer>
+                    <FlatListContainer title="Tour Operators">
+                        <FlatList 
+                            horizontal
+                            data={operatorData}
+                            renderItem={({item}) => 
+                            <OperatorCard 
+                                name={item.name}
+                                verified={item.verified}
+                                rating={item.rating}
+                                phone={item.phone}
+                                email={item.email}
+                                address={item.address}
+                                followStatus={item.followStatus}
+                                keyExtractor={item => item.name}
+                            />
+                            }
+                        />
+                    </FlatListContainer>
+                    <FlatListContainer>   
+                        <FlatList
+                            horizontal
+                            data={DATA}
+                            renderItem={({ item }) => <TourCard title='Trip to Kashmirrrr' 
+                            price={item.price} 
+                            daysLeft={item.daysLeft} 
+                            speciality={item.speciality} 
+                            seatsLeft={item.seatsLeft} 
+                            startDate={item.startDate}
+                            endDate={item.endDate}
+                            operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
+                            keyExtractor={item => item.name}
+                        />
+
                     </FlatListContainer>
 
 
-                  
+                
              </View>
 
            
