@@ -10,6 +10,9 @@ import PhoneIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AddressIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
 import IconWithText from './IconAndText';
+import { Rating } from 'react-native-ratings';
+import OperatorIcon from './OperatorIcon';
+
 
 
 
@@ -36,51 +39,28 @@ class OperatorCard extends React.Component{
                         </View>
                     </View>
                 </View>
-                <View style={{marginLeft: '5%', marginTop: '1%'}}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={{fontWeight: 'bold', fontSize: 16}}>
-                            Nomads Adventure Services <VerifiedIcon name="check-circle" style={{color: ThemeColor,fontSize: 16,alignSelf: 'center'}}></VerifiedIcon>     
-                        </Text>
-                    </View>
-                </View>
-                <View>
-                    <IconWithText name='phone' text='03492017052' iconstyle={{}} textstyle={{}}></IconWithText>
-                    <IconWithText name='email' text='m.h.raxa1@yahoo.com' iconstyle={{}} textstyle={{}}></IconWithText>
-                    <IconWithText name='map-marker' text="A-20, Block 15, North Nazmiabad" iconstyle={{}} textstyle={{}}></IconWithText>
-                </View>    
                 {/* <View style={{marginLeft: '5%', marginTop: '1%'}}>
                     <View style={{flexDirection: 'row'}}>
                         <Text style={{fontWeight: 'bold', fontSize: 16}}>
                             Nomads Adventure Services <VerifiedIcon name="check-circle" style={{color: ThemeColor,fontSize: 16,alignSelf: 'center'}}></VerifiedIcon>     
                         </Text>
                     </View>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <View>
-                            <PhoneIcon name="phone" style={{color: ThemeColor, fontSize: 16}}></PhoneIcon>
-                        </View>
-                        <View>
-                            <Text style={{ marginTop: '1%', color: 'grey'}}>
-                                03452087064
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <View>
-                            <EmailIcon name="email" style={{color: ThemeColor, fontSize: 16}}></EmailIcon>
-                        </View>
-                        <View>
-                            <Text style={{marginTop: '1%', color: 'grey'}}>
-                                Nomads@outlook.com
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={{flexDirection: 'row'}}>
-                        <AddressIcon name="address-book" style={{color: ThemeColor, fontSize: 16}}></AddressIcon>
-                        <Text style={{marginTop: '1%', color: 'grey', flexDirection: 'row'}}>
-                            A-5, Block 4, North Nazimabad, Karachi, Pakistan, Asia
-                        </Text>
-                    </View>
+                    <Rating
+                        readonly={true}
+                        ratingCount={5}
+                        startingValue={3.5}
+                        imageSize={15}
+                        style={{alignItems: 'flex-start'}}
+                    />
                 </View> */}
+                <View style={{marginLeft: '5%'}}>
+                    <OperatorIcon name="Nomads Adventure Services" rating={2.5} verified={false}/>
+                </View>
+                <View style={{marginLeft: '5%', marginTop: '1%'}}>
+                    <IconWithText name='phone' text='03492017052' iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='email' text='m.h.raxa1@yahoo.com' iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='map-marker' text="A-20, Block 15, North Nazmiabad" iconstyle={{}} textstyle={{}}></IconWithText>
+                </View>    
             </View>
             </>
         );
