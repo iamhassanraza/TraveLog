@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
 
 
-
+// Props : destinationImage, destinationName
 class DestinationCard extends React.Component{
     render() {
         return (
@@ -18,7 +18,7 @@ class DestinationCard extends React.Component{
             }}>
                 <View style={{flex:7}}>
                     <Image
-                     source= {this.props.destinationImage}
+                     source={this.props.destinationImage}
                      style={{width:"100%",
                             height:"99%" ,
                             borderTopLeftRadius:6, 
