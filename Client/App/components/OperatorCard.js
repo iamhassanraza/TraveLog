@@ -20,7 +20,7 @@ class OperatorCard extends React.Component{
     render() {
         return (
             <>  
-            <View style={{borderColor: ThemeColor,borderWidth: 2, marginTop: 60, height: Dimensions.get("window").height/2.4, width: '80%'}}>
+            <View style={{borderColor: ThemeColor,borderWidth: 2, marginTop: 60, width: '80%'}}>
                 <ImageBackground source={image} style={{height: 100}}>
 
                 </ImageBackground>
