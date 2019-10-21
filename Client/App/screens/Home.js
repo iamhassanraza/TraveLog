@@ -7,6 +7,7 @@ import DestinationCard from '../components/DestinationCard'
 import { VerifiedIcon } from '../assets/icons/Icons'
 import image from "../assets/images/1.jpg"
 import OperatorIcon from "../components/OperatorIcon"
+import FlatListContainer from '../components/FlatListContainer'
 
 export default class Home extends Component {
     render() {
@@ -64,7 +65,7 @@ export default class Home extends Component {
          
             <View>
 
-                    <Text>Popular Tour</Text>
+                    <FlatListContainer>
                     <FlatList
                     horizontal
                     data={DATA}
@@ -78,6 +79,7 @@ export default class Home extends Component {
                     operator={{name:'Greenland Travel and tours',image,rating:3.4,verified:true}}></TourCard>}
                     keyExtractor={item => item.name}
                     />
+                    </FlatListContainer>
              </View>
 
            
