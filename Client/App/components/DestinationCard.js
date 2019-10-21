@@ -30,15 +30,19 @@ class DestinationCard extends React.Component{
                 </View>
 
 
-                <View style={{flex:1}}>
-                    <View style={{flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
+                <View>
+                    <View style={{flexDirection:"row"}}>
+                        <View style={{flex:8}}>
                         <Text style={{
-                            textShadowColor: "grey",
-                            textShadowOffset: {width: 1, height: 1},
-                            textShadowRadius: 3,
+                            // textShadowColor: "grey",
+                            // textShadowOffset: {width: 1, height: 1},
+                            // textShadowRadius: 3,
                             fontSize:16
-                        }}> {this.props.destinationName} </Text>
+                        }}>{this.props.destinationName} </Text>
+                        </View>
+                        <View style={{flex:2}}>
                         <Icon name="bookmark" style={{fontSize:24}} color={ThemeColor} />
+                        </View>
                     </View>
                 </View>
 

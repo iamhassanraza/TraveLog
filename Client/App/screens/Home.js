@@ -138,11 +138,15 @@ export default class Home extends Component {
                         <FlatList
                             horizontal
                             data={DATA}
+                            keyExtractor={item => item.OperatorCard.name}
+                            showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard destinationName={item.OperatorCard.name} destinationImage={image}   />
                             }
                         />
                 </FlatListContainer>
+
+                <Text>the end</Text>
 
 
                 </View>
