@@ -64,8 +64,8 @@ export default class Home extends Component {
         return (
          
             <View>
-
-                    <FlatListContainer>
+                    
+                    <FlatListContainer>   
                     <FlatList
                     horizontal
                     data={DATA}
