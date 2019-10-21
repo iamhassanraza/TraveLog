@@ -10,7 +10,7 @@ const HeaderImage = () => {
         
         <View style={{flexDirection:'column',flex:1}}>
         <View style={{borderWidth:1,borderColor:ThemeColor,flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>
-             <Text style={{fontSize:16}}>300$</Text>
+             <Text style={{fontSize:16,fontWeight:'bold',color:'#8b8e8f'}}>300$</Text>
          </View>
             <Text style={{fontWeight:'900',backgroundColor:ThemeColor,padding: '1%',alignSelf: 'flex-start', borderTopRightRadius:10, color:'white'}}>4 seats left nibbaa</Text>
             <Text style={{marginTop:'3%',backgroundColor:ThemeColor,padding: '1%',alignSelf: 'flex-start', borderTopRightRadius:10, color:'white'}}>4 seats left</Text>

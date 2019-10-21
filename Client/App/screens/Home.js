@@ -95,7 +95,7 @@ export default class Home extends Component {
          
                 
                 <ScrollView>
-                    <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1,height:Dimensions.get('window').height}}>
+                    <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1}}>
 
                 <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                     <FlatList
