@@ -6,7 +6,7 @@ import { VerifiedIcon } from "../assets/icons/Icons";
 const OperatorIcon = (props) => {
     return (
         <TouchableWithoutFeedback onPress={()=>alert('navigate to tour operator profile')}>
-        <View style={{flexDirection:'row',alignItems:'center'}}>
+        <View style={[{flexDirection:'row',alignItems:'center'},props.style]}>
 
         {props.avatar ? <Image source={props.avatar} style={{height:50,width:50,borderRadius:50,marginRight:5}}></Image> : null}
                                 <View style={{flexDirection:'column',width:'90%'}}>

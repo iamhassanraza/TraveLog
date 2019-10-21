@@ -54,9 +54,9 @@ export default class TourCard extends React.Component {
 
 
         {/* TourOperator */}
-        <View style={{padding:'2%'}}>
-        <OperatorIcon name="Greenland travel and tours" avatar={this.props.operator.image} rating={this.props.operator.rating} verified={this.props.operator.verified} ></OperatorIcon>
-        </View>
+       
+        <OperatorIcon style={{padding:'2%'}} name="Greenland travel and tours" avatar={this.props.operator.image} rating={this.props.operator.rating} verified={this.props.operator.verified} ></OperatorIcon>
+        
     
     </View> 
     </TouchableWithoutFeedback>
