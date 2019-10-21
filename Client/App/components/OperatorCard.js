@@ -34,32 +34,21 @@ class OperatorCard extends React.Component{
                         <View style={styles.FollowButton}>
                             <FollowIcon name="user-follow" color='white'/>
                             <Text style={{color: 'white'}}>
-                                Follow
+                                {this.props.followStatus ? "Unfollow" : "Follow"}
                             </Text>
                         </View>
                     </View>
                 </View>
-                {/* <View style={{marginLeft: '5%', marginTop: '1%'}}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={{fontWeight: 'bold', fontSize: 16}}>
-                            Nomads Adventure Services <VerifiedIcon name="check-circle" style={{color: ThemeColor,fontSize: 16,alignSelf: 'center'}}></VerifiedIcon>     
-                        </Text>
-                    </View>
-                    <Rating
-                        readonly={true}
-                        ratingCount={5}
-                        startingValue={3.5}
-                        imageSize={15}
-                        style={{alignItems: 'flex-start'}}
-                    />
-                </View> */}
-                <View style={{marginLeft: '5%'}}>
-                    <OperatorIcon name="Nomads Adventure Services" rating={2.5} verified={false}/>
-                </View>
+                <OperatorIcon 
+                    style={{marginLeft: '5%'}} 
+                    name={this.props.name} 
+                    rating={this.props.rating} 
+                    verified={this.props.verified}
+                />
                 <View style={{marginLeft: '5%', marginTop: '1%'}}>
-                    <IconWithText name='phone' text='03492017052' iconstyle={{}} textstyle={{}}></IconWithText>
-                    <IconWithText name='email' text='m.h.raxa1@yahoo.com' iconstyle={{}} textstyle={{}}></IconWithText>
-                    <IconWithText name='map-marker' text="A-20, Block 15, North Nazmiabad" iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='phone' text={this.props.phone} iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='email' text={this.props.email} iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='map-marker' text={this.props.address} iconstyle={{}} textstyle={{}}></IconWithText>
                 </View>    
             </View>
             </>

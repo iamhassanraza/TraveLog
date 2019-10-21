@@ -9,10 +9,10 @@ const IconWithText = props => {
     return(
         <View style={{flexDirection: "row", alignItems: 'center'}}>
             <View style={{flex: 1, alignItems: 'center'}}>
-                <Icon style={{color: ThemeColor,fontSize: 18,...props.iconstyle}} name={props.name} />
+                <Icon style={{color: ThemeColor,fontSize: 16,...props.iconstyle}} name={props.name} />
             </View> 
             <View style={{flex: 12, marginLeft: '2%'}}>
-                <Text style={{...props.textstyle}}>{props.text}</Text>
+                <Text style={{fontSize:12, color:'#5c5353',...props.textstyle}}>{props.text}</Text>
             </View>
         </View> 
     );

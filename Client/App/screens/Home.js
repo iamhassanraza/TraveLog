@@ -64,7 +64,15 @@ export default class Home extends Component {
         return (
          
             <View>
-                    
+                    <OperatorCard
+                        name="PJP Travel and Tours"
+                        verified={true}
+                        rating={5}
+                        phone="0324112342"
+                        email="pjp@gmail.com"
+                        address="Office-304, Anum Empire, shahrah"
+                        followStatus={false}
+                    />
                     <FlatListContainer>   
                     <FlatList
                     horizontal

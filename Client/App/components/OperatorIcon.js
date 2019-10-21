@@ -14,7 +14,7 @@ const OperatorIcon = (props) => {
                                 <Rating
                                     readonly={true}
                                     ratingCount={5}
-                                    startingValue={props.rating}
+                                    startingValue={props.rating? props.rating : 0}
                                     imageSize={15}
                                    style={{alignItems:'flex-start'}}
                                 />
