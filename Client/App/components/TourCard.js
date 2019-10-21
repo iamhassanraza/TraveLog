@@ -23,7 +23,7 @@ export default class TourCard extends React.Component {
     render() {
         return (
             <TouchableWithoutFeedback onPress={()=>alert('navigate to tour details')}>
-            <View style={styles.Container} >
+            <View style={[styles.Container,this.props.style]} >
          <HeaderImage></HeaderImage>
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
@@ -68,9 +68,9 @@ export default class TourCard extends React.Component {
 
 const styles = StyleSheet.create({
     Container: {
-        margin:10,
+     
         width:Dimensions.get('window').width/1.3,
-        height:Dimensions.get('window').height/2.1,
+    
         borderColor:'black',
         borderWidth:1,
         borderBottomRightRadius:5,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         color:'#5c5353'
     },
     TextConatiner:{
-        flex:2,
+      
         flexDirection:'row',
       
         
