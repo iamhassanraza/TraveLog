@@ -13,7 +13,8 @@ class DestinationCard extends React.Component{
             <View style={{
                         height:Dimensions.get('window').height/2.8,
                         width:Dimensions.get('window').width/2.6,
-                        margin:5
+                        margin:5,
+                        
                        
             }}>
                 <View style={{flex:7}}>

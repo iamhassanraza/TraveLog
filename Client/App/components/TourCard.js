@@ -28,34 +28,38 @@ export default class TourCard extends React.Component {
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
-                        <Text style={{color:'black',fontSize:20,fontWeight:'bold'}}>{this.props.title} </Text>
+                        <Text style={{color:'black',fontSize:20,fontWeight:'bold',marginBottom:'3%'}}>{this.props.title} </Text>
                         <IconWithText name="calendar-check" text={`From: ${this.props.startDate} to ${this.props.endDate}`} textstyle={styles.TourCardDate}></IconWithText>
                         <IconWithText name="account-supervisor" text={`Speciality: ${this.props.speciality}`} textstyle={styles.TourCardDate}></IconWithText>
                         <IconWithText name='seat-recline-normal' text={`Seats Left: ${this.props.seatsLeft}`} textstyle={styles.TourCardDate}></IconWithText>
                         
                 </View>
 
-
+                    {/* Save icon */}
 
                 <View style={{flex:1,alignItems:'center',paddingTop:'2%'}}>
 
-                <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
-                size={30} 
-                color={ThemeColor} 
-                onPress={()=>{
+                  <TouchableWithoutFeedback  onPress={()=>{
                     this.setState((prevState) => ({
                         saved: !prevState.saved
                       }));
-                }} />
+                }} >
+                <View style={{padding:5,alignItems:'center'}} >
+
+            
+                <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
+                size={30} 
+                color={ThemeColor} />
                 <Text style={{marginTop:-5,color:'grey', fontSize: 13,fontWeight:'bold'}}>{this.state.saved ? 'saved' : 'save'}</Text>
-                    
+                </View>
+                </TouchableWithoutFeedback>  
                 </View>
         </View>
 
 
         {/* TourOperator */}
        
-        <OperatorIcon style={{padding:'2%'}} name={this.props.operator.name} avatar={this.props.operator.image} rating={this.props.operator.rating} verified={this.props.operator.verified} ></OperatorIcon>
+        <OperatorIcon style={{padding:'2%',marginTop:5}} name={this.props.operator.name} avatar={this.props.operator.image} rating={this.props.operator.rating} verified={this.props.operator.verified} ></OperatorIcon>
       
     
     </View> 
@@ -71,7 +75,7 @@ const styles = StyleSheet.create({
      
         width:Dimensions.get('window').width/1.4,
     
-
+        backgroundColor:'white',
         borderWidth:0.5,
         borderBottomRightRadius:5,
         borderBottomLeftRadius:5,
