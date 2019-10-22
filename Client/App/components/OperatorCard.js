@@ -64,7 +64,9 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,  
         width: Dimensions.get("window").width/1.4 ,
         borderBottomEndRadius:5,
-        borderBottomLeftRadius:5, 
+        borderBottomLeftRadius:5 ,
+        backgroundColor:'white'
+
     },
     ImageContainer:{
     
