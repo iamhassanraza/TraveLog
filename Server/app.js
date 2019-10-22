@@ -48,4 +48,4 @@ var con = mysql.createConnection({
     })
   })
 
-app.listen(3000,()=>console.log('Server connected successfully'));
+app.listen(3000, ()=>console.log('Server connected successfully'));
