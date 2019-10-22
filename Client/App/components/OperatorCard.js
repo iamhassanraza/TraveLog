@@ -61,12 +61,12 @@ export default OperatorCard;
 const styles = StyleSheet.create({
     Container: {
         borderColor: '#8b8e8f',
-        borderWidth: 0.5, 
-        paddingBottom: 10 , 
+        borderWidth: 0.5,  
         width: Dimensions.get("window").width/1.4 ,
         borderBottomEndRadius:5,
         borderBottomLeftRadius:5 ,
         backgroundColor:'white'
+
     },
     ImageContainer:{
     
