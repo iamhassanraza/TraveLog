@@ -9,10 +9,10 @@ const HeaderImage = () => {
         <ImageBackground source={image} style={styles.ImageContainer}>
         
         <View style={{flexDirection:'column',flex:1}}>
-        <View style={{borderWidth:1,borderColor:ThemeColor,flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>
-             <Text style={{fontSize:16,fontWeight:'bold',color:'#8b8e8f'}}>300$</Text>
+        <View style={{flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>
+             <Text style={{fontSize:16,fontWeight:'bold',color:'#6A6A6A'}}>300$</Text>
          </View>
-            <Text style={{fontWeight:'900',backgroundColor:ThemeColor,padding: '1%',alignSelf: 'flex-start', borderTopRightRadius:10, color:'white'}}>4 Seats left</Text>
+            <Text style={{fontWeight:'900',backgroundColor:ThemeColor,padding: '2%',alignSelf: 'flex-start', color:'white'}}>4 Days Left</Text>
             {/* <Text style={{marginTop:'3%',backgroundColor:ThemeColor,padding: '1%',alignSelf: 'flex-start', borderTopRightRadius:10, color:'white'}}>4 seats left</Text> */}
         </View>
          
