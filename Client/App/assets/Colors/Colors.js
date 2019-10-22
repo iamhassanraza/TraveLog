@@ -1,3 +1,3 @@
 import {StyleSheet} from 'react-native'
 
-export const ThemeColor = 'black'
+export const ThemeColor = '#1387d2'
