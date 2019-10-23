@@ -10,24 +10,37 @@ import image2 from "../assets/images/5.jpg"
 
 export default class Home extends Component {
 
+    state = {
+        data:[]
+    }
+
+    // componentDidMount(){
+       
+    //     fetch("http://localhost:3000/tours")
+    //     .then(response => response.json())
+    //     .then((responseJson)=> {
+    //       this.setState({
+    //        data : responseJson
+    //       })
+    //     })
+    //     .catch(error=>console.log(error)) //to catch the errors if any
+    //     }
+    // }
+
 
     componentDidMount(){
-        fetch('http://localhost:3000/tours').then((res)=>{
-           return res.json()
-            
-        }).then((fres)=>{
-            console.log(fres)
-        }).catch((err)=>{
-                console.log(err)
-        })
-    
+        fetch("http://192.168.100.25:3000/tours")
+            .then(response => response.json())
+            .then((responseJson)=> {
+              this.setState({
+               data : responseJson
+              })
+            }).catch(err=>console.log(err))
     }
 
 
-
-
     render() {
-
+            console.log(this.state.data)
         const operatorData = [
             {
                 name: "PJP Travel and Tour",
