@@ -11,23 +11,24 @@ import image2 from "../assets/images/5.jpg"
 export default class Home extends Component {
 
 
-    componentDidMount(){
-        fetch("https://localhost:3001/tours")
-        .then(res=> res.json()) 
-        .then((jsonres)=>{
-            console.log(jsonres)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-    
+    state = {
+        data:[]
     }
 
 
+    componentDidMount(){
+        fetch("http://192.168.100.15:3001/tours")
+            .then(response => response.json())
+            .then((responseJson)=> {
+              this.setState({
+               data : responseJson
+              })
+            }).catch(err=>console.log(err))
+    }
 
 
     render() {
-
+            console.log(this.state.data)
         const operatorData = [
             {
                 name: "PJP Travel and Tour",
