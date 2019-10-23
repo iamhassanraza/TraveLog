@@ -6,16 +6,8 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database:'travelogs'
+    database:'travelog'
   });
-
-  // con.connect(function(err) {
-  //   if (err) throw err;
-  //   con.query("SELECT * FROM title", function (err, result) {
-  //     if (err) throw err;
-  //     console.log(result);
-  //   });
-  // });
 
   app.get('/tours', (req,res) => {
     con.query('Select * from tours', (err,result)=> {
@@ -48,4 +40,4 @@ var con = mysql.createConnection({
     })
   })
 
-app.listen(3000, ()=>console.log('Server connected successfully'));
+app.listen(3001, ()=>console.log('Server connected successfully'));

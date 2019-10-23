@@ -3,7 +3,7 @@ import { View, Text , StyleSheet,ImageBackground, Dimensions,Image,TouchableWith
 import  { ThemeColor } from '../assets/Colors/Colors'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import image from "../assets/images/1.jpg"
+import image from "../assets/images/7.jpg"
 import HeaderImage from './HeaderImage';
 import DateIcon from 'react-native-vector-icons/Fontisto';
 import SpecialityIcon from 'react-native-vector-icons/SimpleLineIcons';
@@ -24,7 +24,7 @@ export default class TourCard extends React.Component {
         return (
             <TouchableWithoutFeedback onPress={()=>alert('navigate to tour details')}>
             <View style={[styles.Container,this.props.style]} >
-         <HeaderImage></HeaderImage>
+         <HeaderImage image={image} tag="5 Days Left" price={200}></HeaderImage>
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
@@ -47,7 +47,7 @@ export default class TourCard extends React.Component {
                 <View style={{padding:5,alignItems:'center'}} >
 
             
-                <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
+                <Icon name={this.state.saved ? "bookmark" : "bookmark-outline"} 
                 size={30} 
                 color={ThemeColor} />
                 <Text style={{marginTop:-5,color:'grey', fontSize: 13,fontWeight:'bold'}}>{this.state.saved ? 'saved' : 'save'}</Text>
