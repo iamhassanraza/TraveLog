@@ -1,18 +1,19 @@
 import React from 'react'
 import { View, Text ,StyleSheet , ImageBackground} from 'react-native'
-import image from "../assets/images/2.jpg"
+
 import { ThemeColor } from '../assets/Colors/Colors'
 
-const HeaderImage = () => {
+const HeaderImage = (props) => {
     return (
    
-        <ImageBackground source={image} style={styles.ImageContainer}>
+        <ImageBackground source={props.image} style={[styles.ImageContainer,props.style]}>
         
         <View style={{flexDirection:'column',flex:1}}>
-        <View style={{flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>
-             <Text style={{fontSize:16,fontWeight:'bold',color:'#6A6A6A'}}>300$</Text>
-         </View>
-            <Text style={{fontWeight:'900',backgroundColor:ThemeColor,padding: '2%',alignSelf: 'flex-start', color:'white'}}>4 Days Left</Text>
+       {props.price ? ( <View style={{flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>
+             <Text style={{fontSize:16,fontWeight:'bold',color:'#6A6A6A'}}>{props.price}$</Text>
+         </View>) : null}
+         {props.tag ? (<Text style={{fontWeight:'900',backgroundColor:ThemeColor,padding: '2%',alignSelf: 'flex-start', color:'white'}}>{props.tag}</Text>
+) : null}
             {/* <Text style={{marginTop:'3%',backgroundColor:ThemeColor,padding: '1%',alignSelf: 'flex-start', borderTopRightRadius:10, color:'white'}}>4 seats left</Text> */}
         </View>
          

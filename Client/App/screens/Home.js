@@ -6,26 +6,13 @@ import OperatorCard from '../components/OperatorCard'
 import DestinationCard from '../components/DestinationCard'
 import image from "../assets/images/1.jpg"
 import FlatListContainer from '../components/FlatListContainer'
-import image2 from "../assets/images/5.jpg"
+import image2 from "../assets/images/2.jpg"
 
 export default class Home extends Component {
 
     state = {
         data:[]
     }
-
-    // componentDidMount(){
-       
-    //     fetch("http://localhost:3000/tours")
-    //     .then(response => response.json())
-    //     .then((responseJson)=> {
-    //       this.setState({
-    //        data : responseJson
-    //       })
-    //     })
-    //     .catch(error=>console.log(error)) //to catch the errors if any
-    //     }
-    // }
 
 
     componentDidMount(){
