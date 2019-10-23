@@ -10,13 +10,14 @@ import image2 from "../assets/images/2.jpg"
 
 export default class Home extends Component {
 
+
     state = {
         data:[]
     }
 
 
     componentDidMount(){
-        fetch("http://192.168.100.25:3000/tours")
+        fetch("http://192.168.100.15:3001/tours")
             .then(response => response.json())
             .then((responseJson)=> {
               this.setState({
