@@ -12,13 +12,13 @@ export default class Home extends Component {
 
 
     componentDidMount(){
-        fetch('http://localhost:3000/tours').then((res)=>{
-           return res.json()
-            
-        }).then((fres)=>{
-            console.log(fres)
-        }).catch((err)=>{
-                console.log(err)
+        fetch("https://localhost:3001/tours")
+        .then(res=> res.json()) 
+        .then((jsonres)=>{
+            console.log(jsonres)
+        })
+        .catch((err)=>{
+            console.log(err)
         })
     
     }
