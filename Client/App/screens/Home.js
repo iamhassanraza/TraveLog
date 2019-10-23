@@ -6,6 +6,8 @@ import OperatorCard from '../components/OperatorCard'
 import DestinationCard from '../components/DestinationCard'
 import image from "../assets/images/1.jpg"
 import FlatListContainer from '../components/FlatListContainer'
+import image2 from "../assets/images/5.jpg"
+import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/2.jpg"
 
 export default class Home extends Component {
@@ -114,79 +116,81 @@ export default class Home extends Component {
 
 
         return (
-         
+            <View>
                 
-                <ScrollView style={{backgroundColor:'#F0F0F0'}}>
+            </View>
+                
+            //     <ScrollView style={{backgroundColor:'#F0F0F0'}}>
 
-                    <View style={{height:300}}>
-                        <ImageBackground source={image2} style={{width:'100%',height:300}}>
-                            <View style={{backgroundColor:'rgba(0,0,0,0.4)',flex:1,justifyContent:'flex-end',paddingBottom:30}}>
-                            <Text style={{color:'white',fontWeight:'bold',fontSize:20,alignSelf:'center',width:'80%'}}>
-                            Amazing tours and holidays around the world.
-                            </Text>
-                            <Text style={{color:'#D3EFEE',alignSelf:'center',width:'80%'}}>
-                            Find great experiences, trips, and activities at fantastic prices around the globe.
-                            </Text>
-                            </View>
+            //         <View style={{height:300}}>
+            //             <ImageBackground source={image2} style={{width:'100%',height:300}}>
+            //                 <View style={{backgroundColor:'rgba(0,0,0,0.4)',flex:1,justifyContent:'flex-end',paddingBottom:30}}>
+            //                 <Text style={{color:'white',fontWeight:'bold',fontSize:20,alignSelf:'center',width:'80%'}}>
+            //                 Amazing tours and holidays around the world.
+            //                 </Text>
+            //                 <Text style={{color:'#D3EFEE',alignSelf:'center',width:'80%'}}>
+            //                 Find great experiences, trips, and activities at fantastic prices around the globe.
+            //                 </Text>
+            //                 </View>
 
-                        </ImageBackground>
-
-
-                    </View>
+            //             </ImageBackground>
 
 
-                    <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1}}>
+            //         </View>
 
-                <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
-                    <FlatList
-                    horizontal
-                    data={DATA}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{marginRight:10}} title={item.title}
-                    price={item.price} 
-                    daysLeft={item.daysLeft} 
-                    speciality={item.speciality} 
-                    seatsLeft={item.seatsLeft} 
-                    startDate={item.startDate}
-                    endDate={item.endDate}
-                    operator={{name:item.OperatorCard.name,image,rating:3.4,verified:true}}></TourCard>}
-                    keyExtractor={item => item.OperatorCard.name}
-                    />
-                </FlatListContainer>
-                <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
-                        <FlatList 
-                            horizontal
-                            data={operatorData}
-                            keyExtractor={item => item.name}
-                            showsHorizontalScrollIndicator={false}
-                            renderItem= {({item}) => 
-                            <OperatorCard
-                                style={{marginRight:10}}
-                                name={item.name}
-                                verified={item.verified}
-                                rating={item.rating}
-                                phone={item.phone}
-                                email={item.email}
-                                address={item.address}
-                                followStatus={item.followStatus}
-                            />
-                            }
-                        />
-                </FlatListContainer>
 
-                <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
-                        <FlatList
-                            horizontal
-                            data={DATA}
-                            keyExtractor={item => item.OperatorCard.name}
-                            showsHorizontalScrollIndicator={false}
-                            renderItem={({item}) =>
-                            <DestinationCard destinationName={item.OperatorCard.name} destinationImage={image}   />
-                            }
-                        />
-                </FlatListContainer>
-                </View>
-             </ScrollView>
+            //         <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1}}>
+
+            //     <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
+            //         <FlatList
+            //         horizontal
+            //         data={DATA}
+            //         showsHorizontalScrollIndicator={false}
+            //         renderItem={({ item }) => <TourCard style={{marginRight:10}} title={item.title}
+            //         price={item.price} 
+            //         daysLeft={item.daysLeft} 
+            //         speciality={item.speciality} 
+            //         seatsLeft={item.seatsLeft} 
+            //         startDate={item.startDate}
+            //         endDate={item.endDate}
+            //         operator={{name:item.OperatorCard.name,image,rating:3.4,verified:true}}></TourCard>}
+            //         keyExtractor={item => item.OperatorCard.name}
+            //         />
+            //     </FlatListContainer>
+            //     <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
+            //             <FlatList 
+            //                 horizontal
+            //                 data={operatorData}
+            //                 keyExtractor={item => item.name}
+            //                 showsHorizontalScrollIndicator={false}
+            //                 renderItem= {({item}) => 
+            //                 <OperatorCard
+            //                     style={{marginRight:10}}
+            //                     name={item.name}
+            //                     verified={item.verified}
+            //                     rating={item.rating}
+            //                     phone={item.phone}
+            //                     email={item.email}
+            //                     address={item.address}
+            //                     followStatus={item.followStatus}
+            //                 />
+            //                 }
+            //             />
+            //     </FlatListContainer>
+
+            //     <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
+            //             <FlatList
+            //                 horizontal
+            //                 data={DATA}
+            //                 keyExtractor={item => item.OperatorCard.name}
+            //                 showsHorizontalScrollIndicator={false}
+            //                 renderItem={({item}) =>
+            //                 <DestinationCard destinationName={item.OperatorCard.name} destinationImage={image}   />
+            //                 }
+            //             />
+            //     </FlatListContainer>
+            //     </View>
+            //  </ScrollView>
 
            
          
