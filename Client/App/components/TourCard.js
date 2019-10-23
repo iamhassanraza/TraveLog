@@ -47,7 +47,7 @@ export default class TourCard extends React.Component {
                 <View style={{padding:5,alignItems:'center'}} >
 
             
-                <Icon name={this.state.saved ? "bookmark" : "bookmark-outline"} 
+                <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
                 size={30} 
                 color={ThemeColor} />
                 <Text style={{marginTop:-5,color:'grey', fontSize: 13,fontWeight:'bold'}}>{this.state.saved ? 'saved' : 'save'}</Text>
