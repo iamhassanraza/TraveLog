@@ -9,6 +9,23 @@ import FlatListContainer from '../components/FlatListContainer'
 import image2 from "../assets/images/5.jpg"
 
 export default class Home extends Component {
+
+
+    componentDidMount(){
+        fetch('http://localhost:3000/tours').then((res)=>{
+           return res.json()
+            
+        }).then((fres)=>{
+            console.log(fres)
+        }).catch((err)=>{
+                console.log(err)
+        })
+    
+    }
+
+
+
+
     render() {
 
         const operatorData = [
