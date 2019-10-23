@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ImageBackground, Dimensions } from 'react-native'
-import coverPhoto from '../assets/images/6.jpg'
+import coverPhoto from '../assets/images/5.jpg'
 
 
 export default class OperatorProfile extends Component {
@@ -17,9 +17,9 @@ export default class OperatorProfile extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: Dimensions.get("window").width/1
+        width: Dimensions.get("window").width/1.5
     },
     coverPhoto: {
-        height: 200,
+        height: Dimensions.get("window").height/2,
     }
 })

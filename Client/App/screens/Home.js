@@ -8,6 +8,7 @@ import image from "../assets/images/1.jpg"
 import FlatListContainer from '../components/FlatListContainer'
 import image2 from "../assets/images/5.jpg"
 import OperatorProfile from './OperatorProfile'
+import image2 from "../assets/images/2.jpg"
 
 export default class Home extends Component {
 
@@ -116,7 +117,7 @@ export default class Home extends Component {
 
         return (
             <View>
-                <OperatorProfile></OperatorProfile>
+                
             </View>
                 
             //     <ScrollView style={{backgroundColor:'#F0F0F0'}}>
