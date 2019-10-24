@@ -7,6 +7,14 @@ import { ThemeColor }  from "../assets/Colors/Colors"
 import TextCutter from '../components/TextCutter';
 import { callNumber } from "../services/Api"
 import {Linking} from 'react-native';
+
+
+import IconWithText from "../components/IconWithText"
+import OperatorIcon from "../components/OperatorIcon"
+
+
+
+
 export default class TourDetail extends Component {
 
     state = {
@@ -41,10 +49,39 @@ export default class TourDetail extends Component {
                     
                     <TextCutter text={overview} limit={200} style={{borderWidth:1}}></TextCutter>
                     </View>
-            <Button title='open call' onPress={()=>{
+
+                    <View style={{borderWidth:1}}>
+                        <Text> This tour is operated by:</Text>
+                        <OperatorIcon name="Nomad's Adventure" avatar={image} rating={4} verified={true} style={{margin:10}}>
+                        
+                        </OperatorIcon>
+                        <View style={{flexDirection:'row',justifyContent:'space-around'}}> 
+                    
+                        <View style={{width:100}}>
+                        <IconWithText name='phone' text='call'></IconWithText>
+
+                        </View><View style={{width:100}}>
+                        <IconWithText name='phone' text='call'></IconWithText>
+
+                        </View>
+                        <View style={{width:100}}>
+                        <IconWithText name='phone' text='call'></IconWithText>
+
+                        </View>
+                        </View>
+                 
+                    </View>
+
+
+
+
+            {/* <Button title='open call' onPress={()=>{
                 // Linking.openURL(`tel:${'020202'}`)
                 // Linking.openURL('mailto:touroperator@gmail.com') 
-            }}></Button>
+                 // Linking.openURL(`tel:${'020202'}`)
+                // Linking.openURL(`https://maps.apple.com/?q=${'hassan'}&ll=${'37.222'},${'-199.128'}`);
+                // Linking.openURL('mailto:touroperator@gmail.com') 
+            }}></Button> */}
             </ScrollView>
         )
     }
