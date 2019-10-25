@@ -1,20 +1,32 @@
+// ================ props ===========
+// title , subtitle , icon (icon name from material community icon ) 
+// to style the whole component 
+// props - > style
+// to style just icon 
+// props -> iconstyle
+// to style text only 
+// props -> textstyle
+// ======================================================= 
+
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text ,TouchableWithoutFeedback} from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
 const IconWithText = (props) => {
     return (
-        <View style={{borderWidth:1,borderColor:'red',flexDirection:'row',width:'100%'}}>
-            <View style={{borderWidth:1,flex:4,justifyContent:'center',alignItems:'center'}}>
-            <Icon style={{color: ThemeColor,fontSize: 16,...props.iconstyle}} name={props.name} />
-            </View>
-            <View style={{borderWidth:1,flex:10,flexDirection:'row'}}>
-            <Text style={{fontSize:16, color:'#5c5353',...props.textstyle}}>{props.text} </Text>
-            <Text style={{fontSize:16, color:'#5c5353',...props.textstyle}}>{props.text}</Text>
+        <TouchableWithoutFeedback onPress={props.onPress} >
+        <View style={{flexDirection:'row',...props.style}}>
+         
+            <Icon style={{color: ThemeColor,fontSize: 26,...props.iconstyle}} name={props.icon} />
+          
+            <View style={{flexDirection:'column'}}>
+            <Text style={{fontWeight:'bold',fontSize:18, color:ThemeColor,...props.textstyle}}>{props.title} </Text>
+           { props.subtitle ?  <Text style={{fontSize:16, color:'#505152',...props.textstyle}}>{props.subtitle}</Text> : null}
             
             </View>
         </View>
-    )
+        </TouchableWithoutFeedback>
+    )   
 }
 
 export default IconWithText

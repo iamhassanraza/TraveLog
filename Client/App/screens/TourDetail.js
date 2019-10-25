@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import { Text, View,ScrollView ,Dimensions,Button} from 'react-native'
+import { Text, View,ScrollView ,Dimensions,Button,TouchableWithoutFeedback} from 'react-native'
 import HeaderImage from "../components/HeaderImage"
 import image from "../assets/images/2.jpg"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { ThemeColor }  from "../assets/Colors/Colors"
 import TextCutter from '../components/TextCutter';
-import { callNumber } from "../services/Api"
+
 import {Linking} from 'react-native';
 
 
 import IconWithText from "../components/IconWithText"
 import OperatorIcon from "../components/OperatorIcon"
+
 
 
 
@@ -50,38 +51,44 @@ export default class TourDetail extends Component {
                     <TextCutter text={overview} limit={200} style={{borderWidth:1}}></TextCutter>
                     </View>
 
-                    <View style={{borderWidth:1}}>
+                    <View style={{borderWidth:1,padding:10}}>
                         <Text> This tour is operated by:</Text>
                         <OperatorIcon name="Nomad's Adventure" avatar={image} rating={4} verified={true} style={{margin:10}}>
                         
                         </OperatorIcon>
                         <View style={{flexDirection:'row',justifyContent:'space-around'}}> 
                     
-                        <View style={{width:500}}>
-                        <IconWithText name='phone' text='call'></IconWithText>
-
-                        </View>
                         
-                        {/* <View style={{width:100}}>
-                        <IconWithText name='phone' text='call'></IconWithText>
-
-                        </View>
-                        <View style={{width:100}}>
-                        <IconWithText name='phone' text='call'></IconWithText>
-
-                        </View> */}
+                       
+                         
+                        
+                        
+                        <IconWithText onPress={()=>Linking.openURL(`tel:${'03002344567'}`)} icon='phone' title='Call' textstyle={{marginLeft:3}} style={{borderWidth:1,padding:5,borderRadius:10,borderColor:'#B4B7B9'}}></IconWithText>
+                        
+                    
+                        
+                        
+                        <IconWithText onPress={()=>Linking.openURL('mailto:touroperator@gmail.com') } icon='email' title='Mail' textstyle={{marginLeft:3}} style={{borderWidth:1,padding:5,borderRadius:10,borderColor:'#B4B7B9'}}></IconWithText>
+                      
+                        
+                       
+                        <IconWithText onPress={()=>Linking.openURL(`https://maps.apple.com/?q=${'Orangi Town'}&ll=${'24.950083'},${'66.992844'}`)} icon='map-marker' title='Locate' textstyle={{marginLeft:3}} style={{borderWidth:1,padding:5,borderRadius:10,borderColor:'#B4B7B9'}}></IconWithText>
+                        
+               
+                        
+                   
                         </View>
                  
                     </View>
 
 
 
-
-            {/* <Button title='open call' onPress={()=>{
+{/* 
+            <Button title='open call' onPress={()=>{
                 // Linking.openURL(`tel:${'020202'}`)
                 // Linking.openURL('mailto:touroperator@gmail.com') 
                  // Linking.openURL(`tel:${'020202'}`)
-                // Linking.openURL(`https://maps.apple.com/?q=${'hassan'}&ll=${'37.222'},${'-199.128'}`);
+                Linking.openURL(`https://maps.apple.com/?q=${'hassan'}&ll=${'37.222'},${'-199.128'}`);
                 // Linking.openURL('mailto:touroperator@gmail.com') 
             }}></Button> */}
             </ScrollView>
