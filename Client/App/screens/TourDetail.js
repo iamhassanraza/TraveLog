@@ -46,17 +46,31 @@ export default class TourDetail extends Component {
                             size={35} 
                             color={ThemeColor} />
                         </Text>
+                   
+                   
                     </View>
-                    
                     <TextCutter text={overview} limit={200} style={{borderWidth:1}}></TextCutter>
                     </View>
+                    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 
+                
+                    <IconWithText icon='account-supervisor' title='Speciality:' subtitle='Family'></IconWithText>
+                    <IconWithText icon='calendar-check' title='Departure:' subtitle='2 October,2019'></IconWithText>
+                    </View>
+                    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+
+                
+                    <IconWithText icon='timer' title='Duration' subtitle='11 Days'></IconWithText>
+                    <IconWithText icon='calendar-check' title='Departure:' subtitle='2 October,2019'></IconWithText>
+                    </View>
+                   
+                   
                     <View style={{borderWidth:1,padding:10}}>
                         <Text> This tour is operated by:</Text>
                         <OperatorIcon name="Nomad's Adventure" avatar={image} rating={4} verified={true} style={{margin:10}}>
                         
                         </OperatorIcon>
-                        <View style={{flexDirection:'row',justifyContent:'space-around'}}> 
+                        <View style={{flexDirection:'row',justifyContent:'space-evenly'}}> 
                     
                         
                        
