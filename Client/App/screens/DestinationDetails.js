@@ -12,9 +12,18 @@ import FlatListContainer from '../components/FlatListContainer';
 
 export default class DestinationDetails extends Component {
 
+
+    state = {
+        followed: false,
+        visited: false,
+        rated: false
+    }
+
+
     render() {
 
         const overview = "The six-month tourist  season at Fairy Meadows starts in April and continues until the end of September. Tourists lodge at the camping site spread over 800 hectares (2,000 acres), known as .[2] The site of Fairy Meadows, though partially developed, generates about PKR 17 million revenue from tourism, mainly by providing food, transportation and accommodation services.[9] A project by Shangrila Resorts, the pioneers of tourism development in Gilgit Baltistan, will establish an eco-friendly resort. The road to Fairy Meadows was built by Brigadier M. Aslam Khan (M.C, H.J, F.K), First Commander Gilgit Scouts, which today employs the locals. The local community stopped the extraction of timber to conserve the forest and promote tourism in the area. The main attraction of this place other than the meadows itself is the view of Nanga Parbat Mountain. Tourists usually hike to the base camp of the mountain from Fairy Meadows The six-month tourist season at Fairy Meadows starts in April and continues until the end of September. Tourists lodge at the camping site spread over 800 hectares (2,000 acres), known as .[2] The site of Fairy Meadows, though partially developed, generates about PKR 17 million revenue from tourism, mainly by providing food, transportation and accommodation services.[9] A project by Shangrila Resorts, the pioneers of tourism development in Gilgit Baltistan, will establish an eco-friendly resort. The road to Fairy Meadows was built by Brigadier M. Aslam Khan (M.C, H.J, F.K), First Commander Gilgit Scouts, which today employs the locals. The local community stopped the extraction of timber to conserve the forest and promote tourism in the area. The main attraction of this place other than the meadows itself is the view of Nanga Parbat Mountain. Tourists usually hike to the base camp of the mountain from Fairy Meadows";
+        
         
         const DATA = [
             {
@@ -82,15 +91,15 @@ return (
                         
                         }}> {'Fairy Meadows'.toUpperCase()} </Text>
 
-                    <View style={{backgroundColor:"white",
+                    <View  style={{backgroundColor:"white",
                                 backgroundColor:"rgba(255,255,255,0.5)", 
                                 borderRadius:2, 
                                 flexDirection:"row",
                                 justifyContent:"center",
                                 alignItems:"center", paddingBottom:"1%"}}>
 
-                        <Text> <Icon name="image-album" style={{fontSize:17, color:"white"}}/></Text> 
-                        <Text style={{fontSize:17,color:"white"}}> Album </Text>
+                        <Text onPress={()=> alert('Navigate to Albums')}> <Icon name="image-album" style={{fontSize:17, color:"white"}}/></Text> 
+                        <Text onPress={()=> alert('Navigate to Albums')} style={{fontSize:17,color:"white"}}> Album </Text>
                     </View>
             </View>  
     </ImageBackground>
@@ -98,13 +107,48 @@ return (
 
             <View style={{flexDirection:"row",justifyContent:"space-around", padding:10, borderBottomWidth:0.5, borderBottomColor:ThemeColor}} >
                                               
-                    <IconWithText title={"Wishlist"} icon='heart-outline' style={{borderWidth:1, padding:3,borderColor:ThemeColor}}>
+                    <IconWithText 
+                    title={"Wishlist"} 
+                    icon='heart-outline'  
+                    style={ {borderWidth:1, padding:3,borderColor:ThemeColor, backgroundColor:this.state.followed ? ThemeColor :'white'} }
+                    textstyle= { {color:this.state.followed ? "white" : ThemeColor} }
+                    iconstyle= { { color:this.state.followed ? "white" : ThemeColor} }
+                    onPress={()=>{
+                        this.setState((prevState) => ({
+                            followed: !prevState.followed
+                          }));
+                    }}
+                    >
                     </IconWithText>
 
-                    <IconWithText title={"VISITED"} icon='clipboard-check-outline' style={{borderWidth:1, padding:3,borderColor:ThemeColor}} >
+                    <IconWithText 
+                    title={"VISITED"} 
+                    icon='clipboard-check-outline' 
+                    style={ {borderWidth:1, padding:3,borderColor:ThemeColor, backgroundColor:this.state.visited ? ThemeColor :'white'} }
+                    textstyle= { {color:this.state.visited ? "white" : ThemeColor} }
+                    iconstyle= { { color:this.state.visited ? "white" : ThemeColor} } 
+                    onPress={()=>{
+                        this.setState((prevState)=> ({
+                            visited: !prevState.visited
+                        }));
+                    }}
+
+                    >
                     </IconWithText>
 
-                    <IconWithText title={"RATE"} icon='star-outline' style={{borderWidth:1, padding:3, borderColor:ThemeColor}} >
+                    <IconWithText 
+                    title={"RATE"} 
+                    icon='star-outline' 
+                    style={ {borderWidth:1, padding:3,borderColor:ThemeColor, backgroundColor:this.state.rated ? ThemeColor :'white'} }
+                    textstyle= { {color:this.state.rated ? "white" : ThemeColor} }
+                    iconstyle= { { color:this.state.rated ? "white" : ThemeColor} } 
+                    onPress={()=> {
+                        this.setState((prevState)=>({
+                            rated: !prevState.rated
+                        }));
+                    } }
+                    
+                    >
                     </IconWithText>
                     
             </View>
@@ -125,15 +169,12 @@ return (
                     <Text style={{fontSize:17}}> Gilgit </Text>
                 </View>
 
+                </View>
 
-
-                <View>  
-                    <TextCutter style={{marginLeft:"2%", marginRight:"2%", textAlign:"justify", fontSize:13}} limit={650} text={overview}>     
+                <View style={{padding:"1%"}}>  
+                    <TextCutter style={{marginLeft:"2%", marginRight:"2%", textAlign:"justify", fontSize:14}} limit={650} text={overview}>     
                     </TextCutter>
                 </View>
-                </View>
-
-
 
                 <FlatListContainer  style={{marginLeft: '2%'}} title="Nearby Attractions">
                         <FlatList

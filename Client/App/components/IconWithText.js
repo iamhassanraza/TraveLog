@@ -1,11 +1,8 @@
 // ================ props ===========
 // title , subtitle , icon (icon name from material community icon ) 
-// to style the whole component 
-// props - > style
-// to style just icon 
-// props -> iconstyle
-// to style text only 
-// props -> textstyle
+// to style the whole component: props - > style
+// to style just icon: props -> iconstyle
+// to style text only: props -> textstyle
 // ======================================================= 
 
 import React from 'react'
