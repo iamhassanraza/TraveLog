@@ -57,17 +57,19 @@ export default class TourDetail extends Component {
                         </OperatorIcon>
                         <View style={{flexDirection:'row',justifyContent:'space-around'}}> 
                     
-                        <View style={{width:100}}>
+                        <View style={{width:500}}>
                         <IconWithText name='phone' text='call'></IconWithText>
 
-                        </View><View style={{width:100}}>
+                        </View>
+                        
+                        {/* <View style={{width:100}}>
                         <IconWithText name='phone' text='call'></IconWithText>
 
                         </View>
                         <View style={{width:100}}>
                         <IconWithText name='phone' text='call'></IconWithText>
 
-                        </View>
+                        </View> */}
                         </View>
                  
                     </View>
