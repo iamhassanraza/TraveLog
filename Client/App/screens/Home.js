@@ -8,6 +8,7 @@ import image from "../assets/images/1.jpg"
 import FlatListContainer from '../components/FlatListContainer'
 import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/2.jpg"
+import Gif from '../assets/images/Gif.html'
 
 export default class Home extends Component {
 
