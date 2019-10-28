@@ -4,7 +4,7 @@ import coverPhoto from '../assets/images/6.jpg'
 import logo from '../assets/images/7.jpg'
 import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
-import { Container, Header, Tab, Tabs, ScrollableTab } from 'native-base';
+import OperatorRating from '../components/OperatorRating';
 
 
 
@@ -38,16 +38,9 @@ export default class OperatorProfile extends Component {
                         Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
                     </Text>
                 </View>
-                <Container>
-                    <Tabs renderTabBar={()=> <ScrollableTab />}>
-                        <Tab heading='tab1'><Text>hello jeeeee</Text></Tab>
-                        <Tab heading='tab2'><Text>hello jee</Text></Tab>
-                        <Tab heading='tab3'></Tab>
-                        <Tab heading='tab4'></Tab>
-                        <Tab heading='tab5'></Tab>
-                        <Tab heading='tab6'></Tab>
-                    </Tabs>
-                </Container>
+                <View>
+                    <OperatorRating></OperatorRating>
+                </View>
             </View>
         )
     }
