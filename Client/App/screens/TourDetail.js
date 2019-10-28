@@ -19,6 +19,7 @@ import IconWithText from '../components/IconWithText';
 import OperatorIcon from '../components/OperatorIcon';
 import {Container, Header, Content, Accordion} from 'native-base';
 import PlanItem from '../components/PlanItem';
+import PlanCard from '../components/PlanCard';
 
 export default class TourDetail extends Component {
   state = {
@@ -103,10 +104,7 @@ export default class TourDetail extends Component {
                         
                    
                         </View> */}
-          <PlanItem id={0}></PlanItem>
-          <PlanItem></PlanItem>
-          <PlanItem></PlanItem>
-          <PlanItem></PlanItem>
+        <PlanCard ></PlanCard>
 
          
 
