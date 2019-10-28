@@ -4,6 +4,7 @@ import coverPhoto from '../assets/images/6.jpg'
 import logo from '../assets/images/7.jpg'
 import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
+import OperatorRating from '../components/OperatorRating';
 
 
 
@@ -37,7 +38,9 @@ export default class OperatorProfile extends Component {
                         Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
                     </Text>
                 </View>
-                
+                <View>
+                    <OperatorRating></OperatorRating>
+                </View>
             </View>
         )
     }
