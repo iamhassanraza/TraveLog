@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View , ImageBackground, StyleSheet, ScrollView, Dimensions, Button,TouchableWithoutFeedback,  FlatList } from 'react-native'
 import image from '../assets/images/4.jpg';
-import  { ThemeColor } from '../assets/Colors/Colors';
+import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
 import TextCutter from '../components/TextCutter';
 import DestinationCard from "../components/DestinationCard";
 import TourCard from "../components/TourCard";
@@ -34,7 +34,7 @@ export default class DestinationDetails extends Component {
                 seatsLeft:10,
                 startDate:'9 oct',
                 endDate:'20 oct',
-                OperatorCard:{name:"Nomad's Adventure",image,rating:3.4,verified:true}
+                OperatorCard:{name:"Hunza",image,rating:3.4,verified:true}
             },
             {
              price:300,
@@ -44,7 +44,7 @@ export default class DestinationDetails extends Component {
              seatsLeft:10,
              startDate:'9 oct',
              endDate:'20 oct',
-             OperatorCard:{name:'Greenland  tours',image,rating:3.4,verified:true}
+             OperatorCard:{name:'Kashmir',image,rating:3.4,verified:true}
          },
          {
              price:300,
@@ -54,7 +54,7 @@ export default class DestinationDetails extends Component {
              title:'China Border',
              startDate:'9 oct',
              endDate:'20 oct',
-             OperatorCard:{name:'Greenland Travel ',image,rating:3.4,verified:true}
+             OperatorCard:{name:'Skardu ',image,rating:3.4,verified:true}
          },
          {
              price:300,
@@ -64,7 +64,7 @@ export default class DestinationDetails extends Component {
              title:'Turkey',
              startDate:'9 oct',
              endDate:'20 oct',
-             OperatorCard:{name:'Greenland and tours',image,rating:3.4,verified:true}
+             OperatorCard:{name:'Gilgit',image,rating:3.4,verified:true}
          },
          {
              price:300,
@@ -74,7 +74,7 @@ export default class DestinationDetails extends Component {
              title:'Skardu',
              startDate:'9 oct',
              endDate:'20 oct',
-             OperatorCard:{name:'GreenTravel and tours',image,rating:3.4,verified:true}
+             OperatorCard:{name:'Sawat',image,rating:3.4,verified:true}
          },
            ];
         
@@ -171,8 +171,8 @@ return (
 
                 </View>
 
-                <View style={{padding:"1%"}}>  
-                    <TextCutter style={{marginLeft:"2%", marginRight:"2%", textAlign:"justify", fontSize:14}} limit={650} text={overview}>     
+                <View style={{padding:"1%", paddingBottom:0}}>  
+                    <TextCutter style={{marginLeft:"2%", marginRight:"2%", textAlign:"justify", fontSize:14,color:ThemeGrey}} limit={650} text={overview}>     
                     </TextCutter>
                 </View>
 
@@ -190,7 +190,7 @@ return (
 
 
                 <View>
-                <Text style={{fontSize:24,alignSelf:"center"}}> Location </Text>
+                <Text style={{fontSize:24,alignSelf:"center",color:ThemeGrey}}> Location </Text>
                 <TouchableWithoutFeedback>
                 <ImageBackground source={image} style={{ 
                           height:Dimensions.get('window').height/3.5,
@@ -217,6 +217,14 @@ return (
                     />
                 </FlatListContainer>
 
+                <View style={{marginTop:5, marginLeft:"3%", marginRight:"3%"}}>
+                    <Text style={{fontSize:25, color:"#616963", borderBottomWidth:1, borderBottomColor:ThemeGrey}}>Reviews</Text>
+                </View>
+
+
+                <View>
+                    <Text>as</Text>
+                </View>
             </ScrollView>
          
         )
