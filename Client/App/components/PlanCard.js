@@ -37,7 +37,8 @@ export default class PlanCard extends Component {
         }
     
         return (
-            <View style={{borderWidth:1}}>
+            <View>
+            <Text style={{fontSize:20,fontWeight:'bold'}}>Plan</Text>
               {RenderPlan(Data)}
             </View>
         )
