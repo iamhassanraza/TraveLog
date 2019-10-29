@@ -10,7 +10,7 @@ import {
 import HeaderImage from '../components/HeaderImage';
 import image from '../assets/images/4.jpg';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {ThemeColor , BackgroundColor} from '../assets/Colors/Colors';
+import {ThemeColor , BackgroundColor , BorderColor} from '../assets/Colors/Colors';
 import TextCutter from '../components/TextCutter';
 import MyIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Linking} from 'react-native';
@@ -74,7 +74,7 @@ export default class TourDetail extends Component {
           </View>
         </View>
 
-        <View style={{borderWidth:1,marginTop:10,borderRadius:5,paddingBottom:10,paddingTop:10}}>
+        <View style={{borderWidth:0.5,marginTop:10,borderRadius:5,paddingBottom:10,paddingTop:10,backgroundColor:'white',borderColor:BorderColor}}>
           <Text style={{paddingLeft:10,fontSize:15,marginBottom:10}}> This Tour is operated by:</Text>
           <OperatorIcon
             name="Nomad's Adventure"
@@ -92,7 +92,7 @@ export default class TourDetail extends Component {
                 borderWidth: 1,
                 padding: 5,
                 borderRadius: 10,
-                borderColor: '#B4B7B9',
+                borderColor: ThemeColor
               }}></IconWithText>
 
             <IconWithText
@@ -104,7 +104,7 @@ export default class TourDetail extends Component {
                 borderWidth: 1,
                 padding: 5,
                 borderRadius: 10,
-                borderColor: '#B4B7B9',
+                borderColor: ThemeColor,
               }}></IconWithText>
 
             <IconWithText
@@ -120,11 +120,11 @@ export default class TourDetail extends Component {
                 borderWidth: 1,
                 padding: 5,
                 borderRadius: 10,
-                borderColor: '#B4B7B9',
+                borderColor: ThemeColor
               }}></IconWithText>
           </View>
           </View>
-          <View style={{marginTop:10,borderWidth:1,padding:5}}>
+          <View style={{marginTop:10,borderWidth:0.5,padding:5,backgroundColor:'white',borderRadius:5,borderColor:BorderColor}}>
           <PlanCard></PlanCard>
           </View>
     
