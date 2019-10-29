@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ImageBackground, FlatList, Image, Dimensions } from 'react-native'
+import { Text,ScrollView, View, StyleSheet, ImageBackground, FlatList, Image, Dimensions } from 'react-native'
 import coverPhoto from '../assets/images/6.jpg'
 import logo from '../assets/images/7.jpg'
 import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
 import OperatorRating from '../components/OperatorRating';
-
-
+import OperatorCard from '../components/OperatorCard';
 
 
 export default class OperatorProfile extends Component {
 
-    flatlistItems = ['About', 'Tours', 'Reviews', 'Gallery']
+
 
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View>
                     <ImageBackground source={coverPhoto} style={styles.coverPhoto}/>
                 </View>
@@ -41,7 +40,7 @@ export default class OperatorProfile extends Component {
                 <View>
                     <OperatorRating></OperatorRating>
                 </View>
-            </View>
+            </ScrollView>
         )
     }
 }
