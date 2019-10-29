@@ -8,8 +8,7 @@ export default class App extends Component {
   render() {
     return (
       <View>
-    <Home></Home>
-
+        <Home></Home>
       </View>
     )
   }
