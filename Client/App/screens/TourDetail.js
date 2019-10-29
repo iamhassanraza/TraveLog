@@ -31,7 +31,7 @@ export default class TourDetail extends Component {
       'Gilgit-Baltistan formerly known as the Northern Areas,is the northernmost territory administered by Pakistan.It is part of the larger Kashmir region, which is the subject of a territorial dispute between India, Pakistan, and China. It borders Azad Kashmir to the south, the province of Khyber Pakhtunkhwa to the west, the Wakhan Corridor of Afghanistan to the north, the Xinjiang region of China, to the east and northeast, and the Indian-administered state of Jammu and Kashmir to the southeast , Gilgit-Baltistan is part of the greater Kashmir region, which is the subject of a long-running conflict between Pakistan and India. The territory shares a border with Azad Kashmir, together with which it is referred to by the United Nations and other international organisations as Pakistan administered Kashmir.[1][note 1] Gilgit-Baltistan is six times the size of Azad Kashmir.[13] The territory also borders Indian-administered Jammu and Kashmir state to the south and is separated from it by the Line of Control, the de facto border between India and Pakistan.';
     const {width, height} = Dimensions.get('window');
     return (
-      <ScrollView style={{backgroundColor:BackgroundColor}}>
+      <ScrollView style={{}}>
         <HeaderImage image={image} style={{height: height / 3}}></HeaderImage>
         <View style={{marginRight:15,marginLeft:15}}>
         <View >
