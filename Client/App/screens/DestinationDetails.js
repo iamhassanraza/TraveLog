@@ -85,7 +85,7 @@ export default class DestinationDetails extends Component {
     ];
 
     return (
-      <ScrollView>
+      <ScrollView >
         <ImageBackground
           source={image}
           style={{
@@ -197,7 +197,7 @@ export default class DestinationDetails extends Component {
               flexDirection: 'row',
               paddingTop: '1.5%',
               alignItems: 'center',
-              marginLeft: '1.5%',
+              marginLeft: '1.5%'
             }}>
             <Icon
               name="calendar-month-outline"
@@ -312,7 +312,7 @@ export default class DestinationDetails extends Component {
         </View>
 
         <View>
-          <Text>as</Text>
+          <Text>END</Text>
         </View>
       </ScrollView>
     );
