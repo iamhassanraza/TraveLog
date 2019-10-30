@@ -31,7 +31,7 @@ export default class OperatorProfile extends Component {
                 </View>
                 <View style={{marginTop: '2%', marginLeft: '5%'}}>
                     <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-                        Nomads Adventure Servicess
+                        Nomads Adventure Services
                     </Text>
                     <Text style={styles.shortIntro}>
                         Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.

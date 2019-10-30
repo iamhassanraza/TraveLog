@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TextInput, Button } from 'react-native'
-import StarRating from 'react-native-star-rating'
 import { ThemeColor } from '../assets/Colors/Colors'
 import ReviewIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Rating, AirbnbRating } from 'react-native-elements';
-import OperatorCard from './OperatorCard';
+import Review from './Review';
 import CustomButton from './CustomButton';
 
 
@@ -23,7 +22,8 @@ export default class OperatorRating extends Component {
 
     render() {
         return (
-            <View style={{marginTop: '5%', backgroundColor: 'white', padding: '2%'}}>
+            <View style={{marginTop: '5%', backgroundColor: 'white', paddingTop: '2%',marginLeft: '5%',
+                marginRight: '5%', paddingBottom: '2%'}}>
                     <View style={styles.circularRating}>
                         <Text style={{fontSize: 20,fontWeight: 'bold', alignSelf: 'center'}}>4.8</Text>
                     </View>
@@ -44,7 +44,7 @@ export default class OperatorRating extends Component {
                         
                     </View>
                     <View style={styles.newReview}>
-                            <Text>Write your review about Nomads Adventure Society</Text>
+                            <Text>Write your review about Nomads Adventure Service</Text>
                             <Rating 
                                 type = 'custom'
                                 readonly = {false}
@@ -67,6 +67,9 @@ export default class OperatorRating extends Component {
                             name="rate-review"
                         />
                     </View>
+                    <View>
+                        <Review />
+                    </View>
             </View>
         )
     }
@@ -84,8 +87,6 @@ const styles = StyleSheet.create({
         marginTop: '1%'
     },
     newReview: {
-        marginLeft: '5%',
-        marginRight: '5%',
         marginTop: '3%',
         padding: '1%',
         borderRadius: 5
