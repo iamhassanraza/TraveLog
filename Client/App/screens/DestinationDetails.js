@@ -17,7 +17,7 @@ import TextCutter from '../components/TextCutter';
 import DestinationCard from '../components/DestinationCard';
 import TourCard from '../components/TourCard';
 import IconWithText from '../components/IconWithText';
-import Reviews from '../components/Reviews';
+import Reviews from '../components/Review';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FlatListContainer from '../components/FlatListContainer';
 
@@ -310,11 +310,14 @@ export default class DestinationDetails extends Component {
         </View>
 
         
-        
-            <Reviews style={{marginLeft: 10, marginRight: 10, marginTop:10}}></Reviews>
-            <Reviews style={{marginLeft: 10, marginRight: 10, marginTop:10}}></Reviews>
-            <Reviews style={{marginLeft: 10, marginRight: 10, marginTop:10}}></Reviews>
-
+        <View style={{marginLeft: 10, marginRight: 10, marginTop:10}}>
+        <Reviews ></Reviews>
+        <Reviews ></Reviews>
+        <Reviews ></Reviews>
+        <Reviews ></Reviews>
+        </View>
+            
+     
       </ScrollView>
     );
   }
