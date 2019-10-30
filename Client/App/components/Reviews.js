@@ -10,7 +10,7 @@ export default class Reviews extends Component {
             
             <View style={{paddingTop:"1%"}}>
                 <View style={{borderWidth:1, borderRadius:50, justifyContent:"flex-start"}}>
-                     <Image source={image} style={{height:50 , width:50, borderRadius:50}}></Image>
+                     <Image source={image} style={{height:35, width:35, borderRadius:50}}></Image>
                 </View>
             </View>
 
@@ -20,14 +20,13 @@ export default class Reviews extends Component {
                     <Text style={{color:"grey"}}>30/10/2019</Text>
                 </View>
 
-                <View style={{borderTopWidth:1, borderTopColor:"grey"}}>
+                <View style={{ borderTopColor:"grey"}}>
                     <Text>A good review includes enough detail to give others a feel for what happened. Explain which factors contributed to your positive, negative or just so-so experience. You might also offer your view on what the company is doing well, and how they can improve. But keep things friendly and courteous!</Text>
                 </View>
             </View>
 
         </View>
        
-
         )
     }
 }
