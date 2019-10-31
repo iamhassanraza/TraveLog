@@ -13,7 +13,7 @@ import SeatsLeftIcon from 'react-native-vector-icons/MaterialIcons';
 import IconWithText from './IconAndText'
 import OperatorIcon from './OperatorIcon';
 
-export default class TourCard extends React.Component {
+class TourCard extends React.Component {
 
     state = {
         saved:false
@@ -22,7 +22,7 @@ export default class TourCard extends React.Component {
 
     render() {
         return (
-            <TouchableWithoutFeedback onPress={()=>alert('navigate to tour details')}>
+            <TouchableWithoutFeedback onPress={()=> this.props.navigation.navigate('TourDetail')}>
             <View style={[styles.Container,this.props.style]} >
          <HeaderImage image={image} tag="5 Days Left" price={200}></HeaderImage>
         <View style={styles.TextConatiner}>
@@ -68,7 +68,7 @@ export default class TourCard extends React.Component {
     }
 }
 
-
+export default TourCard;
 
 const styles = StyleSheet.create({
     Container: {

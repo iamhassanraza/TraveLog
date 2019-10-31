@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView,FlatList,Dimensions, ImageBackground} from 'react-native'
+import { Text, View, ScrollView,FlatList,Dimensions, ImageBackground,TouchableHighlight,TouchableWithoutFeedback} from 'react-native'
 
 import TourCard from '../components/TourCard'
 import OperatorCard from '../components/OperatorCard'
@@ -8,7 +8,7 @@ import image from "../assets/images/1.jpg"
 import FlatListContainer from '../components/FlatListContainer'
 import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/2.jpg"
-import Gif from '../assets/images/Gif.html'
+
 
 export default class Home extends Component {
 
@@ -117,7 +117,7 @@ export default class Home extends Component {
 
         return (
                 <ScrollView style={{backgroundColor:'#F0F0F0'}}>
-
+                    
                     <View style={{height:300}}>
                         <ImageBackground source={image2} style={{width:'100%',height:300}}>
                             <View style={{backgroundColor:'rgba(0,0,0,0.4)',flex:1,justifyContent:'flex-end',paddingBottom:30}}>
@@ -133,7 +133,11 @@ export default class Home extends Component {
 
 
                     </View>
-
+                <TouchableWithoutFeedback onPress={()=>this.props.navigation.navigate('TourDetail')}>
+                    <View style={{height:200}}>
+                        <Text>NAVIGATE</Text>
+                    </View>
+                    </TouchableWithoutFeedback>
 
                     <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1}}>
 
