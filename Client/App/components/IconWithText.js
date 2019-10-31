@@ -16,7 +16,7 @@ const IconWithText = (props) => {
          
             <Icon style={{color: ThemeColor,fontSize: 26,...props.iconstyle}} name={props.icon} />
           
-            <View style={{flexDirection:'column'}}>
+            <View style={{flexDirection:props.linear ? 'row' : 'column'}}>
             <Text style={{fontWeight:'bold',fontSize:18, color:ThemeColor,...props.textstyle}}>{props.title} </Text>
            { props.subtitle ?  <Text style={{fontSize:16, color:'#505152',...props.textstyle}}>{props.subtitle}</Text> : null}
             

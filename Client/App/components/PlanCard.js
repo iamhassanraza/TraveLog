@@ -30,16 +30,17 @@ const Data = [
 
 
 export default class PlanCard extends Component {
-    render() {
 
-        RenderPlan = (array)=>{
-            return array.map((item,index)=> <PlanItem id={item.id} lastitem={(array.length-1) ===index? true : false} details={item.discription} title={item.title}></PlanItem>)
-        }
-    
+    RenderPlan = (array)=>{
+        return array.map((item,index)=> <PlanItem id={item.id} lastitem={(array.length-1) ===index? true : false} details={item.discription} title={item.title}></PlanItem>)
+    }
+
+
+    render() {  
         return (
             <View>
             <Text style={{fontSize:20,fontWeight:'bold'}}>Plan</Text>
-              {RenderPlan(Data)}
+              {this.RenderPlan(Data)}
             </View>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { ThemeColor } from '../assets/Colors/Colors';
 
 export default class TextCutter extends Component {
     
@@ -15,7 +16,7 @@ export default class TextCutter extends Component {
             }
             else
             {
-                return `${completeText.slice(0,this.props.limit)}...`
+                return `${completeText.slice(0,this.props.limit)}`
             }
         }
     
@@ -28,7 +29,7 @@ export default class TextCutter extends Component {
                         >
 
                     
-                        {this._showText(this.props.text)}
+                        {this._showText(this.props.text)}{this.state.showCompleteText ? null :<Text style={{borderWidth:1,borderColor:ThemeColor,fontWeight:'bold',color:ThemeColor}}>...</Text>}
                   
 
                      </Text>
