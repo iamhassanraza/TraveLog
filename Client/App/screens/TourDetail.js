@@ -5,6 +5,7 @@ import {
   ScrollView,
   Dimensions,
   Button,
+  FlatList,
   TouchableWithoutFeedback,
 } from 'react-native';
 import HeaderImage from '../components/HeaderImage';
@@ -20,6 +21,63 @@ import OperatorIcon from '../components/OperatorIcon';
 import {Container, Header, Content, Accordion} from 'native-base';
 import PlanItem from '../components/PlanItem';
 import PlanCard from '../components/PlanCard';
+import FlatListContainer from '../components/FlatListContainer'
+import TourCard from '../components/TourCard'
+
+
+const DATA = [
+  {
+      price:300,
+      title:'Hunza',
+      daysLeft:2,
+      speciality:'Girls',
+      seatsLeft:10,
+      startDate:'9 oct',
+      endDate:'20 oct',
+      OperatorCard:{name:"Nomad's Adventure",image,rating:3.4,verified:true}
+  },
+  {
+   price:300,
+   daysLeft:2,
+   title:'Kashmir',
+   speciality:'Girls',
+   seatsLeft:10,
+   startDate:'9 oct',
+   endDate:'20 oct',
+   OperatorCard:{name:'Greenland  tours',image,rating:3.4,verified:true}
+},
+{
+   price:300,
+   daysLeft:2,
+   speciality:'Girls',
+   seatsLeft:10,
+   title:'China Border',
+   startDate:'9 oct',
+   endDate:'20 oct',
+   OperatorCard:{name:'Greenland Travel ',image,rating:3.4,verified:true}
+},
+{
+   price:300,
+   daysLeft:2,
+   speciality:'Girls',
+   seatsLeft:10,
+   title:'Turkey',
+   startDate:'9 oct',
+   endDate:'20 oct',
+   OperatorCard:{name:'Greenland and tours',image,rating:3.4,verified:true}
+},
+{
+   price:300,
+   daysLeft:2,
+   speciality:'Girls',
+   seatsLeft:10,
+   title:'Skardu',
+   startDate:'9 oct',
+   endDate:'20 oct',
+   OperatorCard:{name:'GreenTravel and tours',image,rating:3.4,verified:true}
+},
+ ];
+
 
 export default class TourDetail extends Component {
   state = {
@@ -33,14 +91,14 @@ export default class TourDetail extends Component {
     return (
       <ScrollView style={{}}>
         <HeaderImage image={image} style={{height: height / 3}}></HeaderImage>
-        <View style={{marginRight:15,marginLeft:15}}>
-        <View >
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{fontSize: 25, fontWeight: 'bold'}}>
-              Gilgit Baltistan
+        <View>
+        <View style={{borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
+          <View style={{flex:1,flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{fontSize: 25, fontWeight: 'bold',flex:1,marginBottom:10}}>
+              Gilgit Baltistan and hunza and stuff
             </Text>
 
-            <Text>
+            <Text >
               <Icon
                 name={this.state.saved ? 'bookmark' : 'bookmark-o'}
                 size={35}
@@ -49,32 +107,36 @@ export default class TourDetail extends Component {
             </Text>
           </View>
           <TextCutter text={overview} limit={150} style={{lineHeight:22}}></TextCutter>
-        </View>
+      
 
-        <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:10}}>
-          <View style={{flexDirection: 'column'}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:10,flex:1}}>
+          <View style={{flexDirection: 'column',flex:1}}>
             <IconWithText
+             textstyle={{fontSize:14}}
               icon="account-supervisor"
               title="Speciality:"
               subtitle="Family"></IconWithText>
             <IconWithText
+             textstyle={{fontSize:14}}
               icon="calendar-check"
               title="Departure:"
               subtitle="2 October,2019"></IconWithText>
           </View>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{flexDirection: 'column',flex:1}}>
             <IconWithText
+              textstyle={{fontSize:14}}
               icon="timer"
               title="Duration"
               subtitle="11 Days"></IconWithText>
             <IconWithText
+             textstyle={{fontSize:14}}
               icon="seat-recline-normal"
               title="Seats Left"
               subtitle="10"></IconWithText>
           </View>
         </View>
-
-        <View style={{borderWidth:0.5,marginTop:10,borderRadius:5,paddingBottom:10,paddingTop:10,backgroundColor:'white',borderColor:BorderColor}}>
+        </View>
+        <View style={{borderWidth:0.5,marginTop:10,paddingBottom:10,paddingTop:10,backgroundColor:'white',borderColor:BorderColor}}>
           <Text style={{paddingLeft:10,fontSize:15,marginBottom:10}}> This Tour is operated by:</Text>
           <OperatorIcon
             name="Nomad's Adventure"
@@ -89,7 +151,7 @@ export default class TourDetail extends Component {
               title="Call"
               textstyle={{marginLeft: 3}}
               style={{
-                borderWidth: 1,
+                borderWidth: 0.5,
                 padding: 5,
                 borderRadius: 10,
                 borderColor: ThemeColor
@@ -101,7 +163,7 @@ export default class TourDetail extends Component {
               title="Mail"
               textstyle={{marginLeft: 3}}
               style={{
-                borderWidth: 1,
+                borderWidth: 0.5,
                 padding: 5,
                 borderRadius: 10,
                 borderColor: ThemeColor,
@@ -117,17 +179,36 @@ export default class TourDetail extends Component {
               title="Locate"
               textstyle={{marginLeft: 3}}
               style={{
-                borderWidth: 1,
+                borderWidth: 0.5,
                 padding: 5,
                 borderRadius: 10,
                 borderColor: ThemeColor
               }}></IconWithText>
           </View>
           </View>
-          <View style={{marginTop:10,borderWidth:0.5,padding:5,backgroundColor:'white',borderRadius:5,borderColor:BorderColor}}>
+          <View style={{marginTop:10,borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,padding:10}}>
           <PlanCard></PlanCard>
           </View>
-    
+              
+
+             <View style={{marginTop:10,borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor}}>
+          <FlatListContainer style={{marginLeft:'3%'}} title="You May Also Like">
+                    <FlatList
+                    horizontal
+                    data={DATA}
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={({ item }) => <TourCard style={{marginRight:10}} title={item.title}
+                    price={item.price} 
+                    daysLeft={item.daysLeft} 
+                    speciality={item.speciality} 
+                    seatsLeft={item.seatsLeft} 
+                    startDate={item.startDate}
+                    endDate={item.endDate}
+                    operator={{name:item.OperatorCard.name,image,rating:3.4,verified:true}}></TourCard>}
+                    keyExtractor={item => item.OperatorCard.name}
+                    />
+                </FlatListContainer>
+                </View> 
           </View>
       </ScrollView>
     );

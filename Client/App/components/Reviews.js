@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Text, View, Image } from 'react-native'
 import image from "../assets/images/3.jpg"
 
+// By Ali Mehdi
+
 export default class Reviews extends Component {
     render() {
         return (
