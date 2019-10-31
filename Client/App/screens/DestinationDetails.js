@@ -193,7 +193,7 @@ export default class DestinationDetails extends Component {
             }}></IconWithText>
         </View>
 
-        <View style={{ marginLeft:"3%"}}>
+        {/* <View style={{ marginLeft:"3%"}}>
           <View
             style={{
               flexDirection: 'row',
@@ -228,6 +228,10 @@ export default class DestinationDetails extends Component {
             </Text>
             <Text style={{fontSize: 17}}> Gilgit </Text>
           </View>
+        </View> */}
+
+        <View>
+          
         </View>
 
         <View style={{padding: 5, paddingBottom: 0}}>
