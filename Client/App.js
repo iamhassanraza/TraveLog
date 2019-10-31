@@ -18,7 +18,7 @@ const RootStack = createStackNavigator({
   DestinationDetails
 },
 {
-  initialRouteName:'Home',
+  initialRouteName:'OperatorProfile',
 
   defaultNavigationOptions: {
     header:null
