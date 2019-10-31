@@ -11,6 +11,7 @@ import {
   FlatList,
 } from 'react-native';
 import image from '../assets/images/shan.jpg';
+import image5 from '../assets/images/im5.jpg';
 import map from '../assets/images/map.jpg'
 import {ThemeColor, ThemeGrey} from '../assets/Colors/Colors';
 import TextCutter from '../components/TextCutter';
@@ -254,7 +255,7 @@ export default class DestinationDetails extends Component {
             renderItem={({item}) => (
               <DestinationCard
                 destinationName={item.OperatorCard.name}
-                destinationImage={image}
+                destinationImage={image5}
               />
             )}
           />
