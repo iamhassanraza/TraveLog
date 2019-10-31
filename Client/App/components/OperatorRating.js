@@ -5,6 +5,7 @@ import ReviewIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Rating, AirbnbRating } from 'react-native-elements';
 import Review from './Review';
 import CustomButton from './CustomButton';
+import OperatorCard from './OperatorCard';
 
 
 
@@ -22,54 +23,47 @@ export default class OperatorRating extends Component {
 
     render() {
         return (
-            <View style={{marginTop: '5%', backgroundColor: 'white', paddingTop: '2%',marginLeft: '5%',
-                marginRight: '5%', paddingBottom: '2%'}}>
-                    <View style={styles.circularRating}>
-                        <Text style={{fontSize: 20,fontWeight: 'bold', alignSelf: 'center'}}>4.8</Text>
-                    </View>
-                    <View style={styles.textRating}>
-                        <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>4.8 out of 5</Text>
-                    </View>
-                    <View style={{}}>
-                        {/* <StarRating
-                            disabled = {false}
-                            halfStarEnabled = {true}
-                            maxStars = {5}
-                            rating = {this.state.starrating}
-                            fullStarColor = {ThemeColor}
-                            starSize = {20}
-                            selectedStar={(rating) => this.onStarRatingPress(rating)}
-                            containerStyle = {{width: '30%', alignSelf: 'center'}}
-                        /> */}
-                        
-                    </View>
-                    <View style={styles.newReview}>
-                            <Text>Write your review about Nomads Adventure Service</Text>
-                            <Rating 
-                                type = 'custom'
-                                readonly = {false}
-                                showRating = {false}
-                                imageSize = {30}
-                                fractions = {1}
-                                startingValue = "0"
-                                style = {{alignSelf: 'center', marginTop: '4%'}}
-                            />
-                    </View>
-                    <View style={styles.textReview}>
-                        <ReviewIcon style={{alignSelf: 'center',color: 'grey', fontSize: 20}} name="comment-text"/>
-                        <View style={{width: '85%', alignSelf: 'center'}}>
-                            <TextInput multiline placeholder="Write your review here" style={{marginLeft: '2%',borderWidth: 0.2,paddingLeft: '2%', padding: 0}}></TextInput>
+            <View style={{marginTop: '2%', backgroundColor: '#F0F0F0', marginBottom: '2%'}}>
+                <View style={{backgroundColor: 'white'}}>
+                        <View style={styles.circularRating}>
+                            <Text style={{fontSize: 20,fontWeight: 'bold', alignSelf: 'center'}}>4.8</Text>
                         </View>
+                        <View style={styles.textRating}>
+                            <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>4.8 out of 5</Text>
+                        </View>
+                        <View style={styles.newReview}>
+                                <Text>Write your review about Nomads Adventure Service</Text>
+                                <Rating 
+                                    type = 'custom'
+                                    readonly = {false}
+                                    showRating = {false}
+                                    imageSize = {30}
+                                    fractions = {1}
+                                    startingValue = "0"
+                                    style = {{alignSelf: 'center', marginTop: '2%'}}
+                                />
+                        </View>
+                        <View style={styles.textReview}>
+                            <ReviewIcon style={{color: 'grey', fontSize: 20, alignSelf: 'center'}} name="comment-text"/>
+                            <View style={{width: '85%', alignSelf: 'center'}}>
+                                <TextInput multiline placeholder="Write your review here" style={{marginLeft: '2%', paddingLeft: '2%', padding: 0}}></TextInput>
+                            </View>
+                        </View>
+                        <View style={{marginTop: '4%', marginBottom: '3%'}}>
+                            <CustomButton
+                                text="Submit"
+                                name="rate-review"
+                            />
+                        </View>
+                </View>
+                <View style={{padding: '1%'}}>
+                    <View style={{marginTop: '2%'}}>
+                        <Text style={{fontSize: 22, fontWeight: '400'}}>Reviews</Text>
                     </View>
-                    <View style={{marginTop: '3%', marginBottom: '1%'}}>
-                        <CustomButton
-                            text="Submit"
-                            name="rate-review"
-                        />
-                    </View>
-                    <View>
-                        <Review />
-                    </View>
+                    <Review />
+                    <Review />
+                    <Review />
+                </View>
             </View>
         )
     }
@@ -79,6 +73,7 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 50,
+        marginTop: '2%',
         borderWidth: 2,
         justifyContent: 'center',
         alignSelf: 'center'
@@ -88,12 +83,13 @@ const styles = StyleSheet.create({
     },
     newReview: {
         marginTop: '3%',
-        padding: '1%',
-        borderRadius: 5
+        borderRadius: 5,
+        alignSelf: 'center'
     },
     textReview: {
-        marginTop: '4%',
+        marginTop: '2%',
         alignSelf: 'center',
         flexDirection: 'row',
+        borderBottomWidth: 0.5
     }
 })

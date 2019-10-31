@@ -47,7 +47,7 @@ export default class OperatorProfile extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: Dimensions.get("window").width/1
+        width: Dimensions.get("window").width/1,
     },
     coverPhoto: {
         height: Dimensions.get("window").height/5
