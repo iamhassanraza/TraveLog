@@ -6,24 +6,46 @@ import { Rating, AirbnbRating } from 'react-native-elements';
 import Review from './Review';
 import CustomButton from './CustomButton';
 import OperatorCard from './OperatorCard';
+import { FlatList } from 'react-native';
 
 
 
 export default class OperatorRating extends Component {
 
     state = {
-        starrating: 4
+        reviews: [
+            {
+                reviewer: 'Mohammad Faraz',
+                rating: 3,
+                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
+            },
+            {
+                reviewer: 'Mohammad Ali',
+                rating: 3.8,
+                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
+            },
+            {
+                reviewer: 'Mohammad Hassan',
+                rating: 2,
+                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
+            },
+            {
+                reviewer: 'Mohammad Ali',
+                rating: 3.8,
+                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
+            },
+            {
+                reviewer: 'Mohammad Ali',
+                rating: 3.8,
+                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
+            }
+            
+        ]
     }
-
-    onStarRatingPress(rating) {
-        this.setState({
-          starrating: rating
-        });
-      }
 
     render() {
         return (
-            <View style={{marginTop: '2%', backgroundColor: '#F0F0F0', marginBottom: '2%'}}>
+            <View style={{marginTop: '2%', backgroundColor: '#F0F0F0'}}>
                 <View style={{backgroundColor: 'white'}}>
                         <View style={styles.circularRating}>
                             <Text style={{fontSize: 20,fontWeight: 'bold', alignSelf: 'center'}}>4.8</Text>
@@ -56,13 +78,23 @@ export default class OperatorRating extends Component {
                             />
                         </View>
                 </View>
-                <View style={{padding: '1%'}}>
-                    <View style={{marginTop: '2%'}}>
+                <View style={{}}>
+                    <View style={{marginTop: '2%', paddingLeft: '1%'}}>
                         <Text style={{fontSize: 22, fontWeight: '400'}}>Reviews</Text>
                     </View>
-                    <Review />
-                    <Review />
-                    <Review />
+                    <FlatList
+                        data = {this.state.reviews}
+                        showsScrollIndicator = {false}
+                        renderItem = {({item}) => {
+                            return  <Review 
+                                reviewer = {item.reviewer}
+                                rating = {item.rating}
+                                text = {item.review}
+                            />
+                        }}
+                        keyExtractor = {item => item.reviewer}
+                        style={{paddingBottom: '1%'}}
+                    />
                 </View>
             </View>
         )
