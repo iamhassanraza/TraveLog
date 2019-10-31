@@ -35,9 +35,9 @@ class DestinationCard extends React.Component{
                 </View>
 
 
-                
-                    <View style={{flexDirection:"row", justifyContent:"space-between"}}>
-                        <View style={{}}>
+                <View>
+                    <View style={{flexDirection:"row"}}>
+                        <View style={{flex:8}}>
                         <Text style={{
                             // textShadowColor: "grey",
                             // textShadowOffset: {width: 1, height: 1},
@@ -45,7 +45,7 @@ class DestinationCard extends React.Component{
                             fontSize:16
                         }}>{this.props.destinationName} </Text>
                         </View>
-                        <View style={{}}>
+                        <View style={{flex:2}}>
                         {/* <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} style={{fontSize:24}} color={ThemeColor} /> */}
                         
                         <TouchableWithoutFeedback onPress={()=>{
@@ -55,16 +55,15 @@ class DestinationCard extends React.Component{
                         }}>
 
                              <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
-                                size={23} 
-                                color={ThemeColor}
-                                style={{paddingRight:"3%"}}/>
+                                size={30} 
+                                color={ThemeColor}/>
                     
                         </TouchableWithoutFeedback>
                     </View>
                     
 
                     </View>
-                
+                </View>
 
                 
             </View>
