@@ -3,6 +3,7 @@
 // to style the whole component: props - > style
 // to style just icon: props -> iconstyle
 // to style text only: props -> textstyle
+// to add suntitle in same line : props -> linear = true
 // ======================================================= 
 
 import React from 'react'

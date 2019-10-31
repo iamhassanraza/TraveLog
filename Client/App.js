@@ -1,13 +1,40 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import DestinationDetails from './App/screens/OperatorProfile';
+import DestinationDetails from './App/screens/Modal';
+
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
+import TourDetail from './App/screens/TourDetail'
+import OperatorProfile from './App/screens/OperatorProfile'
+import Home from './App/screens/Home'
+
+
+
+const RootStack = createStackNavigator({
+  Home,
+  OperatorProfile,
+  TourDetail
+},
+{
+  initialRouteName:'Home',
+
+  defaultNavigationOptions: {
+    header:null
+  }
+}
+);
+
+
+const AppContianer = createAppContainer(RootStack);
+
 
 export default class App extends Component {
   render() {
     return (
-      <View>
-        <DestinationDetails></DestinationDetails>
-      </View>
+      <AppContianer></AppContianer>
     )
   }
 }
+
+
