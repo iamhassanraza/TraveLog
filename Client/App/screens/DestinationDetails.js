@@ -10,13 +10,15 @@ import {
   TouchableWithoutFeedback,
   FlatList,
 } from 'react-native';
-import image from '../assets/images/4.jpg';
+import image from '../assets/images/shan.jpg';
+import image5 from '../assets/images/im5.jpg';
+import map from '../assets/images/map.jpg'
 import {ThemeColor, ThemeGrey} from '../assets/Colors/Colors';
 import TextCutter from '../components/TextCutter';
 import DestinationCard from '../components/DestinationCard';
 import TourCard from '../components/TourCard';
 import IconWithText from '../components/IconWithText';
-
+import Reviews from '../components/Review';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FlatListContainer from '../components/FlatListContainer';
 
@@ -212,9 +214,9 @@ export default class DestinationDetails extends Component {
           <View
             style={{
               flexDirection: 'row',
-              paddingTop: '1.5%',
+              paddingTop: 10,
               alignItems: 'center',
-              marginLeft: '1.5%',
+              marginLeft: 5,
             }}>
             <Icon
               name="map-marker-radius"
@@ -228,11 +230,12 @@ export default class DestinationDetails extends Component {
           </View>
         </View>
 
-        <View style={{padding: '1%', paddingBottom: 0}}>
+        <View style={{padding: 5, paddingBottom: 0}}>
           <TextCutter
             style={{
-              marginLeft: '4%',
-              marginRight: '4%',
+              marginTop:10,
+              marginLeft: 14,
+              marginRight: 14,
               lineHeight: 20,
               fontSize: 14,
               color: ThemeGrey,
@@ -242,7 +245,7 @@ export default class DestinationDetails extends Component {
         </View>
 
         <FlatListContainer
-          style={{marginLeft: '2%'}}
+          style={{marginLeft: 8}}
           title="Nearby Attractions">
           <FlatList
             horizontal
@@ -252,20 +255,16 @@ export default class DestinationDetails extends Component {
             renderItem={({item}) => (
               <DestinationCard
                 destinationName={item.OperatorCard.name}
-                destinationImage={image}
+                destinationImage={image5}
               />
             )}
           />
         </FlatListContainer>
 
-        <View style={{marginLeft:"2%", marginRight:"2%"}}>
-          <Text style={{fontSize: 24, alignSelf: 'center', color: ThemeGrey}}>
-            {' '}
-            Location{' '}
-          </Text>
+        <View style={{marginLeft:10, marginRight:10, marginTop: 15}}>
           <TouchableWithoutFeedback>
             <ImageBackground
-              source={image}
+              source={map}
               style={{
                 height: Dimensions.get('window').height / 3.5,
                 
@@ -273,7 +272,7 @@ export default class DestinationDetails extends Component {
           </TouchableWithoutFeedback>
         </View>
 
-        <FlatListContainer style={{marginLeft: '3%'}} title="Popular Tours">
+        <FlatListContainer style={{marginLeft: 10}} title="Popular Tours">
           <FlatList
             horizontal
             data={DATA}
@@ -299,7 +298,7 @@ export default class DestinationDetails extends Component {
           />
         </FlatListContainer>
 
-        <View style={{marginTop: 5, marginLeft: '3%', marginRight: '3%'}}>
+        <View style={{marginTop: 10, marginLeft: 10, marginRight: 10}}>
           <Text
             style={{
               fontSize: 25,
@@ -311,9 +310,15 @@ export default class DestinationDetails extends Component {
           </Text>
         </View>
 
-        <View>
-          <Text>END</Text>
+        
+        <View style={{marginLeft: 10, marginRight: 10, marginTop:10}}>
+        <Reviews ></Reviews>
+        <Reviews ></Reviews>
+        <Reviews ></Reviews>
+        <Reviews ></Reviews>
         </View>
+            
+     
       </ScrollView>
     );
   }
