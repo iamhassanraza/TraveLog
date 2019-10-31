@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import image from '../assets/images/shan.jpg';
 import image5 from '../assets/images/im5.jpg';
-import map from '../assets/images/map.jpg'
+import map from '../assets/images/map.jpg';
 import {ThemeColor, ThemeGrey} from '../assets/Colors/Colors';
 import TextCutter from '../components/TextCutter';
 import DestinationCard from '../components/DestinationCard';
@@ -87,7 +87,7 @@ export default class DestinationDetails extends Component {
     ];
 
     return (
-      <ScrollView >
+      <ScrollView>
         <ImageBackground
           source={image}
           style={{
@@ -193,51 +193,32 @@ export default class DestinationDetails extends Component {
             }}></IconWithText>
         </View>
 
-        {/* <View style={{ marginLeft:"3%"}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              paddingTop: '1.5%',
-              alignItems: 'center',
-              marginLeft: '1.5%'
-            }}>
-            <Icon
-              name="calendar-month-outline"
-              style={{fontSize: 20, color: ThemeColor}}
-            />
-            <Text style={{fontSize: 18, color: ThemeColor, fontWeight: 'bold'}}>
-              {' '}
-              Best Time To Visit :{' '}
-            </Text>
-            <Text style={{fontSize: 17}}> June , July </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              paddingTop: 10,
-              alignItems: 'center',
-              marginLeft: 5,
-            }}>
-            <Icon
-              name="map-marker-radius"
-              style={{fontSize: 20, color: ThemeColor}}
-            />
-            <Text style={{fontSize: 18, color: ThemeColor, fontWeight: 'bold'}}>
-              {' '}
-              City :{' '}
-            </Text>
-            <Text style={{fontSize: 17}}> Gilgit </Text>
-          </View>
-        </View> */}
+        <View style={{marginLeft:"4%",}}>
+          <IconWithText
+            title={'Best Time To Visit'}
+            subtitle={' : June, July'}
+            linear={'true'}
+            icon={'calendar-month-outline'}
+            style={{alignItems:"center", marginTop:"2%"}}
+            iconstyle={{fontSize:23, marginRight:'1%'}}
+            textstyle={{fontSize:16}}>
+          </IconWithText>
 
-        <View>
-          
+          <IconWithText
+            title={'City'}
+            subtitle={' : Gilgit'}
+            linear={'true'}
+            icon={'map-marker-radius'}
+            style={{alignItems:"center", marginTop:"2%"}}
+            iconstyle={{fontSize:23,marginRight:'1%'}}
+            textstyle={{fontSize:16}}>
+          </IconWithText>
         </View>
 
         <View style={{padding: 5, paddingBottom: 0}}>
           <TextCutter
             style={{
-              marginTop:10,
+              marginTop: 10,
               marginLeft: 14,
               marginRight: 14,
               lineHeight: 20,
@@ -248,9 +229,7 @@ export default class DestinationDetails extends Component {
             text={overview}></TextCutter>
         </View>
 
-        <FlatListContainer
-          style={{marginLeft: 8}}
-          title="Nearby Attractions">
+        <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">
           <FlatList
             horizontal
             data={DATA}
@@ -265,13 +244,12 @@ export default class DestinationDetails extends Component {
           />
         </FlatListContainer>
 
-        <View style={{marginLeft:10, marginRight:10, marginTop: 15}}>
+        <View style={{marginLeft: 10, marginRight: 10, marginTop: 15}}>
           <TouchableWithoutFeedback>
             <ImageBackground
               source={map}
               style={{
                 height: Dimensions.get('window').height / 3.5,
-                
               }}></ImageBackground>
           </TouchableWithoutFeedback>
         </View>
@@ -314,15 +292,12 @@ export default class DestinationDetails extends Component {
           </Text>
         </View>
 
-        
-        <View style={{marginLeft: 10, marginRight: 10, marginTop:10}}>
-        <Reviews ></Reviews>
-        <Reviews ></Reviews>
-        <Reviews ></Reviews>
-        <Reviews ></Reviews>
+        <View style={{marginLeft: 10, marginRight: 10, marginTop: 10}}>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
         </View>
-            
-     
       </ScrollView>
     );
   }

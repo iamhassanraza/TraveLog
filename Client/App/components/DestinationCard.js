@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ImageBackground, Button , Image,Dimensions} from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Button , Image,Dimensions, TouchableWithoutFeedback} from 'react-native';
 import image from "../assets/images/2.jpg";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import  { ThemeColor } from '../assets/Colors/Colors';
 
 
 // Props : destinationImage, destinationName
 class DestinationCard extends React.Component{
+
+    state = {
+        saved:false
+    } 
     render() {
         return (
            
@@ -31,9 +35,9 @@ class DestinationCard extends React.Component{
                 </View>
 
 
-                <View>
-                    <View style={{flexDirection:"row"}}>
-                        <View style={{flex:8}}>
+                
+                    <View style={{flexDirection:"row", justifyContent:"space-between"}}>
+                        <View style={{}}>
                         <Text style={{
                             // textShadowColor: "grey",
                             // textShadowOffset: {width: 1, height: 1},
@@ -41,13 +45,28 @@ class DestinationCard extends React.Component{
                             fontSize:16
                         }}>{this.props.destinationName} </Text>
                         </View>
-                        <View style={{flex:2}}>
-                        <Icon name="bookmark" style={{fontSize:24}} color={ThemeColor} />
-                        </View>
+                        <View style={{}}>
+                        {/* <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} style={{fontSize:24}} color={ThemeColor} /> */}
+                        
+                        <TouchableWithoutFeedback onPress={()=>{
+                             this.setState((prevState) => ({
+                                    saved: !prevState.saved
+                                    }));
+                        }}>
+
+                             <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
+                                size={23} 
+                                color={ThemeColor}
+                                style={{paddingRight:"3%"}}/>
+                    
+                        </TouchableWithoutFeedback>
                     </View>
-                </View>
+                    
 
+                    </View>
+                
 
+                
             </View>
         );
     }
