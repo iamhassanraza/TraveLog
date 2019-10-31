@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import DestinationDetails from './App/screens/Modal';
+import DestinationDetails from './App/screens/DestinationDetails';
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -14,7 +14,8 @@ import Home from './App/screens/Home'
 const RootStack = createStackNavigator({
   Home,
   OperatorProfile,
-  TourDetail
+  TourDetail,
+  DestinationDetails
 },
 {
   initialRouteName:'Home',
