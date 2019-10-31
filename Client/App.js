@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import DestinationDetails from './App/screens/TourDetail';
+import DestinationDetails from './App/screens/Modal';
 
 export default class App extends Component {
   render() {
