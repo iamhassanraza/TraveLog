@@ -14,7 +14,8 @@ import Home from './App/screens/Home'
 const RootStack = createStackNavigator({
   Home,
   OperatorProfile,
-  TourDetail
+  TourDetail,
+  DestinationDetails
 },
 {
   initialRouteName:'Home',
