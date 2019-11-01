@@ -1,64 +1,51 @@
 import React, {Component} from 'react';
-import {Modal, Text, TouchableHighlight, View, Alert} from 'react-native';
-import { ThemeColor } from '../assets/Colors/Colors';
+import {
+  Text,
+  TouchableHighlight,
+  View,
+  Alert,
+  TouchableWithoutFeedback,
+  Button,
+} from 'react-native';
+import {ThemeColor} from '../assets/Colors/Colors';
+import Modal from 'react-native-modal';
+import {CheckBox} from 'react-native-elements';
 
-export default class ModalExample extends Component {
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+
+export default class ModalTester extends Component {
   state = {
-    modalVisible: false,
+    isModalVisible: true
+   
   };
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
+
+  
 
   render() {
     return (
-      <View style={{backgroundColor:"yellow"}}>
+      <View style={{flex: 1}}>
+        <Button title="Show modal" onPress={this.toggleModal} />
+        <Modal
+          isVisible={this.state.isModalVisible}
+          onBackdropPress={() => this.setState({isModalVisible: false})}>
+          <View style={{flex: 1}}>
+            <Text style={{color: 'white'}}>Hello!</Text>
 
-<View style={{marginTop: 22}}>
-       
-       <Modal
-          
-          animationType="slide"
-          transparent={true}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-          }}>
+           
+              
+            <Text onPress={()=> alert('For Family')} style={{color:"white", fontSize:17,paddingBottom:'3%'}} > For Family</Text>
 
-        <View style={{flex: 1,backgroundColor:"rgba(0,0,0,0.5)", flexDirection:"column", justifyContent: 'center',alignItems:"center"}}>
-        
-            <View style={{backgroundColor:"white" ,borderWidth:2}} >
-              <Text>Rating Wala Component</Text>
 
-              <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}>
-               <View style={{ alignSelf:"center"}}>
-               <Text style={{backgroundColor: "grey", textAlign:"center"}}>Done</Text>
-               
-               </View>
-              </TouchableHighlight>
-            </View>
+
+
+
+            <Button title="Hide modal" onPress={this.toggleModal} />
           </View>
-          
-
         </Modal>
-     
-
-                
-        <View>
-        <TouchableHighlight
-          style={{backgroundColor:"red"}}
-          onPress={() => {
-            this.setModalVisible(true);
-          }}>
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
-        </View>
-      </View>
-
       </View>
     );
   }

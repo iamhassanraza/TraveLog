@@ -8,6 +8,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import TourDetail from './App/screens/TourDetail'
 import OperatorProfile from './App/screens/OperatorProfile'
 import Home from './App/screens/Home'
+import Modal from './App/screens/Modal'
 
 
 
@@ -15,10 +16,11 @@ const RootStack = createStackNavigator({
   Home,
   OperatorProfile,
   TourDetail,
-  DestinationDetails
+  DestinationDetails,
+  Modal
 },
 {
-  initialRouteName:'OperatorProfile',
+  initialRouteName:'Modal',
 
   defaultNavigationOptions: {
     header:null
