@@ -20,7 +20,7 @@ const RootStack = createStackNavigator({
   Modal
 },
 {
-  initialRouteName:'Modal',
+  initialRouteName:'DestinationDetails',
 
   defaultNavigationOptions: {
     header:null
