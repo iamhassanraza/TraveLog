@@ -20,7 +20,7 @@ const RootStack = createStackNavigator({
   Modal
 },
 {
-  initialRouteName:'Modal',
+  initialRouteName:'OperatorProfile',
 
   defaultNavigationOptions: {
     header:null
