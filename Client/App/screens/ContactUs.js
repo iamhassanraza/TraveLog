@@ -23,7 +23,7 @@ export default class ContactUs extends Component {
                 </View>
 
                 <View>
-                    <IconWithText >
+                    <IconWithText title={"Email"} icon={"mail"}>
 
                     </IconWithText>
                 </View>
