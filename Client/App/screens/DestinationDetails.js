@@ -1,15 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  ImageBackground,
-  StyleSheet,
-  ScrollView,
-  Dimensions,
-  Button,
-  TouchableWithoutFeedback,
-  FlatList,
-} from 'react-native';
+import {Text,View,ImageBackground,StyleSheet,ScrollView,Dimensions,Button,TouchableWithoutFeedback,FlatList} from 'react-native';
 import image from '../assets/images/shan.jpg';
 import image5 from '../assets/images/im5.jpg';
 import map from '../assets/images/map.jpg';
