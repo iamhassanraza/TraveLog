@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import { Text,ScrollView, View, StyleSheet, ImageBackground, FlatList, Image, Dimensions } from 'react-native'
 import coverPhoto from '../assets/images/6.jpg'
 import logo from '../assets/images/7.jpg'
+import image from '../assets/images/4.jpg'
 import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
 import OperatorRating from '../components/OperatorRating';
 import OperatorCard from '../components/OperatorCard';
+import AboutOperator from '../components/AboutOperator';
+import Gallery from '../components/Gallery'
 
 
 export default class OperatorProfile extends Component {
@@ -36,6 +39,9 @@ export default class OperatorProfile extends Component {
                     <Text style={styles.shortIntro}>
                         Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
                     </Text>
+                </View>
+                <View>
+                    <AboutOperator />
                 </View>
                 <View>
                     <OperatorRating></OperatorRating>
