@@ -9,18 +9,18 @@ import TourDetail from './App/screens/TourDetail'
 import OperatorProfile from './App/screens/OperatorProfile'
 import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
-import Navigation from './App/screens/Naviagation'
+import ContactUs from './App/screens/ContactUs'
 
-const MYN = createAppContainer(Navigation)
 const RootStack = createStackNavigator({
   Home,
   OperatorProfile,
   TourDetail,
   DestinationDetails,
   Modal,
+  ContactUs
 },
 {
-  initialRouteName:'Home',
+  initialRouteName:'ContactUs',
 
   defaultNavigationOptions: {
     header:null,
