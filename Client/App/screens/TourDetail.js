@@ -14,6 +14,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {ThemeColor , BackgroundColor , BorderColor} from '../assets/Colors/Colors';
 const TextCutter = lazy(() => import('../components/TextCutter'));
 
+
+
 import {Linking} from 'react-native';
 
 import IconWithText from '../components/IconWithText';
@@ -23,6 +25,7 @@ import OperatorIcon from '../components/OperatorIcon'
 
 // import PlanCard from '../components/PlanCard';
 import FlatListContainer from '../components/FlatListContainer'
+
 
 const TourCard = lazy(()=> import('../components/TourCard') )
 const PlanCard = lazy(() => import('../components/PlanCard'));
@@ -250,6 +253,8 @@ return (
         {this.renderOperatorCard()}
         {this.renderPlan()}
         {this.renderTourList()}
+       
+
         
         
        

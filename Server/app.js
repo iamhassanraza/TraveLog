@@ -1,14 +1,32 @@
 const express = require('express');
 const app = express();
-var mysql = require('mysql');
+const mysql = require('mysql');
+const bodyParser = require('body-parser')
 
-var con = mysql.createConnection({
+const TourRoutes = require('./Router/Tours')
+
+const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
     database:'travelog'
   });
 
+
+con.connect()
+
+  app.use(bodyParser.json()); 
+
+  app.use((req,res,next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');   //allows access to any client
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');  //define methods like post get put delete or all by *
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Authorization');  // or you can use * for all
+    next();
+    });
+
+
+
+  app.use('/tours',TourRoutes)
   app.get('/tours', (req,res) => {
     con.query('Select * from tours', (err,result)=> {
         if(!err){
