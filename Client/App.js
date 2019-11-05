@@ -9,21 +9,22 @@ import TourDetail from './App/screens/TourDetail'
 import OperatorProfile from './App/screens/OperatorProfile'
 import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
-
-
+import ContactUs from './App/screens/ContactUs'
 
 const RootStack = createStackNavigator({
   Home,
   OperatorProfile,
   TourDetail,
   DestinationDetails,
-  Modal
+  Modal,
+  ContactUs
 },
 {
   initialRouteName:'OperatorProfile',
 
   defaultNavigationOptions: {
-    header:null
+    header:null,
+ 
   }
 }
 );
