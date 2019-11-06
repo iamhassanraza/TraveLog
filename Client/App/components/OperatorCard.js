@@ -46,9 +46,9 @@ class OperatorCard extends React.Component{
                     verified={this.props.verified}
                 />
                 <View style={{marginLeft: '5%', marginTop: '1%'}}>
-                    <IconWithText name='phone' text={this.props.phone} iconstyle={{}} textstyle={{}}></IconWithText>
-                    <IconWithText name='email' text={this.props.email} iconstyle={{}} textstyle={{}}></IconWithText>
-                    <IconWithText name='map-marker' text={this.props.address} iconstyle={{}} textstyle={{}}></IconWithText>
+                    <IconWithText name='phone' text={this.props.phone} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
+                    <IconWithText name='email' text={this.props.email} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
+                    <IconWithText name='map-marker' text={this.props.address} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
                 </View>    
             </View>
             </>

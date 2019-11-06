@@ -15,7 +15,7 @@ const IconWithText = (props) => {
         <TouchableWithoutFeedback onPress={props.onPress} >
         <View style={{flexDirection:'row',...props.style}}>
          
-            <Icon style={{color: ThemeColor,fontSize: 26,...props.iconstyle}} name={props.icon} />
+            <Icon style={{color: ThemeColor,fontSize: 20,...props.iconstyle}} name={props.icon} />
           
             <View style={{flexDirection:props.linear ? 'row' : 'column'}}>
             <Text style={{fontWeight:'bold',fontSize:18, color:ThemeColor,...props.textstyle}}>{props.title} </Text>
