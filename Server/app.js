@@ -13,7 +13,7 @@ const con = mysql.createConnection({
   });
 
 
-con.connect()
+
 
   app.use(bodyParser.json()); 
 
@@ -27,16 +27,9 @@ con.connect()
 
 
   app.use('/tours',TourRoutes)
-  app.get('/tours', (req,res) => {
-    con.query('Select * from tours', (err,result)=> {
-        if(!err){
-        console.log(result);
-        res.send(result);
-        console.log("Tours agaye"); }
-        else 
-        console.log(err);      
-    })
-  })
+
+  
+ 
 
   app.get('/operators', (req,res) => {
     con.query('Select * from operator', (err,result)=> {

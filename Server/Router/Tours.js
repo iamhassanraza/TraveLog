@@ -4,5 +4,8 @@ const router = express.Router();
 
 const TourControllers = require('../Controllers/Tours')
 
-//GET all the tours
-router.get('/Tours/:start&:count',TourControllers.getAllTours)
+//GET all the tours/
+router.get('/:from&:to',TourControllers.getAllTours)
+
+
+module.exports  = router;
