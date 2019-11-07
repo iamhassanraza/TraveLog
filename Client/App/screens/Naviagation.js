@@ -7,46 +7,43 @@ import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import DestinationDetails from './DestinationDetails';
 import Home from './Home'
 import Test from './Test'
+import AboutOperator from '../components/AboutOperator'
+import OperatorRating from '../components/OperatorRating'
+import Gallery from '../components/Gallery'
+import { ThemeColor } from '../assets/Colors/Colors';
 const TabNavigator = createMaterialTopTabNavigator(
     {
     
-        Tab1:Test,
-        Tab12:Test,
-        Tab13:Test,
-        Tab14:Test,
-        Tab15:Test,
+        About:AboutOperator,
+        Reviews:OperatorRating,
+        Tours:Test,
+        Gallery:Gallery,
         
       
 
     },
     {
-        swipeEnabled:true,
+        initialRouteName: "Gallery",
         tabBarOptions: {
             labelStyle: {
                 fontSize: 14,
-                textTransform: 'capitalize',
-                fontWeight: 'bold'
             },
             tabStyle: {
-                width: 120,
+                width: 90,
             },
             style: {
                 backgroundColor: 'white',
-                elevation: 2,
-                borderTopColor:'rgba(0,0,0,0.05)',
-                borderTopWidth:2,
-                paddingBottom:0
+                elevation: 1,
 
             },
             upperCaseLabel: false,
-            scrollEnabled: true,
-            activeTintColor: 'red',
-            inactiveTintColor: 'blue',
+            //scrollEnabled: true,
+            activeTintColor: ThemeColor,
+            inactiveTintColor: 'black',
             indicatorStyle: {
-                backgroundColor: 'black',
+                backgroundColor: ThemeColor,
                 height:3
             }
-
         }
     });
 
