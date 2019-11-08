@@ -20,7 +20,7 @@ const RootStack = createStackNavigator({
   ContactUs
 },
 {
-  initialRouteName:'OperatorProfile',
+  initialRouteName:'Home',
 
   defaultNavigationOptions: {
     header:null,

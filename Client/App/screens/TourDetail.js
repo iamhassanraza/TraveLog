@@ -4,7 +4,6 @@ import {
   View,
   ScrollView,
   Dimensions,
-  Button,
   FlatList,
  
 } from 'react-native';
