@@ -9,6 +9,7 @@ import OperatorRating from '../components/OperatorRating';
 import OperatorCard from '../components/OperatorCard';
 import AboutOperator from '../components/AboutOperator';
 import Gallery from '../components/Gallery'
+import Navigation from './Naviagation'
 
 
 export default class OperatorProfile extends Component {
@@ -40,12 +41,7 @@ export default class OperatorProfile extends Component {
                         Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
                     </Text>
                 </View>
-                <View>
-                    <AboutOperator />
-                </View>
-                <View>
-                    <OperatorRating></OperatorRating>
-                </View>
+                <Navigation />
             </ScrollView>
         )
     }

@@ -1,22 +1,50 @@
 import React, { Component } from 'react'
-import { Text, View, Dimensions } from 'react-native'
+import { Text, View, Dimensions, StyleSheet, ImageBackground } from 'react-native'
 import PhotoGrid from 'react-native-thumbnail-grid'
-import image from '../assets/images/4.jpg';
+import { FlatGrid, SectionGrid } from 'react-native-super-grid';
+import img1 from '../assets/images/6.jpg'
+import img2 from '../assets/images/7.jpg'
+import img3 from '../assets/images/4.jpg'
+import { ThemeColor,ThemeGrey } from '../assets/Colors/Colors'
+import Album from './Album'
+
 
 export default class Gallery extends Component {
+
+    // openAlbum = () => {
+    //     return (
+    //         <Album />
+    //     )
+    // }
+
+
     render() {
 
         const images = [
-            'https://cdn.pixabay.com/photo/2017/06/09/09/39/adler-2386314_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2017/06/02/18/24/fruit-2367029_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2016/08/12/22/34/apple-1589869_960_720.jpg',
-            '../assets/images/4.jpg'
+            img1,img2,img3,img2,img1,img3,img2,img1
         ]
 
         return (
-            <View style={{alignSelf: 'center'}}>
-                <PhotoGrid imageStyle={{borderWidth: 2 ,borderColor: 'black'}} width={Dimensions.get("window").width/1.5}  source={images} onPressImage = {uri => showImage(uri)}/>
+            <View style={{alignSelf: 'center', marginTop: '2%'}}>
+                <FlatGrid
+                    itemDimension={Dimensions.get('window').width/3}
+                    spacing={10}
+                    items={images}
+                    renderItem={({ item }) => (
+                    <View  onPress={this.openAlbum} style={{}}>
+                        <ImageBackground source={item} style={styles.image}></ImageBackground>
+                        <Text style={styles.text}>{"Hunza album"}</Text>                      
+                    </View>)}
+                />
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    image: {
+        height: 170
+    },
+    text: {
+    }
+})
