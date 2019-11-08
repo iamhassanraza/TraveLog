@@ -10,6 +10,7 @@ import Test from './Test'
 import AboutOperator from '../components/AboutOperator'
 import OperatorRating from '../components/OperatorRating'
 import Gallery from '../components/Gallery'
+import Album from '../components/Album'
 import { ThemeColor } from '../assets/Colors/Colors';
 const TabNavigator = createMaterialTopTabNavigator(
     {
@@ -17,10 +18,7 @@ const TabNavigator = createMaterialTopTabNavigator(
         About:AboutOperator,
         Reviews:OperatorRating,
         Tours:Test,
-        Gallery:Gallery,
-        
-      
-
+        Gallery:Album
     },
     {
         initialRouteName: "Gallery",
@@ -37,7 +35,7 @@ const TabNavigator = createMaterialTopTabNavigator(
 
             },
             upperCaseLabel: false,
-            //scrollEnabled: true,
+            scrollEnabled: true,
             activeTintColor: ThemeColor,
             inactiveTintColor: 'black',
             indicatorStyle: {

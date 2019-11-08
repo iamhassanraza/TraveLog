@@ -6,9 +6,18 @@ import img1 from '../assets/images/6.jpg'
 import img2 from '../assets/images/7.jpg'
 import img3 from '../assets/images/4.jpg'
 import { ThemeColor,ThemeGrey } from '../assets/Colors/Colors'
+import Album from './Album'
 
 
 export default class Gallery extends Component {
+
+    // openAlbum = () => {
+    //     return (
+    //         <Album />
+    //     )
+    // }
+
+
     render() {
 
         const images = [
@@ -22,7 +31,7 @@ export default class Gallery extends Component {
                     spacing={10}
                     items={images}
                     renderItem={({ item }) => (
-                    <View style={{}}>
+                    <View  onPress={this.openAlbum} style={{}}>
                         <ImageBackground source={item} style={styles.image}></ImageBackground>
                         <Text style={styles.text}>{"Hunza album"}</Text>                      
                     </View>)}
@@ -34,7 +43,7 @@ export default class Gallery extends Component {
 
 const styles = StyleSheet.create({
     image: {
-        height: 160
+        height: 170
     },
     text: {
     }
