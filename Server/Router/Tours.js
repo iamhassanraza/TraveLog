@@ -5,7 +5,7 @@ const router = express.Router();
 const TourControllers = require('../Controllers/Tours')
 
 //GET all the tours/
-router.get('/:from&:to',TourControllers.getAllTours)
+router.get('/',TourControllers.getAllTours)
 
 
 module.exports  = router;

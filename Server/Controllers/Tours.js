@@ -3,20 +3,57 @@ const con = require('../db')
 
 
 exports.getAllTours = (req,res,next)=>{
-    const pagenumber = parseInt(req.params.from) || 10;
-    const count = parseInt(req.params.to);
+
+    var sqlQuery = 'SELECT * From tours WHERE 1'
         
-    console.log(count)
-    
-        con.query('SELECT * FROM tours LIMIT ? OFFSET ?',[count,count * (pagenumber -1 )], (err,result)=> {
+    if(Object.keys(req.query).length != 0)
+    {
+                    Object.keys(req.query).map((value,index) => {
+                
+                        if(value=== 'tour_id'){
+                            sqlQuery = sqlQuery.concat(` AND tour_id = '${req.query[value]}'`)
+                        }
+                        if(value=== 'title'){
+                            sqlQuery = sqlQuery.concat(` AND title LIKE '%${req.query[value]}%'`)
+                        }
+                        
+                        if(value=== 'speciality'){
+                            sqlQuery = sqlQuery.concat(` AND speciality = '${req.query[value]}'`)
+                        }
+                        // if(value=== 'duration'){
+                        //     sqlQuery = sqlQuery.concat(` AND last_date_of_reg =${req.query[value]}`)
+                        // }
+                        if(value=== 'last_date_of_reg'){
+                            sqlQuery = sqlQuery.concat(` AND last_date_of_reg =${req.query[value]}`)
+                        }
+                        if(value=== 'date_of_departure'){
+                            sqlQuery = sqlQuery.concat(` AND date_of_departure =${req.query[value]}`)
+                        }
+                        if(value=== 'end_date'){
+                            sqlQuery = sqlQuery.concat(` AND end_date =${req.query[value]}`)
+                        }
+                        if(value=== 'departure_city'){
+                            sqlQuery = sqlQuery.concat(` AND departure_city =${req.query[value]}`)
+                        }
+                        });
+
+             console.log(sqlQuery)
+             
+        con.query(sqlQuery,(err,result)=> {
         if(!err){
        
         res.status(200).send(result);
-        console.log("No error in sending tours"); }
+        console.log("successfull"); }
         else 
         console.log(err);      
     })
  
+                    
+    }
+
+  
+  
+
 }
 
 
