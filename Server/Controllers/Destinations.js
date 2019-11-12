@@ -25,10 +25,7 @@ exports.getAllDestinations = (req,res,next)=>{
                         }
                        
                         });
-
-  
-                
-    }
+                }
 
     console.log(sqlQuery)
              
@@ -42,4 +39,3 @@ exports.getAllDestinations = (req,res,next)=>{
 })
 
 }
-
