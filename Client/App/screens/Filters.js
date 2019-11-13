@@ -5,15 +5,15 @@ import {ThemeColor} from '../assets/Colors/Colors';
 import RangeSlider from 'rn-range-slider';
 
 export default class Filters extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {age: 18};
-  }
-  getVal(val) {
-    console.warn(val);
-  }
+    state = {
+        rangeLow: 7000,
+        rangeHigh: 50000
+    };
 
   render() {
+console.log(this.state);
+
+
     return (
       <ScrollView>
         <View
@@ -28,25 +28,36 @@ export default class Filters extends Component {
           </Text>
         </View>
 
-        
 
-        <View style={{borderTopWidth:1 , borderBottomWidth:1, height:100}}>
-            <Text>Price</Text>
+
+        <View style={{marginRight: 20, alignItems: 'center'}}>
           <RangeSlider
-            style={{width: '70%', marginRight: "15%", marginLeft:"15%"}}
+            style={{width: '70%', height: 80}}
             gravity={'center'}
             min={7000}
             max={50000}
-            step={500}
+            step={1000}
             selectionColor={ThemeColor}
             labelBackgroundColor={ThemeColor}
             labelBorderColor={ThemeColor}
             blankColor="#f5eceb"
             onValueChanged={(low, high, fromUser) => {
               this.setState({rangeLow: low, rangeHigh: high});
+              console.log(this.state);
             }}
+         
           />
+            
         </View>
+        <View style={{flexDirection:"row", justifyContent:"space-between", marginLeft:"10%", marginRight:"10%"}}>
+                <Text>PKR {this.state.rangeLow}</Text>
+                <Text>PKR {this.state.rangeHigh}</Text>
+            </View>
+
+
+
+
+
 
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
           <Text
