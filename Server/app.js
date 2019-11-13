@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser')
 
 const TourRoutes = require('./Router/Tours')
+const  OperatorRoutes = require('./Router/Operator')
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -26,20 +27,8 @@ const con = mysql.createConnection({
 
 
 
-  app.use('/tours',TourRoutes)
-
-  
- 
-
-  app.get('/operators', (req,res) => {
-    con.query('Select * from operator', (err,result)=> {
-        if(!err){
-        console.log(result);
-        console.log("Operators Agaye"); }
-        else 
-        console.log(err);      
-    })
-  })
+  app.use('/tours', TourRoutes)
+  app.use('/operators', OperatorRoutes)
 
   app.get('/destinations', (req,res) => {
     con.query('Select * from destination', (err,result)=> {

@@ -18,7 +18,7 @@ const TabNavigator = createMaterialTopTabNavigator(
         About:AboutOperator,
         Reviews:OperatorRating,
         Tours:Test,
-        Gallery:Album
+        Gallery:Gallery
     },
     {
         initialRouteName: "Gallery",
