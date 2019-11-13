@@ -10,6 +10,7 @@ import OperatorProfile from './App/screens/OperatorProfile'
 import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
 import ContactUs from './App/screens/ContactUs'
+import Filters from './App/screens/Filters'
 
 const RootStack = createStackNavigator({
   Home,
@@ -17,7 +18,8 @@ const RootStack = createStackNavigator({
   TourDetail,
   DestinationDetails,
   Modal,
-  ContactUs
+  ContactUs,
+  Filters
 },
 {
   initialRouteName:'OperatorProfile',
