@@ -6,7 +6,6 @@ import Destination from './DestinationDetails'
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import DestinationDetails from './DestinationDetails';
 import Home from './Home'
-import Test from './Test'
 import AboutOperator from '../components/AboutOperator'
 import OperatorRating from '../components/OperatorRating'
 import Gallery from '../components/Gallery'
@@ -17,7 +16,7 @@ const TabNavigator = createMaterialTopTabNavigator(
     
         About:AboutOperator,
         Reviews:OperatorRating,
-        Tours:Test,
+
         Gallery:Gallery
     },
     {
