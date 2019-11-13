@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser')
 
 const TourRoutes = require('./Router/Tours')
+const  OperatorRoutes = require('./Router/Operator')
 const DestinationsRouter = require('./Router/Destinations')
 
 const con = mysql.createConnection({
@@ -27,6 +28,8 @@ const con = mysql.createConnection({
 
 
 
+  app.use('/tours', TourRoutes)
+  app.use('/operators', OperatorRoutes)
   app.use('/tours',TourRoutes)
   app.use('/destination', DestinationsRouter)
 

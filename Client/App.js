@@ -22,7 +22,7 @@ const RootStack = createStackNavigator({
   Filters
 },
 {
-  initialRouteName:'Filters',
+  initialRouteName:'OperatorProfile',
 
   defaultNavigationOptions: {
     header:null,
