@@ -1,14 +1,34 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import {Text, View, ScrollView, Button} from 'react-native';
 import FilterComponent from '../components/FilterComponent';
+import {ThemeColor} from '../assets/Colors/Colors';
+
 
 export default class Filters extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = { age: 18 }
+       } 
+       getVal(val){
+       console.warn(val);
+       }
+
+
   render() {
     return (
       <ScrollView>
 
-<View style={{borderWidth: 1, margin: 15}}>
-          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold'}}>
+           
+            
+
+        <View style={{backgroundColor:ThemeColor, height:50, justifyContent:"center", alignItems:"center"}}>
+            <Text style={{color:"white", fontSize:22, fontWeight:"bold"}}>Filters</Text>
+        </View>
+
+
+<View style={{borderWidth: 1, margin: 15, borderColor:"grey"}}>
+          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold', marginBottom:"2%"}}>
             Price
           </Text>
           <FilterComponent text="PKR 15,000+"></FilterComponent>
@@ -19,8 +39,8 @@ export default class Filters extends Component {
         </View>
 
 
-        <View style={{borderWidth: 1, margin: 15}}>
-          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold'}}>
+        <View style={{borderWidth: 1, margin: 15, borderColor:"grey"}}>
+          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold', marginBottom:"2%"}}>
             Duration
           </Text>
           <FilterComponent text="2 Days+"></FilterComponent>
@@ -32,7 +52,7 @@ export default class Filters extends Component {
 
 
         <View style={{borderWidth: 1, margin: 15, borderColor:"grey"}}>
-          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold'}}>
+          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold', marginBottom:"2%"}}>
             Departure Date
           </Text>
           <FilterComponent text="Jan 2019"></FilterComponent>
@@ -45,8 +65,8 @@ export default class Filters extends Component {
           <FilterComponent text="Aug 2019"></FilterComponent>
         </View>
 
-        <View style={{borderWidth: 1, margin: 15}}>
-          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold'}}>
+        <View style={{borderWidth: 1, margin: 15, borderColor:"grey"}}>
+          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold', marginBottom:"2%"}}>
             Destination
           </Text>
           <FilterComponent text="Hunza"></FilterComponent>
@@ -59,8 +79,8 @@ export default class Filters extends Component {
           <FilterComponent text="Balochistan"></FilterComponent>
         </View>
 
-        <View style={{borderWidth: 1, margin: 15}}>
-          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold'}}>
+        <View style={{borderWidth: 1, margin: 15, borderColor:"grey"}}>
+          <Text style={{marginLeft: '2%', fontSize: 20, fontWeight: 'bold', marginBottom:"2%"}}>
             Tour Type
           </Text>
           <FilterComponent text="Only for Girls"></FilterComponent>
@@ -71,7 +91,10 @@ export default class Filters extends Component {
           <FilterComponent text="Private"></FilterComponent>
           
         </View>
+
+        <Button title="Apply Filters" ></Button>
       </ScrollView>
     );
   }
 }
+

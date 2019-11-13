@@ -13,8 +13,8 @@ export default class FilterComponent extends Component {
         
         return (
             
-            <View style={{flexDirection:"row", justifyContent:"space-between", margin:5, marginRight:"12%"}}>
-               <Text> {this.props.text} </Text>
+            <View style={{flexDirection:"row", justifyContent:"space-between", margin:5, marginRight:"12%", marginBottom:"4%"}}>
+               <Text style={{color:"grey", marginLeft:"2%"}}> {this.props.text} </Text>
                <CheckBox 
                checked={this.state.check}  
                onPress={() => {
