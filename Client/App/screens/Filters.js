@@ -6,8 +6,10 @@ import RangeSlider from 'rn-range-slider';
 
 export default class Filters extends Component {
     state = {
-        rangeLow: 7000,
-        rangeHigh: 50000
+        rangeLowPrice: 7000,
+        rangeHighPrice: 50000,
+        rangeLowDuration: 1,
+        rangeHighDuration : 25
     };
 
   render() {
@@ -30,35 +32,6 @@ console.log(this.state);
 
 
 
-        <View style={{marginRight: 20, alignItems: 'center'}}>
-          <RangeSlider
-            style={{width: '70%', height: 80}}
-            gravity={'center'}
-            min={7000}
-            max={50000}
-            step={1000}
-            selectionColor={ThemeColor}
-            labelBackgroundColor={ThemeColor}
-            labelBorderColor={ThemeColor}
-            blankColor="#f5eceb"
-            onValueChanged={(low, high, fromUser) => {
-              this.setState({rangeLow: low, rangeHigh: high});
-              console.log(this.state);
-            }}
-         
-          />
-            
-        </View>
-        <View style={{flexDirection:"row", justifyContent:"space-between", marginLeft:"10%", marginRight:"10%"}}>
-                <Text>PKR {this.state.rangeLow}</Text>
-                <Text>PKR {this.state.rangeHigh}</Text>
-            </View>
-
-
-
-
-
-
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
           <Text
             style={{
@@ -69,11 +42,29 @@ console.log(this.state);
             }}>
             Price
           </Text>
-          <FilterComponent text="PKR 15,000+"></FilterComponent>
-          <FilterComponent text="PKR 25,000+"></FilterComponent>
-          <FilterComponent text="PKR 35,000+"></FilterComponent>
-          <FilterComponent text="PKR 45,000+"></FilterComponent>
-          <FilterComponent text="PKR 55,000+"></FilterComponent>
+         
+           <View style={{marginRight: 20, alignItems: 'center'}}>
+          <RangeSlider
+            style={{width: '70%', height: 80, marginTop: "-15%"}}
+            gravity={'center'}
+            min={7000}
+            max={50000}
+            step={1000}
+            selectionColor={ThemeColor}
+            labelBackgroundColor={ThemeColor}
+            labelBorderColor={ThemeColor}
+            blankColor="#f5eceb"
+            onValueChanged={(low, high, fromUser) => {
+              this.setState({rangeLowPrice: low, rangeHighPrice: high});
+            }}
+         
+          />
+            
+        </View>
+        <View style={{flexDirection:"row", justifyContent:"space-between", marginLeft:"10%", marginRight:"10%", marginBottom:"3%"}}>
+                <Text>PKR {this.state.rangeLowPrice}</Text>
+                <Text>PKR {this.state.rangeHighPrice}</Text>
+            </View>
         </View>
 
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
@@ -86,11 +77,28 @@ console.log(this.state);
             }}>
             Duration
           </Text>
-          <FilterComponent text="2 Days+"></FilterComponent>
-          <FilterComponent text="5 Days+"></FilterComponent>
-          <FilterComponent text="10 Days+"></FilterComponent>
-          <FilterComponent text="15 Days+"></FilterComponent>
-          <FilterComponent text="20 Days+"></FilterComponent>
+          <View style={{marginRight: 20, alignItems: 'center'}}>
+          <RangeSlider
+            style={{width: '70%', height: 80, marginTop: "-15%"}}
+            gravity={'center'}
+            min={1}
+            max={25}
+            step={1}
+            selectionColor={ThemeColor}
+            labelBackgroundColor={ThemeColor}
+            labelBorderColor={ThemeColor}
+            blankColor="#f5eceb"
+            onValueChanged={(low, high, fromUser) => {
+              this.setState({rangeLowDuration: low, rangeHighDuration: high});
+            }}
+         
+          />
+            
+        </View>
+        <View style={{flexDirection:"row", justifyContent:"space-between", marginLeft:"10%", marginRight:"10%", marginBottom:"3%"}}>
+                <Text>{this.state.rangeLowDuration} Days</Text>
+                <Text>{this.state.rangeHighDuration} Days</Text>
+            </View>
         </View>
 
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
