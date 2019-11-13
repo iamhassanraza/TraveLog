@@ -34,22 +34,34 @@ exports.getAllOperators = (req,res,next)=>{
                         }
                         });
 
-             console.log(sqlQuery)
-             
-        
- 
-                    
+             console.log(sqlQuery)                  
     }
 
     con.query(sqlQuery,(err,result)=> {
-        if(!err){
-       
-        res.status(200).send(result);
-        console.log("successfull"); }
+        if(!err) {
+            res.status(200).send(result);
+            console.log("successfull"); 
+        }
         else 
         console.log(err);      
     })
-  
 
 }
+
+// exports.getReviews = (req, res) => {
+
+//     var category = req.params.category
+//     var operatorid = req.params.operatorid
+//     var sqlQuery = `SELECT user_id,numeric_rating,descriptive_review from rating_review where id=${operatorid}`
+
+//     con.query(sqlQuery, (err,result) => {
+//         if(!err) {
+//             res.status(200).send(result);
+//             console.log('successsfull query')
+//         }
+//         else
+//             console.log(err)
+//     })
+
+// }
 
