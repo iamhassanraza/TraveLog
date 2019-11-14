@@ -35,7 +35,15 @@ const con = mysql.createConnection({
   app.use('/destination', DestinationsRouter)
   app.use('/images', imageRoutes)
 
-  
+  app.use('operatoricon/:Operatorid', (req,res)=>{
+    var operator_id = req.params.operator_id
+
+
+    var sqlQuery = `SELECT operator.name, rating_review.numeric_rating from operator INNER JOIN rating_review ON rating_review.category = "operator" AND rating_review.reference = ${operator_id}` 
+
+
+  })
+
   app.use('/review/:category/:reference', (req, res) => {
 
     var category = req.params.category
