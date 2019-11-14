@@ -159,14 +159,14 @@ addItem = (filterName) => {
             }}>
             Destination
           </Text>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Hunza"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Skardu"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Naran"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Kaghan"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Kashmir"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Sawat"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Sindh"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Balochistan"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Hunza"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Skardu"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Naran"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Kaghan"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Kashmir"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Sawat"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Sindh"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Balochistan"}}></FilterComponent>
         </View>
 
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
