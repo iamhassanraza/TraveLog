@@ -179,12 +179,12 @@ addItem = (filterName) => {
             }}>
             Tour Type
           </Text>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Only for Girls"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="For Family"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="For Groups"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Only for Boys"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Public"></FilterComponent>
-          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Private"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Only for Girls"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"For Family"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"For Groups"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Only for Boys"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Public"}}></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Private"}}></FilterComponent>
         </View>
 
         <Button title="Apply Filters"></Button>
