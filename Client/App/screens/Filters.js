@@ -139,17 +139,17 @@ addItem = (filterName) => {
             }}>
             Departure Date
           </Text>
-          <FilterComponent FiltersStateManipulator={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"Jan 2019"}} ></FilterComponent>
-          {/* <FilterComponent text="Feb 2019"></FilterComponent>
-          <FilterComponent text="March 2019"></FilterComponent>
-          <FilterComponent text="April 2019"></FilterComponent>
-          <FilterComponent text="May 2019"></FilterComponent>
-          <FilterComponent text="June 2019"></FilterComponent>
-          <FilterComponent text="July 2019"></FilterComponent>
-          <FilterComponent text="Aug 2019"></FilterComponent> */}
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"Jan 2019"}} ></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"Feb 2019"}} ></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"March 2019"}} ></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"April 2019"}} ></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"May 2019"}} ></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"June 2019"}} ></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"July 2019"}} ></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"Aug 2019"}} ></FilterComponent>
         </View>
 
-        {/* <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+        <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
           <Text
             style={{
               marginLeft: '2%',
@@ -159,14 +159,14 @@ addItem = (filterName) => {
             }}>
             Destination
           </Text>
-          <FilterComponent text="Hunza"></FilterComponent>
-          <FilterComponent text="Skardu"></FilterComponent>
-          <FilterComponent text="Naran"></FilterComponent>
-          <FilterComponent text="Kaghan"></FilterComponent>
-          <FilterComponent text="Kashmir"></FilterComponent>
-          <FilterComponent text="Sawat"></FilterComponent>
-          <FilterComponent text="Sindh"></FilterComponent>
-          <FilterComponent text="Balochistan"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Hunza"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Skardu"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Naran"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Kaghan"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Kashmir"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Sawat"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Sindh"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Destination" , value:"Jan 2019"}} text="Balochistan"></FilterComponent>
         </View>
 
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
@@ -179,13 +179,13 @@ addItem = (filterName) => {
             }}>
             Tour Type
           </Text>
-          <FilterComponent text="Only for Girls"></FilterComponent>
-          <FilterComponent text="For Family"></FilterComponent>
-          <FilterComponent text="For Groups"></FilterComponent>
-          <FilterComponent text="Only for Boys"></FilterComponent>
-          <FilterComponent text="Public"></FilterComponent>
-          <FilterComponent text="Private"></FilterComponent>
-        </View> */}
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Only for Girls"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="For Family"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="For Groups"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Only for Boys"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Public"></FilterComponent>
+          <FilterComponent addItem={this.addItem} removeItem={this.removeItem} object={{key:"Speciality" , value:"Jan 2019"}} text="Private"></FilterComponent>
+        </View>
 
         <Button title="Apply Filters"></Button>
       </ScrollView>
