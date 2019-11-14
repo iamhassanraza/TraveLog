@@ -5,115 +5,191 @@ import {ThemeColor} from '../assets/Colors/Colors';
 import RangeSlider from 'rn-range-slider';
 
 export default class Filters extends Component {
-    state = {
-        rangeLow: 7000,
-        rangeHigh: 50000
-    };
+  state = {
+    rangeLowPrice: 7000,
+    rangeHighPrice: 50000,
+    Days: 2,
+    Filters: [],
+  };
 
-  render() {
-console.log(this.state);
+  addItem = filterName => {
+    var index = this.state.Filters.findIndex(x => x.value == filterName.value);
+    if (index === -1) {
+      this.setState(prevState => ({
+        Filters: [...prevState.Filters, filterName],
+      }));
+    }
+  };
 
-
-    return (
-      <ScrollView>
-        <View
-          style={{
-            backgroundColor: ThemeColor,
-            height: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text style={{color: 'white', fontSize: 22, fontWeight: 'bold'}}>
-            Filters
-          </Text>
-        </View>
-
-
-
-        <View style={{marginRight: 20, alignItems: 'center'}}>
-          <RangeSlider
-            style={{width: '70%', height: 80}}
-            gravity={'center'}
-            min={7000}
-            max={50000}
-            step={1000}
-            selectionColor={ThemeColor}
-            labelBackgroundColor={ThemeColor}
-            labelBorderColor={ThemeColor}
-            blankColor="#f5eceb"
-            onValueChanged={(low, high, fromUser) => {
-              this.setState({rangeLow: low, rangeHigh: high});
-              console.log(this.state);
-            }}
-         
-          />
-            
-        </View>
-        <View style={{flexDirection:"row", justifyContent:"space-between", marginLeft:"10%", marginRight:"10%"}}>
-                <Text>PKR {this.state.rangeLow}</Text>
-                <Text>PKR {this.state.rangeHigh}</Text>
-            </View>
+  removeItem = filterName => {
+    var index = this.state.Filters.findIndex(x => x.value == filterName.value);
+    if (index != -1) {
+      this.setState(prevState => ({
+        Filters: prevState.Filters.filter(x => x.value != filterName.value),
+      }));
+    }
+  };
 
 
 
 
+  renderTop = () => {
+    return(
+      <View
+      style={{
+        backgroundColor: ThemeColor,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Text style={{color: 'white', fontSize: 22, fontWeight: 'bold'}}>
+        Filters
+      </Text>
+    </View>
+    );
+  };
+
+  renderPrice = () => {
+    return(
+      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <Text
+        style={{
+          marginLeft: '2%',
+          fontSize: 20,
+          fontWeight: 'bold',
+          marginBottom: '2%',
+        }}>
+        Price
+      </Text>
+
+      <View style={{marginRight: 20, alignItems: 'center'}}>
+        <RangeSlider
+          style={{width: '70%', height: 80, marginTop: '-15%'}}
+          gravity={'center'}
+          min={7000}
+          max={50000}
+          step={1000}
+          selectionColor={ThemeColor}
+          labelBackgroundColor={ThemeColor}
+          labelBorderColor={ThemeColor}
+          blankColor="#f5eceb"
+          onValueChanged={(low, high, fromUser) => {
+            this.setState({rangeLowPrice: low, rangeHighPrice: high});
+          }}
+        />
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginLeft: '10%',
+          marginRight: '10%',
+          marginBottom: '3%',
+        }}>
+        <Text>PKR {this.state.rangeLowPrice}</Text>
+        <Text>PKR {this.state.rangeHighPrice}</Text>
+      </View>
+    </View>
+    );
+  };
 
 
-        <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
-          <Text
-            style={{
-              marginLeft: '2%',
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginBottom: '2%',
-            }}>
-            Price
-          </Text>
-          <FilterComponent text="PKR 15,000+"></FilterComponent>
-          <FilterComponent text="PKR 25,000+"></FilterComponent>
-          <FilterComponent text="PKR 35,000+"></FilterComponent>
-          <FilterComponent text="PKR 45,000+"></FilterComponent>
-          <FilterComponent text="PKR 55,000+"></FilterComponent>
-        </View>
+  renderDays = () => {
+    return(
+      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <Text
+        style={{
+          marginLeft: '2%',
+          fontSize: 20,
+          fontWeight: 'bold',
+          marginBottom: '2%',
+        }}>
+        Duration
+      </Text>
+      <View style={{marginRight: 20, alignItems: 'center'}}>
+        <RangeSlider
+          style={{width: '70%', height: 80, marginTop: '-15%'}}
+          gravity={'center'}
+          min={1}
+          max={25}
+          step={1}
+          rangeEnabled={false}
+          selectionColor={ThemeColor}
+          labelBackgroundColor={ThemeColor}
+          labelBorderColor={ThemeColor}
+          blankColor="#f5eceb"
+          onValueChanged={(low, high, fromUser) => {
+            this.setState({Days: low});
+          }}
+        />
+      </View>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '4%',
+        }}>
+        <Text>{this.state.Days} Days</Text>
+      </View>
+    </View>
+    );
+  };
 
-        <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
-          <Text
-            style={{
-              marginLeft: '2%',
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginBottom: '2%',
-            }}>
-            Duration
-          </Text>
-          <FilterComponent text="2 Days+"></FilterComponent>
-          <FilterComponent text="5 Days+"></FilterComponent>
-          <FilterComponent text="10 Days+"></FilterComponent>
-          <FilterComponent text="15 Days+"></FilterComponent>
-          <FilterComponent text="20 Days+"></FilterComponent>
-        </View>
 
-        <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
-          <Text
-            style={{
-              marginLeft: '2%',
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginBottom: '2%',
-            }}>
-            Departure Date
-          </Text>
-          <FilterComponent text="Jan 2019"></FilterComponent>
-          <FilterComponent text="Feb 2019"></FilterComponent>
-          <FilterComponent text="March 2019"></FilterComponent>
-          <FilterComponent text="April 2019"></FilterComponent>
-          <FilterComponent text="May 2019"></FilterComponent>
-          <FilterComponent text="June 2019"></FilterComponent>
-          <FilterComponent text="July 2019"></FilterComponent>
-          <FilterComponent text="Aug 2019"></FilterComponent>
-        </View>
 
-        <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+  renderDepartureDate = () => {
+    return(
+      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <Text
+        style={{
+          marginLeft: '2%',
+          fontSize: 20,
+          fontWeight: 'bold',
+          marginBottom: '2%',
+        }}>
+        Departure Date
+      </Text>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'Jan 2019'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'Feb 2019'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'March 2019'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'April 2019'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'May 2019'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'June 2019'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'July 2019'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Date', value: 'Aug 2019'}}></FilterComponent>
+    </View>
+    );
+  };
+
+
+
+  renderDestination = () => {
+    return(
+      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
           <Text
             style={{
               marginLeft: '2%',
@@ -123,33 +199,115 @@ console.log(this.state);
             }}>
             Destination
           </Text>
-          <FilterComponent text="Hunza"></FilterComponent>
-          <FilterComponent text="Skardu"></FilterComponent>
-          <FilterComponent text="Naran"></FilterComponent>
-          <FilterComponent text="Kaghan"></FilterComponent>
-          <FilterComponent text="Kashmir"></FilterComponent>
-          <FilterComponent text="Sawat"></FilterComponent>
-          <FilterComponent text="Sindh"></FilterComponent>
-          <FilterComponent text="Balochistan"></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{key: 'Destination', value: 'Hunza'}}></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{key: 'Destination', value: 'Skardu'}}></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{key: 'Destination', value: 'Naran'}}></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{key: 'Destination', value: 'Kaghan'}}></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{key: 'Destination', value: 'Kashmir'}}></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{key: 'Destination', value: 'Sawat'}}></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{key: 'Destination', value: 'Sindh'}}></FilterComponent>
+          <FilterComponent
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+            object={{
+              key: 'Destination',
+              value: 'Balochistan',
+            }}></FilterComponent>
         </View>
+    );
+  };
 
-        <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
-          <Text
-            style={{
-              marginLeft: '2%',
-              fontSize: 20,
-              fontWeight: 'bold',
-              marginBottom: '2%',
-            }}>
-            Tour Type
-          </Text>
-          <FilterComponent text="Only for Girls"></FilterComponent>
-          <FilterComponent text="For Family"></FilterComponent>
-          <FilterComponent text="For Groups"></FilterComponent>
-          <FilterComponent text="Only for Boys"></FilterComponent>
-          <FilterComponent text="Public"></FilterComponent>
-          <FilterComponent text="Private"></FilterComponent>
-        </View>
+
+
+
+  renderSpeciality = () => {
+    return(
+      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <Text
+        style={{
+          marginLeft: '2%',
+          fontSize: 20,
+          fontWeight: 'bold',
+          marginBottom: '2%',
+        }}>
+        Tour Type
+      </Text>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{
+          key: 'Speciality',
+          value: 'Only for Girls',
+        }}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Speciality', value: 'For Family'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Speciality', value: 'For Groups'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{
+          key: 'Speciality',
+          value: 'Only for Boys',
+        }}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Speciality', value: 'Public'}}></FilterComponent>
+      <FilterComponent
+        addItem={this.addItem}
+        removeItem={this.removeItem}
+        object={{key: 'Speciality', value: 'Private'}}></FilterComponent>
+    </View>
+    );
+  };
+
+
+
+  render() {
+    console.log(this.state.Filters);
+    return (
+      <ScrollView>
+       
+        {this.renderTop()}
+        {this.renderPrice()}
+        {this.renderDays()}
+        {this.renderDepartureDate()}
+        {this.renderDestination()}
+        {this.renderSpeciality()}
+
+        
+
+        
+
+        
+
+        
 
         <Button title="Apply Filters"></Button>
       </ScrollView>
