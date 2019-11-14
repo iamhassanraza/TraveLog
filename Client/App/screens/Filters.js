@@ -5,17 +5,37 @@ import {ThemeColor} from '../assets/Colors/Colors';
 import RangeSlider from 'rn-range-slider';
 
 export default class Filters extends Component {
-    state = {
-        rangeLowPrice: 7000,
-        rangeHighPrice: 50000,
-        rangeLowDuration: 1,
-        rangeHighDuration : 25
-    };
+  state = {
+    rangeLowPrice: 7000,
+    rangeHighPrice: 50000,
+    rangeLowDuration: 1,
+    rangeHighDuration: 25,
+    Filters : [ ]
+  };
+
+addItem = (filterName) => {
+    var index = this.state.Filters.findIndex(x => x.value == filterName.value)
+    if (index === -1) {
+      this.setState(prevState => ({
+        Filters : [...prevState.Filters , filterName]
+      }));
+    }
+  }
+
+  removeItem = (filterName) => {
+    var index = this.state.Filters.findIndex(x => x.value == filterName.value)
+    if (index != -1) {
+      this.setState(prevState => ({
+        Filters : prevState.Filters.filter(x => x.value  != filterName.value)
+      }));
+    }
+  }
+  
+
+ 
 
   render() {
-console.log(this.state);
-
-
+    console.log(this.state.Filters);
     return (
       <ScrollView>
         <View
@@ -30,8 +50,6 @@ console.log(this.state);
           </Text>
         </View>
 
-
-
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
           <Text
             style={{
@@ -42,29 +60,34 @@ console.log(this.state);
             }}>
             Price
           </Text>
-         
-           <View style={{marginRight: 20, alignItems: 'center'}}>
-          <RangeSlider
-            style={{width: '70%', height: 80, marginTop: "-15%"}}
-            gravity={'center'}
-            min={7000}
-            max={50000}
-            step={1000}
-            selectionColor={ThemeColor}
-            labelBackgroundColor={ThemeColor}
-            labelBorderColor={ThemeColor}
-            blankColor="#f5eceb"
-            onValueChanged={(low, high, fromUser) => {
-              this.setState({rangeLowPrice: low, rangeHighPrice: high});
-            }}
-         
-          />
-            
-        </View>
-        <View style={{flexDirection:"row", justifyContent:"space-between", marginLeft:"10%", marginRight:"10%", marginBottom:"3%"}}>
-                <Text>PKR {this.state.rangeLowPrice}</Text>
-                <Text>PKR {this.state.rangeHighPrice}</Text>
-            </View>
+
+          <View style={{marginRight: 20, alignItems: 'center'}}>
+            <RangeSlider
+              style={{width: '70%', height: 80, marginTop: '-15%'}}
+              gravity={'center'}
+              min={7000}
+              max={50000}
+              step={1000}
+              selectionColor={ThemeColor}
+              labelBackgroundColor={ThemeColor}
+              labelBorderColor={ThemeColor}
+              blankColor="#f5eceb"
+              onValueChanged={(low, high, fromUser) => {
+                this.setState({rangeLowPrice: low, rangeHighPrice: high});
+              }}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginLeft: '10%',
+              marginRight: '10%',
+              marginBottom: '3%',
+            }}>
+            <Text>PKR {this.state.rangeLowPrice}</Text>
+            <Text>PKR {this.state.rangeHighPrice}</Text>
+          </View>
         </View>
 
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
@@ -78,27 +101,32 @@ console.log(this.state);
             Duration
           </Text>
           <View style={{marginRight: 20, alignItems: 'center'}}>
-          <RangeSlider
-            style={{width: '70%', height: 80, marginTop: "-15%"}}
-            gravity={'center'}
-            min={1}
-            max={25}
-            step={1}
-            selectionColor={ThemeColor}
-            labelBackgroundColor={ThemeColor}
-            labelBorderColor={ThemeColor}
-            blankColor="#f5eceb"
-            onValueChanged={(low, high, fromUser) => {
-              this.setState({rangeLowDuration: low, rangeHighDuration: high});
-            }}
-         
-          />
-            
-        </View>
-        <View style={{flexDirection:"row", justifyContent:"space-between", marginLeft:"10%", marginRight:"10%", marginBottom:"3%"}}>
-                <Text>{this.state.rangeLowDuration} Days</Text>
-                <Text>{this.state.rangeHighDuration} Days</Text>
-            </View>
+            <RangeSlider
+              style={{width: '70%', height: 80, marginTop: '-15%'}}
+              gravity={'center'}
+              min={1}
+              max={25}
+              step={1}
+              selectionColor={ThemeColor}
+              labelBackgroundColor={ThemeColor}
+              labelBorderColor={ThemeColor}
+              blankColor="#f5eceb"
+              onValueChanged={(low, high, fromUser) => {
+                this.setState({rangeLowDuration: low, rangeHighDuration: high});
+              }}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginLeft: '10%',
+              marginRight: '10%',
+              marginBottom: '3%',
+            }}>
+            <Text>{this.state.rangeLowDuration} Days</Text>
+            <Text>{this.state.rangeHighDuration} Days</Text>
+          </View>
         </View>
 
         <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
@@ -111,17 +139,17 @@ console.log(this.state);
             }}>
             Departure Date
           </Text>
-          <FilterComponent text="Jan 2019"></FilterComponent>
-          <FilterComponent text="Feb 2019"></FilterComponent>
+          <FilterComponent FiltersStateManipulator={this.addItem} removeItem={this.removeItem} object={{key:"Date" , value:"Jan 2019"}} ></FilterComponent>
+          {/* <FilterComponent text="Feb 2019"></FilterComponent>
           <FilterComponent text="March 2019"></FilterComponent>
           <FilterComponent text="April 2019"></FilterComponent>
           <FilterComponent text="May 2019"></FilterComponent>
           <FilterComponent text="June 2019"></FilterComponent>
           <FilterComponent text="July 2019"></FilterComponent>
-          <FilterComponent text="Aug 2019"></FilterComponent>
+          <FilterComponent text="Aug 2019"></FilterComponent> */}
         </View>
 
-        <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+        {/* <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
           <Text
             style={{
               marginLeft: '2%',
@@ -157,7 +185,7 @@ console.log(this.state);
           <FilterComponent text="Only for Boys"></FilterComponent>
           <FilterComponent text="Public"></FilterComponent>
           <FilterComponent text="Private"></FilterComponent>
-        </View>
+        </View> */}
 
         <Button title="Apply Filters"></Button>
       </ScrollView>
