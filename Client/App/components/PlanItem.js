@@ -15,7 +15,7 @@ export default class PlanItem extends Component {
       <View style={{flexDirection: 'row', flex: 1,}}>
         <View style={{flexDirection: 'column', alignItems: 'center',flex:1}}>
           <Text style={{paddingTop:12}}>
-          {this.props.id === 0 ? (<MyIcon name="map-marker" color={ThemeColor} size={28}></MyIcon>) : this.props.lastitem ? (  <MyIcon name="flag-variant" color={ThemeColor} size={25}></MyIcon>) : (  <MyIcon name="circle-outline" color={ThemeColor} size={20}></MyIcon>) }
+          {this.props.id === 1 ? (<MyIcon name="map-marker" color={ThemeColor} size={28}></MyIcon>) : this.props.lastitem ? (  <MyIcon name="flag-variant" color={ThemeColor} size={25}></MyIcon>) : (  <MyIcon name="circle-outline" color={ThemeColor} size={20}></MyIcon>) }
           </Text>
          {this.props.lastitem ? undefined : ( <View
             style={{

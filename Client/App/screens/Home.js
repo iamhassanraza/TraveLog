@@ -19,9 +19,12 @@ export default class Home extends Component {
 
 
     componentDidMount(){
-        fetch("http://192.168.100.15:3001/tours")
-            .then(response => response.json())
+        fetch("http://192.168.100.25:3001/tours")
+            .then(response => {
+                console.log('1')
+                return response.json()})
             .then((responseJson)=> {
+                console.log('2')
               this.setState({
                data : responseJson
               })
