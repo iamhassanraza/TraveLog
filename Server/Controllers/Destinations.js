@@ -32,12 +32,9 @@ exports.getAllDestinations = (req, res, next) => {
   });
 };
 
-
-
 exports.getNameOfDestination = (req, res, next) => {
-
-  var id = req.params.id
-  var sqlQuery = `SELECT destination_id,name From destination WHERE destination_id = '${id}'`
+  var id = req.params.id;
+  var sqlQuery = `SELECT destination_id,name From destination WHERE destination_id = '${id}'`;
   console.log("arha isme");
 
   con.query(sqlQuery, (err, result) => {
@@ -47,3 +44,19 @@ exports.getNameOfDestination = (req, res, next) => {
     } else console.log(err);
   });
 };
+
+
+
+// exports.getCoverImageOfDestination = (req, res, next) => {
+//   var reference = req.params.reference;
+//   var sqlQuery = `SELECT image.image_path from image INNER JOIN category ON category.name = 'destination' INNER JOIN image_type ON image_type.type_name = 'cover' WHERE image.reference = ${reference}`;
+
+//   console.log("arha isme");
+
+//   con.query(sqlQuery, (err, result) => {
+//     if (!err) {
+//       res.status(200).send(result);
+//       console.log("successfull");
+//     } else console.log(err);
+//   });
+// };
