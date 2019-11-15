@@ -5,13 +5,13 @@ exports.getimages = (req, res) => {
     var imagetype = req.params.imagetype
     var reference = req.params.reference
 
-    const sqlQuery = `SELECT image.image_path from image INNER JOIN category ON category.name = '${category}' INNER JOIN image_type ON image_type.type_name = '${imagetype}' WHERE image.reference = ${reference}`
+    const sqlQuery = `SELECT image.image_path from image INNER JOIN category ON category.name = '${category}' INNER JOIN image_type ON image_type.type_name = '${imagetype}' WHERE image.reference_id = ${reference}`
     console.log(sqlQuery)
 
     con.query(sqlQuery, (err,result) => {
         if(!err) {
             res.status(200).send(result);
-            console.log('successsfull query')
+            console.log('successful query')
         }
         else
             console.log(err)
