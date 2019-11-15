@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const TourRoutes = require('./Router/Tours')
 const  OperatorRoutes = require('./Router/Operator')
 const DestinationsRouter = require('./Router/Destinations')
+const imageRoutes = require('./Router/images')
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -32,6 +33,7 @@ const con = mysql.createConnection({
   app.use('/operators', OperatorRoutes)
   app.use('/tours',TourRoutes)
   app.use('/destination', DestinationsRouter)
+  app.use('/images', imageRoutes)
 
   app.use('operatoricon/:Operatorid', (req,res)=>{
     var operator_id = req.params.operator_id
@@ -46,7 +48,7 @@ const con = mysql.createConnection({
 
     var category = req.params.category
     var reference = req.params.reference
-    var sqlQuery = `SELECT rating_review.numeric_rating,rating_review.descriptive_review,userprofile.email from rating_review INNER JOIN userprofile ON rating_review.user_id = userprofile.userprofile_id INNER JOIN category ON category.name = '${category}' WHERE rating_review.reference_id = ${reference} `
+    var sqlQuery = `SELECT rating_review.numeric_rating,rating_review.descriptive_review,userprofile.email from rating_review INNER JOIN userprofile ON rating_review.user_id = userprofile.userprofile_id INNER JOIN category ON category.name = '${category}' WHERE rating_review.reference_id = ${reference} AND  `
 
     con.query(sqlQuery, (err,result) => {
         if(!err) {
