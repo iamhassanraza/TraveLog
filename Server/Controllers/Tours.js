@@ -4,7 +4,9 @@ const con = require('../db')
 
 exports.getAllTours = (req,res,next)=>{
 
-    var sqlQuery = 'SELECT * From tours WHERE 1'
+    var sqlQuery = 'SELECT tour.tour_id,tour.title,tour.speciality,tour.last_date_of_reg,tour.date_of_departure,tour.end_date,tour.departure_city From tours tour WHERE 1'
+    const operatedBy = {}
+    console.log(sqlQuery)
         
     if(Object.keys(req.query).length != 0)
     {
@@ -36,26 +38,45 @@ exports.getAllTours = (req,res,next)=>{
                             sqlQuery = sqlQuery.concat(` AND departure_city =${req.query[value]}`)
                         }
                         });
-
-             console.log(sqlQuery)
-             
-        con.query(sqlQuery,(err,result)=> {
-        if(!err){
-       
-        res.status(200).send(result);
-        console.log("successfull"); }
-        else 
-        console.log(err);      
-    })
- 
-                    
+            
     }
 
-  
+    console.log(sqlQuery)
+             
+    con.query(sqlQuery,(err,result)=> {
+    if(!err){
+   
+    res.status(200).send(result);
+    console.log("successfull"); }
+    else 
+    console.log(err);      
+})
+
   
 
 }
 
+
+
+
+exports.getTourPlan = (req,res)=> {
+
+    const tour_id = (req.params.tourID);
+    
+    var sqlQuery = `SELECT plan.plan_id, plan.tour_id,plan.date, plan.time, plan.title, plan.description, attractions.name FROM plan INNER JOIN attractions ON plan.attraction_id = attractions.attraction_id WHERE tour_id = ${tour_id} ORDER BY plan.date`
+    var sql
+    con.query(sqlQuery,(err,result)=> {
+        if(!err){
+       
+        res.status(200).send(result);
+        console.log(result); }
+        else 
+        console.log(err);      
+    })
+
+
+
+}
 
 // GET tours/sort by price {ascending, decending, from ? to ? , count, pagenumber } ? if we want to get the next 10 tours each time, it is necessary to pass page number and count?
 
@@ -67,22 +88,9 @@ exports.getAllTours = (req,res,next)=>{
 
 //GET Tour Deals, Discounted Tours
 
-//Get tours / by date { from current by default to next choosen }
 
-//Sort By Tour Type
+
 
 //Sort by all of abovee selected in a check box
 
-
-// exports.sortByPrice = (req,res)=>{
-
-    
-//     con.query('SELECT * FROM tours ORDER BY  LIMIT ? OFFSET ?',[count,count * (pagenumber -1 )], (err,result)=> {
-//         if(!err){
-       
-//         res.status(200).send(result);
-//         console.log("No error in sending tours"); }
-//         else 
-//         console.log(err);  
-    
-// }
+//price nahi hai , image kaha se fetch karen image nahi hai, 
