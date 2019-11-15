@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View,ScrollView,ImageBackground,Dimensions } from 'react-native'
+import { Text, View,ScrollView,ImageBackground,Dimensions,ActivityIndicator } from 'react-native'
 import map from '../assets/images/map.jpg';
+
 import {ThemeColor, ThemeGrey} from '../assets/Colors/Colors';
 import IconWithText from '../components/IconWithText';
 
@@ -8,6 +9,7 @@ export default class ContactUs extends Component {
     render() {
         return (
             <ScrollView>
+                 <ActivityIndicator size="small" color="#00ff00" />
                 <View style={{width:"100%", height:"17%", backgroundColor:ThemeColor,justifyContent:"center"}}>
                     <Text style={{color:"white", fontSize:22, fontWeight:"bold", alignSelf:"center"}}>Contact Us </Text>
                 </View>

@@ -1,10 +1,11 @@
-import React, {Component , lazy , Suspense}from 'react';
+import React, {Component , lazy , Suspense }from 'react';
 import {
   Text,
   View,
   ScrollView,
   Dimensions,
   FlatList,
+  ActivityIndicator
  
 } from 'react-native';
 import HeaderImage from '../components/HeaderImage';
@@ -14,8 +15,7 @@ import {ThemeColor , BackgroundColor , BorderColor} from '../assets/Colors/Color
 const TextCutter = lazy(() => import('../components/TextCutter'));
 
 
-
-import {Linking} from 'react-native';
+import OperatorCard from '../components/TourDetailComponents/OperatorCard'
 
 import IconWithText from '../components/IconWithText';
 
@@ -209,7 +209,7 @@ return (
  renderPlan = ()=>{
    return( <Suspense fallback={()=><Text>loading...</Text>}>
           <View style={{marginTop:10,borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,padding:10}}>
-          <PlanCard></PlanCard>
+          <PlanCard tour_id='1'></PlanCard>
           </View>
           </Suspense>
    )
@@ -243,15 +243,17 @@ return (
     
     return (
       <ScrollView>
+        
         <HeaderImage image={image} style={{height: height / 3}}></HeaderImage>
         <View style={{borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
         {this.renderHeading()}
         {this.renderOverview()}
         {this.renderIcons()}
         </View>
-        {this.renderOperatorCard()}
-        {this.renderPlan()}
-        {this.renderTourList()}
+        {/* {this.renderOperatorCard()} */}
+        <OperatorCard></OperatorCard>
+        {/* {this.renderPlan()} */}
+        {/* {this.renderTourList()} */}
        
 
         
