@@ -11,7 +11,7 @@ exports.getimages = (req, res) => {
     con.query(sqlQuery, (err,result) => {
         if(!err) {
             res.status(200).send(result);
-            console.log('successsfull query')
+            console.log('successful query')
         }
         else
             console.log(err)
