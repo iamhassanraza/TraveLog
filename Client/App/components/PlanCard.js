@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View ,ActivityIndicator } from 'react-native'
 import PlanItem from "../components/PlanItem"
-
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default class PlanCard extends Component {
 
@@ -24,8 +24,10 @@ export default class PlanCard extends Component {
         return array.map((item,index)=> <PlanItem id={item.plan_id} lastitem={(array.length-1) ===index? true : false} details={item.description} title={item.title}></PlanItem>)
     }
 
-    renderLoading = ()=>  <ActivityIndicator size="large" color="#00ff00" />
+    // renderLoading = ()=>  <ActivityIndicator size="large" color="#00ff00" />
 
+
+    
 
     render() {  
         console.log(this.state.plan)
@@ -34,7 +36,7 @@ export default class PlanCard extends Component {
             <Text style={{fontSize:20,fontWeight:'bold'}}>Plan</Text>
 
    
-            {this.state.plan ? this.RenderPlan(this.state.plan) : this.renderLoading() }
+            {this.state.plan ? this.RenderPlan(this.state.plan) : <LoadingIndicator></LoadingIndicator> }
             </View>
         )
     }
