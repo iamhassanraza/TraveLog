@@ -44,3 +44,19 @@ exports.getNameOfDestination = (req, res, next) => {
     } else console.log(err);
   });
 };
+
+
+
+
+exports.getDetailsOfDestination = (req, res, next) => {
+  var id = req.params.id;
+  var sqlQuery = `SELECT destination_id,description,recommended_season,city.name,image.image_path From destination INNER JOIN city ON destination.city_id = city.city_id INNER JOIN image ON (image.category_id = 3 AND image.image_type_id = 2 AND image.reference_id = '${id}')  WHERE destination.destination_id = '${id}'`;
+  console.log("arha isme");
+
+  con.query(sqlQuery, (err, result) => {
+    if (!err) {
+      res.status(200).send(result);
+      console.log("successfull");
+    } else console.log(err);
+  });
+};
