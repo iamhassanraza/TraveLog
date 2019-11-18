@@ -15,7 +15,7 @@ export default class Home extends Component {
 
     state = {
         data:[]
-    }
+    } 
 
 
     componentDidMount(){
