@@ -32,9 +32,9 @@ exports.getAllDestinations = (req, res, next) => {
   });
 };
 
-exports.getNameOfDestination = (req, res, next) => {
+exports.getAttractionCard = (req, res, next) => {
   var id = req.params.id;
-  var sqlQuery = `SELECT destination_id,name From destination WHERE destination_id = '${id}'`;
+  var sqlQuery = `SELECT attractions.name , image.image_path from attractions INNER JOIN image ON ( attractions.attraction_id = image.reference_id AND image.category_id = (SELECT category_id FROM category WHERE name = 'destination') AND image.image_type_id = 1) WHERE attractions.attraction_id = '${id}'`;
   console.log("arha isme");
 
   con.query(sqlQuery, (err, result) => {
@@ -47,16 +47,32 @@ exports.getNameOfDestination = (req, res, next) => {
 
 
 
-// exports.getCoverImageOfDestination = (req, res, next) => {
-//   var reference = req.params.reference;
-//   var sqlQuery = `SELECT image.image_path from image INNER JOIN category ON category.name = 'destination' INNER JOIN image_type ON image_type.type_name = 'cover' WHERE image.reference = ${reference}`;
 
-//   console.log("arha isme");
+exports.getDestinationCard = (req, res, next) => {
+  var id = req.params.id;
+  var sqlQuery = `SELECT city.name , image.image_path from destination INNER JOIN city ON ( destination.city_id = city.city_id ) INNER JOIN image ON  (image.category_id = (SELECT category_id FROM category WHERE name = 'destination') AND image.image_type_id = 1) WHERE destination.destination_id =${id} `;
+  console.log("arha isme");
 
-//   con.query(sqlQuery, (err, result) => {
-//     if (!err) {
-//       res.status(200).send(result);
-//       console.log("successfull");
-//     } else console.log(err);
-//   });
-// };
+  con.query(sqlQuery, (err, result) => {
+    if (!err) {
+      res.status(200).send(result);
+      console.log("successfull");
+    } else console.log(err);
+  });
+};
+
+
+
+
+exports.getDetailsOfDestination = (req, res, next) => {
+  var id = req.params.id;
+  var sqlQuery = `SELECT destination_id,description,recommended_season,city.name,image.image_path From destination INNER JOIN city ON destination.city_id = city.city_id INNER JOIN image ON (image.category_id = 3 AND image.image_type_id = 2 AND image.reference_id = '${id}')  WHERE destination.destination_id = '${id}'`;
+  console.log("arha isme");
+
+  con.query(sqlQuery, (err, result) => {
+    if (!err) {
+      res.status(200).send(result);
+      console.log("successfull");
+    } else console.log(err);
+  });
+};
