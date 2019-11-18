@@ -32,7 +32,7 @@ exports.getAllDestinations = (req, res, next) => {
   });
 };
 
-exports.getNameOfDestination = (req, res, next) => {
+exports.getDestinationCard = (req, res, next) => {
   var id = req.params.id;
   var sqlQuery = `SELECT destination_id,name From destination WHERE destination_id = '${id}'`;
   console.log("arha isme");
