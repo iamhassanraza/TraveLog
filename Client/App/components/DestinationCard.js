@@ -6,6 +6,7 @@ import  { ThemeColor } from '../assets/Colors/Colors';
 
 
 // Props : destinationImage, destinationName
+
 class DestinationCard extends React.Component{
 
     state = {
@@ -39,14 +40,12 @@ class DestinationCard extends React.Component{
                     <View style={{flexDirection:"row"}}>
                         <View style={{flex:8}}>
                         <Text style={{
-                            // textShadowColor: "grey",
-                            // textShadowOffset: {width: 1, height: 1},
-                            // textShadowRadius: 3,
+                            
                             fontSize:16
                         }}>{this.props.destinationName} </Text>
                         </View>
                         <View style={{flex:2}}>
-                        {/* <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} style={{fontSize:24}} color={ThemeColor} /> */}
+                        
                         
                         <TouchableWithoutFeedback onPress={()=>{
                              this.setState((prevState) => ({
@@ -60,12 +59,8 @@ class DestinationCard extends React.Component{
                     
                         </TouchableWithoutFeedback>
                     </View>
-                    
-
                     </View>
-                </View>
-
-                
+                </View>                
             </View>
         );
     }

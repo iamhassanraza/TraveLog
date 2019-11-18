@@ -48,7 +48,7 @@ const con = mysql.createConnection({
 
     var category = req.params.category
     var reference = req.params.reference
-    var sqlQuery = `SELECT rating_review.numeric_rating,rating_review.descriptive_review,userprofile.email from rating_review INNER JOIN userprofile ON rating_review.user_id = userprofile.userprofile_id INNER JOIN category ON category.name = '${category}' WHERE rating_review.reference_id = ${reference} AND  `
+    var sqlQuery = `SELECT rating_review.numeric_rating,rating_review.descriptive_review,userprofile.name from rating_review INNER JOIN userprofile ON rating_review.user_id = userprofile.userprofile_id INNER JOIN category ON category.name = '${category}' WHERE rating_review.reference_id = ${reference}  `
 
     con.query(sqlQuery, (err,result) => {
         if(!err) {
