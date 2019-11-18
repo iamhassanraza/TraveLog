@@ -32,9 +32,9 @@ exports.getAllDestinations = (req, res, next) => {
   });
 };
 
-exports.getDestinationCard = (req, res, next) => {
+exports.getAttractionCard = (req, res, next) => {
   var id = req.params.id;
-  var sqlQuery = `SELECT destination_id,name From destination WHERE destination_id = '${id}'`;
+  var sqlQuery = `SELECT attractions.name , image.image_path from attractions INNER JOIN image ON ( attractions.attraction_id = image.reference_id AND image.category_id = (SELECT category_id FROM category WHERE name = 'destination') AND image.image_type_id = 1) WHERE attractions.attraction_id = '${id}'`;
   console.log("arha isme");
 
   con.query(sqlQuery, (err, result) => {
