@@ -49,7 +49,6 @@ exports.getAllOperators = (req,res)=>{
 }
 
 exports.operatorCard = (req, res, next) => {
-    console.log(req.params)
     var operatorId = req.params.operatorId;
     var sqlQuery = `SELECT operator.name, operator.phone, operator.email, operator.street_address,
         rating_review.numeric_rating, dp.image_path AS dp, cover.image_path AS cover FROM operator INNER JOIN
