@@ -16,7 +16,6 @@ const TabNavigator = createMaterialTopTabNavigator(
     
         About:AboutOperator,
         Reviews:OperatorRating,
-
         Gallery:Gallery
     },
     {
