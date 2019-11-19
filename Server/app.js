@@ -5,8 +5,9 @@ const bodyParser = require('body-parser')
 
 const TourRoutes = require('./Router/Tours')
 const  OperatorRoutes = require('./Router/Operator')
-const DestinationsRouter = require('./Router/Destinations')
+const DestinationsRoutes = require('./Router/Destinations')
 const imageRoutes = require('./Router/images')
+// const AttractionsRoutes = require('./Router/Attractions')
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -31,8 +32,9 @@ const con = mysql.createConnection({
 
   app.use('/tours', TourRoutes)
   app.use('/operators', OperatorRoutes)
-  app.use('/destination', DestinationsRouter)
+  app.use('/destination', DestinationsRoutes)
   app.use('/images', imageRoutes)
+  // app.use('/attraction', AttractionsRoutes)
 
   app.use('operatoricon/:Operatorid', (req,res)=>{
     var operator_id = req.params.operator_id
