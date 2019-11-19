@@ -1,7 +1,7 @@
 import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
 import {View, Text, ImageBackground, StyleSheet, Image, Dimensions} from 'react-native';
-import image from '../assets/images/2.jpg';
+import image from '../assets/images/3.jpg';
 import logo from '../assets/images/1.jpg';
 import  { ThemeColor } from '../assets/Colors/Colors';
 import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -12,18 +12,23 @@ import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
 import IconWithText from './IconAndText';
 import { Rating } from 'react-native-ratings';
 import OperatorIcon from './OperatorIcon';
+import LoadingIndicator from '../components/LoadingIndicator';
+
 
 
 class OperatorCard extends React.Component{
 
     state = {
-        cardData: []
+        cardData: null
     }
 
     componentDidMount() {
-        fetch(`192.168.100.15:3001/operators/card/${this.props.operatorId}`)
-        .then(res => res.json())
+        fetch(`http://192.168.100.15:3001/operators/card/${this.props.operatorId}`)
+        .then(res => {
+            return res.json()
+        })
         .then(resJson => {
+            console.log(resJson)
             this.setState({
                 cardData: resJson
             })
@@ -34,37 +39,39 @@ class OperatorCard extends React.Component{
     render() {
         return (
             <>  
-            <View style={[styles.Container, this.props.style]}>
-                <ImageBackground source={image} style={{height: 100}}>
+                <View style={[styles.Container, this.props.style]}>
+                    {this.state.cardData? <View>
+                        <ImageBackground source={require(`../assets/images/5.jpg`)} style={{height: 100}}>
 
-                </ImageBackground>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={{marginLeft: '5%', height: 80, width: '30%', marginTop: -30}}>
-                        <Image source={logo} style={{height: 80, width: 80,borderColor: 'white', borderWidth: 2, borderRadius: 50}}>
+                        </ImageBackground>
+                        <View style={{flexDirection: 'row'}}>
+                            <View style={{marginLeft: '5%', height: 80, width: '30%', marginTop: -30}}>
+                                <Image source={logo} style={{height: 80, width: 80,borderColor: 'white', borderWidth: 2, borderRadius: 50}}>
 
-                        </Image>
-                    </View>
-                    <View style={{height: 50, width: '65%', justifyContent: 'center', alignItems: 'center'}}>
-                        <View style={styles.FollowButton}>
-                            <FollowIcon name="user-follow" color='white'/>
-                            <Text style={{color: 'white'}}>
-                                {this.props.followStatus ? "Unfollow" : "Follow"}
-                            </Text>
+                                </Image>
+                            </View>
+                            <View style={{height: 50, width: '65%', justifyContent: 'center', alignItems: 'center'}}>
+                                <View style={styles.FollowButton}>
+                                    <FollowIcon name="user-follow" color='white'/>
+                                    <Text style={{color: 'white'}}>
+                                        {this.props.followStatus ? "Unfollow" : "Follow"}
+                                    </Text>
+                                </View>
+                            </View>
                         </View>
-                    </View>
+                        <OperatorIcon 
+                            style={{marginLeft: '5%',marginBottom:'2%'}} 
+                            name={this.state.cardData[0].name} 
+                            rating={this.state.cardData[0].numeric_rating} 
+                            verified={this.props.verified}
+                        />
+                        <View style={{marginLeft: '5%', marginTop: '1%'}}>
+                            <IconWithText name='phone' text={this.state.cardData[0].phone} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
+                            <IconWithText name='email' text={this.state.cardData[0].email} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
+                            <IconWithText name='map-marker' text={this.state.cardData[0].street_address} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
+                        </View> 
+                    </View> : <LoadingIndicator></LoadingIndicator> }
                 </View>
-                <OperatorIcon 
-                    style={{marginLeft: '5%',marginBottom:'2%'}} 
-                    name={this.props.name} 
-                    rating={4} 
-                    verified={this.props.verified}
-                />
-                <View style={{marginLeft: '5%', marginTop: '1%'}}>
-                    <IconWithText name='phone' text={this.props.phone} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
-                    <IconWithText name='email' text={this.props.email} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
-                    <IconWithText name='map-marker' text={this.props.address} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
-                </View>    
-            </View>
             </>
         );
     }

@@ -63,7 +63,7 @@ exports.operatorCard = (req, res, next) => {
     con.query(sqlQuery,(err, result) => {
         if(!err) {
             res.status(200).send(result)
-            console.log('tour card is here')
+            console.log('operator')
         }
         else
             console.log(err)
