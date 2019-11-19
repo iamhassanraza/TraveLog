@@ -22,7 +22,7 @@ class TourCard extends React.Component {
 
     render() {
         return (
-            <TouchableWithoutFeedback onPress={()=> alert('navigate')}>
+            <TouchableWithoutFeedback onPress={this.props.onPress}>
             <View style={[styles.Container,this.props.style]} >
          <HeaderImage image={image} tag="5 Days Left" price={200}></HeaderImage>
         <View style={styles.TextConatiner}>

@@ -32,7 +32,6 @@ const con = mysql.createConnection({
 
   app.use('/tours', TourRoutes)
   app.use('/operators', OperatorRoutes)
-  app.use('/tours',TourRoutes)
   app.use('/destination', DestinationsRoutes)
   app.use('/images', imageRoutes)
   app.use('/attraction', AttractionsRoutes)
