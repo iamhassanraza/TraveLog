@@ -35,7 +35,7 @@ exports.getAllTours = (req,res,next)=>{
                             sqlQuery = sqlQuery.concat(` AND end_date =${req.query[value]}`)
                         }
                         if(value=== 'city_id'){
-                            sqlQuery = sqlQuery.concat(` AND departure_city =${req.query[value]}`)
+                            sqlQuery = sqlQuery.concat(` AND city_id =${req.query[value]}`)
                         }
                         });
             

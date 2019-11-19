@@ -167,6 +167,7 @@ export default class Home extends Component {
                             renderItem= {({item}) => 
                             <OperatorCard
                                 operatorId = {item}
+                                style={{marginRight:10}}
                             />
                             }
                         />
