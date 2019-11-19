@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View ,ActivityIndicator} from 'react-native'
+import {ThemeGrey} from '../assets/Colors/Colors'
 
 export default class LoadingIndicator extends Component {
     render() {
         return (
-          <ActivityIndicator size="large" color="#00ff00" />
+          <ActivityIndicator size="large" color={ThemeGrey} />
         )
     }
 }

@@ -252,7 +252,7 @@ return (
         </View>
         {/* {this.renderOperatorCard()} */}
         <OperatorCard></OperatorCard>
-        {/* {this.renderPlan()} */}
+        {this.renderPlan()}
         {/* {this.renderTourList()} */}
        
 
