@@ -14,9 +14,23 @@ import { Rating } from 'react-native-ratings';
 import OperatorIcon from './OperatorIcon';
 
 
-
-
 class OperatorCard extends React.Component{
+
+    state = {
+        cardData: []
+    }
+
+    componentDidMount() {
+        fetch(`192.168.100.15:3001/operators/card/${this.props.operatorId}`)
+        .then(res => res.json())
+        .then(resJson => {
+            this.setState({
+                cardData: resJson
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <>  
@@ -115,3 +129,13 @@ const styles = StyleSheet.create({
     },
 
 });
+
+//operator card from home
+// style={{marginRight:10}}
+//                                 name={item.name}
+//                                 verified={item.verified}
+//                                 rating={item.rating}
+//                                 phone={item.phone}
+//                                 email={item.email}
+//                                 address={item.address}
+//                                 followStatus={item.followStatus}

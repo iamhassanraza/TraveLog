@@ -19,7 +19,7 @@ export default class Home extends Component {
 
 
     componentDidMount(){
-        fetch("http://192.168.100.25:3001/tours")
+        fetch("http://192.168.100.15:3001/tours")
             .then(response => {
                 console.log('1')
                 return response.json()})
@@ -34,6 +34,7 @@ export default class Home extends Component {
 
     render() {
             console.log(this.state.data)
+        const operators = [1,2]
         const operatorData = [
             {
                 name: "PJP Travel and Tour",
@@ -163,19 +164,12 @@ export default class Home extends Component {
                 <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
                         <FlatList 
                             horizontal
-                            data={operatorData}
+                            data={operators}
                             keyExtractor={item => item.name}
                             showsHorizontalScrollIndicator={false}
                             renderItem= {({item}) => 
                             <OperatorCard
-                                style={{marginRight:10}}
-                                name={item.name}
-                                verified={item.verified}
-                                rating={item.rating}
-                                phone={item.phone}
-                                email={item.email}
-                                address={item.address}
-                                followStatus={item.followStatus}
+                                operatorId = {item}
                             />
                             }
                         />
