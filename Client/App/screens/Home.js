@@ -136,11 +136,7 @@ export default class Home extends Component {
 
 
                     </View>
-                <TouchableWithoutFeedback onPress={()=>this.props.navigation.navigate('TourDetail')}>
-                    <View style={{height:200}}>
-                        <Text>NAVIGATE</Text>
-                    </View>
-                    </TouchableWithoutFeedback>
+                
 
                     <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1}}>
 
@@ -151,6 +147,7 @@ export default class Home extends Component {
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item }) => <TourCard style={{marginRight:10}} title={item.title}
                     price={item.price} 
+                    onPress = {()=>this.props.navigation.navigate('TourDetail')}
                     daysLeft={item.daysLeft} 
                     speciality={item.speciality} 
                     seatsLeft={item.seatsLeft} 

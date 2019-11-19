@@ -112,17 +112,12 @@ exports.getTourCard = (req,res) =>{
 
 exports.getOperatorCard = (req,res)=> {
 
-    const tour_id = (req.params.tourID);
+    const operator_Id = (req.params.operatorId);
     
-    var sqlQuery = `SELECT operator.name, operator.phone, operator.email, operator.street_address,
-    rating_review.numeric_rating, dp.image_path AS dp, cover.image_path AS cover FROM operator INNER JOIN
-    rating_review ON (rating_review.category_id = (SELECT category_id FROM category WHERE name="operator")) 
-    AND (rating_review.reference_id = ${operatorId}) 
-    INNER JOIN image dp ON (dp.category_id = (SELECT category_id FROM category WHERE name="operator")) 
-    AND (dp.reference_id=${operatorId}) AND (dp.image_type_id = (SELECT image_type_id FROM image_type WHERE type_name="dp")) 
-    INNER JOIN image cover ON (cover.category_id = (SELECT category_id FROM category WHERE name="operator")) 
-    AND (cover.reference_id=${operatorId}) AND (cover.image_type_id = (SELECT image_type_id FROM image_type WHERE type_name="cover"))
-    WHERE operator_id=${operatorId}`
+    var sqlQuery = `SELECT operator.name, operator.phone, operator.email, 
+    operator.is_verified,operator.longitude,operator.latitude, rating_review.numeric_rating 
+    FROM operator INNER JOIN rating_review ON (rating_review.category_id = (SELECT category_id 
+    FROM category WHERE name="operator")) AND (rating_review.reference_id = 1) WHERE operator_id= ${operator_Id}`
 
 
     con.query(sqlQuery,(err,result)=> {

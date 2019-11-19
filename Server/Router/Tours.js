@@ -12,6 +12,6 @@ router.get('/plan/:tourID',TourControllers.getTourPlan)
 
 router.get('/card/:tourID',TourControllers.getTourCard)
 
-// router.get('/operatorcard/:tourID',TourControllers.getOperatorCard)
+router.get('/operatorcard/:operatorId',TourControllers.getOperatorCard)
 
 module.exports  = router;
