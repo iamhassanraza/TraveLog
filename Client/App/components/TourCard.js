@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text , StyleSheet,ImageBackground, Dimensions,Image,TouchableWithoutFeedback} from 'react-native'
+import { View, Text , StyleSheet,ImageBackground, Dimensions,Image,TouchableWithoutFeedback,TouchableHighlight} from 'react-native'
 import  { ThemeColor } from '../assets/Colors/Colors'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -11,6 +11,7 @@ import SpecialityIcon from 'react-native-vector-icons/SimpleLineIcons';
 import SeatsLeftIcon from 'react-native-vector-icons/MaterialIcons';
 
 import IconWithText from './IconAndText'
+// import IconWithText from './IconWithText'
 import OperatorIcon from './OperatorIcon';
 
 class TourCard extends React.Component {
@@ -22,7 +23,8 @@ class TourCard extends React.Component {
 
     render() {
         return (
-            <TouchableWithoutFeedback onPress={this.props.onPress}>
+            <TouchableHighlight onPress={this.props.onPress}>
+                <View>
             <View style={[styles.Container,this.props.style]} >
          <HeaderImage image={image} tag="5 Days Left" price={200}></HeaderImage>
         <View style={styles.TextConatiner}>
@@ -38,7 +40,7 @@ class TourCard extends React.Component {
                     {/* Save icon */}
 
                 <View style={{flex:1,alignItems:'center',paddingTop:'2%'}}>
-
+{/* 
                   <TouchableWithoutFeedback  onPress={()=>{
                     this.setState((prevState) => ({
                         saved: !prevState.saved
@@ -52,7 +54,7 @@ class TourCard extends React.Component {
                 color={ThemeColor} />
                 <Text style={{marginTop:-5,color:'grey', fontSize: 13,fontWeight:'bold'}}>{this.state.saved ? 'saved' : 'save'}</Text>
                 </View>
-                </TouchableWithoutFeedback>  
+                </TouchableWithoutFeedback>   */}
                 </View>
         </View>
 
@@ -63,7 +65,8 @@ class TourCard extends React.Component {
       
     
     </View> 
-    </TouchableWithoutFeedback>
+    </View>
+    </TouchableHighlight>
         )
     }
 }

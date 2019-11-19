@@ -33,7 +33,7 @@ export default class Home extends Component {
 
 
     render() {
-            console.log(this.state.data)
+       
         const operatorData = [
             {
                 name: "PJP Travel and Tour",
@@ -65,36 +65,6 @@ export default class Home extends Component {
         ]
 
         const DATA = [
-           {
-               price:300,
-               title:'Hunza',
-               daysLeft:2,
-               speciality:'Girls',
-               seatsLeft:10,
-               startDate:'9 oct',
-               endDate:'20 oct',
-               OperatorCard:{name:"Nomad's Adventure",image,rating:3.4,verified:true}
-           },
-           {
-            price:300,
-            daysLeft:2,
-            title:'Kashmir',
-            speciality:'Girls',
-            seatsLeft:10,
-            startDate:'9 oct',
-            endDate:'20 oct',
-            OperatorCard:{name:'Greenland  tours',image,rating:3.4,verified:true}
-        },
-        {
-            price:300,
-            daysLeft:2,
-            speciality:'Girls',
-            seatsLeft:10,
-            title:'China Border',
-            startDate:'9 oct',
-            endDate:'20 oct',
-            OperatorCard:{name:'Greenland Travel ',image,rating:3.4,verified:true}
-        },
         {
             price:300,
             daysLeft:2,
