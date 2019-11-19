@@ -2,10 +2,10 @@ const con = require('../db')
 
 
 
-exports.getAllTours = (req,res,next)=>{
+exports.getAllTours = (req,res)=>{
 
-    var sqlQuery = 'SELECT tour.tour_id,tour.title,tour.speciality,tour.last_date_of_reg,tour.date_of_departure,tour.end_date,tour.city_id From tours WHERE 1'
-    const operatedBy = {}
+    var sqlQuery = 'SELECT tours.tour_id,tours.title,tours.speciality,tours.last_date_of_reg,tours.date_of_departure,tours.end_date,tours.city_id From tours WHERE 1'
+
     console.log(sqlQuery)
         
     if(Object.keys(req.query).length != 0)
