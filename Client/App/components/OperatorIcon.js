@@ -17,7 +17,7 @@ const OperatorIcon = (props) => {
                                 <View style={{flexDirection:'row',alignItems:'center'}}>
 
                               
-                                <Text style={{color:'#ffa534',fontWeight:'bold'}}>4.3 </Text>
+                                <Text style={{color:'#ffa534',fontWeight:'bold'}}>{props.rating}</Text>
                                 <Rating
                                     readonly={true}
                                     ratingColor='red'

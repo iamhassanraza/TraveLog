@@ -56,7 +56,7 @@ class OperatorCard extends React.Component{
                 <OperatorIcon 
                     style={{marginLeft: '5%',marginBottom:'2%'}} 
                     name={this.props.name} 
-                    rating={this.props.rating} 
+                    rating={4} 
                     verified={this.props.verified}
                 />
                 <View style={{marginLeft: '5%', marginTop: '1%'}}>
