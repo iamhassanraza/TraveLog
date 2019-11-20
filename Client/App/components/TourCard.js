@@ -31,7 +31,7 @@ class TourCard extends React.Component {
               this.setState({
                data : responseJson
               })
-            }).catch(err=>console.log(err))
+            }).catch(err=>console.log('error hai',err))
     }
 
     //     fetchimage = async ()=>{

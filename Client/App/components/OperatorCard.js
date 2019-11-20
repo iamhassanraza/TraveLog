@@ -28,7 +28,6 @@ class OperatorCard extends React.Component{
             return res.json()
         })
         .then(resJson => {
-            console.log(resJson)
             this.setState({
                 cardData: resJson
             })
