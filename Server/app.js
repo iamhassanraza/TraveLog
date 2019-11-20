@@ -18,6 +18,7 @@ const con = mysql.createConnection({
 
 
 
+  app.use(express.static('public'))
 
   app.use(bodyParser.json()); 
 

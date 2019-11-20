@@ -19,7 +19,7 @@ export default class Home extends Component {
 
 
     componentDidMount(){
-        fetch("http://192.168.100.15:3001/tours")
+        fetch("http://192.168.100.25:3001/tours")
             .then(response => {
                 return response.json()})
             .then((responseJson)=> {
@@ -31,7 +31,7 @@ export default class Home extends Component {
 
 
     render() {
-            console.log(this.state.data)
+    
         const operators = [1,2]
         const operatorData = [
             {
@@ -64,36 +64,6 @@ export default class Home extends Component {
         ]
 
         const DATA = [
-           {
-               price:300,
-               title:'Hunza',
-               daysLeft:2,
-               speciality:'Girls',
-               seatsLeft:10,
-               startDate:'9 oct',
-               endDate:'20 oct',
-               OperatorCard:{name:"Nomad's Adventure",image,rating:3.4,verified:true}
-           },
-           {
-            price:300,
-            daysLeft:2,
-            title:'Kashmir',
-            speciality:'Girls',
-            seatsLeft:10,
-            startDate:'9 oct',
-            endDate:'20 oct',
-            OperatorCard:{name:'Greenland  tours',image,rating:3.4,verified:true}
-        },
-        {
-            price:300,
-            daysLeft:2,
-            speciality:'Girls',
-            seatsLeft:10,
-            title:'China Border',
-            startDate:'9 oct',
-            endDate:'20 oct',
-            OperatorCard:{name:'Greenland Travel ',image,rating:3.4,verified:true}
-        },
         {
             price:300,
             daysLeft:2,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text , StyleSheet,ImageBackground, Dimensions,Image,TouchableWithoutFeedback} from 'react-native'
+import { View, Text , StyleSheet,ImageBackground, Dimensions,Image,TouchableWithoutFeedback,TouchableHighlight} from 'react-native'
 import  { ThemeColor } from '../assets/Colors/Colors'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -7,30 +7,55 @@ import image from "../assets/images/7.jpg"
 import HeaderImage from './HeaderImage';
 import DateIcon from 'react-native-vector-icons/Fontisto';
 import SpecialityIcon from 'react-native-vector-icons/SimpleLineIcons';
+import LoadingIndicator from '../components/LoadingIndicator'
 
 import SeatsLeftIcon from 'react-native-vector-icons/MaterialIcons';
 
 import IconWithText from './IconAndText'
+// import IconWithText from './IconWithText'
 import OperatorIcon from './OperatorIcon';
 
 class TourCard extends React.Component {
 
     state = {
+        data:undefined,
         saved:false
     }
 
 
+    componentDidMount(){
+        fetch("http://192.168.100.25:3001/tours/card/1")
+            .then(response => {
+                return response.json()})
+            .then((responseJson)=> {
+              this.setState({
+               data : responseJson
+              })
+            }).catch(err=>console.log(err))
+    }
+
+
+
+
+
     render() {
+        if(this.state.data)
+        {
+        const date = new Date(this.state.data[0].date_of_departure)
+        console.log('=========== new date ============ ', date.getTime())
+            const path = '1.jpg'
+            
         return (
-            <TouchableWithoutFeedback onPress={this.props.onPress}>
+            <TouchableHighlight onPress={this.props.onPress}>
+                <View>
             <View style={[styles.Container,this.props.style]} >
-         <HeaderImage image={image} tag="5 Days Left" price={200}></HeaderImage>
+         <HeaderImage image={{uri:'http://192.168.100.25:3001/images/3.jpg'}} tag="5 Days Left" price={200}></HeaderImage>
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
-                        <Text style={{color:'black',fontSize:20,fontWeight:'bold',marginBottom:'3%'}}>{this.props.title} </Text>
-                        <IconWithText name="calendar-check" text={`From: ${this.props.startDate} to ${this.props.endDate}`} textstyle={styles.TourCardDate}></IconWithText>
-                        <IconWithText name="account-supervisor" text={`Speciality: ${this.props.speciality}`} textstyle={styles.TourCardDate}></IconWithText>
+                        <Text style={{color:'black',fontSize:20,fontWeight:'bold',marginBottom:'3%'}}>{this.state.data[0].title} </Text>
+                        <IconWithText name="calendar-check" text={`From: ${this.state.data[0].date_of_departure} to ${this.state.data[0].end_date}`} textstyle={styles.TourCardDate}></IconWithText>
+                        <IconWithText name="account-supervisor" text={`Speciality: ${this.state.data[0].speciality}`} textstyle={styles.TourCardDate}></IconWithText>
                         <IconWithText name='seat-recline-normal' text={`Seats Left: ${this.props.seatsLeft}`} textstyle={styles.TourCardDate}></IconWithText>
                         
                 </View>
@@ -38,7 +63,7 @@ class TourCard extends React.Component {
                     {/* Save icon */}
 
                 <View style={{flex:1,alignItems:'center',paddingTop:'2%'}}>
-
+{/* 
                   <TouchableWithoutFeedback  onPress={()=>{
                     this.setState((prevState) => ({
                         saved: !prevState.saved
@@ -52,7 +77,7 @@ class TourCard extends React.Component {
                 color={ThemeColor} />
                 <Text style={{marginTop:-5,color:'grey', fontSize: 13,fontWeight:'bold'}}>{this.state.saved ? 'saved' : 'save'}</Text>
                 </View>
-                </TouchableWithoutFeedback>  
+                </TouchableWithoutFeedback>   */}
                 </View>
         </View>
 
@@ -63,8 +88,20 @@ class TourCard extends React.Component {
       
     
     </View> 
-    </TouchableWithoutFeedback>
+    </View>
+    </TouchableHighlight>
         )
+            }
+       else{
+           return(
+            <View style={{width:Dimensions.get('window').width/1.4,height:190,  borderColor:'#8b8e8f',backgroundColor:'white',marginRight:10,justifyContent:'center',alignContent:'center'}} >
+           <LoadingIndicator></LoadingIndicator>
+           </View>
+           
+           )
+       }     
+
+
     }
 }
 

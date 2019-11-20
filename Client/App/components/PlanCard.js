@@ -30,7 +30,7 @@ export default class PlanCard extends Component {
     
 
     render() {  
-        console.log(this.state.plan)
+      
         return (
             <View>
             <Text style={{fontSize:20,fontWeight:'bold'}}>Plan</Text>
