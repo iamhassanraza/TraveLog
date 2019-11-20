@@ -40,7 +40,7 @@ class OperatorCard extends React.Component{
         return (
             <>  
                 <View style={[styles.Container, this.props.style]}>
-                    {this.state.cardData? <View>
+                    {this.state.cardData? <View style={{paddingBottom: '2%'}}>
                         <ImageBackground source={require(`../assets/images/5.jpg`)} style={{height: 100}}>
 
                         </ImageBackground>
@@ -60,15 +60,15 @@ class OperatorCard extends React.Component{
                             </View>
                         </View>
                         <OperatorIcon 
-                            style={{marginLeft: '5%',marginBottom:'2%'}} 
+                            style={{marginLeft: '5%'}} 
                             name={this.state.cardData[0].name} 
                             rating={this.state.cardData[0].numeric_rating} 
-                            verified={this.props.verified}
+                            verified={this.state.cardData[0].is_verified}
                         />
                         <View style={{marginLeft: '5%', marginTop: '1%'}}>
-                            <IconWithText name='phone' text={this.state.cardData[0].phone} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
-                            <IconWithText name='email' text={this.state.cardData[0].email} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
-                            <IconWithText name='map-marker' text={this.state.cardData[0].street_address} iconstyle={{}} textstyle={{marginLeft: '2%'}}></IconWithText>
+                            <IconWithText name='phone' text={this.state.cardData[0].phone} iconstyle={{}} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
+                            <IconWithText name='email' text={this.state.cardData[0].email} iconstyle={{}} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
+                            <IconWithText name='map-marker' text={this.state.cardData[0].street_address} iconstyle={{}} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
                         </View> 
                     </View> : <LoadingIndicator></LoadingIndicator> }
                 </View>
@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get("window").width/1.4 ,
         borderBottomEndRadius:5,
         borderBottomLeftRadius:5 ,
-        backgroundColor:'white'
+        backgroundColor:'white',
+        paddingBottom: '5%'
 
     },
     ImageContainer:{
