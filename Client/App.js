@@ -22,7 +22,7 @@ const RootStack = createStackNavigator({
   Filters
 },
 {
-  initialRouteName:'Home',
+  initialRouteName:'DestinationDetails',
 
   defaultNavigationOptions: {
     header:null,

@@ -5,7 +5,7 @@ import  { ThemeColor } from '../assets/Colors/Colors';
 import LoadingIndicator from './LoadingIndicator';
 
 
-// Props : destinationImage, destinationName
+// Props : id, onpress
 
 class DestinationCard extends React.Component{
 
