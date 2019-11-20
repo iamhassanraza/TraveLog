@@ -62,6 +62,7 @@ exports.operatorCard = (req, res, next) => {
 
     con.query(sqlQuery,(err, result) => {
         if(!err) {
+            
             res.status(200).send(result)
             console.log('operator')
         }

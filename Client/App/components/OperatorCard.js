@@ -3,7 +3,7 @@ import React from 'react';
 import {View, Text, ImageBackground, StyleSheet, Image, Dimensions} from 'react-native';
 import image from '../assets/images/3.jpg';
 import logo from '../assets/images/1.jpg';
-import  { ThemeColor } from '../assets/Colors/Colors';
+import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
 import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PhoneIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -41,13 +41,14 @@ class OperatorCard extends React.Component{
             <>  
                 <View style={[styles.Container, this.props.style]}>
                     {this.state.cardData? <View style={{paddingBottom: '2%'}}>
-                        <ImageBackground source={require(`../assets/images/5.jpg`)} style={{height: 100}}>
+                        <ImageBackground source={{uri:`http://192.168.100.15:3001/images/${this.state.cardData[0].cover}`}} style={{height: 100}}>
 
                         </ImageBackground>
                         <View style={{flexDirection: 'row'}}>
                             <View style={{marginLeft: '5%', height: 80, width: '30%', marginTop: -30}}>
-                                <Image source={logo} style={{height: 80, width: 80,borderColor: 'white', borderWidth: 2, borderRadius: 50}}>
-
+                                <Image 
+                                    source={{uri:`http://192.168.100.15:3001/images/${this.state.cardData[0].dp}`}} 
+                                    style={{height: 80, width: 80,borderColor: 'white', borderWidth: 2, borderRadius: 50}}>
                                 </Image>
                             </View>
                             <View style={{height: 50, width: '65%', justifyContent: 'center', alignItems: 'center'}}>
@@ -66,9 +67,24 @@ class OperatorCard extends React.Component{
                             verified={this.state.cardData[0].is_verified}
                         />
                         <View style={{marginLeft: '5%', marginTop: '1%'}}>
-                            <IconWithText name='phone' text={this.state.cardData[0].phone} iconstyle={{}} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
-                            <IconWithText name='email' text={this.state.cardData[0].email} iconstyle={{}} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
-                            <IconWithText name='map-marker' text={this.state.cardData[0].street_address} iconstyle={{}} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
+                            <IconWithText 
+                                name='phone' 
+                                text={this.state.cardData[0].phone} 
+                                iconstyle={{}} 
+                                textstyle={{marginLeft: '2%', marginRight: '2%'}}
+                            />    
+                            <IconWithText 
+                                name='email' 
+                                text={this.state.cardData[0].email} 
+                                iconstyle={{}} 
+                                textstyle={{marginLeft: '2%', marginRight: '2%'}}
+                            />
+                            <IconWithText 
+                                name='map-marker' 
+                                text={this.state.cardData[0].street_address} 
+                                iconstyle={{}} 
+                                textstyle={{marginLeft: '2%', marginRight: '2%'}}
+                            />
                         </View> 
                     </View> : <LoadingIndicator></LoadingIndicator> }
                 </View>
