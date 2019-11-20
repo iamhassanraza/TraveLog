@@ -45,7 +45,7 @@ class OperatorCard extends React.Component{
                         </ImageBackground>
                         <View style={{flexDirection: 'row'}}>
                             <View style={{marginLeft: '5%', height: 80, width: '30%', marginTop: -30}}>
-                                <Image 
+                                <Image
                                     source={{uri:`http://192.168.100.15:3001/images/${this.state.cardData[0].dp}`}} 
                                     style={{height: 80, width: 80,borderColor: 'white', borderWidth: 2, borderRadius: 50}}>
                                 </Image>
