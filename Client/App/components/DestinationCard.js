@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ImageBackground, Button , Image,Dimensions, TouchableWithoutFeedback} from 'react-native';
-import image from "../assets/images/2.jpg";
+import { Text, View, ImageBackground, Button ,TouchableHighlight ,Image,Dimensions, TouchableWithoutFeedback} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import  { ThemeColor } from '../assets/Colors/Colors';
+import LoadingIndicator from './LoadingIndicator';
 
 
-// Props : destinationImage, destinationName
+// Props : id, onpress
 
 class DestinationCard extends React.Component{
 
     state = {
+        data:undefined,
         saved:false
     } 
+
+    componentDidMount(){
+        fetch(`http://192.168.100.13:3001/destination/card/${this.props.id}`)
+            .then(response => {
+                return response.json()})
+            .then((responseJson)=> {
+              this.setState({
+               data : responseJson
+              })
+            }).catch(err=>console.log(err))
+    }
+
+
     render() {
+        if(this.state.data){
         return (
-           
+            <TouchableHighlight onPress={this.props.onPress}>
             <View style={{
                         height:Dimensions.get('window').height/2.8,
                         width:Dimensions.get('window').width/2.6,
@@ -24,7 +39,7 @@ class DestinationCard extends React.Component{
             }}>
                 <View style={{flex:7}}>
                     <Image
-                     source={this.props.destinationImage}
+                     source={{uri:`http://192.168.100.13:3001/images/${this.state.data[0].image_path}`}}
                      style={{width:"100%",
                             height:"99%" ,
                             borderTopLeftRadius:6, 
@@ -42,7 +57,7 @@ class DestinationCard extends React.Component{
                         <Text style={{
                             
                             fontSize:16
-                        }}>{this.props.destinationName} </Text>
+                        }}>{this.state.data[0].name} </Text>
                         </View>
                         <View style={{flex:2}}>
                         
@@ -62,7 +77,12 @@ class DestinationCard extends React.Component{
                     </View>
                 </View>                
             </View>
-        );
+            </TouchableHighlight>
+        )
+    }
+    else {
+        return( <LoadingIndicator></LoadingIndicator> )
+    }
     }
 }
 

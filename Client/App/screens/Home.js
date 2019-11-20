@@ -148,7 +148,9 @@ export default class Home extends Component {
                             keyExtractor={item => item.OperatorCard.name}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
-                            <DestinationCard destinationName={item.OperatorCard.name} destinationImage={image}   />
+                            <DestinationCard 
+                            id={2}
+                            onPress = {()=>this.props.navigation.navigate('DestinationDetails')} />
                             }
                         />
                 </FlatListContainer>
