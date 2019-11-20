@@ -42,8 +42,9 @@ class TourCard extends React.Component {
         if(this.state.data)
         {
         const start_Date = new Date(this.state.data[0].date_of_departure)
-        const end_date = 
-        console.log('=========== new date ============ ', start_Date.getTime())
+        const end_date = new Date(this.state.data[0].end_date)
+
+        const duration = end_date.getTime() - start_Date.getTime() / (1000 * 3600 * 24)
          
             
         return (
