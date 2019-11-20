@@ -50,7 +50,7 @@ exports.getAttractionsCard = (req, res, next) => {
 
 exports.getDestinationCard = (req, res, next) => {
   var id = req.params.id;
-  var sqlQuery = `SELECT city.name , image.image_path from destination INNER JOIN city ON ( destination.city_id = city.city_id ) INNER JOIN image ON  (image.category_id = (SELECT category_id FROM category WHERE name = 'destination') AND image.image_type_id = 1) WHERE destination.destination_id =${id} `;
+  var sqlQuery = `SELECT city.name , image.image_path from destination INNER JOIN city ON ( destination.city_id = city.city_id ) INNER JOIN image ON  (image.category_id = (SELECT category_id FROM category WHERE name = 'destination') AND image.image_type_id = 1 AND image.reference_id=${id}) WHERE destination.destination_id =${id} `;
   console.log("arha isme");
 
   con.query(sqlQuery, (err, result) => {
