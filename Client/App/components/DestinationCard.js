@@ -5,7 +5,7 @@ import  { ThemeColor } from '../assets/Colors/Colors';
 import LoadingIndicator from './LoadingIndicator';
 
 
-// Props : destinationImage, destinationName
+// Props : id, onpress
 
 class DestinationCard extends React.Component{
 
@@ -28,7 +28,6 @@ class DestinationCard extends React.Component{
 
     render() {
         if(this.state.data){
-        console.log("dest card",this.state.data[0].name);
         return (
             <TouchableHighlight onPress={this.props.onPress}>
             <View style={{

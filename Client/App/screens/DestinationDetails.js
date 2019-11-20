@@ -22,6 +22,7 @@ import Reviews from '../components/Review';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FlatListContainer from '../components/FlatListContainer';
 import {Rating} from 'react-native-elements';
+import LoadingIndicator from '../components/LoadingIndicator';
 
 const overview =
   'The six-month tourist  season at Fairy Meadows starts in April and continues until the end of September. Tourists lodge at the camping site spread over 800 hectares (2,000 acres), known as .[2] The site of Fairy Meadows, though partially developed, generates about PKR 17 million revenue from tourism, mainly by providing food, transportation and accommodation services.[9] A project by Shangrila Resorts, the pioneers of tourism development in Gilgit Baltistan, will establish an eco-friendly resort. The road to Fairy Meadows was built by Brigadier M. Aslam Khan (M.C, H.J, F.K), First Commander Gilgit Scouts, which today employs the locals. The local community stopped the extraction of timber to conserve the forest and promote tourism in the area. The main attraction of this place other than the meadows itself is the view of Nanga Parbat Mountain. Tourists usually hike to the base camp of the mountain from Fairy Meadows The six-month tourist season at Fairy Meadows starts in April and continues until the end of September. Tourists lodge at the camping site spread over 800 hectares (2,000 acres), known as .[2] The site of Fairy Meadows, though partially developed, generates about PKR 17 million revenue from tourism, mainly by providing food, transportation and accommodation services.[9] A project by Shangrila Resorts, the pioneers of tourism development in Gilgit Baltistan, will establish an eco-friendly resort. The road to Fairy Meadows was built by Brigadier M. Aslam Khan (M.C, H.J, F.K), First Commander Gilgit Scouts, which today employs the locals. The local community stopped the extraction of timber to conserve the forest and promote tourism in the area. The main attraction of this place other than the meadows itself is the view of Nanga Parbat Mountain. Tourists usually hike to the base camp of the mountain from Fairy Meadows';
@@ -81,15 +82,34 @@ const DATA = [
 
 export default class DestinationDetails extends Component {
   state = {
+
+    data:undefined,
     followed: false,
     visited: false,
-    rated: false,
+    rated: false
+
   };
+
+
+  componentDidMount(){
+    fetch(`http://192.168.100.13:3001/destination/3`)
+        .then(response => {
+            return response.json()})
+        .then((responseJson)=> {
+          this.setState({
+           data : responseJson
+          })
+        }).catch(err=>console.log(err))
+}
+
+
+
+
 
   renderTop = () => {
     return (
       <ImageBackground
-        source={image}
+        source={{uri:`http://192.168.100.13:3001/images/${this.state.data[0].image_path}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
@@ -103,7 +123,7 @@ export default class DestinationDetails extends Component {
           }}>
           <Text style={{fontSize: 32, color: 'white', fontWeight: 'bold'}}>
             {' '}
-            {'Fairy Meadows'.toUpperCase()}{' '}
+            {this.state.data[0].name.toUpperCase()}{' '}
           </Text>
 
           <View
@@ -132,76 +152,76 @@ export default class DestinationDetails extends Component {
     );
   };
 
-  renderSelections = () => {
-    return (
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          padding: 10,
-          borderBottomWidth: 0.5,
-          borderBottomColor: ThemeColor,
-        }}>
-        <IconWithText
-          title={'Wishlist'}
-          icon="heart-outline"
-          style={{
-            borderWidth: 1,
-            padding: 3,
-            borderColor: ThemeColor,
-            backgroundColor: this.state.followed ? ThemeColor : 'white',
-          }}
-          textstyle={{color: this.state.followed ? 'white' : ThemeColor}}
-          iconstyle={{color: this.state.followed ? 'white' : ThemeColor}}
-          onPress={() => {
-            this.setState(prevState => ({
-              followed: !prevState.followed,
-            }));
-          }}></IconWithText>
+  // renderSelections = () => {
+  //   return (
+  //     <View
+  //       style={{
+  //         flexDirection: 'row',
+  //         justifyContent: 'space-around',
+  //         padding: 10,
+  //         borderBottomWidth: 0.5,
+  //         borderBottomColor: ThemeColor,
+  //       }}>
+  //       <IconWithText
+  //         title={'Wishlist'}
+  //         icon="heart-outline"
+  //         style={{
+  //           borderWidth: 1,
+  //           padding: 3,
+  //           borderColor: ThemeColor,
+  //           backgroundColor: this.state.followed ? ThemeColor : 'white',
+  //         }}
+  //         textstyle={{color: this.state.followed ? 'white' : ThemeColor}}
+  //         iconstyle={{color: this.state.followed ? 'white' : ThemeColor}}
+  //         onPress={() => {
+  //           this.setState(prevState => ({
+  //             followed: !prevState.followed,
+  //           }));
+  //         }}></IconWithText>
 
-        <IconWithText
-          title={'VISITED'}
-          icon="clipboard-check-outline"
-          style={{
-            borderWidth: 1,
-            padding: 3,
-            borderColor: ThemeColor,
-            backgroundColor: this.state.visited ? ThemeColor : 'white',
-          }}
-          textstyle={{color: this.state.visited ? 'white' : ThemeColor}}
-          iconstyle={{color: this.state.visited ? 'white' : ThemeColor}}
-          onPress={() => {
-            this.setState(prevState => ({
-              visited: !prevState.visited,
-            }));
-          }}></IconWithText>
+  //       <IconWithText
+  //         title={'VISITED'}
+  //         icon="clipboard-check-outline"
+  //         style={{
+  //           borderWidth: 1,
+  //           padding: 3,
+  //           borderColor: ThemeColor,
+  //           backgroundColor: this.state.visited ? ThemeColor : 'white',
+  //         }}
+  //         textstyle={{color: this.state.visited ? 'white' : ThemeColor}}
+  //         iconstyle={{color: this.state.visited ? 'white' : ThemeColor}}
+  //         onPress={() => {
+  //           this.setState(prevState => ({
+  //             visited: !prevState.visited,
+  //           }));
+  //         }}></IconWithText>
 
-        <IconWithText
-          title={'RATE'}
-          icon="star-outline"
-          style={{
-            borderWidth: 1,
-            padding: 3,
-            borderColor: ThemeColor,
-            backgroundColor: this.state.rated ? ThemeColor : 'white',
-          }}
-          textstyle={{color: this.state.rated ? 'white' : ThemeColor}}
-          iconstyle={{color: this.state.rated ? 'white' : ThemeColor}}
-          onPress={() => {
-            this.setState(prevState => ({
-              rated: !prevState.rated,
-            }));
-          }}></IconWithText>
-      </View>
-    );
-  };
+  //       <IconWithText
+  //         title={'RATE'}
+  //         icon="star-outline"
+  //         style={{
+  //           borderWidth: 1,
+  //           padding: 3,
+  //           borderColor: ThemeColor,
+  //           backgroundColor: this.state.rated ? ThemeColor : 'white',
+  //         }}
+  //         textstyle={{color: this.state.rated ? 'white' : ThemeColor}}
+  //         iconstyle={{color: this.state.rated ? 'white' : ThemeColor}}
+  //         onPress={() => {
+  //           this.setState(prevState => ({
+  //             rated: !prevState.rated,
+  //           }));
+  //         }}></IconWithText>
+  //     </View>
+  //   );
+  // };
 
   renderDetails = () => {
     return (
       <View style={{marginLeft: '4%'}}>
         <IconWithText
-          title={'Best Time To Visit'}
-          subtitle={' : June, July'}
+          title={'Best Time To Visit : '}
+          subtitle={this.state.data[0].recommended_season}
           linear={'true'}
           icon={'calendar-month-outline'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -209,8 +229,8 @@ export default class DestinationDetails extends Component {
           textstyle={{fontSize: 16}}></IconWithText>
 
         <IconWithText
-          title={'City'}
-          subtitle={' : Gilgit'}
+          title={'City : '}
+          subtitle={this.state.data[0].name}
           linear={'true'}
           icon={'map-marker-radius'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -243,7 +263,7 @@ export default class DestinationDetails extends Component {
             color: ThemeGrey,
           }}
           limit={350}
-          text={overview}></TextCutter>
+          text={this.state.data[0].description}></TextCutter>
       </View>
     );
   };
@@ -258,8 +278,8 @@ export default class DestinationDetails extends Component {
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <DestinationCard
-              destinationName={item.OperatorCard.name}
-              destinationImage={image5}
+            id={2}
+            onPress = {()=>this.props.navigation.navigate('DestinationDetails')}
             />
           )}
         />
@@ -342,10 +362,11 @@ export default class DestinationDetails extends Component {
 
 
   render() {
+    if(this.state.data){
     return (
       <ScrollView>
         {this.renderTop()}
-        {this.renderSelections()}
+        {/* {this.renderSelections()} */}
         {this.renderDetails()}
         {this.renderOverview()}
         {this.renderNearbyAttractions()}
@@ -353,6 +374,10 @@ export default class DestinationDetails extends Component {
         {this.renderRelatedTours()}
         {this.renderReviews()}
       </ScrollView>
-    );
+    )
+  }
+    else {
+      return( <LoadingIndicator></LoadingIndicator> )
+  }
   }
 }
