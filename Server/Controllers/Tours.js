@@ -56,12 +56,27 @@ exports.getAllTours = (req,res)=>{
 
 }
 
+exports.getTourById = (req,res) => {
 
+    var tour_id = (req.params.tourID);
+    
+    var sqlQuery = `SELECT tour_id, operator_id, title, speciality, last_date_of_reg, date_of_departure, overview, price, end_date, city_id FROM tours WHERE tour_id = ${tour_id}`
+    con.query(sqlQuery,(err,result)=> {
+        if(!err){
+       
+        res.status(200).send(result);
+        console.log(result); }
+        else 
+        console.log(err);      
+    })
+
+
+}
 
 
 exports.getTourPlan = (req,res)=> {
 
-    const tour_id = (req.params.tourID);
+    var tour_id = (req.params.tourID);
     
     var sqlQuery = `SELECT plan.plan_id, plan.tour_id,plan.date, plan.time, plan.title, plan.description, attractions.name FROM plan INNER JOIN attractions ON plan.attraction_id = attractions.attraction_id WHERE tour_id = ${tour_id} ORDER BY plan.date`
 
@@ -84,9 +99,9 @@ exports.getTourCard = (req,res) =>{
 
     const tour_id = (req.params.tourID);
     
-    var sqlQuery = `SELECT tours.tour_id, tours.operator_id,tours.title,tours.speciality,tours.last_date_of_reg,
+    var sqlQuery = `SELECT tours.tour_id, tours.operator_id,tours.title,tours.price,tours.speciality,tours.last_date_of_reg,
     tours.date_of_departure,tours.end_date,operator.name ,rating_review.numeric_rating,category.category_id,
-    tourimage.image_path AS tourcover,operatorimage.image_path AS operatordp FROM tours INNER JOIN operator ON 
+    tourimage.image_path AS tourcover,operatorimage.image_path AS operatordp, operator.is_verified FROM tours INNER JOIN operator ON 
     operator.operator_id = tours.operator_id INNER JOIN category ON category.name = 'tour' INNER JOIN rating_review
      ON rating_review.reference_id = tours.operator_id AND rating_review.category_id = category.category_id INNER JOIN 
      image tourimage ON (tourimage.category_id = (SELECT category.category_id FROM category WHERE category.name = 'tour')
