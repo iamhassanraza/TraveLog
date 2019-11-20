@@ -19,7 +19,7 @@ export default class Home extends Component {
 
 
     componentDidMount(){
-        fetch("http://192.168.100.15:3001/tours")
+        fetch("http://192.168.100.25:3001/tours")
             .then(response => {
                 return response.json()})
             .then((responseJson)=> {
@@ -31,7 +31,7 @@ export default class Home extends Component {
 
 
     render() {
-            console.log(this.state.data)
+    
         const operators = [1,2]
         const operatorData = [
             {
