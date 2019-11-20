@@ -28,7 +28,6 @@ class DestinationCard extends React.Component{
 
     render() {
         if(this.state.data){
-        console.log("dest card",this.state.data[0].name);
         return (
             <TouchableHighlight onPress={this.props.onPress}>
             <View style={{

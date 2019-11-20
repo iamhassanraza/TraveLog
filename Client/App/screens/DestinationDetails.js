@@ -92,7 +92,7 @@ export default class DestinationDetails extends Component {
 
 
   componentDidMount(){
-    fetch(`http://192.168.100.13:3001/destination/1`)
+    fetch(`http://192.168.100.13:3001/destination/3`)
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -363,7 +363,6 @@ export default class DestinationDetails extends Component {
 
   render() {
     if(this.state.data){
-      console.log("dest card",this.state.data[0]);
     return (
       <ScrollView>
         {this.renderTop()}
