@@ -41,15 +41,16 @@ class TourCard extends React.Component {
     render() {
         if(this.state.data)
         {
-        const date = new Date(this.state.data[0].date_of_departure)
-        console.log('=========== new date ============ ', date.getTime())
-            const path = '1.jpg'
+        const start_Date = new Date(this.state.data[0].date_of_departure)
+        const end_date = 
+        console.log('=========== new date ============ ', start_Date.getTime())
+         
             
         return (
             <TouchableHighlight onPress={this.props.onPress}>
                 <View>
             <View style={[styles.Container,this.props.style]} >
-         <HeaderImage image={{uri:'http://192.168.100.25:3001/images/3.jpg'}} tag="5 Days Left" price={200}></HeaderImage>
+         <HeaderImage image={{uri:`http://192.168.100.25:3001/images/${this.state.data[0].tourcover}`}} tag="5 Days Left" price={200}></HeaderImage>
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
