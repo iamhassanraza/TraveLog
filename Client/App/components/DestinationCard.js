@@ -70,7 +70,6 @@ class DestinationCard extends React.Component{
                              <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
                                 size={23} 
                                 color={ThemeColor}
-                               
                                 />
                     
                         </TouchableWithoutFeedback>

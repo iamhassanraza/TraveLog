@@ -278,7 +278,7 @@ export default class DestinationDetails extends Component {
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <DestinationCard
-            id={2}
+            id={3}
             onPress = {()=>this.props.navigation.navigate('DestinationDetails')}
             />
           )}
