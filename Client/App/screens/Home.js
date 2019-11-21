@@ -143,7 +143,7 @@ export default class Home extends Component {
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard 
-                            id={2}
+                            id={4}
                             onPress = {()=>this.props.navigation.navigate('DestinationDetails')} />
                             }
                         />
