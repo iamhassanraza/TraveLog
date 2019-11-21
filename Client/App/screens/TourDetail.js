@@ -13,6 +13,7 @@ import image from '../assets/images/4.jpg';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ThemeColor , BackgroundColor , BorderColor} from '../assets/Colors/Colors';
 const TextCutter = lazy(() => import('../components/TextCutter'));
+import LoadingIndicator from '../components/LoadingIndicator'
 
 
 import OperatorCard from '../components/TourDetailComponents/OperatorCard'
@@ -29,74 +30,36 @@ import FlatListContainer from '../components/FlatListContainer'
 const TourCard = lazy(()=> import('../components/TourCard') )
 const PlanCard = lazy(() => import('../components/PlanCard'));
 
-const overview =
-      'Gilgit-Baltistan formerly known as the Northern Areas,is the northernmost territory administered by Pakistan.It is part of the larger Kashmir region, which is the subject of a territorial dispute between India, Pakistan, and China. It borders Azad Kashmir to the south, the province of Khyber Pakhtunkhwa to the west, the Wakhan Corridor of Afghanistan to the north, the Xinjiang region of China, to the east and northeast, and the Indian-administered state of Jammu and Kashmir to the southeast , Gilgit-Baltistan is part of the greater Kashmir region, which is the subject of a long-running conflict between Pakistan and India. The territory shares a border with Azad Kashmir, together with which it is referred to by the United Nations and other international organisations as Pakistan administered Kashmir.[1][note 1] Gilgit-Baltistan is six times the size of Azad Kashmir.[13] The territory also borders Indian-administered Jammu and Kashmir state to the south and is separated from it by the Line of Control, the de facto border between India and Pakistan.';
-    const {width, height} = Dimensions.get('window');
+  const {width, height} = Dimensions.get('window');
 
-const DATA = [
-  {
-      price:300,
-      title:'Hunza',
-      daysLeft:2,
-      speciality:'Girls',
-      seatsLeft:10,
-      startDate:'9 oct',
-      endDate:'20 oct',
-      OperatorCard:{name:"Nomad's Adventure",image,rating:3.4,verified:true}
-  },
-  {
-   price:300,
-   daysLeft:2,
-   title:'Kashmir',
-   speciality:'Girls',
-   seatsLeft:10,
-   startDate:'9 oct',
-   endDate:'20 oct',
-   OperatorCard:{name:'Greenland  tours',image,rating:3.4,verified:true}
-},
-{
-   price:300,
-   daysLeft:2,
-   speciality:'Girls',
-   seatsLeft:10,
-   title:'China Border',
-   startDate:'9 oct',
-   endDate:'20 oct',
-   OperatorCard:{name:'Greenland Travel ',image,rating:3.4,verified:true}
-},
-{
-   price:300,
-   daysLeft:2,
-   speciality:'Girls',
-   seatsLeft:10,
-   title:'Turkey',
-   startDate:'9 oct',
-   endDate:'20 oct',
-   OperatorCard:{name:'Greenland and tours',image,rating:3.4,verified:true}
-},
-{
-   price:300,
-   daysLeft:2,
-   speciality:'Girls',
-   seatsLeft:10,
-   title:'Skardu',
-   startDate:'9 oct',
-   endDate:'20 oct',
-   OperatorCard:{name:'GreenTravel and tours',image,rating:3.4,verified:true}
-},
- ];
 
 
 export default class TourDetail extends Component {
   state = {
     saved: false,
+    apiData:undefined
   };
 
 
-  renderHeading = ()=>{
+
+  componentDidMount(){
+    fetch("http://192.168.100.25:3001/tours/1")
+        .then(response => {
+            return response.json()})
+        .then((responseJson)=> {
+          this.setState({
+            apiData : responseJson
+          })
+        }).catch(err=>console.log('error hai',err))
+}
+
+
+
+
+  renderHeading = (title)=>{
     return (<View style={{flex:1,flexDirection: 'row', justifyContent: 'space-between'}}>
     <Text style={{fontSize: 25, fontWeight: 'bold',flex:1,marginBottom:10}}>
-      Gilgit Baltistan and hunza and stuff
+      {title ? title :'loading...'}
     </Text>
 
     <Text >
@@ -165,8 +128,8 @@ return (
 )
  }
 
- renderOverview = ()=>{
-   return(<Suspense fallback={()=><Text>loadingg...</Text>}>
+ renderOverview = (overview)=>{
+   return(<Suspense fallback={()=><Text>loadingg..</Text>}>
 
          <TextCutter text={overview} limit={150} style={{lineHeight:22}}></TextCutter>
               
@@ -174,7 +137,8 @@ return (
   )
  }
 
- renderIcons = ()=>{
+ renderIcons = (data)=>{
+   const date_of_departure = new Date(data.date_of_departure)
    return (
     <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:10,flex:1}}>
     <View style={{flexDirection: 'column',flex:1}}>
@@ -182,19 +146,19 @@ return (
        textstyle={{fontSize:14}}
         icon="account-supervisor"
         title="Speciality:"
-        subtitle="Family"></IconWithText>
+        subtitle={data.speciality}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="calendar-check"
         title="Departure:"
-        subtitle="2 October,2019"></IconWithText>
+        subtitle={date_of_departure.getDate() + "-" + (date_of_departure.getMonth() + 1) + "-" + date_of_departure.getFullYear()}></IconWithText>
     </View>
     <View style={{flexDirection: 'column',flex:1}}>
       <IconWithText
         textstyle={{fontSize:14}}
         icon="timer"
         title="Duration"
-        subtitle="11 Days"></IconWithText>
+        subtitle={data.duration}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="seat-recline-normal"
@@ -240,18 +204,19 @@ return (
  }
 
   render() {
-    
+   const data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
+   console.log('in data',data)
     return (
       <ScrollView>
         
         <HeaderImage image={image} style={{height: height / 3}}></HeaderImage>
         <View style={{borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
-        {this.renderHeading()}
-        {this.renderOverview()}
-        {this.renderIcons()}
+        {this.renderHeading(data.title)}
+        {this.renderOverview('overview')}
+        {this.renderIcons({speciality:data.speciality, duration:data.duration, date_of_departure: data.date_of_departure })}
         </View>
-        {/* {this.renderOperatorCard()} */}
-        <OperatorCard></OperatorCard>
+        {this.renderOperatorCard()}
+        {/* <OperatorCard></OperatorCard> */}
         {this.renderPlan()}
         {/* {this.renderTourList()} */}
        

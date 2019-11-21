@@ -60,7 +60,7 @@ exports.getTourById = (req,res) => {
 
     var tour_id = (req.params.tourID);
     
-    var sqlQuery = `SELECT tour_id, operator_id, title, speciality, last_date_of_reg, date_of_departure, overview, price, end_date, city_id FROM tours WHERE tour_id = ${tour_id}`
+    var sqlQuery = `SELECT tours.tour_id, tours.last_date_of_reg, tours.overview,operator.phone as operator_phone,operator.email as operator_email,operator.longitude,operator.latitude FROM tours INNER JOIN operator ON operator.operator_id = tours.operator_id WHERE tour_id = ${tour_id}`
     con.query(sqlQuery,(err,result)=> {
         if(!err){
        
