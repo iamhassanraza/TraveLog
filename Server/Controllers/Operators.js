@@ -68,7 +68,6 @@ exports.operatorCard = (req, res, next) => {
 
     con.query(sqlQuery)
     .then(rows => {
-        
     })
     
 }
