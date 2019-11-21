@@ -115,14 +115,8 @@ export default class Home extends Component {
                     data={DATA}
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item }) => <TourCard style={{marginRight:10}} title={item.title}
-                    price={item.price} 
-                    onPress = {()=>this.props.navigation.navigate('TourDetail')}
-                    daysLeft={item.daysLeft} 
-                    speciality={item.speciality} 
-                    seatsLeft={item.seatsLeft} 
-                    startDate={item.startDate}
-                    endDate={item.endDate}
-                    operator={{name:item.OperatorCard.name,image,rating:3.4,verified:true}}></TourCard>}
+                    // id={item.id}
+                    seatsLeft={item.seatsLeft} ></TourCard>}
                     keyExtractor={item => item.OperatorCard.name}
                     />
                 </FlatListContainer>

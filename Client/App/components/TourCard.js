@@ -8,7 +8,7 @@ import HeaderImage from './HeaderImage';
 import DateIcon from 'react-native-vector-icons/Fontisto';
 import SpecialityIcon from 'react-native-vector-icons/SimpleLineIcons';
 import LoadingIndicator from '../components/LoadingIndicator'
-
+import { withNavigation } from 'react-navigation';
 import SeatsLeftIcon from 'react-native-vector-icons/MaterialIcons';
 
 import IconWithText from './IconAndText'
@@ -56,7 +56,9 @@ class TourCard extends React.Component {
          
             
         return (
-            <TouchableHighlight onPress={this.props.onPress}>
+            <TouchableHighlight onPress={()=>this.props.navigation.navigate('TourDetail', {
+                TourData:{...this.state.data[0],duration:duration}
+            })}>
                 <View>
             <View style={[styles.Container,this.props.style]} >
          <HeaderImage image={{uri:`http://192.168.100.25:3001/images/${this.state.data[0].tourcover}`}} tag="5 Days Left" price={this.state.data[0].price}></HeaderImage>
@@ -115,7 +117,7 @@ class TourCard extends React.Component {
     }
 }
 
-export default TourCard;
+export default withNavigation(TourCard);
 
 const styles = StyleSheet.create({
     Container: {
