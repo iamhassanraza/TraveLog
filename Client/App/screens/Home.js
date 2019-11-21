@@ -18,16 +18,16 @@ export default class Home extends Component {
     } 
 
 
-    componentDidMount(){
-        fetch("http://192.168.100.25:3001/tours")
-            .then(response => {
-                return response.json()})
-            .then((responseJson)=> {
-              this.setState({
-               data : responseJson
-              })
-            }).catch(err=>console.log(err))
-    }
+    // componentDidMount(){
+    //     fetch("http://192.168.100.25:3001/tours")
+    //         .then(response => {
+    //             return response.json()})
+    //         .then((responseJson)=> {
+    //           this.setState({
+    //            data : responseJson
+    //           })
+    //         }).catch(err=>console.log(err))
+    // }
 
 
     render() {
