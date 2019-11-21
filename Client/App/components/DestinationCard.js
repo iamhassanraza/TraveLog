@@ -54,12 +54,11 @@ class DestinationCard extends React.Component{
                 <View>
                     <View style={{flexDirection:"row"}}>
                         <View style={{flex:8}}>
-                        <Text style={{
-                            
+                        <Text style={{ 
                             fontSize:16
                         }}>{this.state.data[0].name} </Text>
                         </View>
-                        <View style={{flex:1.1}}>
+                        <View style={{flex:1.2}}>
                         
                         
                         <TouchableWithoutFeedback onPress={()=>{
@@ -69,9 +68,9 @@ class DestinationCard extends React.Component{
                         }}>
 
                              <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
-                                size={22} 
+                                size={23} 
                                 color={ThemeColor}
-                                style={{ }}
+                               
                                 />
                     
                         </TouchableWithoutFeedback>
