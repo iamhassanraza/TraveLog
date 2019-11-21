@@ -143,8 +143,7 @@ export default class Home extends Component {
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard 
-                            id={4}
-                            onPress = {()=>this.props.navigation.navigate('DestinationDetails')} />
+                            id={4} />
                             }
                         />
                 </FlatListContainer>
