@@ -1,6 +1,6 @@
 import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
-import {View, Text, ImageBackground, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import image from '../assets/images/3.jpg';
 import logo from '../assets/images/1.jpg';
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
@@ -28,6 +28,7 @@ class OperatorCard extends React.Component{
             return res.json()
         })
         .then(resJson => {
+            console.log(resJson)
             this.setState({
                 cardData: resJson
             })
@@ -37,7 +38,7 @@ class OperatorCard extends React.Component{
 
     render() {
         return (
-            <>  
+            <TouchableWithoutFeedback>  
                 <View style={[styles.Container, this.props.style]}>
                     {this.state.cardData? <View style={{paddingBottom: '2%'}}>
                         <ImageBackground source={{uri:`http://192.168.100.15:3001/images/${this.state.cardData[0].cover}`}} style={{height: 100}}>
@@ -54,7 +55,7 @@ class OperatorCard extends React.Component{
                                 <View style={styles.FollowButton}>
                                     <FollowIcon name="user-follow" color='white'/>
                                     <Text style={{color: 'white'}}>
-                                        {this.props.followStatus ? "Unfollow" : "Follow"}
+                                        {this.state.cardData[1] ? "Unfollow" : "Follow"}
                                     </Text>
                                 </View>
                             </View>
@@ -85,9 +86,9 @@ class OperatorCard extends React.Component{
                                 textstyle={{marginLeft: '2%', marginRight: '2%'}}
                             />
                         </View> 
-                    </View> : <LoadingIndicator></LoadingIndicator> }
+                    </View> : <View style={{height: 200, justifyContent: 'center'}}><LoadingIndicator></LoadingIndicator></View> }
                 </View>
-            </>
+            </TouchableWithoutFeedback>
         );
     }
 }
