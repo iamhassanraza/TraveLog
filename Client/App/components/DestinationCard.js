@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ImageBackground, Button ,TouchableHighlight ,Image,Dimensions, TouchableWithoutFeedback} from 'react-native';
+import { Text, View, ImageBackground, Button  ,Image,Dimensions, TouchableWithoutFeedback} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import  { ThemeColor } from '../assets/Colors/Colors';
 import LoadingIndicator from './LoadingIndicator';
@@ -30,7 +30,7 @@ class DestinationCard extends React.Component{
     render() {
         if(this.state.data){
         return (
-            <TouchableHighlight onPress={()=>this.props.navigation.navigate('DestinationDetails', {
+            <TouchableWithoutFeedback onPress={()=>this.props.navigation.push('DestinationDetails', {
                 DestinationData:this.state.data[0]
             })}>
             <View style={{
@@ -80,7 +80,7 @@ class DestinationCard extends React.Component{
                     </View>
                 </View>                
             </View>
-            </TouchableHighlight>
+            </TouchableWithoutFeedback>
         )
     }
     else {

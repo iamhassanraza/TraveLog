@@ -279,10 +279,10 @@ export default class DestinationDetails extends Component {
           renderItem={({item}) => (
             <DestinationCard
             id={3}
-            onPress = {()=>this.props.navigation.navigate('DestinationDetails')}
             />
           )}
         />
+
       </FlatListContainer>
     );
   };
@@ -306,28 +306,14 @@ export default class DestinationDetails extends Component {
     return(
       <FlatListContainer style={{marginLeft: 10}} title="Related Tours">
       <FlatList
-        horizontal
-        data={DATA}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => (
-          <TourCard
-            style={{marginRight: 10}}
-            title={item.title}
-            price={item.price}
-            daysLeft={item.daysLeft}
-            speciality={item.speciality}
-            seatsLeft={item.seatsLeft}
-            startDate={item.startDate}
-            endDate={item.endDate}
-            operator={{
-              name: item.OperatorCard.name,
-              image,
-              rating: 3.4,
-              verified: true,
-            }}></TourCard>
-        )}
-        keyExtractor={item => item.OperatorCard.name}
-      />
+                    horizontal
+                    data={[1,2]}
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
+                    id={item}
+                    seatsLeft={10} ></TourCard>}
+                    keyExtractor={item => item}
+                    />
     </FlatListContainer>
     )
   }
