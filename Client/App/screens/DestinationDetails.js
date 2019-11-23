@@ -279,10 +279,10 @@ export default class DestinationDetails extends Component {
           renderItem={({item}) => (
             <DestinationCard
             id={3}
-            onPress = {()=>this.props.navigation.navigate('DestinationDetails')}
             />
           )}
         />
+
       </FlatListContainer>
     );
   };
@@ -306,28 +306,14 @@ export default class DestinationDetails extends Component {
     return(
       <FlatListContainer style={{marginLeft: 10}} title="Related Tours">
       <FlatList
-        horizontal
-        data={DATA}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => (
-          <TourCard
-            style={{marginRight: 10}}
-            title={item.title}
-            price={item.price}
-            daysLeft={item.daysLeft}
-            speciality={item.speciality}
-            seatsLeft={item.seatsLeft}
-            startDate={item.startDate}
-            endDate={item.endDate}
-            operator={{
-              name: item.OperatorCard.name,
-              image,
-              rating: 3.4,
-              verified: true,
-            }}></TourCard>
-        )}
-        keyExtractor={item => item.OperatorCard.name}
-      />
+                    horizontal
+                    data={[1,2]}
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
+                    id={item}
+                    seatsLeft={10} ></TourCard>}
+                    keyExtractor={item => item}
+                    />
     </FlatListContainer>
     )
   }
@@ -363,22 +349,19 @@ export default class DestinationDetails extends Component {
 
   render() {
     const DestinationData = this.props.navigation.getParam('DestinationData','Got no data from tour card via navigation')
-    if(this.state.data){
+   
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path,DestinationData.name)}
         {/* {this.renderSelections()} */}
-        {this.renderDetails(DestinationData.name)}
-        {this.state.data ? this.renderOverview() : <View style={{padding: 5, paddingBottom: 0}}> <LoadingIndicator></LoadingIndicator> </View>}
+        {this.state.data ? this.renderDetails(DestinationData.name) :  <LoadingIndicator></LoadingIndicator>}
+        {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
         {this.renderNearbyAttractions()}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}
       </ScrollView>
     )
-  }
-    else {
-      return( <LoadingIndicator></LoadingIndicator> )
-  }
+      
   }
 }
