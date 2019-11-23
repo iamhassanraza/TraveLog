@@ -33,62 +33,9 @@ export default class Home extends Component {
     render() {
     
         const operators = [1,2]
-        const operatorData = [
-            {
-                name: "PJP Travel and Tour",
-                verified: true,
-                rating: 5,
-                phone: "0324112342",
-                email: "pjp@gmail.com",
-                address: "Office-304, Anum Empire, shahrah",
-                followStatus: false
-            },
-            {
-                name: "PJP Travel and Tours and advent",
-                verified: true,
-                rating: 5,
-                phone: "0324112342",
-                email: "pjp@gmail.com",
-                address: "Office-304, Anum Empire, shahrah",
-                followStatus: false
-            },
-            {
-                name: "PJP and Tours",
-                verified: true,
-                rating: 5,
-                phone: "0324112342",
-                email: "pjp@gmail.com",
-                address: "Office-304, Anum Empire, shahrah",
-                followStatus: false
-            }
-        ]
+        
 
-        const DATA = [
-        {
-            price:300,
-            daysLeft:2,
-            speciality:'Girls',
-            seatsLeft:10,
-            title:'Turkey',
-            startDate:'9 oct',
-            endDate:'20 oct',
-            OperatorCard:{name:'Greenland and tours',image,rating:3.4,verified:true}
-        },
-        {
-            price:300,
-            daysLeft:2,
-            speciality:'Girls',
-            seatsLeft:10,
-            title:'Skardu',
-            startDate:'9 oct',
-            endDate:'20 oct',
-            OperatorCard:{name:'GreenTravel and tours',image,rating:3.4,verified:true}
-        },
-          ];
-
-
-        return (
-                <ScrollView style={{backgroundColor:'#F0F0F0'}}>
+        return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}>
                     
                     <View style={{height:300}}>
                         <ImageBackground source={image2} style={{width:'100%',height:300}}>
@@ -112,12 +59,12 @@ export default class Home extends Component {
                 <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                     <FlatList
                     horizontal
-                    data={DATA}
+                    data={operators}
                     showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{marginRight:10}} title={item.title}
-                    // id={item.id}
-                    seatsLeft={item.seatsLeft} ></TourCard>}
-                    keyExtractor={item => item.OperatorCard.name}
+                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
+                    id={item}
+                    seatsLeft={10} ></TourCard>}
+                    keyExtractor={item => item}
                     />
                 </FlatListContainer>
                 <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
@@ -138,8 +85,8 @@ export default class Home extends Component {
                 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
                         <FlatList
                             horizontal
-                            data={DATA}
-                            keyExtractor={item => item.OperatorCard.name}
+                            data={operators}
+                            keyExtractor={item => item}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard 

@@ -24,14 +24,14 @@ class TourCard extends React.Component {
 
 
     componentDidMount(){
-        fetch("http://192.168.100.25:3001/tours/card/1")
+        fetch(`http://192.168.100.25:3001/tours/card/${this.props.id}`)
             .then(response => {
                 return response.json()})
             .then((responseJson)=> {
               this.setState({
                data : responseJson
               })
-            }).catch(err=>console.log('error hai',err))
+            }).catch(err=>console.log('tour card me error hai',err))
     }
 
     //     fetchimage = async ()=>{
@@ -49,19 +49,19 @@ class TourCard extends React.Component {
         const end_date = new Date(this.state.data[0].end_date)
         let formatted_start_date = start_Date.getDate() + "-" + (start_Date.getMonth() + 1) + "-" + start_Date.getFullYear()
         let formatted_end_date = end_date.getDate() + "-" + (end_date.getMonth() + 1) + "-" + end_date.getFullYear()
-       
+        
         const duration = (end_date.getTime() - start_Date.getTime()) /(1000 * 3600 * 24)
 
   
          
             
         return (
-            <TouchableHighlight onPress={()=>this.props.navigation.navigate('TourDetail', {
-                TourData:{...this.state.data[0],duration:duration}
+            <TouchableWithoutFeedback onPress={()=>this.props.navigation.push('TourDetail', {
+                TourData:{...this.state.data[0]}
             })}>
                 <View>
             <View style={[styles.Container,this.props.style]} >
-         <HeaderImage image={{uri:`http://192.168.100.25:3001/images/${this.state.data[0].tourcover}`}} tag="5 Days Left" price={this.state.data[0].price}></HeaderImage>
+         <HeaderImage imageName={this.state.data[0].tourcover} tag="5 Days Left" price={this.state.data[0].price}></HeaderImage>
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
@@ -101,7 +101,7 @@ class TourCard extends React.Component {
     
     </View> 
     </View>
-    </TouchableHighlight>
+    </TouchableWithoutFeedback>
         )
             }
        else{

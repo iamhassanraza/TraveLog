@@ -5,30 +5,28 @@ import {
   ScrollView,
   Dimensions,
   FlatList,
-  ActivityIndicator
- 
+ Linking
 } from 'react-native';
 import HeaderImage from '../components/HeaderImage';
-import image from '../assets/images/4.jpg';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ThemeColor , BackgroundColor , BorderColor} from '../assets/Colors/Colors';
-const TextCutter = lazy(() => import('../components/TextCutter'));
 import LoadingIndicator from '../components/LoadingIndicator'
-
+import TextCutter from '../components/TextCutter'
 
 import OperatorCard from '../components/TourDetailComponents/OperatorCard'
 
 import IconWithText from '../components/IconWithText';
 
-
+import TourCard from '../components/TourCard'
 import OperatorIcon from '../components/OperatorIcon'
 
-// import PlanCard from '../components/PlanCard';
+import PlanCard from '../components/PlanCard';
 import FlatListContainer from '../components/FlatListContainer'
 
 
-const TourCard = lazy(()=> import('../components/TourCard') )
-const PlanCard = lazy(() => import('../components/PlanCard'));
+
+// const PlanCard = lazy(() => import('../components/PlanCard'));
 
   const {width, height} = Dimensions.get('window');
 
@@ -50,7 +48,7 @@ export default class TourDetail extends Component {
           this.setState({
             apiData : responseJson
           })
-        }).catch(err=>console.log('error hai',err))
+        }).catch(err=>console.log('tour details me error hai',err))
 }
 
 
@@ -72,19 +70,19 @@ export default class TourDetail extends Component {
   </View>)
   }
 
- renderOperatorCard = ()=>{
+ renderOperatorCard = (Operator)=>{
 return (
   <View style={{borderWidth:0.5,marginTop:10,paddingBottom:10,paddingTop:10,backgroundColor:'white',borderColor:BorderColor}}>
   <Text style={{paddingLeft:10,fontSize:15,marginBottom:10}}> This Tour is operated by:</Text>
   <OperatorIcon
-    name="Nomad's Adventure"
-    avatar={image}
-    rating={4}
-    verified={true}
+    name={Operator.name}
+    avatar={Operator.dp}
+    rating={Operator.rating}
+    verified={Operator.is_verified}
     style={{margin: 10}}></OperatorIcon>
   <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
     <IconWithText
-      onPress={() => Linking.openURL(`tel:${'03002344567'}`)}
+      onPress={() => {this.state.apiData ? Linking.openURL(`tel:${this.state.apiData.operator_phone}`) : Linking.openURL(`tel:${'0020202'}`)}}
       icon="phone"
       title="Call"
       textstyle={{marginLeft: 3}}
@@ -129,11 +127,7 @@ return (
  }
 
  renderOverview = (overview)=>{
-   return(<Suspense fallback={()=><Text>loadingg..</Text>}>
-
-         <TextCutter text={overview} limit={150} style={{lineHeight:22}}></TextCutter>
-              
-   </Suspense>
+   return( <TextCutter text={overview} limit={150} style={{lineHeight:22}}></TextCutter>
   )
  }
 
@@ -171,54 +165,51 @@ return (
 
 
  renderPlan = ()=>{
-   return( <Suspense fallback={()=><Text>loading...</Text>}>
+   return( 
           <View style={{marginTop:10,borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,padding:10}}>
           <PlanCard tour_id='1'></PlanCard>
           </View>
-          </Suspense>
+      
    )
  }
 
  renderTourList = ()=>{
    return(<View style={{marginTop:10,borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor}}>
    <FlatListContainer style={{marginLeft:'3%'}} title="You May Also Like">
-             <FlatList
-             horizontal
-             data={DATA}
-             showsHorizontalScrollIndicator={false}
-             renderItem={({ item }) =><Suspense fallback={()=><Text>loading...</Text>}>
-
-           <TourCard style={{marginRight:10}} title={item.title}
-             price={item.price} 
-             daysLeft={item.daysLeft} 
-             speciality={item.speciality} 
-             seatsLeft={item.seatsLeft} 
-             startDate={item.startDate}
-             endDate={item.endDate}
-             operator={{name:item.OperatorCard.name,image,rating:3.4,verified:true}}></TourCard>
-                </Suspense>}
-             keyExtractor={item => item.OperatorCard.name}
-             />
-         </FlatListContainer>
+   <FlatList
+                    horizontal
+                    data={[1,2]}
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
+                    id={item}
+                    seatsLeft={10} ></TourCard>}
+                    keyExtractor={item => item}
+                    />
+                </FlatListContainer>
          </View>)
  }
 
   render() {
    const data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
-   console.log('in data',data)
+
     return (
       <ScrollView>
         
-        <HeaderImage image={image} style={{height: height / 3}}></HeaderImage>
-        <View style={{borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
+        <HeaderImage imageName={data.tourcover} style={{height: height / 3}}></HeaderImage>
+        <View style={{borderWidth:0.5,borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
         {this.renderHeading(data.title)}
-        {this.renderOverview('overview')}
+        {this.state.apiData ? this.renderOverview(this.state.apiData[0].overview) : this.renderOverview('')}
         {this.renderIcons({speciality:data.speciality, duration:data.duration, date_of_departure: data.date_of_departure })}
         </View>
-        {this.renderOperatorCard()}
+       
+        <View>
+
+      
+        {this.state.apiData ? this.renderOperatorCard({name:data.name, rating:data.numeric_rating,is_verified:data.is_verified,dp:data.operatordp}) : <LoadingIndicator></LoadingIndicator>}
+        </View>
         {/* <OperatorCard></OperatorCard> */}
         {this.renderPlan()}
-        {/* {this.renderTourList()} */}
+        {this.renderTourList()}
        
 
         
