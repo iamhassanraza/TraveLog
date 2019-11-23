@@ -60,12 +60,26 @@ class OperatorCard extends React.Component{
                                 </View>
                             </View>
                         </View>
-                        <OperatorIcon 
-                            style={{marginLeft: '5%'}} 
-                            name={this.state.cardData[0].name} 
-                            rating={this.state.cardData[0].numeric_rating} 
-                            verified={this.state.cardData[0].is_verified}
-                        />
+                        <View style={{flexDirection:'row',alignItems:'center', marginLeft: '5%'}}>
+                            <View style={{flex:4, marginLeft:'1%'}}>
+                                <Text style={{fontWeight:'bold',fontSize:16} }>
+                                    {this.state.cardData[0].name}
+                                    {this.state.cardData[0].is_verified ?<VerifiedIcon size={17}></VerifiedIcon> : false }
+                                </Text> 
+                                <View style={{flexDirection:'row',alignItems:'center'}}>   
+                                    <Text style={{color:'#ffa534',fontWeight:'bold'}}>{this.state.cardData[0].numeric_rating}</Text>
+                                    <Rating
+                                        readonly={true}
+                                        ratingColor='red'
+                                        ratingBackgroundColor='red'
+                                        ratingCount={5}
+                                        startingValue={this.state.cardData[0].numeric_rating? this.state.cardData[0].numeric_rating : 0}
+                                        imageSize={15}
+                                        style={{alignItems:'flex-start'}}
+                                    /> 
+                                </View>                      
+                            </View>
+                        </View>
                         <View style={{marginLeft: '5%', marginTop: '1%'}}>
                             <IconWithText 
                                 name='phone' 
