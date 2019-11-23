@@ -363,22 +363,19 @@ export default class DestinationDetails extends Component {
 
   render() {
     const DestinationData = this.props.navigation.getParam('DestinationData','Got no data from tour card via navigation')
-    if(this.state.data){
+   
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path,DestinationData.name)}
         {/* {this.renderSelections()} */}
-        {this.renderDetails(DestinationData.name)}
-        {this.state.data ? this.renderOverview() : <View style={{padding: 5, paddingBottom: 0}}> <LoadingIndicator></LoadingIndicator> </View>}
+        {this.state.data ? this.renderDetails(DestinationData.name) :  <LoadingIndicator></LoadingIndicator>}
+        {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
         {this.renderNearbyAttractions()}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}
       </ScrollView>
     )
-  }
-    else {
-      return( <LoadingIndicator></LoadingIndicator> )
-  }
+      
   }
 }
