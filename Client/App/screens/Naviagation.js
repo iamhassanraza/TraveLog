@@ -11,15 +11,17 @@ import OperatorRating from '../components/OperatorRating'
 import Gallery from '../components/Gallery'
 import Album from '../components/Album'
 import { ThemeColor } from '../assets/Colors/Colors';
+import TourCard from '../components/TourCard';
 const TabNavigator = createMaterialTopTabNavigator(
     {
     
         About:AboutOperator,
-        Reviews:OperatorRating,
-        Gallery:Gallery
+        Tours:TourCard,
+        Gallery:Gallery,
+        Reviews:OperatorRating
     },
     {
-        initialRouteName: "Gallery",
+        initialRouteName: "About",
         tabBarOptions: {
             labelStyle: {
                 fontSize: 14,

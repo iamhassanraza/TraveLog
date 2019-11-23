@@ -20,7 +20,7 @@ export default class AboutOperator extends Component {
                             textstyle={styles.textstyle} 
                             iconstyle={styles.iconstyle} 
                             name="phone" 
-                            text="034628978"
+                            text="123"
                             onPress = {() => Linking.openURL('tel:${03002344567}')}/>
                         <IconWithText 
                             textstyle={styles.textstyle} 

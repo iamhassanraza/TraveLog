@@ -44,7 +44,9 @@ export default class OperatorProfile extends Component {
                         Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
                     </Text>
                 </View>
-                <Navigation />
+                <Navigation
+                    
+                />
             </ScrollView>
         )
     }
