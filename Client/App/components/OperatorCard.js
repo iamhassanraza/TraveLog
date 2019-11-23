@@ -14,7 +14,7 @@ import { Rating } from 'react-native-ratings';
 import OperatorIcon from './OperatorIcon';
 import LoadingIndicator from '../components/LoadingIndicator';
 
-
+const userId = 1
 
 class OperatorCard extends React.Component{
 
@@ -23,7 +23,7 @@ class OperatorCard extends React.Component{
     }
 
     componentDidMount() {
-        fetch(`http://192.168.100.15:3001/operators/card/${this.props.operatorId}`)
+        fetch(`http://192.168.100.15:3001/operators/card/${this.props.operatorId}/${userId}`)
         .then(res => {
             return res.json()
         })

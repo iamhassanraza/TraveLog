@@ -106,10 +106,10 @@ export default class DestinationDetails extends Component {
 
 
 
-  renderTop = () => {
+  renderTop = (image,name) => {
     return (
       <ImageBackground
-        source={{uri:`http://192.168.100.13:3001/images/${this.state.data[0].image_path}`}}
+        source={{uri:`http://192.168.100.25:3001/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
@@ -123,7 +123,7 @@ export default class DestinationDetails extends Component {
           }}>
           <Text style={{fontSize: 32, color: 'white', fontWeight: 'bold'}}>
             {' '}
-            {this.state.data[0].name.toUpperCase()}{' '}
+            {name.toUpperCase()}{' '}
           </Text>
 
           <View
@@ -216,7 +216,7 @@ export default class DestinationDetails extends Component {
   //   );
   // };
 
-  renderDetails = () => {
+  renderDetails = (name) => {
     return (
       <View style={{marginLeft: '4%'}}>
         <IconWithText
@@ -230,7 +230,7 @@ export default class DestinationDetails extends Component {
 
         <IconWithText
           title={'City : '}
-          subtitle={this.state.data[0].name}
+          subtitle={name}
           linear={'true'}
           icon={'map-marker-radius'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -278,7 +278,7 @@ export default class DestinationDetails extends Component {
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <DestinationCard
-            id={2}
+            id={3}
             onPress = {()=>this.props.navigation.navigate('DestinationDetails')}
             />
           )}
@@ -362,13 +362,14 @@ export default class DestinationDetails extends Component {
 
 
   render() {
+    const DestinationData = this.props.navigation.getParam('DestinationData','Got no data from tour card via navigation')
     if(this.state.data){
     return (
       <ScrollView>
-        {this.renderTop()}
+        {this.renderTop(DestinationData.image_path,DestinationData.name)}
         {/* {this.renderSelections()} */}
-        {this.renderDetails()}
-        {this.renderOverview()}
+        {this.renderDetails(DestinationData.name)}
+        {this.state.data ? this.renderOverview() : <View style={{padding: 5, paddingBottom: 0}}> <LoadingIndicator></LoadingIndicator> </View>}
         {this.renderNearbyAttractions()}
         {this.renderMap()}
         {this.renderRelatedTours()}
