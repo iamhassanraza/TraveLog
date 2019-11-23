@@ -1,8 +1,6 @@
 import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
 import {View, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
-import image from '../assets/images/3.jpg';
-import logo from '../assets/images/1.jpg';
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
 import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,7 +9,7 @@ import AddressIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FollowIcon from 'react-native-vector-icons/SimpleLineIcons';
 import IconWithText from './IconAndText';
 import { Rating } from 'react-native-ratings';
-import OperatorIcon from './OperatorIcon';
+import { withNavigation } from 'react-navigation'
 import LoadingIndicator from '../components/LoadingIndicator';
 
 const userId = 1
@@ -38,7 +36,10 @@ class OperatorCard extends React.Component{
 
     render() {
         return (
-            <TouchableWithoutFeedback>  
+            <TouchableWithoutFeedback 
+                onPress={()=>this.props.navigation.push('OperatorProfile', {
+                    operatorData : {...this.state.cardData}
+                })}>  
                 <View style={[styles.Container, this.props.style]}>
                     {this.state.cardData? <View style={{paddingBottom: '2%'}}>
                         <ImageBackground source={{uri:`http://192.168.100.15:3001/images/${this.state.cardData[0].cover}`}} style={{height: 100}}>
@@ -67,10 +68,9 @@ class OperatorCard extends React.Component{
                                     {this.state.cardData[0].is_verified ?<VerifiedIcon size={17}></VerifiedIcon> : false }
                                 </Text> 
                                 <View style={{flexDirection:'row',alignItems:'center'}}>   
-                                    <Text style={{color:'#ffa534',fontWeight:'bold'}}>{this.state.cardData[0].numeric_rating}</Text>
+                                    <Text style={{color:'orange', fontWeight:'bold'}}>{this.state.cardData[0].numeric_rating}</Text>
                                     <Rating
                                         readonly={true}
-                                        ratingColor='red'
                                         ratingBackgroundColor='red'
                                         ratingCount={5}
                                         startingValue={this.state.cardData[0].numeric_rating? this.state.cardData[0].numeric_rating : 0}
@@ -107,7 +107,7 @@ class OperatorCard extends React.Component{
     }
 }
 
-export default OperatorCard;
+export default withNavigation(OperatorCard);
 
 const styles = StyleSheet.create({
     Container: {
