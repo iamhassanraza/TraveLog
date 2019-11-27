@@ -5,7 +5,6 @@ import ReviewIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Rating, AirbnbRating } from 'react-native-elements';
 import Review from './Review';
 import CustomButton from './CustomButton';
-import OperatorCard from './OperatorCard';
 import { FlatList } from 'react-native';
 
 
