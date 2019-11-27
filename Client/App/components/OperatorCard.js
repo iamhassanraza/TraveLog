@@ -42,7 +42,7 @@ class OperatorCard extends React.Component{
                 })}>  
                 <View style={[styles.Container, this.props.style]}>
                     {this.state.cardData? <View style={{paddingBottom: '2%'}}>
-                        <View style={{borderWidth: this.state.cardData[0].cover? 0 : 1, borderColor: this.state.cardData[0].dp? 'white' : '#b3b5b4'}}>
+                        <View style={{borderWidth: this.state.cardData[0].cover? 0 : 1, borderColor: this.state.cardData[0].cover? 'white' : '#b3b5b4'}}>
                             <ImageBackground
                                 source={{uri: this.state.cardData[0].cover?`http://192.168.100.15:3001/images/${this.state.cardData[0].cover}`:'http://192.168.100.15:3001/images/default.png'}}
                                 style={{height: 100}}>

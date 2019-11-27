@@ -20,12 +20,12 @@ export default class OperatorProfile extends Component {
         const operatorData = this.props.navigation.getParam('operatorData','Got no data from tour card via navigation')
         return (
             <ScrollView style={styles.container}>
-                <View>
-                    <ImageBackground source={{uri: `http://192.168.100.15:3001/images/${operatorData[0].cover}`}} style={styles.coverPhoto}/>
+                <View style={{ borderWidth: operatorData[0].cover? 0 : 1, borderColor: operatorData[0].cover? 'white' : '#b3b5b4'}}>
+                    <ImageBackground source={{uri: operatorData[0].cover? `http://192.168.100.15:3001/images/${operatorData[0].cover}`: 'http://192.168.100.15:3001/images/default.png' }} style={styles.coverPhoto}/>
                 </View>
                 <View style={styles.logoButton}>
                     <View style={styles.logoContainer}>
-                        <Image source={{uri: `http://192.168.100.15:3001/images/${operatorData[0].dp}`}} style={styles.logo}></Image>
+                        <Image source={{uri: operatorData[0].dp? `http://192.168.100.15:3001/images/${operatorData[0].dp}`: 'http://192.168.100.15:3001/images/default.png'}} style={styles.logo}></Image>
                     </View>
                     <View style={styles.buttonContainer}>
                         <View style={styles.followButton}>
@@ -45,7 +45,11 @@ export default class OperatorProfile extends Component {
                     </Text>
                 </View>
                 <Navigation
-                    
+                    screenProps={{
+                                    email: operatorData[0].email,
+                                    phone: operatorData[0].phone,
+                                    address: operatorData[0].street_address
+                                }}
                 />
             </ScrollView>
         )
@@ -73,7 +77,7 @@ const styles = StyleSheet.create({
         width: 100,
         borderRadius: 50,
         borderWidth: 2,
-        borderColor: 'white',
+        borderColor: '#b3b5b4',
         alignSelf: 'center'
     },
     buttonContainer: {

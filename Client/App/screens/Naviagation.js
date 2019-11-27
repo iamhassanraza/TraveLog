@@ -10,13 +10,13 @@ import Gallery from '../components/Gallery'
 import Album from '../components/Album'
 import { ThemeColor } from '../assets/Colors/Colors';
 import TourCard from '../components/TourCard';
+
 const TabNavigator = createMaterialTopTabNavigator(
     {
-    
-        About:AboutOperator,
-        Tours:TourCard,
-        Gallery:Gallery,
-        Reviews:OperatorRating
+        About: { screen: AboutOperator},
+        Tours: { screen: TourCard},
+        Gallery: { screen: Gallery},
+        Reviews: { screen: OperatorRating}
     },
     {
         initialRouteName: "About",

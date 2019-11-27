@@ -82,7 +82,6 @@ exports.operatorCard = (req, res, next) => {
                     }
                     else {
                         response = result
-                        console.log(response)
                         res.status(200).send(response)
                         console.log("response doesn't have follow status")
                     }
