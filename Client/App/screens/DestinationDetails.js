@@ -107,9 +107,12 @@ export default class DestinationDetails extends Component {
 
 
   renderTop = (image,name) => {
+    
+    console.log(image);
     return (
+      
       <ImageBackground
-        source={{uri:`http://192.168.100.25:3001/images/${image}`}}
+        source={{uri:`http://192.168.100.13:3001/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
