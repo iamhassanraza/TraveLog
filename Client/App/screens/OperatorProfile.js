@@ -17,31 +17,36 @@ export default class OperatorProfile extends Component {
 
 
     render() {
+        const operatorData = this.props.navigation.getParam('operatorData','Got no data from tour card via navigation')
         return (
             <ScrollView style={styles.container}>
                 <View>
-                    <ImageBackground source={coverPhoto} style={styles.coverPhoto}/>
+                    <ImageBackground source={{uri: `http://192.168.100.15:3001/images/${operatorData[0].cover}`}} style={styles.coverPhoto}/>
                 </View>
                 <View style={styles.logoButton}>
                     <View style={styles.logoContainer}>
-                        <Image source={logo} style={styles.logo}></Image>
+                        <Image source={{uri: `http://192.168.100.15:3001/images/${operatorData[0].dp}`}} style={styles.logo}></Image>
                     </View>
                     <View style={styles.buttonContainer}>
                         <View style={styles.followButton}>
                             <FollowIcon name="user-follow" color='white'></FollowIcon>
-                            <Text style={{color: 'white'}}>Follow</Text>
+                            <Text style={{color: 'white'}}>
+                                {operatorData[1] ? 'unfollow' : 'follow'} 
+                            </Text>
                         </View>
                     </View>
                 </View>
                 <View style={{marginTop: '2%', marginLeft: '5%'}}>
                     <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-                        Nomads Adventure Services
+                        {operatorData[0].name}
                     </Text>
                     <Text style={styles.shortIntro}>
                         Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
                     </Text>
                 </View>
-                <Navigation />
+                <Navigation
+                    
+                />
             </ScrollView>
         )
     }

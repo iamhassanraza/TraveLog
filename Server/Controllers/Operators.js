@@ -66,34 +66,37 @@ exports.operatorCard = (req, res, next) => {
         AND followup.reference_id=${operatorId}
         AND followup.user_id=${userId}`
 
-    con.query(sqlQuery)
-    .then(rows => {
+    var response = null
+
+    con.query(sqlQuery,(err, result) => {
+
+        var response = undefined
+    
+        if(!err) {
+            con.query(sqlquery2, (err, followResult) => {
+                if(!err) {
+                    if(followResult.length>0) {
+                        response = [...result,followResult[0]]
+                        res.status(200).send(response)
+                        console.log('response has followStatus')
+                    }
+                    else {
+                        console.log(err)
+                        response = result
+                        res.status(200).send(response)
+                        console.log("response doesn't have follow status")
+                    }
+                }
+            })    
+        }
+        else
+            console.log(err)
     })
+    
     
 }
 
-// con.query(sqlQuery,(err, result) => {
 
-//     var response = undefined
-
-//     if(!err) {
-//         con.query(sqlquery2, (err, followResult) => {
-//             if(!err) {
-//                 if(followResult.length>0) {
-//                     response = [...result,followResult]
-//                 }
-//                 else {
-//                     response = result
-//                 }
-//             }
-//         })
-//         console.log(res)
-//         res.status(200).send(response)
-//         console.log('operator')
-//     }
-//     else
-//         console.log(err)
-// })
 
 // exports.getReviews = (req, res) => {
 
