@@ -27,6 +27,7 @@ import LoadingIndicator from '../components/LoadingIndicator';
 const overview =
   'The six-month tourist  season at Fairy Meadows starts in April and continues until the end of September. Tourists lodge at the camping site spread over 800 hectares (2,000 acres), known as .[2] The site of Fairy Meadows, though partially developed, generates about PKR 17 million revenue from tourism, mainly by providing food, transportation and accommodation services.[9] A project by Shangrila Resorts, the pioneers of tourism development in Gilgit Baltistan, will establish an eco-friendly resort. The road to Fairy Meadows was built by Brigadier M. Aslam Khan (M.C, H.J, F.K), First Commander Gilgit Scouts, which today employs the locals. The local community stopped the extraction of timber to conserve the forest and promote tourism in the area. The main attraction of this place other than the meadows itself is the view of Nanga Parbat Mountain. Tourists usually hike to the base camp of the mountain from Fairy Meadows The six-month tourist season at Fairy Meadows starts in April and continues until the end of September. Tourists lodge at the camping site spread over 800 hectares (2,000 acres), known as .[2] The site of Fairy Meadows, though partially developed, generates about PKR 17 million revenue from tourism, mainly by providing food, transportation and accommodation services.[9] A project by Shangrila Resorts, the pioneers of tourism development in Gilgit Baltistan, will establish an eco-friendly resort. The road to Fairy Meadows was built by Brigadier M. Aslam Khan (M.C, H.J, F.K), First Commander Gilgit Scouts, which today employs the locals. The local community stopped the extraction of timber to conserve the forest and promote tourism in the area. The main attraction of this place other than the meadows itself is the view of Nanga Parbat Mountain. Tourists usually hike to the base camp of the mountain from Fairy Meadows';
 
+
 const DATA = [
   {
     price: 300,
@@ -92,7 +93,10 @@ export default class DestinationDetails extends Component {
 
 
   componentDidMount(){
-    fetch(`http://192.168.100.13:3001/destination/3`)
+
+    const DestinationData = this.props.navigation.getParam('DestinationData','default')
+
+    fetch(`http://192.168.100.13:3001/destination/${DestinationData.destination_id}`)
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -108,7 +112,7 @@ export default class DestinationDetails extends Component {
 
   renderTop = (image,name) => {
     
-    console.log(image);
+   
     return (
       
       <ImageBackground
@@ -351,8 +355,9 @@ export default class DestinationDetails extends Component {
 
 
   render() {
-    const DestinationData = this.props.navigation.getParam('DestinationData','Got no data from tour card via navigation')
-   
+    
+  const DestinationData = this.props.navigation.getParam('DestinationData','default')
+
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path,DestinationData.name)}
