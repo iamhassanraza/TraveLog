@@ -51,7 +51,8 @@ exports.getAllOperators = (req,res)=>{
 exports.operatorCard = (req, res, next) => {
     var operatorId = req.params.operatorId;
     var userId = req.params.userId
-    var sqlQuery = `SELECT operator.name,operator.is_verified, operator.phone, operator.email, operator.street_address,
+    var sqlQuery = `SELECT operator.name,operator.is_verified, operator.phone, operator.about,
+        operator.email, operator.street_address, operator.description,
         rating_review.numeric_rating, dp.image_path AS dp, cover.image_path AS cover FROM operator LEFT JOIN
         rating_review ON (rating_review.category_id = (SELECT category_id FROM category WHERE name="operator")) 
         AND (rating_review.reference_id = ${operatorId}) 

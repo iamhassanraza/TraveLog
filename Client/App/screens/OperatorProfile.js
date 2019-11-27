@@ -41,14 +41,15 @@ export default class OperatorProfile extends Component {
                         {operatorData[0].name}
                     </Text>
                     <Text style={styles.shortIntro}>
-                        Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
+                        {operatorData[0].about} 
                     </Text>
                 </View>
                 <Navigation
                     screenProps={{
                                     email: operatorData[0].email,
                                     phone: operatorData[0].phone,
-                                    address: operatorData[0].street_address
+                                    address: operatorData[0].street_address,
+                                    description: operatorData[0].description
                                 }}
                 />
             </ScrollView>

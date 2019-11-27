@@ -49,13 +49,13 @@ class OperatorCard extends React.Component{
                             </ImageBackground>
                         </View>
                         <View style={{flexDirection: 'row'}}>
-                            <View style={{marginLeft: '5%', height: 80, width: '30%', marginTop: -30}}>
+                            <View style={{marginLeft: '5%', height: 80, width: '40%', marginTop: -30}}>
                                 <Image
                                     source={{uri: this.state.cardData[0].dp ? `http://192.168.100.15:3001/images/${this.state.cardData[0].dp}` : 'http://192.168.100.15:3001/images/default.png'}} 
                                     style={{height: 80, width: 80,borderColor: '#b3b5b4', borderWidth: 2, borderRadius: 50}}>
                                 </Image>
                             </View>
-                            <View style={{height: 50, width: '65%', justifyContent: 'center', alignItems: 'center'}}>
+                            <View style={{height: 50, width: '55%', justifyContent: 'center', alignItems: 'center'}}>
                                 <View style={styles.FollowButton}>
                                     <FollowIcon name="user-follow" color='white'/>
                                     <Text style={{color: 'white'}}>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     Container: {
         borderColor: '#8b8e8f',
         borderWidth: 0.5,  
-        width: Dimensions.get("window").width/1.4 ,
+        width: Dimensions.get("window").width/1.5 ,
         borderBottomEndRadius:5,
         borderBottomLeftRadius:5 ,
         backgroundColor:'white',
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         backgroundColor: ThemeColor,
         borderRadius: 5,
-        borderColor: 'blue',
+        borderColor: 'blue'
     },
     Logo: {
         width: 80,
