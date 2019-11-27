@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Linking, TouchableOpacity as T } from 'react-native'
+import { Text, View, StyleSheet, Linking, TouchableOpacity as T, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
 import IconWithText from './IconAndText'
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors'
 
