@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import TourDetail from './TourDetail'
-import Destination from './DestinationDetails'
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import DestinationDetails from './DestinationDetails';
 import Home from './Home'

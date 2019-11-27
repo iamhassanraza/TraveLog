@@ -32,7 +32,8 @@ export default class Home extends Component {
 
     render() {
     
-        const operators = [1,2]
+        const operators = [1,6,2]
+        const tours = [1,2]
         
 
         return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}>
@@ -59,7 +60,7 @@ export default class Home extends Component {
                 <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                     <FlatList
                     horizontal
-                    data={operators}
+                    data={tours}
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item }) => <TourCard style={{marginRight:10}}
                     id={item}
@@ -67,6 +68,7 @@ export default class Home extends Component {
                     keyExtractor={item => item}
                     />
                 </FlatListContainer>
+                
                 <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
                         <FlatList 
                             horizontal
@@ -85,7 +87,7 @@ export default class Home extends Component {
                 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
                         <FlatList
                             horizontal
-                            data={operators}
+                            data={tours}
                             keyExtractor={item => item}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
