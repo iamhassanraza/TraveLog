@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView,FlatList,Dimensions, ImageBackground,TouchableHighlight,TouchableWithoutFeedback} from 'react-native'
+import { Text, View, ScrollView,FlatList,Dimensions, ImageBackground,RefreshControl,TouchableWithoutFeedback} from 'react-native'
 
 import TourCard from '../components/TourCard'
 import OperatorCard from '../components/OperatorCard'
@@ -14,28 +14,45 @@ export default class Home extends Component {
 
 
     state = {
-        data:[]
+        data:[],
+        refreshing: false
     } 
 
 
-    // componentDidMount(){
-    //     fetch("http://192.168.100.25:3001/tours")
-    //         .then(response => {
-    //             return response.json()})
-    //         .then((responseJson)=> {
-    //           this.setState({
-    //            data : responseJson
-    //           })
-    //         }).catch(err=>console.log(err))
-    // }
+    componentDidMount(){
+     this.fetchData()
+        
+    }
 
+
+    fetchData = ()=>{
+        fetch("http://192.168.100.25:3001/tours")
+            .then(response => {
+                return response.json()})
+            .then((responseJson)=> {
+              this.setState({
+               data : responseJson,
+              })
+            }).catch(err=>console.log(err))
+        
+    }
+
+    onPageRefresh = ()=>{
+
+        this.fetchData()
+    }
 
     render() {
     
         const operators = [1,2]
         
 
-        return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}>
+        return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}
+                    refreshControl={
+                        <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh} />
+                                 }
+        
+        >
                     
                     <View style={{height:300}}>
                         <ImageBackground source={image2} style={{width:'100%',height:300}}>
@@ -71,7 +88,7 @@ export default class Home extends Component {
                         <FlatList 
                             horizontal
                             data={operators}
-                            keyExtractor={item => item.name}
+                            keyExtractor={item => item}
                             showsHorizontalScrollIndicator={false}
                             renderItem= {({item}) => 
                             <OperatorCard
