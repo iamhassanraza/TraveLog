@@ -34,6 +34,7 @@ export default class Home extends Component {
     
         const operators = [1,6,2]
         const tours = [1,2]
+        const destination = [1,2,3,4,5,6,7,8,9,10,11,12,13]
         
 
         return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}>
@@ -87,12 +88,12 @@ export default class Home extends Component {
                 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
                         <FlatList
                             horizontal
-                            data={tours}
+                            data={destination}
                             keyExtractor={item => item}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard 
-                            id={4} />
+                            id={item} />
                             }
                         />
                 </FlatListContainer>
