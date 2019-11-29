@@ -4,9 +4,9 @@ const con = require('../db')
 
 exports.getAllTours = (req,res)=>{
 
-    var sqlQuery = 'SELECT tours.tour_id,tours.title,tours.speciality,tours.last_date_of_reg,tours.date_of_departure,tours.end_date,tours.city_id From tours WHERE 1'
+    var sqlQuery = 'SELECT tour_id From tours WHERE 1'
 
-    console.log(sqlQuery)
+    
         
     if(Object.keys(req.query).length != 0)
     {
@@ -14,6 +14,9 @@ exports.getAllTours = (req,res)=>{
                 
                         if(value=== 'tour_id'){
                             sqlQuery = sqlQuery.concat(` AND tour_id = '${req.query[value]}'`)
+                        }
+                        if(value=== 'operator_id'){
+                            sqlQuery = sqlQuery.concat(` AND operator_id = '${req.query[value]}'`)
                         }
                         if(value=== 'title'){
                             sqlQuery = sqlQuery.concat(` AND title LIKE '%${req.query[value]}%'`)
@@ -41,7 +44,7 @@ exports.getAllTours = (req,res)=>{
             
     }
 
-    console.log(sqlQuery)
+   
              
     con.query(sqlQuery,(err,result)=> {
     if(!err){

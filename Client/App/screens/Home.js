@@ -10,11 +10,12 @@ import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/2.jpg"
 
 
+
 export default class Home extends Component {
 
 
     state = {
-        data:[],
+        tourids:[],
         refreshing: false
     } 
 
@@ -26,24 +27,26 @@ export default class Home extends Component {
 
 
     fetchData = ()=>{
-        fetch("http://192.168.100.25:3001/tours")
+        console.log('fetching')
+        return fetch("http://192.168.100.25:3001/tours/filter?tour_id=1")
             .then(response => {
                 return response.json()})
             .then((responseJson)=> {
               this.setState({
-               data : responseJson,
+                refreshing: false,
+               tourids : responseJson,
               })
             }).catch(err=>console.log(err))
         
     }
 
     onPageRefresh = ()=>{
-
+        this.setState({tourids:[]})
         this.fetchData()
     }
 
     render() {
-    
+        console.log(this.state.tourids)
         const operators = [1,2]
         const destination = [1,2,3,4,5,6,7,8,9,10,11,12,13]
         
@@ -77,10 +80,10 @@ export default class Home extends Component {
                 <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                     <FlatList
                     horizontal
-                    data={operators}
+                    data={this.state.tourids}
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item }) => <TourCard style={{marginRight:10}}
-                    id={item}
+                    id={item.tour_id}
                     seatsLeft={10} ></TourCard>}
                     keyExtractor={item => item}
                     />
