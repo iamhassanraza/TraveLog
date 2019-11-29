@@ -43,7 +43,9 @@ export default class OperatorRating extends Component {
                                 <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>4.8 out of 5</Text>
                             </View>
                             <View style={styles.newReview}>
-                                    <Text>Write your review about {this.props.screenProps.name} </Text>
+                                    <Text style={{textAlign: 'center'}}>
+                                        Write your review about {this.props.screenProps.name}
+                                    </Text>
                                     <Rating 
                                         type = 'custom'
                                         readonly = {false}
