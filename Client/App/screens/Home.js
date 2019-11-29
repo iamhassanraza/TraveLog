@@ -35,6 +35,7 @@ export default class Home extends Component {
         const operators = [1,6,2]
         const tours = [1,2]
         const destination = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+        const apiUrl= `http://192.168.100.13:3001/destination/card/`
         
 
         return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}>
@@ -93,7 +94,10 @@ export default class Home extends Component {
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard 
-                            id={item} />
+                            id={item}
+                            api = {apiUrl}
+                            // destination = {1}
+                             />
                             }
                         />
                 </FlatListContainer>
