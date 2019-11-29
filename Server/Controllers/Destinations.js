@@ -69,13 +69,6 @@ exports.getDetailsOfDestination = (req, res, next) => {
   var sqlQuery = `SELECT destination_id,description,recommended_season,city.name,image.image_path From destination INNER JOIN city ON destination.city_id = city.city_id INNER JOIN image ON (image.category_id = 3 AND image.image_type_id = 1 AND image.reference_id = '${id}')  WHERE destination.destination_id = '${id}'`;
   var sqlQuery2 = `SELECT attractions.attraction_id FROM attractions WHERE attractions.destination_id = '${id}' `
 
-//   con.query(sqlQuery, (err, result) => {
-//     if (!err) {
-//       res.status(200).send(result);
-     
-//     } else console.log(err);
-//   });
-// };
 
 
 con.query(sqlQuery,(err, result) => {
