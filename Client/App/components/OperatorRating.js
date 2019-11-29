@@ -19,7 +19,6 @@ export default class OperatorRating extends Component {
             return res.json()
         })
         .then(resJson => {
-            console.log(resJson)
             this.setState({
                 reviews: resJson
             })

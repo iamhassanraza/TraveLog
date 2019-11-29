@@ -10,11 +10,12 @@ import Gallery from '../components/Gallery'
 import Album from '../components/Album'
 import { ThemeColor } from '../assets/Colors/Colors';
 import TourCard from '../components/TourCard';
+import OperatorTours from '../components/OperatorTours';
 
 const TabNavigator = createMaterialTopTabNavigator(
     {
         About: { screen: AboutOperator},
-        Tours: { screen: TourCard},
+        Tours: { screen: OperatorTours},
         Gallery: { screen: Gallery},
         Reviews: { screen: OperatorRating}
     },
