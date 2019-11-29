@@ -1,6 +1,6 @@
 import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
-import {View, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
+import {View, Linking, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
 import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -26,7 +26,6 @@ class OperatorCard extends React.Component{
             return res.json()
         })
         .then(resJson => {
-            console.log(resJson)
             this.setState({
                 cardData: resJson
             })
@@ -38,21 +37,24 @@ class OperatorCard extends React.Component{
         return (
             <TouchableWithoutFeedback 
                 onPress={()=>this.props.navigation.push('OperatorProfile', {
-                    operatorData : {...this.state.cardData}
+                    operatorData : {...this.state.cardData}, operatorId: this.props.operatorId
                 })}>  
                 <View style={[styles.Container, this.props.style]}>
                     {this.state.cardData? <View style={{paddingBottom: '2%'}}>
-                        <ImageBackground source={{uri:`http://192.168.100.15:3001/images/${this.state.cardData[0].cover}`}} style={{height: 100}}>
-
-                        </ImageBackground>
+                        <View style={{borderWidth: this.state.cardData[0].cover? 0 : 1, borderColor: this.state.cardData[0].cover? 'white' : '#b3b5b4'}}>
+                            <ImageBackground
+                                source={{uri: this.state.cardData[0].cover?`http://192.168.100.15:3001/images/${this.state.cardData[0].cover}`:'http://192.168.100.15:3001/images/default.png'}}
+                                style={{height: 100}}>
+                            </ImageBackground>
+                        </View>
                         <View style={{flexDirection: 'row'}}>
-                            <View style={{marginLeft: '5%', height: 80, width: '30%', marginTop: -30}}>
+                            <View style={{marginLeft: '5%', height: 80, width: '40%', marginTop: -30}}>
                                 <Image
-                                    source={{uri:`http://192.168.100.15:3001/images/${this.state.cardData[0].dp}`}} 
-                                    style={{height: 80, width: 80,borderColor: 'white', borderWidth: 2, borderRadius: 50}}>
+                                    source={{uri: this.state.cardData[0].dp ? `http://192.168.100.15:3001/images/${this.state.cardData[0].dp}` : 'http://192.168.100.15:3001/images/default.png'}} 
+                                    style={{height: 80, width: 80,borderColor: '#b3b5b4', borderWidth: 2, borderRadius: 50}}>
                                 </Image>
                             </View>
-                            <View style={{height: 50, width: '65%', justifyContent: 'center', alignItems: 'center'}}>
+                            <View style={{height: 50, width: '55%', justifyContent: 'center', alignItems: 'center'}}>
                                 <View style={styles.FollowButton}>
                                     <FollowIcon name="user-follow" color='white'/>
                                     <Text style={{color: 'white'}}>
@@ -85,7 +87,7 @@ class OperatorCard extends React.Component{
                                 name='phone' 
                                 text={this.state.cardData[0].phone} 
                                 iconstyle={{}} 
-                                textstyle={{marginLeft: '2%', marginRight: '2%'}}
+                                textstyle={{marginLeft: '2%', marginRight: '2%'}}                            
                             />    
                             <IconWithText 
                                 name='email' 
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     Container: {
         borderColor: '#8b8e8f',
         borderWidth: 0.5,  
-        width: Dimensions.get("window").width/1.4 ,
+        width: Dimensions.get("window").width/1.5 ,
         borderBottomEndRadius:5,
         borderBottomLeftRadius:5 ,
         backgroundColor:'white',
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     },
     ImageContainer:{
     
-        height:120,  
+        //height:120,  
         flexDirection:'column',
         justifyContent:'flex-start',
         borderWidth: 1,
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         backgroundColor: ThemeColor,
         borderRadius: 5,
-        borderColor: 'blue',
+        borderColor: 'blue'
     },
     Logo: {
         width: 80,

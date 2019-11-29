@@ -51,13 +51,15 @@ exports.getAllOperators = (req,res)=>{
 exports.operatorCard = (req, res, next) => {
     var operatorId = req.params.operatorId;
     var userId = req.params.userId
-    var sqlQuery = `SELECT operator.name,operator.is_verified, operator.phone, operator.email, operator.street_address,
-        rating_review.numeric_rating, dp.image_path AS dp, cover.image_path AS cover FROM operator INNER JOIN
+    var sqlQuery = `SELECT operator.operator_id, operator.name,operator.is_verified, operator.phone, operator.about,
+        operator.email, operator.street_address, operator.description,
+        AVG(rating_review.numeric_rating) AS  numeric_rating,
+        dp.image_path AS dp, cover.image_path AS cover FROM operator LEFT JOIN
         rating_review ON (rating_review.category_id = (SELECT category_id FROM category WHERE name="operator")) 
         AND (rating_review.reference_id = ${operatorId}) 
-        INNER JOIN image dp ON (dp.category_id = (SELECT category_id FROM category WHERE name="operator")) 
+        LEFT JOIN image dp ON (dp.category_id = (SELECT category_id FROM category WHERE name="operator")) 
         AND (dp.reference_id=${operatorId}) AND (dp.image_type_id = (SELECT image_type_id FROM image_type WHERE type_name="dp")) 
-        INNER JOIN image cover ON (cover.category_id = (SELECT category_id FROM category WHERE name="operator")) 
+        LEFT JOIN image cover ON (cover.category_id = (SELECT category_id FROM category WHERE name="operator")) 
         AND (cover.reference_id=${operatorId}) AND (cover.image_type_id = (SELECT image_type_id FROM image_type WHERE type_name="cover"))
         WHERE operator_id=${operatorId}`
 
@@ -81,7 +83,6 @@ exports.operatorCard = (req, res, next) => {
                         console.log('response has followStatus')
                     }
                     else {
-                        console.log(err)
                         response = result
                         res.status(200).send(response)
                         console.log("response doesn't have follow status")

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import TourDetail from './TourDetail'
-import Destination from './DestinationDetails'
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import DestinationDetails from './DestinationDetails';
 import Home from './Home'
@@ -12,13 +10,14 @@ import Gallery from '../components/Gallery'
 import Album from '../components/Album'
 import { ThemeColor } from '../assets/Colors/Colors';
 import TourCard from '../components/TourCard';
+import OperatorTours from '../components/OperatorTours';
+
 const TabNavigator = createMaterialTopTabNavigator(
     {
-    
-        About:AboutOperator,
-        Tours:TourCard,
-        Gallery:Gallery,
-        Reviews:OperatorRating
+        About: { screen: AboutOperator},
+        Tours: { screen: OperatorTours},
+        Gallery: { screen: Gallery},
+        Reviews: { screen: OperatorRating}
     },
     {
         initialRouteName: "About",

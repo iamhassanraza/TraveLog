@@ -6,7 +6,7 @@ import LoadingIndicator from './LoadingIndicator';
 import { withNavigation } from 'react-navigation';
 
 
-// Props : id, onpress
+// Props : id
 
 class DestinationCard extends React.Component{
 
@@ -16,7 +16,8 @@ class DestinationCard extends React.Component{
     } 
 
     componentDidMount(){
-        fetch(`http://192.168.100.13:3001/destination/card/${this.props.id}`)
+
+        fetch( this.props.api + `${this.props.id}`)
             .then(response => {
                 return response.json()})
             .then((responseJson)=> {
@@ -24,27 +25,53 @@ class DestinationCard extends React.Component{
                data : responseJson
               })
             }).catch(err=>console.log(err))
+
+        // if(this.props.destination) {
+        //     fetch(`http://192.168.100.13:3001/destination/card/${this.props.id}`)
+        //     .then(response => {
+        //         return response.json()})
+        //     .then((responseJson)=> {
+        //       this.setState({
+        //        data : responseJson
+        //       })
+        //     }).catch(err=>console.log(err))
+        // }
+
+        // else {
+        //     fetch(`http://192.168.100.13:3001/destination/attraction/${this.props.id}`)
+        //     .then(response => {
+        //         return response.json()})
+        //     .then((responseJson)=> {
+        //       this.setState({
+        //        data : responseJson
+        //       })
+        //     }).catch(err=>console.log(err))
+        // }
     }
 
 
     render() {
+
         if(this.state.data){
+            console.log(this.state.data);
+            console.log(this.props.id);
         return (
             <TouchableWithoutFeedback onPress={()=>this.props.navigation.push('DestinationDetails', {
                 DestinationData:this.state.data[0]
             })}>
             <View style={{
-                        height:Dimensions.get('window').height/2.8,
+                        // height:Dimensions.get('window').height/2.8,
                         width:Dimensions.get('window').width/2.6,
-                        margin:5,
+                        margin: 5
+                
                         
                        
             }}>
-                <View style={{flex:7}}>
+                <View>
                     <Image
                      source={{uri:`http://192.168.100.13:3001/images/${this.state.data[0].image_path}`}}
                      style={{width:"100%",
-                            height:"99%" ,
+                            height: 200 ,
                             borderTopLeftRadius:6, 
                             borderTopRightRadius:6,
                             borderBottomLeftRadius:6,
@@ -53,15 +80,37 @@ class DestinationCard extends React.Component{
                     </Image>
                 </View>
 
+                <View style={{flexDirection:"row", justifyContent:"space-between", marginTop:"2%"}}>
+                    <View style={{width:"80%"}}>
+                    <Text style={{fontSize:16}}>
+                    {this.state.data[0].name}
+                    </Text>
+                    
+                    </View>
+                    <View style={{marginRight:"3%"}}>
+                    <TouchableWithoutFeedback onPress={()=>{
+                             this.setState((prevState) => ({
+                                    saved: !prevState.saved
+                                    }));
+                        }}>
 
-                <View>
-                    <View style={{flexDirection:"row"}}>
-                        <View style={{flex:8}}>
+                             <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
+                                size={23} 
+                                color={ThemeColor}
+                                />
+                    
+                        </TouchableWithoutFeedback>
+                    </View>
+                </View>
+
+
+                    {/* <View style={{flexDirection:"row",borderWidth:1,alignItems:"center"}}>
+                        <View style={{width:"80%"}}>
                         <Text style={{ 
                             fontSize:16
                         }}>{this.state.data[0].name} </Text>
                         </View>
-                        <View style={{flex:1.2}}>
+                        <View style={{width:"10%"}}>
                         
                         
                         <TouchableWithoutFeedback onPress={()=>{
@@ -77,8 +126,7 @@ class DestinationCard extends React.Component{
                     
                         </TouchableWithoutFeedback>
                     </View>
-                    </View>
-                </View>                
+                    </View>                 */}
             </View>
             </TouchableWithoutFeedback>
         )
@@ -87,7 +135,6 @@ class DestinationCard extends React.Component{
         return( 
         
             <View style={{
-                height:Dimensions.get('window').height/2.8,
                 width:Dimensions.get('window').width/2.6,
                 margin:5
                 }}>
