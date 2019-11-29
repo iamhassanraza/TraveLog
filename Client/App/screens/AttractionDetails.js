@@ -77,16 +77,10 @@ const DATA = [
     OperatorCard: {name: 'Sawat', image, rating: 3.4, verified: true},
   },
 ];
-attraction = [4,7]
 
-export default class DestinationDetails extends Component {
+export default class AttractionDetails extends Component {
   state = {
-
-    data:undefined,
-    followed: false,
-    visited: false,
-    rated: false
-
+    data:undefined
   };
 
 
@@ -157,69 +151,6 @@ export default class DestinationDetails extends Component {
     );
   };
 
-  // renderSelections = () => {
-  //   return (
-  //     <View
-  //       style={{
-  //         flexDirection: 'row',
-  //         justifyContent: 'space-around',
-  //         padding: 10,
-  //         borderBottomWidth: 0.5,
-  //         borderBottomColor: ThemeColor,
-  //       }}>
-  //       <IconWithText
-  //         title={'Wishlist'}
-  //         icon="heart-outline"
-  //         style={{
-  //           borderWidth: 1,
-  //           padding: 3,
-  //           borderColor: ThemeColor,
-  //           backgroundColor: this.state.followed ? ThemeColor : 'white',
-  //         }}
-  //         textstyle={{color: this.state.followed ? 'white' : ThemeColor}}
-  //         iconstyle={{color: this.state.followed ? 'white' : ThemeColor}}
-  //         onPress={() => {
-  //           this.setState(prevState => ({
-  //             followed: !prevState.followed,
-  //           }));
-  //         }}></IconWithText>
-
-  //       <IconWithText
-  //         title={'VISITED'}
-  //         icon="clipboard-check-outline"
-  //         style={{
-  //           borderWidth: 1,
-  //           padding: 3,
-  //           borderColor: ThemeColor,
-  //           backgroundColor: this.state.visited ? ThemeColor : 'white',
-  //         }}
-  //         textstyle={{color: this.state.visited ? 'white' : ThemeColor}}
-  //         iconstyle={{color: this.state.visited ? 'white' : ThemeColor}}
-  //         onPress={() => {
-  //           this.setState(prevState => ({
-  //             visited: !prevState.visited,
-  //           }));
-  //         }}></IconWithText>
-
-  //       <IconWithText
-  //         title={'RATE'}
-  //         icon="star-outline"
-  //         style={{
-  //           borderWidth: 1,
-  //           padding: 3,
-  //           borderColor: ThemeColor,
-  //           backgroundColor: this.state.rated ? ThemeColor : 'white',
-  //         }}
-  //         textstyle={{color: this.state.rated ? 'white' : ThemeColor}}
-  //         iconstyle={{color: this.state.rated ? 'white' : ThemeColor}}
-  //         onPress={() => {
-  //           this.setState(prevState => ({
-  //             rated: !prevState.rated,
-  //           }));
-  //         }}></IconWithText>
-  //     </View>
-  //   );
-  // };
 
   renderDetails = (name) => {
     return (
@@ -274,26 +205,21 @@ export default class DestinationDetails extends Component {
   };
 
   renderNearbyAttractions = () => {
-
-const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
-
     return (
+      <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">
+        <FlatList
+          horizontal
+          data={DATA}
+          keyExtractor={item => item.OperatorCard.name}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => (
+            <DestinationCard
+            id={3}
+            />
+          )}
+        />
 
-<FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
-<FlatList
-    horizontal
-    // data={this.state.data?this.state.data[1] : null}
-    data = {1,2,3}
-    keyExtractor={item => item}
-    showsHorizontalScrollIndicator={false}
-    renderItem={({item}) =>
-    <DestinationCard 
-    id={item}
-    api = {apiUrl}
-    />
-    }
-/>
-</FlatListContainer>
+      </FlatListContainer>
     );
   };
 
@@ -360,18 +286,14 @@ const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
   render() {
     
   const DestinationData = this.props.navigation.getParam('DestinationData','default')
-  const attraction = [1,2,3,4,5,6,7,8,9,10,11,12];
-  const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
 
-  console.log(this.state.data?this.state.data :'raste me hai bs arha');
-  
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path,DestinationData.name)}
         {/* {this.renderSelections()} */}
         {this.state.data ? this.renderDetails(DestinationData.name) :  <LoadingIndicator></LoadingIndicator>}
         {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
-        {this.state.data ? this.renderNearbyAttractions() : <LoadingIndicator></LoadingIndicator>}
+        {this.renderNearbyAttractions()}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}
