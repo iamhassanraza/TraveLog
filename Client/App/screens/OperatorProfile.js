@@ -52,7 +52,8 @@ export default class OperatorProfile extends Component {
                                     phone: operatorData[0].phone,
                                     address: operatorData[0].street_address,
                                     description: operatorData[0].description,
-                                    operatorId: operatorId
+                                    operatorId: operatorId,
+                                    name: operatorData[0].name
                                 }}
                 />
             </ScrollView>
