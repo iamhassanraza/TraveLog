@@ -32,7 +32,8 @@ export default class Home extends Component {
 
     render() {
     
-        const operators = [1,2]
+        const operators = [1,6,2]
+        const tours = [1,2]
         const destination = [1,2,3,4,5,6,7,8,9,10,11,12,13]
         const apiUrl= `http://192.168.100.13:3001/destination/card/`
         
@@ -61,7 +62,7 @@ export default class Home extends Component {
                 <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                     <FlatList
                     horizontal
-                    data={operators}
+                    data={tours}
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item }) => <TourCard style={{marginRight:10}}
                     id={item}
@@ -69,6 +70,7 @@ export default class Home extends Component {
                     keyExtractor={item => item}
                     />
                 </FlatListContainer>
+                
                 <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
                         <FlatList 
                             horizontal

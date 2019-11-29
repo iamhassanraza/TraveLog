@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Linking, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, Linking, TouchableOpacity as T, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
 import IconWithText from './IconAndText'
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors'
 
@@ -7,34 +7,31 @@ import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors'
 export default class AboutOperator extends Component {
     render() {
         return (
-            <>
-                
-                    <View style={{marginTop: '5%'}}>
-                        <IconWithText 
-                            textstyle={styles.textstyle} 
-                            iconstyle={styles.iconstyle} 
-                            name="map-marker" 
-                            text="Office# 504, Anum Blessing, Shahrah-e-Faisal, Karachi"
-                            onPress = {() => Linking.openURL('geo:' + 40.7127753 + ',' + -74.0059728)}/>
-                        <IconWithText 
-                            textstyle={styles.textstyle} 
-                            iconstyle={styles.iconstyle} 
-                            name="phone" 
-                            text="123"
-                            onPress = {() => Linking.openURL('tel:${03002344567}')}/>
-                        <IconWithText 
-                            textstyle={styles.textstyle} 
-                            iconstyle={styles.iconstyle} 
-                            name="email" 
-                            text="nasadventure@gmail.com"
-                            onPress = {() => Linking.openURL('mailto:m.h.raxa1@gmail.com')}/>
-                    </View>
-
-                <View>
+            <>    
+                <View style={{marginTop: '5%', marginLeft: '3%'}}>
+                    <IconWithText 
+                        textstyle={styles.textstyle} 
+                        iconstyle={styles.iconstyle} 
+                        name="map-marker" 
+                        text={this.props.screenProps.address}
+                        onPress = {() => Linking.openURL('geo:' + 40.7127753 + ',' + -74.0059728)}/>
+                    <IconWithText 
+                        textstyle={styles.textstyle} 
+                        iconstyle={styles.iconstyle} 
+                        name="phone" 
+                        text={this.props.screenProps.phone}
+                        onPress = {() => Linking.openURL(`tel:${this.props.screenProps.phone}`)}/>
+                    <IconWithText 
+                        textstyle={styles.textstyle} 
+                        iconstyle={styles.iconstyle} 
+                        name="email" 
+                        text={this.props.screenProps.email}
+                        onPress = {() => Linking.openURL(`mailto:${this.props.screenProps.email}`)}/>
+                </View>
+                <View style={{marginLeft: '5%'}}>
                     <Text style={styles.heading}>Description</Text>
-                    <Text style={styles.about}>Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
-                    Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
-                    Developing an organized presentation starts with your introduction. The introduction opens your speech. I am also very delighted by your intro.
+                    <Text style={styles.about}>
+                        {this.props.screenProps.description}
                     </Text>
                 </View>
             </>
@@ -45,11 +42,12 @@ export default class AboutOperator extends Component {
 const styles = StyleSheet.create({
     textstyle : {
         paddingRight: '2%',
-        color: ThemeGrey,
+        color: ThemeColor,
+        textDecorationLine: 'underline',
         fontSize: 16
     },
     iconstyle: {
-        color: ThemeColor
+        color: ThemeGrey
     },
     iconText: {
         borderWidth: 1,
@@ -60,10 +58,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 22,
         marginTop: '4%',
-        paddingLeft: '1%'
     },
     about: {
-        marginLeft: '1%',
-        marginRight: '1%'
+        paddingRight: '5%'
     }
 })
