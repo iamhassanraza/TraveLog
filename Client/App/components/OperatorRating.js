@@ -37,10 +37,10 @@ export default class OperatorRating extends Component {
                 <View style={{marginTop: '2%', backgroundColor: '#F0F0F0'}}>
                     <View style={{backgroundColor: 'white'}}>
                             <View style={styles.circularRating}>
-                                <Text style={{fontSize: 20,fontWeight: 'bold', alignSelf: 'center'}}>4.8</Text>
+                                <Text style={{fontSize: 20,fontWeight: 'bold', alignSelf: 'center'}}>{this.props.screenProps.numeric_rating ? this.props.screenProps.numeric_rating : 0}</Text>
                             </View>
                             <View style={styles.textRating}>
-                                <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>4.8 out of 5</Text>
+                                <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>{this.props.screenProps.numeric_rating ? this.props.screenProps.numeric_rating : 0} out of 5</Text>
                             </View>
                             <View style={styles.newReview}>
                                     <Text style={{textAlign: 'center'}}>

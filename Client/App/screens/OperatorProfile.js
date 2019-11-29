@@ -53,7 +53,8 @@ export default class OperatorProfile extends Component {
                                     address: operatorData[0].street_address,
                                     description: operatorData[0].description,
                                     operatorId: operatorId,
-                                    name: operatorData[0].name
+                                    name: operatorData[0].name,
+                                    numeric_rating: operatorData[0].numeric_rating
                                 }}
                 />
             </ScrollView>
