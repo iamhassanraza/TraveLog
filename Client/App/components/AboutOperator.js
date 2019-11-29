@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Linking, TouchableOpacity as T, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
+import { Text, View, StyleSheet, Linking, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
 import IconWithText from './IconAndText'
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors'
 
@@ -9,24 +9,30 @@ export default class AboutOperator extends Component {
         return (
             <>    
                 <View style={{marginTop: '5%', marginLeft: '3%'}}>
-                    <IconWithText 
-                        textstyle={styles.textstyle} 
-                        iconstyle={styles.iconstyle} 
-                        name="map-marker" 
-                        text={this.props.screenProps.address}
-                        onPress = {() => Linking.openURL('geo:' + 40.7127753 + ',' + -74.0059728)}/>
-                    <IconWithText 
-                        textstyle={styles.textstyle} 
-                        iconstyle={styles.iconstyle} 
-                        name="phone" 
-                        text={this.props.screenProps.phone}
-                        onPress = {() => Linking.openURL(`tel:${this.props.screenProps.phone}`)}/>
-                    <IconWithText 
-                        textstyle={styles.textstyle} 
-                        iconstyle={styles.iconstyle} 
-                        name="email" 
-                        text={this.props.screenProps.email}
-                        onPress = {() => Linking.openURL(`mailto:${this.props.screenProps.email}`)}/>
+                    <TouchableOpacity onPress = {() => Linking.openURL('geo:' + 40.7127753 + ',' + -74.0059728)}>
+                        <IconWithText 
+                            textstyle={{...styles.textstyle, color: ThemeGrey}} 
+                            iconstyle={styles.iconstyle} 
+                            name="map-marker" 
+                            text={this.props.screenProps.address}            
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress = {() => Linking.openURL(`tel:${this.props.screenProps.phone}`)}>
+                        <IconWithText 
+                            textstyle={{...styles.textstyle, textDecorationLine: 'underline'}} 
+                            iconstyle={styles.iconstyle} 
+                            name="phone" 
+                            text={this.props.screenProps.phone}                         
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress = {() => Linking.openURL(`mailto:${this.props.screenProps.email}`)}>
+                        <IconWithText 
+                            textstyle={{...styles.textstyle, textDecorationLine: 'underline'}} 
+                            iconstyle={styles.iconstyle} 
+                            name="email" 
+                            text={this.props.screenProps.email}
+                        />
+                    </TouchableOpacity>
                 </View>
                 <View style={{marginLeft: '5%'}}>
                     <Text style={styles.heading}>Description</Text>
@@ -43,7 +49,6 @@ const styles = StyleSheet.create({
     textstyle : {
         paddingRight: '2%',
         color: ThemeColor,
-        textDecorationLine: 'underline',
         fontSize: 16
     },
     iconstyle: {
@@ -54,7 +59,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     heading: {
-        color: ThemeColor,
+        color: ThemeGrey,
         fontWeight: 'bold',
         fontSize: 22,
         marginTop: '4%',

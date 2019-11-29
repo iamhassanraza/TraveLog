@@ -4,17 +4,20 @@ exports.getAllReviews = (req, res) => {
         
         var category = req.params.category
         var reference = req.params.reference
-        var sqlQuery = `SELECT rating_review.numeric_rating,rating_review.descriptive_review,
-        userprofile.name from rating_review 
-        INNER JOIN userprofile ON rating_review.user_id = userprofile.userprofile_id 
+        var sqlQuery = `SELECT rating_review.numeric_rating,operator.name,rating_review.descriptive_review,
+        userprofile.name AS user_name
+        FROM rating_review 
+        INNER JOIN userprofile ON rating_review.user_id = userprofile.userprofile_id
+        INNER JOIN operator ON rating_review.reference_id = operator.operator_id 
         INNER JOIN category ON category.name = '${category}' WHERE rating_review.reference_id = ${reference}`
 
         con.query(sqlQuery, (err,result) => {
             if(!err) {
+                console.log(result)
                 res.status(200).send(result);
-                console.log('successsfull query')
+                console.log('reviews are here')
             }
             else
-                console.log(err)
+               console.log("error scenes")
     })
 }

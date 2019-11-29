@@ -1,6 +1,6 @@
 import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
-import {View, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
+import {View, Linking, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
 import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -26,7 +26,6 @@ class OperatorCard extends React.Component{
             return res.json()
         })
         .then(resJson => {
-            console.log(resJson)
             this.setState({
                 cardData: resJson
             })
@@ -38,7 +37,7 @@ class OperatorCard extends React.Component{
         return (
             <TouchableWithoutFeedback 
                 onPress={()=>this.props.navigation.push('OperatorProfile', {
-                    operatorData : {...this.state.cardData}
+                    operatorData : {...this.state.cardData}, operatorId: this.props.operatorId
                 })}>  
                 <View style={[styles.Container, this.props.style]}>
                     {this.state.cardData? <View style={{paddingBottom: '2%'}}>
@@ -88,7 +87,7 @@ class OperatorCard extends React.Component{
                                 name='phone' 
                                 text={this.state.cardData[0].phone} 
                                 iconstyle={{}} 
-                                textstyle={{marginLeft: '2%', marginRight: '2%'}}
+                                textstyle={{marginLeft: '2%', marginRight: '2%'}}                            
                             />    
                             <IconWithText 
                                 name='email' 

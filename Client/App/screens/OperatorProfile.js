@@ -18,6 +18,8 @@ export default class OperatorProfile extends Component {
 
     render() {
         const operatorData = this.props.navigation.getParam('operatorData','Got no data from tour card via navigation')
+        const operatorId = this.props.navigation.getParam('operatorId','no operator id provided')
+        console.log(operatorId)
         return (
             <ScrollView style={styles.container}>
                 <View style={{ borderWidth: operatorData[0].cover? 0 : 1, borderColor: operatorData[0].cover? 'white' : '#b3b5b4'}}>
@@ -49,7 +51,8 @@ export default class OperatorProfile extends Component {
                                     email: operatorData[0].email,
                                     phone: operatorData[0].phone,
                                     address: operatorData[0].street_address,
-                                    description: operatorData[0].description
+                                    description: operatorData[0].description,
+                                    operatorId: operatorId
                                 }}
                 />
             </ScrollView>

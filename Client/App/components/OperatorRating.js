@@ -11,35 +11,22 @@ import { FlatList } from 'react-native';
 
 export default class OperatorRating extends Component {
 
+    componentDidMount() {
+        fetch(`http://192.168.100.15:3001/reviews/operator/${this.props.screenProps.operatorId}`)
+        .then(res => {
+            return res.json()
+        })
+        .then(resJson => {
+            console.log(resJson)
+            this.setState({
+                reviews: resJson
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
     state = {
-        reviews: [
-            {
-                reviewer: 'Mohammad Faraz',
-                rating: 3,
-                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
-            },
-            {
-                reviewer: 'Mohammad Ali',
-                rating: 3.8,
-                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
-            },
-            {
-                reviewer: 'Mohammad Hassan',
-                rating: 2,
-                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
-            },
-            {
-                reviewer: 'Mohammad Ali',
-                rating: 3.8,
-                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
-            },
-            {
-                reviewer: 'Mohammad Ali',
-                rating: 3.8,
-                review: "It’s a pretty basic component that takes in comment object as a prop and renders user’s avatar, name, their comment and how long ago it was posted."
-            }
-            
-        ]
+        reviews: null
     }
 
     render() {
@@ -53,7 +40,7 @@ export default class OperatorRating extends Component {
                             <Text style={{fontWeight: 'bold', alignSelf: 'center'}}>4.8 out of 5</Text>
                         </View>
                         <View style={styles.newReview}>
-                                <Text>Write your review about Nomads Adventure Service</Text>
+                                <Text>Write your review about</Text>
                                 <Rating 
                                     type = 'custom'
                                     readonly = {false}
@@ -86,9 +73,9 @@ export default class OperatorRating extends Component {
                         showsScrollIndicator = {false}
                         renderItem = {({item}) => {
                             return  <Review 
-                                reviewer = {item.reviewer}
-                                rating = {item.rating}
-                                text = {item.review}
+                                reviewer = {item.user_name}
+                                rating = {item.numeric_rating}
+                                text = {item.descriptive_review}
                             />
                         }}
                         keyExtractor = {item => item.reviewer}
