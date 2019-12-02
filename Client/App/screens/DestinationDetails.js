@@ -362,7 +362,7 @@ const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
   const attraction = [1,2,3,4,5,6,7,8,9,10,11,12];
   const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
 
-  console.log(this.state.data?this.state.data :'raste me hai bs arha');
+  
   
     return (
       <ScrollView>
