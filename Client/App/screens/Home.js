@@ -28,7 +28,7 @@ export default class Home extends Component {
 
     fetchData = ()=>{
         console.log('fetching')
-        return fetch("http://192.168.100.25:3001/tours/filter?tour_id=1")
+        return fetch("http://192.168.100.25:3001/tours/filter?")
             .then(response => {
                 return response.json()})
             .then((responseJson)=> {
