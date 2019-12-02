@@ -19,7 +19,8 @@ class TourCard extends React.Component {
 
     state = {
         data:undefined,
-        saved:false
+        saved:false,
+        refreshing: false
     }
 
 
@@ -65,7 +66,7 @@ class TourCard extends React.Component {
         <View style={styles.TextConatiner}>
                 <View style={{flex:4,justifyContent:'space-around',paddingLeft:'2%'}}>
 
-                        <Text style={{color:'black',fontSize:20,fontWeight:'bold',marginBottom:'3%'}}>{this.state.data[0].title} </Text>
+                        <Text allowFontScaling adjustsFontSizeToFit minimumFontScale={.5} maxFontSizeMultiplier={2} style={{color:'black',fontSize:20,fontWeight:'bold',marginBottom:'3%'}}>{this.state.data[0].title} </Text>
                         <IconWithText name="calendar-check" text={`From: ${formatted_start_date} to ${formatted_end_date}`} textstyle={styles.TourCardDate}></IconWithText>
                         <IconWithText name="account-supervisor" text={`Speciality: ${this.state.data[0].speciality}`} textstyle={styles.TourCardDate}></IconWithText>
                         <IconWithText name='seat-recline-normal' text={`Seats Left: ${this.props.seatsLeft}`} textstyle={styles.TourCardDate}></IconWithText>
@@ -96,7 +97,7 @@ class TourCard extends React.Component {
 
         {/* TourOperator */}
        
-        <OperatorIcon style={{padding:'2%',marginTop:5}} name={this.state.data[0].name} avatar={this.state.data[0].operatordp} rating={this.state.data[0].numeric_rating} verified={this.state.data[0].is_verified} ></OperatorIcon>
+        {/* <OperatorIcon style={{padding:'2%',marginTop:5}} name={this.state.data[0].name} avatar={this.state.data[0].operatordp} rating={this.state.data[0].numeric_rating} verified={this.state.data[0].is_verified} ></OperatorIcon> */}
       
     
     </View> 
