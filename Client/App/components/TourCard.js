@@ -97,7 +97,7 @@ class TourCard extends React.Component {
 
         {/* TourOperator */}
        
-        <OperatorIcon style={{padding:'2%',marginTop:5}} name={this.state.data[0].name} avatar={this.state.data[0].operatordp} rating={this.state.data[0].numeric_rating} verified={this.state.data[0].is_verified} ></OperatorIcon>
+        {/* <OperatorIcon style={{padding:'2%',marginTop:5}} name={this.state.data[0].name} avatar={this.state.data[0].operatordp} rating={this.state.data[0].numeric_rating} verified={this.state.data[0].is_verified} ></OperatorIcon> */}
       
     
     </View> 
