@@ -8,7 +8,7 @@ import { withNavigation } from 'react-navigation';
 
 // Props : id
 
-class DestinationCard extends React.Component{
+class AttractionCard extends React.Component{
 
     state = {
         data:undefined,
@@ -35,9 +35,8 @@ class DestinationCard extends React.Component{
             console.log(this.state.data);
             console.log(this.props.id);
         return (
-            <TouchableWithoutFeedback onPress={()=>this.props.navigation.push('DestinationDetails', {
-                DestinationData:this.state.data[0],
-                AttractionCardIds: this.state.data[1]
+            <TouchableWithoutFeedback onPress={()=>this.props.navigation.push('AttractionDetails', {
+                AttractionData:this.state.data[0]
             })}>
             <View style={{
                         // height:Dimensions.get('window').height/2.8,
@@ -82,31 +81,6 @@ class DestinationCard extends React.Component{
                         </TouchableWithoutFeedback>
                     </View>
                 </View>
-
-
-                    {/* <View style={{flexDirection:"row",borderWidth:1,alignItems:"center"}}>
-                        <View style={{width:"80%"}}>
-                        <Text style={{ 
-                            fontSize:16
-                        }}>{this.state.data[0].name} </Text>
-                        </View>
-                        <View style={{width:"10%"}}>
-                        
-                        
-                        <TouchableWithoutFeedback onPress={()=>{
-                             this.setState((prevState) => ({
-                                    saved: !prevState.saved
-                                    }));
-                        }}>
-
-                             <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
-                                size={23} 
-                                color={ThemeColor}
-                                />
-                    
-                        </TouchableWithoutFeedback>
-                    </View>
-                    </View>                 */}
             </View>
             </TouchableWithoutFeedback>
         )
@@ -125,4 +99,4 @@ class DestinationCard extends React.Component{
     }
 }
 
-export default withNavigation(DestinationCard);
+export default withNavigation(AttractionCard);

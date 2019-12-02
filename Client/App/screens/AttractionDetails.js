@@ -15,7 +15,7 @@ import image5 from '../assets/images/im5.jpg';
 import map from '../assets/images/map.jpg';
 import {ThemeColor, ThemeGrey} from '../assets/Colors/Colors';
 import TextCutter from '../components/TextCutter';
-import DestinationCard from '../components/DestinationCard';
+import AttractionCard from '../components/AttractionCard';
 import TourCard from '../components/TourCard';
 import IconWithText from '../components/IconWithText';
 import Reviews from '../components/Review';
@@ -86,9 +86,9 @@ export default class AttractionDetails extends Component {
 
   componentDidMount(){
 
-    const DestinationData = this.props.navigation.getParam('DestinationData','default')
+    const AttractionData = this.props.navigation.getParam('AttractionData','default')
 
-    fetch(`http://192.168.100.13:3001/destination/${DestinationData.destination_id}`)
+    fetch(`http://192.168.100.13:3001/attraction/${AttractionData.attraction_id}`)
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -213,7 +213,7 @@ export default class AttractionDetails extends Component {
           keyExtractor={item => item.OperatorCard.name}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
-            <DestinationCard
+            <AttractionCard
             id={3}
             />
           )}
@@ -285,13 +285,13 @@ export default class AttractionDetails extends Component {
 
   render() {
     
-  const DestinationData = this.props.navigation.getParam('DestinationData','default')
+  const AttractionData = this.props.navigation.getParam('AttractionData','default')
 
     return (
       <ScrollView>
-        {this.renderTop(DestinationData.image_path,DestinationData.name)}
+        {this.renderTop(AttractionData.image_path,AttractionData.name)}
         {/* {this.renderSelections()} */}
-        {this.state.data ? this.renderDetails(DestinationData.name) :  <LoadingIndicator></LoadingIndicator>}
+        {this.state.data ? this.renderDetails(AttractionData.name) :  <LoadingIndicator></LoadingIndicator>}
         {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
         {this.renderNearbyAttractions()}
         {this.renderMap()}

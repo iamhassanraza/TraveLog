@@ -15,7 +15,7 @@ import image5 from '../assets/images/im5.jpg';
 import map from '../assets/images/map.jpg';
 import {ThemeColor, ThemeGrey} from '../assets/Colors/Colors';
 import TextCutter from '../components/TextCutter';
-import DestinationCard from '../components/DestinationCard';
+import AttractionCard from '../components/AttractionCard';
 import TourCard from '../components/TourCard';
 import IconWithText from '../components/IconWithText';
 import Reviews from '../components/Review';
@@ -282,12 +282,12 @@ const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
 <FlatList
     horizontal
-    // data={this.state.data?this.state.data[1] : null}
-    data = {1,2,3}
+    data={this.state.data?this.state.data[1] : null}
+    // data = {1,2,3}
     keyExtractor={item => item}
     showsHorizontalScrollIndicator={false}
     renderItem={({item}) =>
-    <DestinationCard 
+    <AttractionCard 
     id={item}
     api = {apiUrl}
     />
