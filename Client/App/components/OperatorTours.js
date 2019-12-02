@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList } from 'react-native'
+import { Text, View, FlatList, Dimensions } from 'react-native'
 import FlatListContainer from '../components/FlatListContainer'
 import TourCard from '../components/TourCard'
 
@@ -26,13 +26,12 @@ export default class OperatorTours extends Component {
     render() {
         return (
             <View>
-                <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
+                <FlatListContainer style={{}} title="hello" >
                     <FlatList
-                    horizontal
                     data={this.state.tours}
                     showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
-                    id={item}
+                    renderItem={({ item }) => <TourCard style={{ width: Dimensions.get('window').width/1,marginRight:10}}
+                    id={item.tour_id}
                     seatsLeft={10} ></TourCard>}
                     keyExtractor={item => item}
                     />

@@ -103,13 +103,14 @@ exports.getTourCard = (req,res) =>{
     const tour_id = (req.params.tourID);
     
     var sqlQuery = `SELECT tours.tour_id, tours.operator_id,tours.title,tours.price,tours.speciality,tours.last_date_of_reg,
-    tours.date_of_departure,tours.end_date,operator.name ,rating_review.numeric_rating,category.category_id,
+    tours.date_of_departure,tours.end_date,operator.name ,rating_review.numeric_rating,
     tourimage.image_path AS tourcover,operatorimage.image_path AS operatordp, operator.is_verified FROM tours INNER JOIN operator ON 
-    operator.operator_id = tours.operator_id INNER JOIN category ON category.name = 'tour' INNER JOIN rating_review
-     ON rating_review.reference_id = tours.operator_id AND rating_review.category_id = category.category_id INNER JOIN 
+    operator.operator_id = tours.operator_id INNER JOIN category ON category.name = 'tour' LEFT JOIN rating_review
+     ON rating_review.reference_id = tours.operator_id AND rating_review.category_id = (SELECT category.category_id FROM category WHERE category.name = 'operator') 
+     LEFT JOIN 
      image tourimage ON (tourimage.category_id = (SELECT category.category_id FROM category WHERE category.name = 'tour')
       AND tourimage.image_type_id = (SELECT image_type_id FROM image_type WHERE type_name ='cover') AND 
-      tourimage.reference_id = tours.tour_id) INNER JOIN image operatorimage ON 
+      tourimage.reference_id = tours.tour_id) LEFT JOIN image operatorimage ON 
       (operatorimage.category_id = (SELECT category.category_id FROM category WHERE category.name = 'operator') 
       AND operatorimage.image_type_id = (SELECT image_type_id FROM image_type WHERE type_name ='dp') AND 
       operatorimage.reference_id = tours.operator_id) WHERE tours.tour_id = ${tour_id}`
