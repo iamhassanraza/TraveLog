@@ -10,6 +10,8 @@ import SpecialityIcon from 'react-native-vector-icons/SimpleLineIcons';
 import LoadingIndicator from '../components/LoadingIndicator'
 import { withNavigation } from 'react-navigation';
 import SeatsLeftIcon from 'react-native-vector-icons/MaterialIcons';
+import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 import IconWithText from './IconAndText'
 // import IconWithText from './IconWithText'
@@ -108,7 +110,7 @@ class TourCard extends React.Component {
         else {
             return (
                 <View style={{ width: Dimensions.get('window').width / 1.4, height: 190, borderColor: '#8b8e8f', backgroundColor: 'white', marginRight: 10, justifyContent: 'center', alignContent: 'center' }} >
-                    <LoadingIndicator></LoadingIndicator>
+                    <Facebook></Facebook>
                 </View>
 
             )

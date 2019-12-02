@@ -11,6 +11,8 @@ import IconWithText from './IconAndText';
 import { Rating } from 'react-native-ratings';
 import { withNavigation } from 'react-navigation'
 import LoadingIndicator from '../components/LoadingIndicator';
+import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 const userId = 1
 
@@ -102,7 +104,7 @@ class OperatorCard extends React.Component{
                                 textstyle={{marginLeft: '2%', marginRight: '2%'}}
                             />
                         </View> 
-                    </View> : <View style={{height: 200, justifyContent: 'center'}}><LoadingIndicator></LoadingIndicator></View> }
+                    </View> : <View style={{height: 200, justifyContent: 'center'}}><Facebook></Facebook></View> }
                 </View>
             </TouchableWithoutFeedback>
         );

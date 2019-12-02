@@ -6,11 +6,11 @@ import  { BorderColor } from '../assets/Colors/Colors';
 
 
 
-
 export default class Review extends Component {
     render() {
         return (
             <View style={styles.Container}>
+
                 <View style={styles.avatarName}>
                     <Image style={styles.avatar} source = {logo}></Image>
                     <View style={{flex: 1, padding: '1%'}}>
