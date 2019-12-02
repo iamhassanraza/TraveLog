@@ -33,6 +33,10 @@ const TabNavigator = createMaterialTopTabNavigator(
                 elevation: 1,
 
             },
+            initialLayout: {
+                height: 100,
+                width: 100
+            },
             upperCaseLabel: false,
             scrollEnabled: true,
             activeTintColor: ThemeColor,

@@ -21,7 +21,7 @@ export default class Gallery extends Component {
     render() {
 
         const images = [
-            img1,img2,img3,img2,img1,img3,img2,img1
+            img1,img2,img3
         ]
 
         return (
