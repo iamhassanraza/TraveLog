@@ -32,8 +32,7 @@ class DestinationCard extends React.Component{
     render() {
 
         if(this.state.data){
-            console.log(this.state.data);
-            console.log(this.props.id);
+         
         return (
             <TouchableWithoutFeedback onPress={()=>this.props.navigation.push('DestinationDetails', {
                 DestinationData:this.state.data[0],
