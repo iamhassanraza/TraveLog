@@ -24,7 +24,7 @@ const RootStack = createStackNavigator({
   AttractionDetails
 },
 {
-  initialRouteName:'Home',
+  initialRouteName:'Filters',
 
   defaultNavigationOptions: {
     header:null,

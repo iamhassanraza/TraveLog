@@ -283,7 +283,6 @@ const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
 <FlatList
     horizontal
     data={this.state.data?this.state.data[1] : null}
-    // data = {1,2,3}
     keyExtractor={item => item}
     showsHorizontalScrollIndicator={false}
     renderItem={({item}) =>

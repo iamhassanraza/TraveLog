@@ -74,8 +74,7 @@ exports.getDetailsOfDestination = (req, res, next) => {
 con.query(sqlQuery,(err, result) => {
 
   var response = undefined
-  console.log(result);
-  console.log(response);
+  
   if(!err) {
       con.query(sqlQuery2, (err, attractionIds) => {
           if(!err) {
