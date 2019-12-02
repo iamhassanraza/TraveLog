@@ -11,6 +11,7 @@ import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
 import ContactUs from './App/screens/ContactUs'
 import Filters from './App/screens/Filters'
+import AttractionDetails from './App/screens/AttractionDetails'
 
 const RootStack = createStackNavigator({
   Home,
@@ -19,7 +20,8 @@ const RootStack = createStackNavigator({
   DestinationDetails,
   Modal,
   ContactUs,
-  Filters
+  Filters,
+  AttractionDetails
 },
 {
   initialRouteName:'Home',
