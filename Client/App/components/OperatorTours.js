@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, Dimensions } from 'react-native'
+import { Text, View, FlatList, Dimensions, ScrollView } from 'react-native'
 import FlatListContainer from '../components/FlatListContainer'
 import TourCard from '../components/TourCard'
+import {BackgroundColor} from '../assets/Colors/Colors'
+import ContentLoader, {Rect, Facebook } from 'react-content-loader/native'
 
 export default class OperatorTours extends Component {
 
@@ -26,16 +28,29 @@ export default class OperatorTours extends Component {
     render() {
         return (
             <View>
-                <FlatListContainer style={{marginLeft: '3%'}} title="Tours" >
+                {this.state.tours? 
+                <FlatListContainer style={{backgroundColor: BackgroundColor}} title="Tours" >
                     <FlatList
                     data={this.state.tours}
                     showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{ width: Dimensions.get('window').width/1.07}}
+                    renderItem={({ item }) => <TourCard 
+                    style={{borderWidth: 0, width: Dimensions.get('window').width/1, marginBottom: '8%', paddingLeft: '3%', paddingRight: '3%'}}
                     id={item.tour_id}
                     seatsLeft={10} ></TourCard>}
                     keyExtractor={item => item}
                     />
-                </FlatListContainer>
+                </FlatListContainer> :
+                <View style={{alignSelf:'center'}}>
+                    <ContentLoader>
+                        <Rect x="10" y="10" rx="4" ry="4" width="100%" height="100"/>
+                        <Rect x="10" y="150" rx="4" ry="4" width="100%" height="100"/>
+                        <Rect x="10" y="300" rx="4" ry="4" width="100%" height="100"/>
+                        <Rect x="10" y="450" rx="4" ry="4" width="100%" height="100"/>
+                        <Rect x="10" y="600" rx="3" ry="3" width="100%" height="100" />
+                    </ContentLoader>
+                </View>
+                }
+                
             </View>
         )
     }

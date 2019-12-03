@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Dimensions, StyleSheet, ImageBackground } from 'react-native'
+import { Text, View, Dimensions, StyleSheet, ImageBackground, ScrollView } from 'react-native'
 import PhotoGrid from 'react-native-thumbnail-grid'
 import { FlatGrid, SectionGrid } from 'react-native-super-grid';
 import img1 from '../assets/images/6.jpg'

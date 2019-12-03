@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Linking, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
+import { Text, View,ScrollView, StyleSheet, Linking, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
 import IconWithText from './IconAndText'
 import ContentLoader, { Facebook } from 'react-content-loader/native'
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors'
 
-
 export default class AboutOperator extends Component {
     render() {
         return (
-            <>    
+            <View>    
                 <View style={{marginTop: '5%', marginLeft: '3%'}}>
                     <TouchableOpacity onPress = {() => Linking.openURL('geo:' + 40.7127753 + ',' + -74.0059728)}>
                         <IconWithText 
@@ -41,7 +40,7 @@ export default class AboutOperator extends Component {
                         {this.props.screenProps.description}
                     </Text>
                 </View>
-            </>
+            </View>
         )
     }
 }

@@ -45,17 +45,19 @@ export default class OperatorProfile extends Component {
                         {operatorData[0].about} 
                     </Text>
                 </View>
-                <Navigation
-                    screenProps={{
-                                    email: operatorData[0].email,
-                                    phone: operatorData[0].phone,
-                                    address: operatorData[0].street_address,
-                                    description: operatorData[0].description,
-                                    operatorId: operatorId,
-                                    name: operatorData[0].name,
-                                    numeric_rating: operatorData[0].numeric_rating
-                                }}
-                />
+                <View>
+                    <Navigation
+                        screenProps={{
+                                        email: operatorData[0].email,
+                                        phone: operatorData[0].phone,
+                                        address: operatorData[0].street_address,
+                                        description: operatorData[0].description,
+                                        operatorId: operatorId,
+                                        name: operatorData[0].name,
+                                        numeric_rating: operatorData[0].numeric_rating
+                                    }}
+                    />
+                </View>
             </ScrollView>
         )
     }

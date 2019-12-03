@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TextInput, Button } from 'react-native'
+import { Text, View, StyleSheet, TextInput, Button, ScrollView } from 'react-native'
 import { ThemeColor } from '../assets/Colors/Colors'
 import ReviewIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Rating, AirbnbRating } from 'react-native-elements';
@@ -7,6 +7,7 @@ import Review from './Review';
 import CustomButton from './CustomButton';
 import { FlatList } from 'react-native';
 import LoadingIndicator from '../components/LoadingIndicator';
+import ContentLoader, { Facebook } from 'react-content-loader/native';
 
 
 
@@ -87,7 +88,9 @@ export default class OperatorRating extends Component {
                         />
                     </View>
                 </View> :
-                <View style={{height: 200, justifyContent: 'center'}}><LoadingIndicator></LoadingIndicator></View>
+                <View style={{alignItems: 'center'}}>
+                    <ContentLoader/>
+                </View>
         )
     }
 }
