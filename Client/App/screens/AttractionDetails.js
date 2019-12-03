@@ -25,58 +25,6 @@ import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
 
 
-const DATA = [
-  {
-    price: 300,
-    title: 'Hunza',
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Hunza', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    title: 'Kashmir',
-    speciality: 'Girls',
-    seatsLeft: 10,
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Kashmir', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'China Border',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Skardu ', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'Turkey',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Gilgit', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'Skardu',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Sawat', image, rating: 3.4, verified: true},
-  },
-];
 
 export default class AttractionDetails extends Component {
   state = {
@@ -88,7 +36,7 @@ export default class AttractionDetails extends Component {
 
     const AttractionData = this.props.navigation.getParam('AttractionData','default')
 
-    fetch(`http://192.168.100.13:3001/attraction/${AttractionData.attraction_id}`)
+    fetch(`http://192.168.100.13:3001/attraction/13`)
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -103,9 +51,12 @@ export default class AttractionDetails extends Component {
 
 
   renderTop = (image,name) => {
-    
-   
+  
+   console.log(name);
+  console.log(name.length);
+ 
     return (
+    
       
       <ImageBackground
         source={{uri:`http://192.168.100.13:3001/images/${image}`}}
@@ -119,10 +70,10 @@ export default class AttractionDetails extends Component {
             backgroundColor: 'rgba(0,0,0.3)',
             justifyContent: 'flex-end',
             alignItems: 'center',
+            
           }}>
-          <Text style={{fontSize: 32, color: 'white', fontWeight: 'bold'}}>
-            {' '}
-            {name.toUpperCase()}{' '}
+          <Text style={{ fontSize: (name.length < 17 ? 32 : 26) , color: 'white', fontWeight: 'bold', alignSelf:"center" }}>
+            {name.toUpperCase()}
           </Text>
 
           <View
@@ -205,16 +156,20 @@ export default class AttractionDetails extends Component {
   };
 
   renderNearbyAttractions = () => {
+
+    const apiUrl= `http://192.168.100.13:3001/attraction/`
+
     return (
       <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">
         <FlatList
           horizontal
-          data={DATA}
+          data={this.state.data?this.state.data[1] : null}
           keyExtractor={item => item.OperatorCard.name}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <AttractionCard
-            id={3}
+            id={item}
+            api = {apiUrl}
             />
           )}
         />
