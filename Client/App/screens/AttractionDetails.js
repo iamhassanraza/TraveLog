@@ -36,7 +36,7 @@ export default class AttractionDetails extends Component {
 
     const AttractionData = this.props.navigation.getParam('AttractionData','default')
 
-    fetch(`http://192.168.100.13:3001/attraction/13`)
+    fetch(`http://192.168.100.13:3001/attraction/${AttractionData.attraction_id}`)
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -51,10 +51,7 @@ export default class AttractionDetails extends Component {
 
 
   renderTop = (image,name) => {
-  
-   console.log(name);
-  console.log(name.length);
- 
+    
     return (
     
       
@@ -103,7 +100,7 @@ export default class AttractionDetails extends Component {
   };
 
 
-  renderDetails = (name) => {
+  renderDetails = () => {
     return (
       <View style={{marginLeft: '4%'}}>
         <IconWithText
@@ -117,7 +114,7 @@ export default class AttractionDetails extends Component {
 
         <IconWithText
           title={'City : '}
-          subtitle={name}
+          subtitle={this.state.data[0].city_name}
           linear={'true'}
           icon={'map-marker-radius'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -157,14 +154,14 @@ export default class AttractionDetails extends Component {
 
   renderNearbyAttractions = () => {
 
-    const apiUrl= `http://192.168.100.13:3001/attraction/`
-
+    const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
+    console.log(this.state.data);
     return (
       <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">
         <FlatList
           horizontal
           data={this.state.data?this.state.data[1] : null}
-          keyExtractor={item => item.OperatorCard.name}
+          keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <AttractionCard
@@ -242,13 +239,15 @@ export default class AttractionDetails extends Component {
     
   const AttractionData = this.props.navigation.getParam('AttractionData','default')
 
+  console.log(AttractionData);
+
     return (
       <ScrollView>
         {this.renderTop(AttractionData.image_path,AttractionData.name)}
         {/* {this.renderSelections()} */}
-        {this.state.data ? this.renderDetails(AttractionData.name) :  <LoadingIndicator></LoadingIndicator>}
+        {this.state.data ? this.renderDetails() :  <LoadingIndicator></LoadingIndicator>}
         {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
-        {this.renderNearbyAttractions()}
+        {this.state.data ? this.renderNearbyAttractions() :  <LoadingIndicator></LoadingIndicator>}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}

@@ -311,7 +311,7 @@ const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
   const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
 
   
-  
+  console.log(DestinationData);
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path,DestinationData.name)}
