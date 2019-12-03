@@ -26,11 +26,11 @@ export default class OperatorTours extends Component {
     render() {
         return (
             <View>
-                <FlatListContainer style={{}} title="hello" >
+                <FlatListContainer style={{marginLeft: '3%'}} title="Tours" >
                     <FlatList
                     data={this.state.tours}
                     showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{ width: Dimensions.get('window').width/1,marginRight:10}}
+                    renderItem={({ item }) => <TourCard style={{ width: Dimensions.get('window').width/1.07}}
                     id={item.tour_id}
                     seatsLeft={10} ></TourCard>}
                     keyExtractor={item => item}

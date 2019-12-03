@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Linking, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
 import IconWithText from './IconAndText'
+import ContentLoader, { Facebook } from 'react-content-loader/native'
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors'
 
 

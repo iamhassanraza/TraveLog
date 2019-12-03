@@ -2,7 +2,7 @@ import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
 import {View, Linking, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
-import VerifiedIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { VerifiedIcon } from "../assets/icons/Icons";
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PhoneIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AddressIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,6 +11,8 @@ import IconWithText from './IconAndText';
 import { Rating } from 'react-native-ratings';
 import { withNavigation } from 'react-navigation'
 import LoadingIndicator from '../components/LoadingIndicator';
+import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 const userId = 1
 
@@ -67,7 +69,7 @@ class OperatorCard extends React.Component{
                             <View style={{flex:4, marginLeft:'1%'}}>
                                 <Text style={{fontWeight:'bold',fontSize:16} }>
                                     {this.state.cardData[0].name}
-                                    {this.state.cardData[0].is_verified ?<VerifiedIcon size={17}></VerifiedIcon> : false }
+                                    {this.state.cardData[0].is_verified ? <VerifiedIcon size={17}></VerifiedIcon> : "" }
                                 </Text> 
                                 <View style={{flexDirection:'row',alignItems:'center'}}>   
                                     <Text style={{color:'orange', fontWeight:'bold'}}>{this.state.cardData[0].numeric_rating}</Text>
@@ -102,7 +104,7 @@ class OperatorCard extends React.Component{
                                 textstyle={{marginLeft: '2%', marginRight: '2%'}}
                             />
                         </View> 
-                    </View> : <View style={{height: 200, justifyContent: 'center'}}><LoadingIndicator></LoadingIndicator></View> }
+                    </View> : <View style={{height: 200, justifyContent: 'center'}}><Facebook></Facebook></View> }
                 </View>
             </TouchableWithoutFeedback>
         );
