@@ -4,7 +4,7 @@ const con = require('../db')
 
 exports.getAllOperators = (req,res)=>{
 
-    var sqlQuery = 'SELECT * From operator WHERE 1'
+    var sqlQuery = 'SELECT operator_id From operator WHERE 1'
         
     if(Object.keys(req.query).length != 0)
     {

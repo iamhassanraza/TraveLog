@@ -1,7 +1,7 @@
 const con = require("../db");
 
 exports.getAllDestinations = (req, res, next) => {
-  var sqlQuery = "SELECT * From destination WHERE 1";
+  var sqlQuery = "SELECT destination_id From destination WHERE 1";
   
 
   if (Object.keys(req.query).length != 0) {

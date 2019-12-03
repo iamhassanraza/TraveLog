@@ -19,12 +19,12 @@ export default class Home extends Component {
     state = {
         tourids:undefined,
         operatorids: undefined,
+        destinationids: undefined,
         refreshing: false
     } 
 
 
     componentDidMount(){
-        console.log('fetching')
         fetch("http://192.168.100.25:3001/tours/filter?")
             .then(response => {
                 return response.json()})
@@ -35,14 +35,27 @@ export default class Home extends Component {
               })
             }).catch(err=>console.log(err))
 
-        fetch("http://192.168.100.25:3001/operators/filter?")
+        fetch("http://192.168.100.15:3001/operators/filter?")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
-              this.setState({
+            console.log(responseJson)
+            this.setState({
                 refreshing: false,
-               operatorids : responseJson,
-              })
+                operatorids : responseJson,
+            })
+        })
+        .catch(err=>console.log(err))
+
+        fetch("http://192.168.100.13:3001/destination/filter?")
+        .then(response => {
+            return response.json()})
+        .then((responseJson)=> {
+            console.log(responseJson)
+            this.setState({
+                refreshing: false,
+                destinationids : responseJson,
+            })
         })
         .catch(err=>console.log(err))
     }
@@ -76,9 +89,9 @@ export default class Home extends Component {
         
 
         return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}
-                    // refreshControl={
-                    //     <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh} />
-                    //              }
+                    refreshControl={
+                        <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh} />
+                    }
         
         >
                     
@@ -134,23 +147,31 @@ export default class Home extends Component {
                                 showsHorizontalScrollIndicator={false}
                                 renderItem= {({item}) => 
                                 <OperatorCard
-                                    operatorId = {item}
+                                    operatorId = {item.operator_id}
                                     style={{marginRight:10}}
                                 />
                                 }
-                            /> : <View><Facebook /></View>
+                            /> : 
+                            <View style={{flexDirection:'row'}}>
+                                <View style={{width:'60%'}}>
+                                    <Facebook />
+                                </View>
+                                <View style={{width:'60%', marginLeft: '10%'}}>
+                                    <Facebook />
+                                </View>
+                            </View>
                         }
                     </FlatListContainer>
 
                 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
                         <FlatList
                             horizontal
-                            data={destination}
+                            data={this.state.destinationids}
                             keyExtractor={item => item}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard 
-                            id={item}
+                            id={item.destination_id}
                             api = {apiUrl}
                             // destination = {1}
                              />
