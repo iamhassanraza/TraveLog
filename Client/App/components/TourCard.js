@@ -48,6 +48,7 @@ class TourCard extends React.Component {
 
     render() {
         if (this.state.data) {
+            console.log("if chala")
             const start_Date = new Date(this.state.data[0].date_of_departure)
             const end_date = new Date(this.state.data[0].end_date)
             let formatted_start_date = start_Date.getDate() + "-" + (start_Date.getMonth() + 1) + "-" + start_Date.getFullYear()
@@ -55,11 +56,9 @@ class TourCard extends React.Component {
 
             const duration = (end_date.getTime() - start_Date.getTime()) / (1000 * 3600 * 24)
 
-
-
-
-            return (
-                <TouchableWithoutFeedback onPress={() => this.props.navigation.push('TourDetail', {
+            return( 
+                <View>
+                {this.state.data  ?  <TouchableWithoutFeedback onPress={() => this.props.navigation.push('TourDetail', {
                     TourData: { ...this.state.data[0] }
                 })}>
                     <View>
@@ -104,19 +103,16 @@ class TourCard extends React.Component {
 
                         </View>
                     </View>
-                </TouchableWithoutFeedback>
-            )
-        }
-        else {
-            return (
-                <View style={{ width: Dimensions.get('window').width / 1.4, height: 190, borderColor: '#8b8e8f', backgroundColor: 'white', marginRight: 10, justifyContent: 'center', alignContent: 'center' }} >
+                </TouchableWithoutFeedback> : <View style={{ width: Dimensions.get('window').width / 1.4, height: 190, borderColor: '#8b8e8f', backgroundColor: 'white', marginRight: 10, justifyContent: 'center', alignContent: 'center' }} >
                     <Facebook></Facebook>
                 </View>
-
-            )
+             
         }
+        </View>
+        )
 
 
+    }
     }
 }
 

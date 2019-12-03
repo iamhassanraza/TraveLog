@@ -8,6 +8,8 @@ import image from "../assets/images/1.jpg"
 import FlatListContainer from '../components/FlatListContainer'
 import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/2.jpg"
+import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 
 
@@ -15,20 +17,15 @@ export default class Home extends Component {
 
 
     state = {
-        tourids:[],
+        tourids:undefined,
+        operatorids: undefined,
         refreshing: false
     } 
 
 
     componentDidMount(){
-     this.fetchData()
-        
-    }
-
-
-    fetchData = ()=>{
         console.log('fetching')
-        return fetch("http://192.168.100.25:3001/tours/filter?")
+        fetch("http://192.168.100.25:3001/tours/filter?")
             .then(response => {
                 return response.json()})
             .then((responseJson)=> {
@@ -37,8 +34,33 @@ export default class Home extends Component {
                tourids : responseJson,
               })
             }).catch(err=>console.log(err))
-        
+
+        fetch("http://192.168.100.25:3001/operators/filter?")
+        .then(response => {
+            return response.json()})
+        .then((responseJson)=> {
+              this.setState({
+                refreshing: false,
+               operatorids : responseJson,
+              })
+        })
+        .catch(err=>console.log(err))
     }
+
+
+    // fetchData = ()=>{
+    //     console.log('fetching')
+    //     return fetch("http://192.168.100.25:3001/tours/filter?")
+    //         .then(response => {
+    //             return response.json()})
+    //         .then((responseJson)=> {
+    //           this.setState({
+    //             refreshing: false,
+    //            tourids : responseJson,
+    //           })
+    //         }).catch(err=>console.log(err))
+        
+    // }
 
     onPageRefresh = ()=>{
         this.setState({tourids:[]})
@@ -54,9 +76,9 @@ export default class Home extends Component {
         
 
         return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}
-                    refreshControl={
-                        <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh} />
-                                 }
+                    // refreshControl={
+                    //     <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh} />
+                    //              }
         
         >
                     
@@ -79,32 +101,46 @@ export default class Home extends Component {
 
                     <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1}}>
 
-                <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
-                    <FlatList
-                    horizontal
-                    data={this.state.tourids}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
-                    id={item.tour_id}
-                    seatsLeft={10} ></TourCard>}
-                    keyExtractor={item => item}
-                    />
-                </FlatListContainer>
-                
-                <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
-                        <FlatList 
-                            horizontal
-                            data={operators}
-                            keyExtractor={item => item}
-                            showsHorizontalScrollIndicator={false}
-                            renderItem= {({item}) => 
-                            <OperatorCard
-                                operatorId = {item}
-                                style={{marginRight:10}}
-                            />
-                            }
-                        />
-                </FlatListContainer>
+                    <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
+                        {
+                            this.state.tourids ? 
+                            <FlatList
+                                horizontal
+                                data={this.state.tourids}
+                                showsHorizontalScrollIndicator={false}
+                                renderItem={({ item }) => <TourCard style={{marginRight:10}}
+                                id={item.tour_id}
+                                seatsLeft={10} ></TourCard>}
+                                keyExtractor={item => item}
+                            /> : 
+                            <View style={{flexDirection:'row'}}>
+                                <View style={{width:'60%'}}>
+                                    <Facebook />
+                                </View>
+                                <View style={{width:'60%', marginLeft: '10%'}}>
+                                    <Facebook />
+                                </View>
+                            </View>
+                        }
+                    </FlatListContainer>
+                 
+                    <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
+                        {
+                            this.state.operatorids ? 
+                            <FlatList 
+                                horizontal
+                                data={this.state.operatorids}
+                                keyExtractor={item => item}
+                                showsHorizontalScrollIndicator={false}
+                                renderItem= {({item}) => 
+                                <OperatorCard
+                                    operatorId = {item}
+                                    style={{marginRight:10}}
+                                />
+                                }
+                            /> : <View><Facebook /></View>
+                        }
+                    </FlatListContainer>
 
                 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
                         <FlatList
