@@ -25,58 +25,6 @@ import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
 
 
-const DATA = [
-  {
-    price: 300,
-    title: 'Hunza',
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Hunza', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    title: 'Kashmir',
-    speciality: 'Girls',
-    seatsLeft: 10,
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Kashmir', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'China Border',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Skardu ', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'Turkey',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Gilgit', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'Skardu',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Sawat', image, rating: 3.4, verified: true},
-  },
-];
 attraction = [4,7]
 
 export default class DestinationDetails extends Component {
@@ -363,7 +311,7 @@ const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
   const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
 
   
-  
+  console.log(DestinationData);
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path,DestinationData.name)}

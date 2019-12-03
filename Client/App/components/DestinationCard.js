@@ -82,30 +82,6 @@ class DestinationCard extends React.Component{
                     </View>
                 </View>
 
-
-                    {/* <View style={{flexDirection:"row",borderWidth:1,alignItems:"center"}}>
-                        <View style={{width:"80%"}}>
-                        <Text style={{ 
-                            fontSize:16
-                        }}>{this.state.data[0].name} </Text>
-                        </View>
-                        <View style={{width:"10%"}}>
-                        
-                        
-                        <TouchableWithoutFeedback onPress={()=>{
-                             this.setState((prevState) => ({
-                                    saved: !prevState.saved
-                                    }));
-                        }}>
-
-                             <Icon name={this.state.saved ? "bookmark" : "bookmark-o"} 
-                                size={23} 
-                                color={ThemeColor}
-                                />
-                    
-                        </TouchableWithoutFeedback>
-                    </View>
-                    </View>                 */}
             </View>
             </TouchableWithoutFeedback>
         )

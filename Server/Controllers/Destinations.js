@@ -87,7 +87,7 @@ con.query(sqlQuery,(err, result) => {
               }
               else {
                   console.log(err)
-                  response = result
+                  response = [...result,null]
                   res.status(200).send(response)
                   console.log("response doesn't have follow status")
               }

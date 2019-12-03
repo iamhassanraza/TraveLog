@@ -25,58 +25,6 @@ import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
 
 
-const DATA = [
-  {
-    price: 300,
-    title: 'Hunza',
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Hunza', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    title: 'Kashmir',
-    speciality: 'Girls',
-    seatsLeft: 10,
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Kashmir', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'China Border',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Skardu ', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'Turkey',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Gilgit', image, rating: 3.4, verified: true},
-  },
-  {
-    price: 300,
-    daysLeft: 2,
-    speciality: 'Girls',
-    seatsLeft: 10,
-    title: 'Skardu',
-    startDate: '9 oct',
-    endDate: '20 oct',
-    OperatorCard: {name: 'Sawat', image, rating: 3.4, verified: true},
-  },
-];
 
 export default class AttractionDetails extends Component {
   state = {
@@ -104,8 +52,8 @@ export default class AttractionDetails extends Component {
 
   renderTop = (image,name) => {
     
-   
     return (
+    
       
       <ImageBackground
         source={{uri:`http://192.168.100.13:3001/images/${image}`}}
@@ -119,10 +67,10 @@ export default class AttractionDetails extends Component {
             backgroundColor: 'rgba(0,0,0.3)',
             justifyContent: 'flex-end',
             alignItems: 'center',
+            
           }}>
-          <Text style={{fontSize: 32, color: 'white', fontWeight: 'bold'}}>
-            {' '}
-            {name.toUpperCase()}{' '}
+          <Text style={{ fontSize: (name.length < 17 ? 32 : 26) , color: 'white', fontWeight: 'bold', alignSelf:"center" }}>
+            {name.toUpperCase()}
           </Text>
 
           <View
@@ -152,7 +100,7 @@ export default class AttractionDetails extends Component {
   };
 
 
-  renderDetails = (name) => {
+  renderDetails = () => {
     return (
       <View style={{marginLeft: '4%'}}>
         <IconWithText
@@ -166,7 +114,7 @@ export default class AttractionDetails extends Component {
 
         <IconWithText
           title={'City : '}
-          subtitle={name}
+          subtitle={this.state.data[0].city_name}
           linear={'true'}
           icon={'map-marker-radius'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -205,16 +153,20 @@ export default class AttractionDetails extends Component {
   };
 
   renderNearbyAttractions = () => {
+
+    const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
+    console.log(this.state.data);
     return (
       <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">
         <FlatList
           horizontal
-          data={DATA}
-          keyExtractor={item => item.OperatorCard.name}
+          data={this.state.data?this.state.data[1] : null}
+          keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <AttractionCard
-            id={3}
+            id={item}
+            api = {apiUrl}
             />
           )}
         />
@@ -287,13 +239,15 @@ export default class AttractionDetails extends Component {
     
   const AttractionData = this.props.navigation.getParam('AttractionData','default')
 
+  console.log(AttractionData);
+
     return (
       <ScrollView>
         {this.renderTop(AttractionData.image_path,AttractionData.name)}
         {/* {this.renderSelections()} */}
-        {this.state.data ? this.renderDetails(AttractionData.name) :  <LoadingIndicator></LoadingIndicator>}
+        {this.state.data ? this.renderDetails() :  <LoadingIndicator></LoadingIndicator>}
         {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
-        {this.renderNearbyAttractions()}
+        {this.state.data ? this.renderNearbyAttractions() :  <LoadingIndicator></LoadingIndicator>}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}

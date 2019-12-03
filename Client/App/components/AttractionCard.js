@@ -32,7 +32,7 @@ class AttractionCard extends React.Component{
     render() {
 
         if(this.state.data){
-           
+        
         return (
             <TouchableWithoutFeedback onPress={()=>this.props.navigation.push('AttractionDetails', {
                 AttractionData:this.state.data[0]
