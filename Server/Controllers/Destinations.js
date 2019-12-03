@@ -34,7 +34,7 @@ exports.getAllDestinations = (req, res, next) => {
 
 exports.getAttractionsCard = (req, res, next) => {
   var id = req.params.id;
-  var sqlQuery = `SELECT attractions.name , image.image_path, attractions.destination_id from attractions INNER JOIN image ON ( attractions.attraction_id = image.reference_id AND image.category_id = (SELECT category_id FROM category WHERE name = 'attraction') AND image.image_type_id = 1) WHERE attractions.attraction_id = ${id}`;
+  var sqlQuery = `SELECT attractions.name , image.image_path, attractions.attraction_id from attractions INNER JOIN image ON ( attractions.attraction_id = image.reference_id AND image.category_id = (SELECT category_id FROM category WHERE name = 'attraction') AND image.image_type_id = 1) WHERE attractions.attraction_id = ${id}`;
   
 
   con.query(sqlQuery, (err, result) => {
