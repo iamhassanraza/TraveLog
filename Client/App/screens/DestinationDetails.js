@@ -24,45 +24,37 @@ import FlatListContainer from '../components/FlatListContainer';
 import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
 
-
-attraction = [4,7]
+attraction = [4, 7];
 
 export default class DestinationDetails extends Component {
   state = {
-
-    data:undefined,
-    followed: false,
-    visited: false,
-    rated: false
-
+    data: undefined,
   };
 
+  componentDidMount() {
+    const DestinationData = this.props.navigation.getParam(
+      'DestinationData',
+      'default',
+    );
 
-  componentDidMount(){
+    fetch(
+      `http://192.168.100.13:3001/destination/${DestinationData.destination_id}`,
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        this.setState({
+          data: responseJson,
+        });
+      })
+      .catch(err => console.log(err));
+  }
 
-    const DestinationData = this.props.navigation.getParam('DestinationData','default')
-
-    fetch(`http://192.168.100.13:3001/destination/${DestinationData.destination_id}`)
-        .then(response => {
-            return response.json()})
-        .then((responseJson)=> {
-          this.setState({
-           data : responseJson
-          })
-        }).catch(err=>console.log(err))
-}
-
-
-
-
-
-  renderTop = (image,name) => {
-    
-   
+  renderTop = (image, name) => {
     return (
-      
       <ImageBackground
-        source={{uri:`http://192.168.100.13:3001/images/${image}`}}
+        source={{uri: `http://192.168.100.13:3001/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
@@ -105,71 +97,7 @@ export default class DestinationDetails extends Component {
     );
   };
 
-  // renderSelections = () => {
-  //   return (
-  //     <View
-  //       style={{
-  //         flexDirection: 'row',
-  //         justifyContent: 'space-around',
-  //         padding: 10,
-  //         borderBottomWidth: 0.5,
-  //         borderBottomColor: ThemeColor,
-  //       }}>
-  //       <IconWithText
-  //         title={'Wishlist'}
-  //         icon="heart-outline"
-  //         style={{
-  //           borderWidth: 1,
-  //           padding: 3,
-  //           borderColor: ThemeColor,
-  //           backgroundColor: this.state.followed ? ThemeColor : 'white',
-  //         }}
-  //         textstyle={{color: this.state.followed ? 'white' : ThemeColor}}
-  //         iconstyle={{color: this.state.followed ? 'white' : ThemeColor}}
-  //         onPress={() => {
-  //           this.setState(prevState => ({
-  //             followed: !prevState.followed,
-  //           }));
-  //         }}></IconWithText>
-
-  //       <IconWithText
-  //         title={'VISITED'}
-  //         icon="clipboard-check-outline"
-  //         style={{
-  //           borderWidth: 1,
-  //           padding: 3,
-  //           borderColor: ThemeColor,
-  //           backgroundColor: this.state.visited ? ThemeColor : 'white',
-  //         }}
-  //         textstyle={{color: this.state.visited ? 'white' : ThemeColor}}
-  //         iconstyle={{color: this.state.visited ? 'white' : ThemeColor}}
-  //         onPress={() => {
-  //           this.setState(prevState => ({
-  //             visited: !prevState.visited,
-  //           }));
-  //         }}></IconWithText>
-
-  //       <IconWithText
-  //         title={'RATE'}
-  //         icon="star-outline"
-  //         style={{
-  //           borderWidth: 1,
-  //           padding: 3,
-  //           borderColor: ThemeColor,
-  //           backgroundColor: this.state.rated ? ThemeColor : 'white',
-  //         }}
-  //         textstyle={{color: this.state.rated ? 'white' : ThemeColor}}
-  //         iconstyle={{color: this.state.rated ? 'white' : ThemeColor}}
-  //         onPress={() => {
-  //           this.setState(prevState => ({
-  //             rated: !prevState.rated,
-  //           }));
-  //         }}></IconWithText>
-  //     </View>
-  //   );
-  // };
-
-  renderDetails = (name) => {
+  renderDetails = name => {
     return (
       <View style={{marginLeft: '4%'}}>
         <IconWithText
@@ -222,62 +150,56 @@ export default class DestinationDetails extends Component {
   };
 
   renderNearbyAttractions = () => {
-
-const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
+    const apiUrl = `http://192.168.100.13:3001/destination/attraction/`;
 
     return (
-
-<FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
-<FlatList
-    horizontal
-    data={this.state.data?this.state.data[1] : null}
-    keyExtractor={item => item}
-    showsHorizontalScrollIndicator={false}
-    renderItem={({item}) =>
-    <AttractionCard 
-    id={item}
-    api = {apiUrl}
-    />
-    }
-/>
-</FlatListContainer>
+      <FlatListContainer style={{marginLeft: '3%'}} title="Top Attractions">
+        <FlatList
+          horizontal
+          data={this.state.data ? this.state.data[1] : null}
+          keyExtractor={item => item}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => <AttractionCard id={item} api={apiUrl} />}
+        />
+      </FlatListContainer>
     );
   };
 
-
-  renderMap =() => {
-    return(
+  renderMap = () => {
+    return (
       <View style={{marginLeft: 10, marginRight: 10, marginTop: 15}}>
-      <TouchableWithoutFeedback>
-        <ImageBackground
-          source={map}
-          style={{
-            height: Dimensions.get('window').height / 3.5,
-          }}></ImageBackground>
-      </TouchableWithoutFeedback>
-    </View>
-    )
-  }
+        <TouchableWithoutFeedback>
+          <ImageBackground
+            source={map}
+            style={{
+              height: Dimensions.get('window').height / 3.5,
+            }}></ImageBackground>
+        </TouchableWithoutFeedback>
+      </View>
+    );
+  };
 
   renderRelatedTours = () => {
-    return(
+    return (
       <FlatListContainer style={{marginLeft: 10}} title="Related Tours">
-      <FlatList
-                    horizontal
-                    data={[1,2]}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
-                    id={item}
-                    seatsLeft={10} ></TourCard>}
-                    keyExtractor={item => item}
-                    />
-    </FlatListContainer>
-    )
-  }
-
+        <FlatList
+          horizontal
+          data={[1, 2]}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => (
+            <TourCard
+              style={{marginRight: 10}}
+              id={item}
+              seatsLeft={10}></TourCard>
+          )}
+          keyExtractor={item => item}
+        />
+      </FlatListContainer>
+    );
+  };
 
   renderReviews = () => {
-    return(
+    return (
       <View>
         <View style={{marginTop: 10, marginLeft: 10, marginRight: 10}}>
           <Text
@@ -291,39 +213,48 @@ const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
           </Text>
         </View>
 
-            
-      <View style={{marginLeft: 10, marginRight: 10, marginTop: 10}}>
-        <Reviews></Reviews>
-        <Reviews></Reviews>
-        <Reviews></Reviews>
-        <Reviews></Reviews>
+        <View style={{marginLeft: 10, marginRight: 10, marginTop: 10}}>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+        </View>
       </View>
-      </View>
-    )
-  }
-
-
+    );
+  };
 
   render() {
-    
-  const DestinationData = this.props.navigation.getParam('DestinationData','default')
-  const attraction = [1,2,3,4,5,6,7,8,9,10,11,12];
-  const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
+    const DestinationData = this.props.navigation.getParam(
+      'DestinationData',
+      'default',
+    );
+    const attraction = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const apiUrl = `http://192.168.100.13:3001/destination/attraction/`;
 
-  
-  console.log(DestinationData);
+    console.log(DestinationData);
     return (
       <ScrollView>
-        {this.renderTop(DestinationData.image_path,DestinationData.name)}
+        {this.renderTop(DestinationData.image_path, DestinationData.name)}
         {/* {this.renderSelections()} */}
-        {this.state.data ? this.renderDetails(DestinationData.name) :  <LoadingIndicator></LoadingIndicator>}
-        {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
-        {this.state.data ? this.renderNearbyAttractions() : <LoadingIndicator></LoadingIndicator>}
+        {this.state.data ? (
+          this.renderDetails(DestinationData.name)
+        ) : (
+          <LoadingIndicator></LoadingIndicator>
+        )}
+        {this.state.data ? (
+          this.renderOverview()
+        ) : (
+          <LoadingIndicator></LoadingIndicator>
+        )}
+        {this.state.data ? (
+          this.renderNearbyAttractions()
+        ) : (
+          <LoadingIndicator></LoadingIndicator>
+        )}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}
       </ScrollView>
-    )
-      
+    );
   }
 }
