@@ -24,39 +24,35 @@ import FlatListContainer from '../components/FlatListContainer';
 import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
 
-
-
 export default class AttractionDetails extends Component {
   state = {
-    data:undefined
+    data: undefined,
   };
 
+  componentDidMount() {
+    const AttractionData = this.props.navigation.getParam(
+      'AttractionData',
+      'default',
+    );
 
-  componentDidMount(){
+    fetch(
+      `http://192.168.100.13:3001/attraction/${AttractionData.attraction_id}`,
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        this.setState({
+          data: responseJson,
+        });
+      })
+      .catch(err => console.log(err));
+  }
 
-    const AttractionData = this.props.navigation.getParam('AttractionData','default')
-
-    fetch(`http://192.168.100.13:3001/attraction/${AttractionData.attraction_id}`)
-        .then(response => {
-            return response.json()})
-        .then((responseJson)=> {
-          this.setState({
-           data : responseJson
-          })
-        }).catch(err=>console.log(err))
-}
-
-
-
-
-
-  renderTop = (image,name) => {
-    
+  renderTop = (image, name) => {
     return (
-    
-      
       <ImageBackground
-        source={{uri:`http://192.168.100.13:3001/images/${image}`}}
+        source={{uri: `http://192.168.100.13:3001/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
@@ -67,9 +63,14 @@ export default class AttractionDetails extends Component {
             backgroundColor: 'rgba(0,0,0.3)',
             justifyContent: 'flex-end',
             alignItems: 'center',
-            
           }}>
-          <Text style={{ fontSize: (name.length < 17 ? 32 : 26) , color: 'white', fontWeight: 'bold', alignSelf:"center" }}>
+          <Text
+            style={{
+              fontSize: name.length < 17 ? 32 : 26,
+              color: 'white',
+              fontWeight: 'bold',
+              alignSelf: 'center',
+            }}>
             {name.toUpperCase()}
           </Text>
 
@@ -98,7 +99,6 @@ export default class AttractionDetails extends Component {
       </ImageBackground>
     );
   };
-
 
   renderDetails = () => {
     return (
@@ -153,62 +153,56 @@ export default class AttractionDetails extends Component {
   };
 
   renderNearbyAttractions = () => {
-
-    const apiUrl= `http://192.168.100.13:3001/destination/attraction/`
+    const apiUrl = `http://192.168.100.13:3001/destination/attraction/`;
     console.log(this.state.data);
     return (
       <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">
         <FlatList
           horizontal
-          data={this.state.data?this.state.data[1] : null}
+          data={this.state.data ? this.state.data[1] : null}
           keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => (
-            <AttractionCard
-            id={item}
-            api = {apiUrl}
-            />
-          )}
+          renderItem={({item}) => <AttractionCard id={item} api={apiUrl} />}
         />
-
       </FlatListContainer>
     );
   };
 
-
-  renderMap =() => {
-    return(
+  renderMap = () => {
+    return (
       <View style={{marginLeft: 10, marginRight: 10, marginTop: 15}}>
-      <TouchableWithoutFeedback>
-        <ImageBackground
-          source={map}
-          style={{
-            height: Dimensions.get('window').height / 3.5,
-          }}></ImageBackground>
-      </TouchableWithoutFeedback>
-    </View>
-    )
-  }
+        <TouchableWithoutFeedback>
+          <ImageBackground
+            source={map}
+            style={{
+              height: Dimensions.get('window').height / 3.5,
+            }}></ImageBackground>
+        </TouchableWithoutFeedback>
+      </View>
+    );
+  };
 
   renderRelatedTours = () => {
-    return(
+    return (
       <FlatListContainer style={{marginLeft: 10}} title="Related Tours">
-      <FlatList
-                    horizontal
-                    data={[1,2]}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard style={{marginRight:10}}
-                    id={item}
-                    seatsLeft={10} ></TourCard>}
-                    keyExtractor={item => item}
-                    />
-    </FlatListContainer>
-    )
-  }
-
+        <FlatList
+          horizontal
+          data={[1, 2]}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => (
+            <TourCard
+              style={{marginRight: 10}}
+              id={item}
+              seatsLeft={10}></TourCard>
+          )}
+          keyExtractor={item => item}
+        />
+      </FlatListContainer>
+    );
+  };
 
   renderReviews = () => {
-    return(
+    return (
       <View>
         <View style={{marginTop: 10, marginLeft: 10, marginRight: 10}}>
           <Text
@@ -222,37 +216,47 @@ export default class AttractionDetails extends Component {
           </Text>
         </View>
 
-            
-      <View style={{marginLeft: 10, marginRight: 10, marginTop: 10}}>
-        <Reviews></Reviews>
-        <Reviews></Reviews>
-        <Reviews></Reviews>
-        <Reviews></Reviews>
+        <View style={{marginLeft: 10, marginRight: 10, marginTop: 10}}>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+          <Reviews></Reviews>
+        </View>
       </View>
-      </View>
-    )
-  }
-
-
+    );
+  };
 
   render() {
-    
-  const AttractionData = this.props.navigation.getParam('AttractionData','default')
+    const AttractionData = this.props.navigation.getParam(
+      'AttractionData',
+      'default',
+    );
 
-  console.log(AttractionData);
+    console.log(AttractionData);
 
     return (
       <ScrollView>
-        {this.renderTop(AttractionData.image_path,AttractionData.name)}
+        {this.renderTop(AttractionData.image_path, AttractionData.name)}
         {/* {this.renderSelections()} */}
-        {this.state.data ? this.renderDetails() :  <LoadingIndicator></LoadingIndicator>}
-        {this.state.data ? this.renderOverview() :  <LoadingIndicator></LoadingIndicator> }
-        {this.state.data ? this.renderNearbyAttractions() :  <LoadingIndicator></LoadingIndicator>}
+        {this.state.data ? (
+          this.renderDetails()
+        ) : (
+          <LoadingIndicator></LoadingIndicator>
+        )}
+        {this.state.data ? (
+          this.renderOverview()
+        ) : (
+          <LoadingIndicator></LoadingIndicator>
+        )}
+        {this.state.data ? (
+          this.renderNearbyAttractions()
+        ) : (
+          <LoadingIndicator></LoadingIndicator>
+        )}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}
       </ScrollView>
-    )
-      
+    );
   }
 }
