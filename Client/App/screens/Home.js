@@ -79,9 +79,9 @@ export default class Home extends Component {
     onPageRefresh = ()=>{
         //this.setState({tourids:[]})
         this.setState({
-            tourids: [],
-            operatorids: [],
-            destinationids: []
+            tourids: undefined,
+            operatorids: undefined,
+            destinationids: undefined
         })
         this.fetchData()
     }

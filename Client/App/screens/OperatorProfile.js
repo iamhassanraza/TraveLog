@@ -20,7 +20,7 @@ export default class OperatorProfile extends Component {
         const operatorData = this.props.navigation.getParam('operatorData','Got no data from tour card via navigation')
         const operatorId = this.props.navigation.getParam('operatorId','no ope id provided')
         return (
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <View style={{ borderWidth: operatorData[0].cover? 0 : 1, borderColor: operatorData[0].cover? 'white' : '#b3b5b4'}}>
                     <ImageBackground source={{uri: operatorData[0].cover? `http://192.168.100.15:3001/images/${operatorData[0].cover}`: 'http://192.168.100.15:3001/images/default.png' }} style={styles.coverPhoto}/>
                 </View>
@@ -45,7 +45,7 @@ export default class OperatorProfile extends Component {
                         {operatorData[0].about} 
                     </Text>
                 </View>
-                <View>
+                <ScrollView>
                     <Navigation
                         screenProps={{
                                         email: operatorData[0].email,
@@ -57,8 +57,8 @@ export default class OperatorProfile extends Component {
                                         numeric_rating: operatorData[0].numeric_rating
                                     }}
                     />
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </View>
         )
     }
 }

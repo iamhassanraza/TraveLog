@@ -25,7 +25,7 @@ export default class Gallery extends Component {
         ]
 
         return (
-            <View style={{alignSelf: 'center', marginTop: '2%'}}>
+            <ScrollView style={{alignSelf: 'center', marginTop: '2%'}}>
                 <FlatGrid
                     itemDimension={Dimensions.get('window').width/3}
                     spacing={10}
@@ -36,7 +36,7 @@ export default class Gallery extends Component {
                         <Text style={styles.text}>{"Hunza album"}</Text>                      
                     </View>)}
                 />
-            </View>
+            </ScrollView>
         )
     }
 }
