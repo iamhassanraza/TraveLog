@@ -3,6 +3,9 @@ import {Text, View, ScrollView, Button} from 'react-native';
 import FilterComponent from '../components/FilterComponent';
 import {ThemeColor} from '../assets/Colors/Colors';
 import RangeSlider from 'rn-range-slider';
+import DatePicker from 'react-native-datepicker'
+
+const textcolor = "#b3b3b5";
 
 export default class Filters extends Component {
   state = {
@@ -10,6 +13,7 @@ export default class Filters extends Component {
     rangeHighPrice: 50000,
     Days: 2,
     Filters: [],
+    date:"2019-01-04"
   };
 
   addItem = filterName => {
@@ -48,18 +52,21 @@ export default class Filters extends Component {
 
   renderPrice = () => {
     return (
-      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <View style={{ width:"80%", alignSelf:"center" , borderRadius:5}}>
         <Text
           style={{
             marginLeft: '2%',
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '2%',
+            color:"#b3b3b5"
           }}>
           Price
         </Text>
 
-        <View style={{marginRight: 20, alignItems: 'center'}}>
+        
+       <View style={{borderWidth:1, paddingTop:10}}>
+       <View style={{marginRight: 20, alignItems: 'center'}}>
           <RangeSlider
             style={{width: '70%', height: 80, marginTop: '-15%'}}
             gravity={'center'}
@@ -69,7 +76,7 @@ export default class Filters extends Component {
             selectionColor={ThemeColor}
             labelBackgroundColor={ThemeColor}
             labelBorderColor={ThemeColor}
-            blankColor="#f5eceb"
+            blankColor="#272729"
             onValueChanged={(low, high, fromUser) => {
               this.setState({rangeLowPrice: low, rangeHighPrice: high});
             }}
@@ -82,29 +89,34 @@ export default class Filters extends Component {
             marginLeft: '10%',
             marginRight: '10%',
             marginBottom: '3%',
+            
           }}>
-          <Text>PKR {this.state.rangeLowPrice}</Text>
-          <Text>PKR {this.state.rangeHighPrice}</Text>
+          <Text style={{color:textcolor}} >PKR {this.state.rangeLowPrice}</Text>
+          <Text style={{color:textcolor}}>PKR {this.state.rangeHighPrice}</Text>
         </View>
-      </View>
+       </View>
+        </View>
+    
     );
   };
 
   renderDays = () => {
     return (
-      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <View style={{ width:"50%", alignSelf:"center" , borderRadius:5}}>
         <Text
           style={{
             marginLeft: '2%',
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '2%',
+            color:textcolor
           }}>
           Duration
         </Text>
-        <View style={{marginRight: 20, alignItems: 'center'}}>
+        <View style={{width:"100%", alignSelf:"center" , borderRadius:5, borderWidth:1}}>
+        <View style={{marginRight: 5, alignItems: 'center'}}>
           <RangeSlider
-            style={{width: '70%', height: 80, marginTop: '-15%'}}
+            style={{width: '95%', height: 80, marginTop: '-15%'}}
             gravity={'center'}
             min={1}
             max={25}
@@ -113,7 +125,7 @@ export default class Filters extends Component {
             selectionColor={ThemeColor}
             labelBackgroundColor={ThemeColor}
             labelBorderColor={ThemeColor}
-            blankColor="#f5eceb"
+            blankColor="#272729"
             onValueChanged={(low, high, fromUser) => {
               this.setState({Days: low});
             }}
@@ -125,7 +137,8 @@ export default class Filters extends Component {
             alignItems: 'center',
             marginBottom: '4%',
           }}>
-          <Text>{this.state.Days} Days</Text>
+          <Text style={{color:textcolor}}>{this.state.Days} Days</Text>
+        </View>
         </View>
       </View>
     );
@@ -133,17 +146,19 @@ export default class Filters extends Component {
 
   renderDepartureDate = () => {
     return (
-      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <View style={{borderWidth: 1,   alignSelf:"center"}}>
         <Text
           style={{
-            marginLeft: '2%',
+           
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '2%',
+            color:textcolor,
+            alignSelf:"center"
           }}>
           Departure Date
         </Text>
-        <FilterComponent
+        {/* <FilterComponent
           addItem={this.addItem}
           removeItem={this.removeItem}
           object={{key: 'Date', value: 'Jan 2019'}}></FilterComponent>
@@ -174,14 +189,42 @@ export default class Filters extends Component {
         <FilterComponent
           addItem={this.addItem}
           removeItem={this.removeItem}
-          object={{key: 'Date', value: 'Aug 2019'}}></FilterComponent>
+          object={{key: 'Date', value: 'Aug 2019'}}></FilterComponent> */}
+
+
+
+      <DatePicker
+        style={{width: 200, color:"white"}}
+        date={this.state.date}
+        mode="date"
+        placeholder="select date"
+        format="YYYY-MM-DD"
+        minDate="2016-05-01"
+        maxDate="2016-06-01"
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        customStyles={{
+          dateIcon: {
+            position: 'absolute',
+            left: 0,
+            top: 4,
+            marginLeft: 0
+          },
+          dateInput: {
+            marginLeft: 36
+          }
+          // ... You can check the source to find the other keys.
+        }}
+        onDateChange={(date) => {this.setState({date: date})}}
+      />
+
       </View>
     );
   };
 
   renderDestination = () => {
     return (
-      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <View style={{borderWidth: 1, margin: 15, borderColor: 'white', backgroundColor:"#1F1F21"}}>
         <Text
           style={{
             marginLeft: '2%',
@@ -232,13 +275,13 @@ export default class Filters extends Component {
 
   renderSpeciality = () => {
     return (
-      <View style={{borderWidth: 1, margin: 15, borderColor: 'grey'}}>
+      <View style={{borderWidth: 1, margin: 15, borderColor: 'white', backgroundColor:"#1F1F21"}}>
         <Text
           style={{
             marginLeft: '2%',
             fontSize: 20,
             fontWeight: 'bold',
-            marginBottom: '2%',
+            
           }}>
           Tour Type
         </Text>
@@ -279,11 +322,13 @@ export default class Filters extends Component {
   render() {
     console.log(this.state.Filters);
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor:"#white"}}>
         {this.renderTop()}
         {this.renderPrice()}
+        <View style={{flexDirection:"row"}}>
         {this.renderDays()}
         {this.renderDepartureDate()}
+        </View>
         {this.renderDestination()}
         {this.renderSpeciality()}
         <Button title="Apply Filters"></Button>

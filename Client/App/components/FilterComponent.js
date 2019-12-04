@@ -17,9 +17,8 @@ export default class FilterComponent extends Component {
           marginRight: '12%',
           marginBottom: '4%',
         }}>
-        <Text style={{color: 'grey', marginLeft: '2%'}}>
-          {' '}
-          {this.props.object.value}{' '}
+        <Text style={{color: '#b3b3b5', marginLeft: '1%', fontSize:17}}>
+          {this.props.object.value}
         </Text>
         <CheckBox
           checked={this.state.check}
