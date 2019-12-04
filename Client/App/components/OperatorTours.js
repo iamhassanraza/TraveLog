@@ -41,12 +41,8 @@ export default class OperatorTours extends Component {
                     />
                 </FlatListContainer> :
                 <View style={{alignSelf:'center'}}>
-                    <ContentLoader>
-                        <Rect x="10" y="10" rx="4" ry="4" width="100%" height="100"/>
-                        <Rect x="10" y="150" rx="4" ry="4" width="100%" height="100"/>
-                        <Rect x="10" y="300" rx="4" ry="4" width="100%" height="100"/>
-                        <Rect x="10" y="450" rx="4" ry="4" width="100%" height="100"/>
-                        <Rect x="10" y="600" rx="3" ry="3" width="100%" height="100" />
+                    <ContentLoader height={700} speed={0.5}>
+                        <Rect x="10" y="10" rx="4" ry="4" width="100%" height="100%"/>
                     </ContentLoader>
                 </View>
                 }

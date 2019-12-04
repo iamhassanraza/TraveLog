@@ -8,7 +8,7 @@ export default class AboutOperator extends Component {
     render() {
         return (
             <View>    
-                <View style={{marginTop: '5%', marginLeft: '3%'}}>
+                <View style={{marginTop: '5%', marginLeft: '1%'}}>
                     <TouchableOpacity onPress = {() => Linking.openURL('geo:' + 40.7127753 + ',' + -74.0059728)}>
                         <IconWithText 
                             textstyle={{...styles.textstyle, color: ThemeGrey}} 
@@ -34,7 +34,7 @@ export default class AboutOperator extends Component {
                         />
                     </TouchableOpacity>
                 </View>
-                <View style={{marginLeft: '5%'}}>
+                <View style={{marginLeft: '3%'}}>
                     <Text style={styles.heading}>Description</Text>
                     <Text style={styles.about}>
                         {this.props.screenProps.description}

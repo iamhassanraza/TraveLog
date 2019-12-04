@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, ScrollView,FlatList,Dimensions, ImageBackground,RefreshControl,TouchableWithoutFeedback} from 'react-native'
-
+import {BackgroundColor} from '../assets/Colors/Colors'
 import TourCard from '../components/TourCard'
 import OperatorCard from '../components/OperatorCard'
 import DestinationCard from '../components/DestinationCard'
@@ -128,10 +128,10 @@ export default class Home extends Component {
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>
-                                    <Facebook />
+                                    <Facebook speed={0.5}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <Facebook />
+                                    <Facebook speed={0.5}/>
                                 </View>
                             </View>
                         }
@@ -154,10 +154,10 @@ export default class Home extends Component {
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>
-                                    <Facebook />
+                                    <Facebook speed={0.5}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <Facebook />
+                                    <Facebook speed={0.5}/>
                                 </View>
                             </View>
                         }
