@@ -7,7 +7,7 @@ import DestinationCard from '../components/DestinationCard'
 import image from "../assets/images/1.jpg"
 import FlatListContainer from '../components/FlatListContainer'
 import OperatorProfile from './OperatorProfile'
-import image2 from "../assets/images/2.jpg"
+import image2 from "../assets/images/im5.jpg"
 import ContentLoader, { Facebook } from 'react-content-loader/native'
 
 
@@ -88,12 +88,12 @@ export default class Home extends Component {
         const apiUrl= `http://192.168.100.13:3001/destination/card/`
         
 
-        return ( <ScrollView style={{backgroundColor:'#F0F0F0'}}
-                    refreshControl={
-                        <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh} />
-                    }
-        
-        >
+        return ( 
+                    <ScrollView 
+                        style={{backgroundColor:'#F0F0F0'}}
+                        refreshControl={
+                        <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh}/>
+                    }>
                     
                     <View style={{height:300}}>
                         <ImageBackground source={image2} style={{width:'100%',height:300}}>
@@ -128,10 +128,10 @@ export default class Home extends Component {
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>
-                                    <Facebook speed={0.5}/>
+                                    <Facebook speed={0.5} height={150}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <Facebook speed={0.5}/>
+                                    <Facebook speed={0.5} height={150}/>
                                 </View>
                             </View>
                         }
@@ -154,16 +154,18 @@ export default class Home extends Component {
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>
-                                    <Facebook speed={0.5}/>
+                                    <Facebook speed={0.5} height={150}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <Facebook speed={0.5}/>
+                                    <Facebook speed={0.5} height={150}/>
                                 </View>
                             </View>
                         }
                     </FlatListContainer>
 
                 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
+                    {
+                        this.state.destinationids ?
                         <FlatList
                             horizontal
                             data={this.state.destinationids}
@@ -173,10 +175,18 @@ export default class Home extends Component {
                             <DestinationCard 
                             id={item.destination_id}
                             api = {apiUrl}
-                            // destination = {1}
                              />
                             }
-                        />
+                        /> :
+                        <View style={{flexDirection:'row'}}>
+                                <View style={{width:'60%'}}>
+                                    <Facebook speed={0.5} height={150}/>
+                                </View>
+                                <View style={{width:'60%', marginLeft: '10%'}}>
+                                    <Facebook speed={0.5}/>
+                                </View>
+                            </View>
+                    }       
                 </FlatListContainer>
                 </View>
              </ScrollView>
