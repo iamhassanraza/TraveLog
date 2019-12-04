@@ -25,58 +25,64 @@ export default class Home extends Component {
 
 
     componentDidMount(){
-        fetch("http://192.168.100.25:3001/tours/filter?")
-            .then(response => {
-                return response.json()})
-            .then((responseJson)=> {
-              this.setState({
-                refreshing: false,
-               tourids : responseJson,
-              })
-            }).catch(err=>console.log(err))
+        this.fetchData()
+    }
 
+    fetchData = () => {
+        this.fetchTours()
+        this.fetchOperators()
+        this.fetchDestinations()
+        console.log(this.state)
+    }
+
+
+    fetchTours = () => {
+        fetch("http://192.168.100.25:3001/tours/filter?")
+        .then(response => {
+            return response.json()
+        })
+        .then((responseJson)=> {
+            this.setState({
+                refreshing: false,
+                tourids : responseJson
+            })
+        })
+        .catch(err => console.log(err))    
+    }
+
+    fetchOperators = () => {
         fetch("http://192.168.100.15:3001/operators/filter?")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
-            console.log(responseJson)
             this.setState({
                 refreshing: false,
                 operatorids : responseJson,
             })
         })
-        .catch(err=>console.log(err))
+        .catch(err => console.log(err))
+    }
 
+    fetchDestinations = () => {
         fetch("http://192.168.100.13:3001/destination/filter?")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
-            console.log(responseJson)
             this.setState({
                 refreshing: false,
                 destinationids : responseJson,
             })
         })
-        .catch(err=>console.log(err))
+        .catch(err => console.log(err))
     }
 
-
-    // fetchData = ()=>{
-    //     console.log('fetching')
-    //     return fetch("http://192.168.100.25:3001/tours/filter?")
-    //         .then(response => {
-    //             return response.json()})
-    //         .then((responseJson)=> {
-    //           this.setState({
-    //             refreshing: false,
-    //            tourids : responseJson,
-    //           })
-    //         }).catch(err=>console.log(err))
-        
-    // }
-
     onPageRefresh = ()=>{
-        this.setState({tourids:[]})
+        //this.setState({tourids:[]})
+        this.setState({
+            tourids: [],
+            operatorids: [],
+            destinationids: []
+        })
         this.fetchData()
     }
 
@@ -105,7 +111,6 @@ export default class Home extends Component {
                             Find great experiences, trips, and activities at fantastic prices around the globe.
                             </Text>
                             </View>
-
                         </ImageBackground>
 
 

@@ -23,6 +23,7 @@ class OperatorCard extends React.Component{
     }
 
     componentDidMount() {
+        console.log("rendered")
         fetch(`http://192.168.100.15:3001/operators/card/${this.props.operatorId}/${userId}`)
         .then(res => {
             return res.json()
