@@ -21,11 +21,11 @@ export default class Gallery extends Component {
     render() {
 
         const images = [
-            img1,img2,img3
+            img1,img2,img3,img1,img2,img3,img1,img2,img3,img1,img2,img3,img1,img2,img3
         ]
 
         return (
-            <ScrollView style={{ alignSelf: 'center', marginTop: '2%'}}>
+            <ScrollView nestedScrollEnabled style={{ marginTop: '2%'}}>
                 <FlatGrid
                     itemDimension={Dimensions.get('window').width/3}
                     spacing={10}

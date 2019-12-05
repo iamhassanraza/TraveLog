@@ -22,9 +22,6 @@ const TabNavigator = createMaterialTopTabNavigator(
     {
         initialRouteName: "About",
         tabBarPosition: 'top',
-        style: {
-            height: '100%'
-        },
         tabBarOptions: {
             labelStyle: {
                 fontSize: 14,
