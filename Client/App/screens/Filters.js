@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, Button} from 'react-native';
+import {Text, View, ScrollView, Button,Picker} from 'react-native';
 import FilterComponent from '../components/FilterComponent';
 import {ThemeColor} from '../assets/Colors/Colors';
 import RangeSlider from 'rn-range-slider';
 import DatePicker from 'react-native-datepicker';
-import {Container, Header, Content, Form, Item, Picker} from 'native-base';
+
 
 const textcolor = '#b3b3b5';
 
@@ -215,6 +215,7 @@ export default class Filters extends Component {
         <Picker
           selectedValue={this.state.language}
           style={{width: '90%', alignSelf: 'center'}}
+         
           onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
           }>
