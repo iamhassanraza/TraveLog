@@ -9,6 +9,7 @@ import FlatListContainer from '../components/FlatListContainer'
 import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/im5.jpg"
 import ContentLoader, { Facebook } from 'react-content-loader/native'
+import Navigation from './Naviagation'
 
 
 
@@ -17,9 +18,9 @@ export default class Home extends Component {
 
 
     state = {
-        tourids:undefined,
-        operatorids: undefined,
-        destinationids: undefined,
+        tourids:[],
+        operatorids: [],
+        destinationids: [],
         refreshing: false
     } 
 
@@ -121,7 +122,7 @@ export default class Home extends Component {
 
                     <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                         {
-                            this.state.tourids ? 
+                            this.state.tourids[0] ? 
                             <FlatList
                                 horizontal
                                 data={this.state.tourids}
@@ -144,7 +145,7 @@ export default class Home extends Component {
                  
                     <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
                         {
-                            this.state.operatorids ? 
+                            this.state.operatorids[0] ? 
                             <FlatList 
                                 horizontal
                                 data={this.state.operatorids}
@@ -170,7 +171,7 @@ export default class Home extends Component {
 
                 <FlatListContainer  style={{marginLeft: '3%'}} title="Top Attractions">
                     {
-                        this.state.destinationids ?
+                        this.state.destinationids[0] ?
                         <FlatList
                             horizontal
                             data={this.state.destinationids}

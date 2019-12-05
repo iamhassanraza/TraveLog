@@ -8,7 +8,7 @@ import AboutOperator from '../components/AboutOperator'
 import OperatorRating from '../components/OperatorRating'
 import Gallery from '../components/Gallery'
 import Album from '../components/Album'
-import { ThemeColor } from '../assets/Colors/Colors';
+import { ThemeColor, BackgroundColor } from '../assets/Colors/Colors';
 import TourCard from '../components/TourCard';
 import OperatorTours from '../components/OperatorTours';
 
@@ -21,6 +21,10 @@ const TabNavigator = createMaterialTopTabNavigator(
     },
     {
         initialRouteName: "About",
+        tabBarPosition: 'top',
+        style: {
+            height: '100%'
+        },
         tabBarOptions: {
             labelStyle: {
                 fontSize: 14,
@@ -31,14 +35,9 @@ const TabNavigator = createMaterialTopTabNavigator(
             style: {
                 backgroundColor: 'white',
                 elevation: 1,
-
-            },
-            initialLayout: {
-                height: 100,
-                width: 100
+                
             },
             upperCaseLabel: false,
-            scrollEnabled: true,
             activeTintColor: ThemeColor,
             inactiveTintColor: 'black',
             indicatorStyle: {

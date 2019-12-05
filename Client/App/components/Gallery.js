@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Dimensions, StyleSheet, ImageBackground, ScrollView } from 'react-native'
+import { Text, View,SafeAreaView, Dimensions, StyleSheet, ImageBackground, ScrollView } from 'react-native'
 import PhotoGrid from 'react-native-thumbnail-grid'
 import { FlatGrid, SectionGrid } from 'react-native-super-grid';
 import img1 from '../assets/images/6.jpg'
@@ -25,7 +25,7 @@ export default class Gallery extends Component {
         ]
 
         return (
-            <View style={{alignSelf: 'center', marginTop: '2%'}}>
+            <ScrollView style={{ alignSelf: 'center', marginTop: '2%'}}>
                 <FlatGrid
                     itemDimension={Dimensions.get('window').width/3}
                     spacing={10}
@@ -36,7 +36,7 @@ export default class Gallery extends Component {
                         <Text style={styles.text}>{"Hunza album"}</Text>                      
                     </View>)}
                 />
-            </View>
+            </ScrollView>
         )
     }
 }
