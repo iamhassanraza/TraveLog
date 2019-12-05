@@ -7,7 +7,7 @@ import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors'
 export default class AboutOperator extends Component {
     render() {
         return (
-            <View>    
+            <View style={{flex:1}}>    
                 <View style={{marginTop: '5%', marginLeft: '1%'}}>
                     <TouchableOpacity onPress = {() => Linking.openURL('geo:' + 40.7127753 + ',' + -74.0059728)}>
                         <IconWithText 
@@ -42,6 +42,12 @@ export default class AboutOperator extends Component {
                 </View>
             </View>
         )
+    }
+}
+
+AboutOperator.navigationOptions = {
+    style: {
+        flex: 1
     }
 }
 

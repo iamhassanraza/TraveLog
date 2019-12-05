@@ -34,7 +34,7 @@ export default class OperatorRating extends Component {
     render() {
         return (
             this.state.reviews ? 
-                <View style={{marginTop: '2%', backgroundColor: '#F0F0F0'}}>
+                <ScrollView style={{flex: 1, marginTop: '2%', backgroundColor: '#F0F0F0'}}>
                     <View style={{backgroundColor: 'white'}}>
                             <View style={styles.circularRating}>
                                 <Text style={{fontSize: 20,fontWeight: 'bold', alignSelf: 'center'}}>{this.props.screenProps.numeric_rating ? this.props.screenProps.numeric_rating : 0}</Text>
@@ -87,8 +87,8 @@ export default class OperatorRating extends Component {
                             style={{paddingBottom: '1%'}}
                         />
                     </View>
-                </View> :
-                <View style={{alignItems: 'center'}}>
+                </ScrollView> :
+                <View style={{flex: 1, alignItems: 'center'}}>
                     <ContentLoader/>
                 </View>
         )

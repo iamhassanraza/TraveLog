@@ -28,7 +28,7 @@ export default class OperatorTours extends Component {
 
     render() {
         return (
-            <ScrollView>
+            <View>
                 {this.state.tours[0] ? 
                 <FlatListContainer style={{backgroundColor: BackgroundColor}} title="Tours" >
                     <FlatList
@@ -42,13 +42,11 @@ export default class OperatorTours extends Component {
                     />
                 </FlatListContainer> :
                 <View style={{alignSelf:'center'}}>
-                    <ContentLoader height={700} speed={0.5}>
-                        <Rect x="10" y="10" rx="4" ry="4" width="100%" height="30%"/>
-                    </ContentLoader>
+                    <ContentLoader height={500} speed={0.5}/>
                 </View>
                 }
                 
-            </ScrollView>
+            </View>
         )
     }
 }

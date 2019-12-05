@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text,ScrollView, View, StyleSheet, ImageBackground, FlatList, Image, Dimensions } from 'react-native'
+import { Text,SafeAreaView, ScrollView, View, StyleSheet, ImageBackground, FlatList, Image, Dimensions } from 'react-native'
 import coverPhoto from '../assets/images/6.jpg'
 import logo from '../assets/images/7.jpg'
 import image from '../assets/images/4.jpg'
@@ -20,32 +20,34 @@ export default class OperatorProfile extends Component {
         const operatorData = this.props.navigation.getParam('operatorData','Got no data from tour card via navigation')
         const operatorId = this.props.navigation.getParam('operatorId','no ope id provided')
         return (
-            <View style={styles.container}>
-                <View style={{ borderWidth: operatorData[0].cover? 0 : 1, borderColor: operatorData[0].cover? 'white' : '#b3b5b4'}}>
-                    <ImageBackground source={{uri: operatorData[0].cover? `http://192.168.100.15:3001/images/${operatorData[0].cover}`: 'http://192.168.100.15:3001/images/default.png' }} style={styles.coverPhoto}/>
-                </View>
-                <View style={styles.logoButton}>
-                    <View style={styles.logoContainer}>
-                        <Image source={{uri: operatorData[0].dp? `http://192.168.100.15:3001/images/${operatorData[0].dp}`: 'http://192.168.100.15:3001/images/default.png'}} style={styles.logo}></Image>
+            <ScrollView style={styles.container}>
+                <View>
+                    <View style={{ borderWidth: operatorData[0].cover? 0 : 1, borderColor: operatorData[0].cover? 'white' : '#b3b5b4'}}>
+                        <ImageBackground source={{uri: operatorData[0].cover? `http://192.168.100.15:3001/images/${operatorData[0].cover}`: 'http://192.168.100.15:3001/images/default.png' }} style={styles.coverPhoto}/>
                     </View>
-                    <View style={styles.buttonContainer}>
-                        <View style={styles.followButton}>
-                            <FollowIcon name="user-follow" color='white'></FollowIcon>
-                            <Text style={{color: 'white'}}>
-                                {operatorData[1] ? 'unfollow' : 'follow'} 
-                            </Text>
+                    <View style={styles.logoButton}>
+                        <View style={styles.logoContainer}>
+                            <Image source={{uri: operatorData[0].dp? `http://192.168.100.15:3001/images/${operatorData[0].dp}`: 'http://192.168.100.15:3001/images/default.png'}} style={styles.logo}></Image>
+                        </View>
+                        <View style={styles.buttonContainer}>
+                            <View style={styles.followButton}>
+                                <FollowIcon name="user-follow" color='white'></FollowIcon>
+                                <Text style={{color: 'white'}}>
+                                    {operatorData[1] ? 'unfollow' : 'follow'} 
+                                </Text>
+                            </View>
                         </View>
                     </View>
+                    <View style={{marginTop: '2%', marginLeft: '5%'}}>
+                        <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+                            {operatorData[0].name}
+                        </Text>
+                        <Text style={styles.shortIntro}>
+                            {operatorData[0].about} 
+                        </Text>
+                    </View>
                 </View>
-                <View style={{marginTop: '2%', marginLeft: '5%'}}>
-                    <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-                        {operatorData[0].name}
-                    </Text>
-                    <Text style={styles.shortIntro}>
-                        {operatorData[0].about} 
-                    </Text>
-                </View>
-                <ScrollView>
+                <View>
                     <Navigation
                         screenProps={{
                                         email: operatorData[0].email,
@@ -57,8 +59,8 @@ export default class OperatorProfile extends Component {
                                         numeric_rating: operatorData[0].numeric_rating
                                     }}
                     />
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 }
