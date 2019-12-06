@@ -12,6 +12,7 @@ import Modal from './App/screens/Modal'
 import ContactUs from './App/screens/ContactUs'
 import Filters from './App/screens/Filters'
 import AttractionDetails from './App/screens/AttractionDetails'
+import ScreenNavigation from './App/screens/ScreenNavigation'
 
 const RootStack = createStackNavigator({
   Home,
@@ -21,6 +22,7 @@ const RootStack = createStackNavigator({
   Modal,
   ContactUs,
   Filters,
+  ScreenNavigation,
   AttractionDetails
 },
 {
@@ -28,7 +30,6 @@ const RootStack = createStackNavigator({
 
   defaultNavigationOptions: {
     header:null,
- 
   }
 }
 );

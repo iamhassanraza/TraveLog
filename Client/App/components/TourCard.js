@@ -27,7 +27,7 @@ class TourCard extends React.Component {
 
 
     componentDidMount() {
-        fetch(`http://192.168.100.25:3001/tours/card/${this.props.id}`)
+        fetch(`http://192.168.100.15:3001/tours/card/${this.props.id}`)
             .then(response => {
                 return response.json()
             })
@@ -64,20 +64,22 @@ class TourCard extends React.Component {
                 })}>
                     <View>
                         <View style={[styles.Container, this.props.style]} >
-                            <HeaderImage imageName={this.state.data[0].tourcover} tag="5 Days Left" price={this.state.data[0].price}></HeaderImage>
+                            <View style={{flex:2}}>
+                                <HeaderImage imageName={this.state.data[0].tourcover} tag="5 Days Left" price={this.state.data[0].price}></HeaderImage>
+                            </View>
                             <View style={styles.TextConatiner}>
-                                <View style={{ flex: 4, justifyContent: 'space-around', paddingLeft: '2%' }}>
+                                <View style={{ flex: 4, justifyContent: 'space-around', marginLeft: '2%' }}>
 
                                     <Text style={{ color: 'black', fontSize: 16, fontWeight: 'bold' }}>{this.state.data[0].title} </Text>
-                                    <IconWithText name="calendar-check" text={`From: ${formatted_start_date} to ${formatted_end_date}`} textstyle={styles.TourCardDate}></IconWithText>
-                                    <IconWithText name="account-supervisor" text={`Speciality: ${this.state.data[0].speciality}`} textstyle={styles.TourCardDate}></IconWithText>
-                                    <IconWithText name='seat-recline-normal' text={`By: ${this.state.data[0].title}`} textstyle={styles.TourCardDate}></IconWithText>
+                                    <IconWithText name="calendar-check" text={`From: ${formatted_start_date} to ${formatted_end_date}`} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
+                                    <IconWithText name="account-supervisor" text={`Speciality: ${this.state.data[0].speciality}`} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
+                                    <IconWithText name='seat-recline-normal' text={`By: ${this.state.data[0].title}`} textstyle={{marginLeft: '2%', marginRight: '2%'}}></IconWithText>
 
                                 </View>
 
                                 {/* Save icon */}
 
-                                <View style={{ flex: 1, alignItems: 'center', paddingTop: '2%' }}>
+                                <View style={{alignItems: 'center', paddingTop: '2%' }}>
 
                                     <TouchableWithoutFeedback onPress={() => {
                                         this.setState((prevState) => ({
@@ -130,8 +132,8 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 5,
         borderBottomLeftRadius: 5,
         borderColor: '#8b8e8f',
-        paddingBottom: '4%'
-
+        paddingBottom: '5%',
+        flex: 1
     },
     TourCardHeading: {
         fontSize: 15,
@@ -149,8 +151,8 @@ const styles = StyleSheet.create({
     TextConatiner: {
 
         flexDirection: 'row',
-        paddingBottom: '2%'
-
+        paddingBottom: '2%',
+        flex:3
 
     }
 

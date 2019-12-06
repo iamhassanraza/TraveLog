@@ -9,9 +9,11 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {ThemeColor} from '../assets/Colors/Colors';
+import {ThemeColor, BackgroundColor} from '../assets/Colors/Colors';
 import LoadingIndicator from './LoadingIndicator';
 import {withNavigation} from 'react-navigation';
+import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 // Props : id, API
 

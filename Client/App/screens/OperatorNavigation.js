@@ -42,7 +42,8 @@ const TabNavigator = createMaterialTopTabNavigator(
                 height:3
             }
         }
-    });
+    }
+);
 
 
 export default createAppContainer(TabNavigator);
