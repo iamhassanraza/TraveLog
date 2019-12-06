@@ -65,7 +65,7 @@ export default class Home extends Component {
     }
 
     fetchDestinations = () => {
-        fetch("http://192.168.100.13:3001/destination/filter?")
+        fetch("http://192.168.100.16:3001/destination/filter?")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -92,7 +92,7 @@ export default class Home extends Component {
         const operators = [1,6,2]
         const tours = [1,2]
         const destination = [1,2,3,4,5,6,7,8,9,10,11,12,13]
-        const apiUrl= `http://192.168.100.13:3001/destination/card/`
+        const apiUrl= `http://192.168.100.16:3001/destination/card/`
         
 
         return ( 

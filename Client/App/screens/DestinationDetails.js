@@ -1,15 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  ImageBackground,
-  StyleSheet,
-  ScrollView,
-  Dimensions,
-  Button,
-  TouchableWithoutFeedback,
-  FlatList,
-} from 'react-native';
+import {Text,View, ImageBackground,StyleSheet,ScrollView,Dimensions,Button,TouchableWithoutFeedback,FlatList,} from 'react-native';
 import image from '../assets/images/shan.jpg';
 import image5 from '../assets/images/im5.jpg';
 import map from '../assets/images/map.jpg';
@@ -31,14 +21,14 @@ export default class DestinationDetails extends Component {
     data: undefined,
   };
 
+
   componentDidMount() {
-    const DestinationData = this.props.navigation.getParam(
-      'DestinationData',
-      'default',
-    );
+
+    // "Data Coming From Destination Card"
+    const DestinationData = this.props.navigation.getParam('DestinationData','default');
 
     fetch(
-      `http://192.168.100.13:3001/destination/${DestinationData.destination_id}`,
+      `http://192.168.100.16:3001/destination/${DestinationData.destination_id}`,
     )
       .then(response => {
         return response.json();
@@ -51,10 +41,11 @@ export default class DestinationDetails extends Component {
       .catch(err => console.log(err));
   }
 
+// "Top Of the Screen having image and album icon "
   renderTop = (image, name) => {
     return (
       <ImageBackground
-        source={{uri: `http://192.168.100.13:3001/images/${image}`}}
+        source={{uri: `http://192.168.100.16:3001/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
@@ -97,6 +88,7 @@ export default class DestinationDetails extends Component {
     );
   };
 
+// "Details of the tour which includes Best time, City, Rating . (Rating not completed yet)"
   renderDetails = name => {
     return (
       <View style={{marginLeft: '4%'}}>
@@ -131,6 +123,7 @@ export default class DestinationDetails extends Component {
     );
   };
 
+// "It shows overview/description of the tour by Using TEXTCUTTER component"
   renderOverview = () => {
     return (
       <View style={{padding: 5, paddingBottom: 0}}>
@@ -149,8 +142,10 @@ export default class DestinationDetails extends Component {
     );
   };
 
+
+// "It shows all the attraction cards of the same destination"
   renderNearbyAttractions = () => {
-    const apiUrl = `http://192.168.100.13:3001/destination/attraction/`;
+    const apiUrl = `http://192.168.100.16:3001/destination/attraction/`;
 
     return (
       <FlatListContainer style={{marginLeft: '3%'}} title="Top Attractions">
@@ -165,6 +160,8 @@ export default class DestinationDetails extends Component {
     );
   };
 
+
+// "It shows map (Not completed yet)"
   renderMap = () => {
     return (
       <View style={{marginLeft: 10, marginRight: 10, marginTop: 15}}>
@@ -179,6 +176,9 @@ export default class DestinationDetails extends Component {
     );
   };
 
+
+
+// "It shows Related Tours (API not completed)"
   renderRelatedTours = () => {
     return (
       <FlatListContainer style={{marginLeft: 10}} title="Related Tours">
@@ -198,6 +198,7 @@ export default class DestinationDetails extends Component {
     );
   };
 
+// " It shows all the reviews of the destination (API not completed yet)"
   renderReviews = () => {
     return (
       <View>
@@ -224,33 +225,17 @@ export default class DestinationDetails extends Component {
   };
 
   render() {
-    const DestinationData = this.props.navigation.getParam(
-      'DestinationData',
-      'default',
-    );
+    const DestinationData = this.props.navigation.getParam('DestinationData','default',);
     const attraction = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const apiUrl = `http://192.168.100.13:3001/destination/attraction/`;
+    const apiUrl = `http://192.168.100.16:3001/destination/attraction/`;
 
-    console.log(DestinationData);
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path, DestinationData.name)}
         {/* {this.renderSelections()} */}
-        {this.state.data ? (
-          this.renderDetails(DestinationData.name)
-        ) : (
-          <LoadingIndicator></LoadingIndicator>
-        )}
-        {this.state.data ? (
-          this.renderOverview()
-        ) : (
-          <LoadingIndicator></LoadingIndicator>
-        )}
-        {this.state.data ? (
-          this.renderNearbyAttractions()
-        ) : (
-          <LoadingIndicator></LoadingIndicator>
-        )}
+        {this.state.data ? (this.renderDetails(DestinationData.name)) : (<LoadingIndicator></LoadingIndicator>)}
+        {this.state.data ? (this.renderOverview()) : (<LoadingIndicator></LoadingIndicator>)}
+        {this.state.data ? (this.renderNearbyAttractions()) : (<LoadingIndicator></LoadingIndicator>)}
         {this.renderMap()}
         {this.renderRelatedTours()}
         {this.renderReviews()}

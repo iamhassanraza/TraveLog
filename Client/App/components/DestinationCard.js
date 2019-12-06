@@ -52,7 +52,7 @@ class DestinationCard extends React.Component {
             <View>
               <Image
                 source={{
-                  uri: `http://192.168.100.13:3001/images/${this.state.data[0].image_path}`,
+                  uri: `http://192.168.100.16:3001/images/${this.state.data[0].image_path}`,
                 }}
                 style={{
                   width: '100%',
