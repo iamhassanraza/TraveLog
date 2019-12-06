@@ -21,7 +21,7 @@ export default class OperatorProfile extends Component {
         const operatorId = this.props.navigation.getParam('operatorId','no ope id provided')
         return (
             <ScrollView style={styles.container}>
-                <View>
+                <View style={{}}>
                     <View style={{ borderWidth: operatorData[0].cover? 0 : 1, borderColor: operatorData[0].cover? 'white' : '#b3b5b4'}}>
                         <ImageBackground source={{uri: operatorData[0].cover? `http://192.168.100.15:3001/images/${operatorData[0].cover}`: 'http://192.168.100.15:3001/images/default.png' }} style={styles.coverPhoto}/>
                     </View>
@@ -47,7 +47,7 @@ export default class OperatorProfile extends Component {
                         </Text>
                     </View>
                 </View>
-                <View>
+                <View style={{height: Dimensions.get('window').height*0.97}}>
                     <Navigation
                         screenProps={{
                                         email: operatorData[0].email,
@@ -68,6 +68,7 @@ export default class OperatorProfile extends Component {
 const styles = StyleSheet.create({
     container: {
         width: Dimensions.get("window").width/1,
+        height: '100%'
     },
     coverPhoto: {
         height: Dimensions.get("window").height/5

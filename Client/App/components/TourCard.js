@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, ImageBackground, Dimensions, Image, TouchableWithoutFeedback, TouchableHighlight } from 'react-native'
-import { ThemeColor } from '../assets/Colors/Colors'
+import { ThemeColor, BackgroundColor } from '../assets/Colors/Colors'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import image from "../assets/images/7.jpg"
@@ -15,6 +15,7 @@ import ContentLoader, { Facebook } from 'react-content-loader/native'
 import IconWithText from './IconAndText'
 // import IconWithText from './IconWithText'
 import OperatorIcon from './OperatorIcon';
+
 
 class TourCard extends React.Component {
 
@@ -108,8 +109,8 @@ class TourCard extends React.Component {
         }
         else {
             return (
-                <View style={{ width: Dimensions.get('window').width / 1.4, height: 190, borderColor: '#8b8e8f', backgroundColor: 'white', marginRight: 10, justifyContent: 'center', alignContent: 'center' }} >
-                    <Facebook/>
+                <View style={{backgroundColor: BackgroundColor,padding: 5}}>
+                    <Facebook speed={0.5}/>
                 </View>
 
             )

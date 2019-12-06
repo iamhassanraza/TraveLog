@@ -1,7 +1,7 @@
 import React from 'react';
 //import { Container, Header, Content, Card, CardItem, Text, Body, Left, Thumbnail, Image, Button, Icon, Right } from 'native-base';
 import {View, Linking, Text, ImageBackground, StyleSheet, Image, Dimensions, TouchableWithoutFeedback} from 'react-native';
-import  { ThemeColor, ThemeGrey } from '../assets/Colors/Colors';
+import  { ThemeColor, ThemeGrey, BackgroundColor } from '../assets/Colors/Colors';
 import { VerifiedIcon } from "../assets/icons/Icons";
 import EmailIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PhoneIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -105,7 +105,11 @@ class OperatorCard extends React.Component{
                                 textstyle={{marginLeft: '2%', marginRight: '2%'}}
                             />
                         </View> 
-                    </View> : <View style={{height: 200, justifyContent: 'center'}}><Facebook></Facebook></View> }
+                    </View> : 
+                    <View style={{backgroundColor: BackgroundColor,padding: 5}}>
+                        <Facebook speed={0.1}/>
+                    </View>
+                    }
                 </View>
             </TouchableWithoutFeedback>
         );
