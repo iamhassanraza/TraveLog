@@ -17,7 +17,12 @@ export default class Filters extends Component {
     Filters: [],
     date: '2019-01-04',
 
-    ali: false,
+    family: false,
+    boys: false,
+    girls: false,
+    friends: false,
+    honeymoon: false,
+    public: true
   };
 
   addItem = filterName => {
@@ -267,53 +272,55 @@ export default class Filters extends Component {
         </Text>
 
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+
+        <TypeButtonFilters
+            TourType="Public"
+            style={{
+              color: this.state.public ? 'white' : ThemeColor,
+              backgroundColor: this.state.public ? ThemeColor : '#ebf3fa',
+            }}></TypeButtonFilters>
+
           <TypeButtonFilters
             TourType="Only Family"
             style={{
-              color: this.state.ali ? 'white' : ThemeColor,
-              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
-            }}
-            object={{
-              key: 'Speciality',
-              value: 'For Family',
+              color: this.state.family ? 'white' : ThemeColor,
+              backgroundColor: this.state.family ? ThemeColor : '#ebf3fa',
             }}></TypeButtonFilters>
 
           <TypeButtonFilters
             TourType="Only Boys"
             style={{
-              color: this.state.ali ? 'white' : ThemeColor,
-              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+              color: this.state.boys ? 'white' : ThemeColor,
+              backgroundColor: this.state.boys ? ThemeColor : '#ebf3fa',
             }}></TypeButtonFilters>
 
-          <TypeButtonFilters
-            TourType="Only Girls"
-            style={{
-              color: this.state.ali ? 'white' : ThemeColor,
-              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
-            }}></TypeButtonFilters>
+         
         </View>
 
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+
+        <TypeButtonFilters
+            TourType="Only Girls"
+            style={{
+              color: this.state.girls ? 'white' : ThemeColor,
+              backgroundColor: this.state.girls ? ThemeColor : '#ebf3fa',
+            }}></TypeButtonFilters>
+
           <TypeButtonFilters
             TourType="Friends"
             style={{
-              color: this.state.ali ? 'white' : ThemeColor,
-              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+              color: this.state.friends ? 'white' : ThemeColor,
+              backgroundColor: this.state.friends ? ThemeColor : '#ebf3fa',
             }}></TypeButtonFilters>
 
           <TypeButtonFilters
             TourType="Honeymoon"
             style={{
-              color: this.state.ali ? 'white' : ThemeColor,
-              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+              color: this.state.honeymoon ? 'white' : ThemeColor,
+              backgroundColor: this.state.honeymoon ? ThemeColor : '#ebf3fa',
             }}></TypeButtonFilters>
 
-          <TypeButtonFilters
-            TourType="Public"
-            style={{
-              color: this.state.ali ? 'white' : ThemeColor,
-              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
-            }}></TypeButtonFilters>
+          
         </View>
       </View>
 
