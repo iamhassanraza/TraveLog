@@ -93,12 +93,8 @@ class DestinationCard extends React.Component {
       );
     } else {
       return (
-        <View
-          style={{
-            width: Dimensions.get('window').width / 2.6,
-            margin: 5,
-          }}>
-          <LoadingIndicator></LoadingIndicator>
+        <View style={{borderWidth: 0,backgroundColor: BackgroundColor,padding: 5}}>
+          <Facebook speed={0.1}/>
         </View>
       );
     }
