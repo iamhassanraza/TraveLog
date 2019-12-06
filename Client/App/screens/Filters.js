@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, Button,Picker} from 'react-native';
+import {Text, View, ScrollView, Picker, StyleSheet} from 'react-native';
 import FilterComponent from '../components/FilterComponent';
 import {ThemeColor} from '../assets/Colors/Colors';
 import RangeSlider from 'rn-range-slider';
 import DatePicker from 'react-native-datepicker';
-
+import {Button} from 'native-base';
+import TypeButtonFilters from '../components/TypeButtonFilters';
 
 const textcolor = '#b3b3b5';
 
@@ -12,17 +13,12 @@ export default class Filters extends Component {
   state = {
     rangeLowPrice: 7000,
     rangeHighPrice: 50000,
-    Days: 2,
+    Days: 0,
     Filters: [],
     date: '2019-01-04',
-    selected2: undefined,
-  };
 
-  onValueChange2(value: string) {
-    this.setState({
-      selected2: value,
-    });
-  }
+    ali: false,
+  };
 
   addItem = filterName => {
     var index = this.state.Filters.findIndex(x => x.value == filterName.value);
@@ -60,22 +56,23 @@ export default class Filters extends Component {
 
   renderPrice = () => {
     return (
-      <View style={{width: '80%', alignSelf: 'center', borderRadius: 5}}>
+      <View style={{width: '100%', alignSelf: 'center',paddingTop:20}}>
         <Text
           style={{
-            marginLeft: '2%',
+            marginLeft:18,
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '2%',
-            color: '#b3b3b5',
+            color: ThemeColor,
+           
           }}>
           Price
         </Text>
 
-        <View style={{borderWidth: 1, borderColor: textcolor}}>
-          <View style={{marginRight: 20, alignItems: 'center'}}>
+        <View style={{}}>
+          <View style={{marginRight: 1, alignItems: 'center'}}>
             <RangeSlider
-              style={{width: '70%', height: 80, marginTop: '-15%'}}
+              style={{width: '80%', height: 80, marginTop: '-13%'}}
               gravity={'center'}
               min={7000}
               max={50000}
@@ -83,7 +80,7 @@ export default class Filters extends Component {
               selectionColor={ThemeColor}
               labelBackgroundColor={ThemeColor}
               labelBorderColor={ThemeColor}
-              blankColor="#272729"
+              blankColor={textcolor}
               onValueChanged={(low, high, fromUser) => {
                 this.setState({rangeLowPrice: low, rangeHighPrice: high});
               }}
@@ -93,12 +90,13 @@ export default class Filters extends Component {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              marginLeft: '10%',
-              marginRight: '10%',
+              marginLeft: '5%',
+              marginRight: '5%',
               marginBottom: '1%',
+          
             }}>
-            <Text>PKR {this.state.rangeLowPrice}</Text>
-            <Text>PKR {this.state.rangeHighPrice}</Text>
+            <Text style={{color:textcolor}}>PKR {this.state.rangeLowPrice}</Text>
+            <Text style={{color:textcolor}}>PKR {this.state.rangeHighPrice}</Text>
           </View>
         </View>
       </View>
@@ -109,18 +107,17 @@ export default class Filters extends Component {
     return (
       <View
         style={{
-          width: '50%',
+          width: '100%',
           alignSelf: 'center',
-          borderRadius: 5,
-          marginLeft: '4%',
+          paddingTop:20
         }}>
         <Text
           style={{
-            marginLeft: '2%',
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '1%',
-            color: textcolor,
+            color: ThemeColor,
+            marginLeft:18
           }}>
           Duration
         </Text>
@@ -128,16 +125,19 @@ export default class Filters extends Component {
           style={{
             width: '100%',
             alignSelf: 'center',
-            borderRadius: 5,
-            borderWidth: 1,
             borderColor: textcolor,
-            paddingTop: '3%',
+            paddingTop: '9%',
           }}>
           <View style={{marginRight: 5, alignItems: 'center'}}>
             <RangeSlider
-              style={{width: '95%', height: 55, marginTop: '-25%'}}
+              style={{
+                width: '80%',
+                height: 55,
+                marginTop: '-19%',
+                marginLeft: '3%',
+              }}
               gravity={'center'}
-              min={1}
+              min={0}
               max={25}
               step={1}
               rangeEnabled={false}
@@ -154,9 +154,9 @@ export default class Filters extends Component {
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: '4%',
+              marginBottom: '8%',
             }}>
-            <Text>{this.state.Days} Days</Text>
+            <Text style={{color:textcolor}}>{this.state.Days} Days</Text>
           </View>
         </View>
       </View>
@@ -165,21 +165,21 @@ export default class Filters extends Component {
 
   renderDepartureDate = () => {
     return (
-      <View style={{alignSelf: 'center', marginRight: '5%'}}>
+      <View >
         <Text
           style={{
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '1%',
-            color: textcolor,
-            alignSelf: 'center',
+            color: ThemeColor,
+            marginLeft:18
           }}>
           Departure Date
         </Text>
 
         <View>
           <DatePicker
-            style={{width: '95%'}}
+            style={{width: '60%', justifyContent:"center", alignSelf:"center"}}
             date={this.state.date}
             mode="date"
             placeholder="select date"
@@ -193,10 +193,10 @@ export default class Filters extends Component {
                 position: 'absolute',
                 left: 0,
                 top: 4,
-                marginLeft: 5,
+                
               },
               dateInput: {
-                paddingLeft: 28,
+                paddingLeft: 2,
               },
               // ... You can check the source to find the other keys.
             }}
@@ -211,16 +211,40 @@ export default class Filters extends Component {
 
   renderDestination = () => {
     return (
-      <View>
+      <View style={{borderWidth:1, width:'100%', alignSelf:"center", borderColor:textcolor}}>
+        <Text
+          style={{
+            marginLeft:18,
+            fontSize: 20,
+            fontWeight: 'bold',
+            marginBottom: '2%',
+            color: ThemeColor,
+            paddingTop:10
+           
+          }}>
+          Select Destination
+        </Text>
         <Picker
           selectedValue={this.state.language}
-          style={{width: '90%', alignSelf: 'center'}}
-         
+          style={{width: '90%', alignSelf: 'center', color:ThemeColor}}
           onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
           }>
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="Hunza" value="java" />
+          <Picker.Item label="Kashmir" value="js" />
+          <Picker.Item label="Mansehra" value="Mansehra" />
+          <Picker.Item label="Gilgit" value="" />
+          <Picker.Item label="Skardu" value="Skardu" />
+          <Picker.Item label="Chitral" value="Chitral" />
+          <Picker.Item label="Swat" value="Swat" />
+          <Picker.Item label="Abbottabad" value="Abbottabad" />
+          <Picker.Item label="Faisalabad" value="Faisalabad" />
+          <Picker.Item label="Islamabad" value="Islamabad" />
+          <Picker.Item label="Lahore" value="Lahore" />
+          <Picker.Item label="Multan" value="Multan" />
+          <Picker.Item label="Karachi" value="Karachi" />
+          
+    
         </Picker>
       </View>
     );
@@ -228,52 +252,119 @@ export default class Filters extends Component {
 
   renderSpeciality = () => {
     return (
-      <View
-        style={{
-          borderWidth: 1,
-          margin: 15,
-          borderColor: 'white',
-          backgroundColor: '#1F1F21',
-        }}>
+      <View style={{marginBottom:20, marginTop:20}}>
         <Text
           style={{
-            marginLeft: '2%',
+            marginLeft:18,
             fontSize: 20,
             fontWeight: 'bold',
+            marginBottom: '2%',
+            color: ThemeColor,
+            marginBottom:13
+           
           }}>
-          Tour Type
+          Select Speciality
         </Text>
-        <FilterComponent
-          addItem={this.addItem}
-          removeItem={this.removeItem}
-          object={{
-            key: 'Speciality',
-            value: 'Only for Girls',
-          }}></FilterComponent>
-        <FilterComponent
-          addItem={this.addItem}
-          removeItem={this.removeItem}
-          object={{key: 'Speciality', value: 'For Family'}}></FilterComponent>
-        <FilterComponent
-          addItem={this.addItem}
-          removeItem={this.removeItem}
-          object={{key: 'Speciality', value: 'For Groups'}}></FilterComponent>
-        <FilterComponent
-          addItem={this.addItem}
-          removeItem={this.removeItem}
-          object={{
-            key: 'Speciality',
-            value: 'Only for Boys',
-          }}></FilterComponent>
-        <FilterComponent
-          addItem={this.addItem}
-          removeItem={this.removeItem}
-          object={{key: 'Speciality', value: 'Public'}}></FilterComponent>
-        <FilterComponent
-          addItem={this.addItem}
-          removeItem={this.removeItem}
-          object={{key: 'Speciality', value: 'Private'}}></FilterComponent>
+
+        <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+          <TypeButtonFilters
+            TourType="Only Family"
+            style={{
+              color: this.state.ali ? 'white' : ThemeColor,
+              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+            }}
+            object={{
+              key: 'Speciality',
+              value: 'For Family',
+            }}></TypeButtonFilters>
+
+          <TypeButtonFilters
+            TourType="Only Boys"
+            style={{
+              color: this.state.ali ? 'white' : ThemeColor,
+              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+            }}></TypeButtonFilters>
+
+          <TypeButtonFilters
+            TourType="Only Girls"
+            style={{
+              color: this.state.ali ? 'white' : ThemeColor,
+              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+            }}></TypeButtonFilters>
+        </View>
+
+        <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+          <TypeButtonFilters
+            TourType="Friends"
+            style={{
+              color: this.state.ali ? 'white' : ThemeColor,
+              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+            }}></TypeButtonFilters>
+
+          <TypeButtonFilters
+            TourType="Honeymoon"
+            style={{
+              color: this.state.ali ? 'white' : ThemeColor,
+              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+            }}></TypeButtonFilters>
+
+          <TypeButtonFilters
+            TourType="Public"
+            style={{
+              color: this.state.ali ? 'white' : ThemeColor,
+              backgroundColor: this.state.ali ? ThemeColor : '#ebf3fa',
+            }}></TypeButtonFilters>
+        </View>
       </View>
+
+      // <View
+      //   style={{
+      //     borderWidth: 1,
+      //     margin: 15,
+      //     borderColor: 'white',
+      //     backgroundColor: '#1F1F21',
+      //   }}>
+      //   <Text
+      //     style={{
+      //       marginLeft: '2%',
+      //       fontSize: 20,
+      //       fontWeight: 'bold',
+      //     }}>
+      //     Tour Type
+      //   </Text>
+
+      //   <FilterComponent
+      //     addItem={this.addItem}
+      //     removeItem={this.removeItem}
+      //     object={{
+      //       key: 'Speciality',
+      //       value: 'Only for Girls',
+      //     }}></FilterComponent>
+      //   <FilterComponent
+      //     addItem={this.addItem}
+      //     removeItem={this.removeItem}
+      //     object={{key: 'Speciality', value: 'For Family'}}></FilterComponent>
+      //   <FilterComponent
+      //     addItem={this.addItem}
+      //     removeItem={this.removeItem}
+      //     object={{key: 'Speciality', value: 'For Groups'}}></FilterComponent>
+      //   <FilterComponent
+      //     addItem={this.addItem}
+      //     removeItem={this.removeItem}
+      //     object={{
+      //       key: 'Speciality',
+      //       value: 'Only for Boys',
+      //     }}></FilterComponent>
+      //   <FilterComponent
+      //     addItem={this.addItem}
+      //     removeItem={this.removeItem}
+      //     object={{key: 'Speciality', value: 'Public'}}></FilterComponent>
+      //   <FilterComponent
+      //     addItem={this.addItem}
+      //     removeItem={this.removeItem}
+      //     object={{key: 'Speciality', value: 'Private'}}></FilterComponent>
+
+      // </View>
     );
   };
 
@@ -282,14 +373,33 @@ export default class Filters extends Component {
     return (
       <ScrollView style={{backgroundColor: '#white'}}>
         {this.renderTop()}
-        {this.renderPrice()}
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          {this.renderDays()}
-          {this.renderDepartureDate()}
-        </View>
-        {this.renderDestination()}
         {this.renderSpeciality()}
-        <Button title="Apply Filters"></Button>
+        {this.renderDestination()}
+        {this.renderPrice()}
+
+        {this.renderDays()}
+        {this.renderDepartureDate()}
+
+        <Button
+        bordered
+          style={{
+            justifyContent: 'center',
+            width: '50%',
+            alignSelf: 'center',
+            borderRadius: 7,
+            marginTop: '5%',
+            backgroundColor:ThemeColor
+          }}>
+          <Text
+            style={{
+              color: 'white',
+              fontWeight: 'bold',
+              fontSize: 25,
+              alignSelf:"center"
+            }}>
+            Apply Filters
+          </Text>
+        </Button>
       </ScrollView>
     );
   }
