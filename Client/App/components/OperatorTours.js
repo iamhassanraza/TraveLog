@@ -8,7 +8,7 @@ import ContentLoader, {Rect, Facebook } from 'react-content-loader/native'
 export default class OperatorTours extends Component {
 
     componentDidMount() {
-        fetch(`http://192.168.100.25:3001/tours/filter?operator_id=${this.props.screenProps.operatorId}`)
+        fetch(`http://192.168.100.15:3001/tours/filter?operator_id=${this.props.screenProps.operatorId}`)
         .then(response => {
             return response.json()
         })
@@ -27,6 +27,7 @@ export default class OperatorTours extends Component {
     }
 
     render() {
+        console.log(this.props.screenProps.operatorId)
         return (
             <ScrollView nestedScrollEnabled style={{}}>
                 {this.state.tours[0] ? 

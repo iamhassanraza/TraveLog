@@ -9,7 +9,7 @@ import OperatorRating from '../components/OperatorRating';
 import OperatorCard from '../components/OperatorCard';
 import AboutOperator from '../components/AboutOperator';
 import Gallery from '../components/Gallery'
-import Navigation from './Naviagation'
+import Navigation from './OperatorNavigation'
 
 
 export default class OperatorProfile extends Component {

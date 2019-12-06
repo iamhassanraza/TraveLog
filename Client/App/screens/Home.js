@@ -9,9 +9,6 @@ import FlatListContainer from '../components/FlatListContainer'
 import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/im5.jpg"
 import ContentLoader, { Facebook } from 'react-content-loader/native'
-import Navigation from './Naviagation'
-
-
 
 
 export default class Home extends Component {
@@ -38,7 +35,7 @@ export default class Home extends Component {
 
 
     fetchTours = () => {
-        fetch("http://192.168.100.25:3001/tours/filter?")
+        fetch("http://192.168.100.15:3001/tours/filter?")
         .then(response => {
             return response.json()
         })
@@ -97,13 +94,13 @@ export default class Home extends Component {
 
         return ( 
                     <ScrollView 
-                        style={{backgroundColor:'#F0F0F0'}}
+                        style={{backgroundColor:'#F0F0F0', height: '100%'}}
                         refreshControl={
                         <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh}/>
                     }>
                     
-                    <View style={{height:300}}>
-                        <ImageBackground source={image2} style={{width:'100%',height:300}}>
+                    <View style={{height: Dimensions.get('window').height*0.3}}>
+                        <ImageBackground source={image2} style={{width:'100%',height:"100%"}}>
                             <View style={{backgroundColor:'rgba(0,0,0,0.4)',flex:1,justifyContent:'flex-end',paddingBottom:30}}>
                             <Text style={{color:'white',fontWeight:'bold',fontSize:20,alignSelf:'center',width:'80%'}}>
                             Amazing tours and holidays around the world.
@@ -118,7 +115,7 @@ export default class Home extends Component {
                     </View>
                 
 
-                    <View style={{flexDirection:'column',justifyContent:'space-around',borderWidth:1}}>
+                    <View style={{flexDirection:'column'}}>
 
                     <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                         {
