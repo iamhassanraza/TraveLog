@@ -56,7 +56,7 @@ export default class Filters extends Component {
 
   renderPrice = () => {
     return (
-      <View style={{width: '100%', alignSelf: 'center', borderRadius: 5}}>
+      <View style={{width: '100%', alignSelf: 'center',paddingTop:20}}>
         <Text
           style={{
             marginLeft:18,
@@ -69,10 +69,10 @@ export default class Filters extends Component {
           Price
         </Text>
 
-        <View style={{borderWidth: 1, borderColor: textcolor}}>
+        <View style={{}}>
           <View style={{marginRight: 1, alignItems: 'center'}}>
             <RangeSlider
-              style={{width: '80%', height: 80, marginTop: '-10%'}}
+              style={{width: '80%', height: 80, marginTop: '-13%'}}
               gravity={'center'}
               min={7000}
               max={50000}
@@ -80,7 +80,7 @@ export default class Filters extends Component {
               selectionColor={ThemeColor}
               labelBackgroundColor={ThemeColor}
               labelBorderColor={ThemeColor}
-              blankColor="#272729"
+              blankColor={textcolor}
               onValueChanged={(low, high, fromUser) => {
                 this.setState({rangeLowPrice: low, rangeHighPrice: high});
               }}
@@ -93,9 +93,10 @@ export default class Filters extends Component {
               marginLeft: '5%',
               marginRight: '5%',
               marginBottom: '1%',
+          
             }}>
-            <Text>PKR {this.state.rangeLowPrice}</Text>
-            <Text>PKR {this.state.rangeHighPrice}</Text>
+            <Text style={{color:textcolor}}>PKR {this.state.rangeLowPrice}</Text>
+            <Text style={{color:textcolor}}>PKR {this.state.rangeHighPrice}</Text>
           </View>
         </View>
       </View>
@@ -108,6 +109,7 @@ export default class Filters extends Component {
         style={{
           width: '100%',
           alignSelf: 'center',
+          paddingTop:20
         }}>
         <Text
           style={{
@@ -123,7 +125,6 @@ export default class Filters extends Component {
           style={{
             width: '100%',
             alignSelf: 'center',
-            borderWidth: 1,
             borderColor: textcolor,
             paddingTop: '9%',
           }}>
@@ -132,7 +133,7 @@ export default class Filters extends Component {
               style={{
                 width: '80%',
                 height: 55,
-                marginTop: '-17%',
+                marginTop: '-19%',
                 marginLeft: '3%',
               }}
               gravity={'center'}
@@ -153,9 +154,9 @@ export default class Filters extends Component {
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: '4%',
+              marginBottom: '8%',
             }}>
-            <Text>{this.state.Days} Days</Text>
+            <Text style={{color:textcolor}}>{this.state.Days} Days</Text>
           </View>
         </View>
       </View>
@@ -164,7 +165,7 @@ export default class Filters extends Component {
 
   renderDepartureDate = () => {
     return (
-      <View style={{}}>
+      <View >
         <Text
           style={{
             fontSize: 20,
@@ -178,7 +179,7 @@ export default class Filters extends Component {
 
         <View>
           <DatePicker
-            style={{width: '100%', justifyContent:"center"}}
+            style={{width: '60%', justifyContent:"center", alignSelf:"center"}}
             date={this.state.date}
             mode="date"
             placeholder="select date"
@@ -192,7 +193,7 @@ export default class Filters extends Component {
                 position: 'absolute',
                 left: 0,
                 top: 4,
-                marginLeft:100
+                
               },
               dateInput: {
                 paddingLeft: 2,
@@ -211,14 +212,39 @@ export default class Filters extends Component {
   renderDestination = () => {
     return (
       <View style={{borderWidth:1, width:'100%', alignSelf:"center", borderColor:textcolor}}>
+        <Text
+          style={{
+            marginLeft:18,
+            fontSize: 20,
+            fontWeight: 'bold',
+            marginBottom: '2%',
+            color: ThemeColor,
+            paddingTop:10
+           
+          }}>
+          Select Destination
+        </Text>
         <Picker
           selectedValue={this.state.language}
-          style={{width: '100%', alignSelf: 'center', color:ThemeColor, marginLeft:18}}
+          style={{width: '90%', alignSelf: 'center', color:ThemeColor}}
           onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
           }>
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="Hunza" value="java" />
+          <Picker.Item label="Kashmir" value="js" />
+          <Picker.Item label="Mansehra" value="Mansehra" />
+          <Picker.Item label="Gilgit" value="" />
+          <Picker.Item label="Skardu" value="Skardu" />
+          <Picker.Item label="Chitral" value="Chitral" />
+          <Picker.Item label="Swat" value="Swat" />
+          <Picker.Item label="Abbottabad" value="Abbottabad" />
+          <Picker.Item label="Faisalabad" value="Faisalabad" />
+          <Picker.Item label="Islamabad" value="Islamabad" />
+          <Picker.Item label="Lahore" value="Lahore" />
+          <Picker.Item label="Multan" value="Multan" />
+          <Picker.Item label="Karachi" value="Karachi" />
+          
+    
         </Picker>
       </View>
     );
@@ -227,6 +253,19 @@ export default class Filters extends Component {
   renderSpeciality = () => {
     return (
       <View style={{marginBottom:20, marginTop:20}}>
+        <Text
+          style={{
+            marginLeft:18,
+            fontSize: 20,
+            fontWeight: 'bold',
+            marginBottom: '2%',
+            color: ThemeColor,
+            marginBottom:13
+           
+          }}>
+          Select Speciality
+        </Text>
+
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
           <TypeButtonFilters
             TourType="Only Family"
@@ -342,6 +381,7 @@ export default class Filters extends Component {
         {this.renderDepartureDate()}
 
         <Button
+        bordered
           style={{
             justifyContent: 'center',
             width: '50%',
@@ -354,7 +394,8 @@ export default class Filters extends Component {
             style={{
               color: 'white',
               fontWeight: 'bold',
-              fontSize: 25
+              fontSize: 25,
+              alignSelf:"center"
             }}>
             Apply Filters
           </Text>
