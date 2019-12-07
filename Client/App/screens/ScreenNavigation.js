@@ -52,7 +52,9 @@ const TabNavigator = createMaterialTopTabNavigator(
         }      
     },
     {
+        initialRouteName: 'Home',
         tabBarPosition: 'bottom',
+        swipeEnabled: false,
         tabBarOptions: {
             style: {
                 backgroundColor: BackgroundColor,

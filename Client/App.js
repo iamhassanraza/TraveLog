@@ -30,9 +30,9 @@ const RootStack = createStackNavigator({
 {
   initialRouteName:'Home',
 
-  defaultNavigationOptions: {
-    header:null,
-  }
+  // defaultNavigationOptions: {
+  //   header:null,
+  // }
 }
 );
 

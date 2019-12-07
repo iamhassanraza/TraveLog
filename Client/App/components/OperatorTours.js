@@ -13,7 +13,6 @@ export default class OperatorTours extends Component {
             return response.json()
         })
         .then((responseJson)=> {
-            console.log(responseJson)
             this.setState({
                 tours : responseJson
             })
@@ -27,7 +26,6 @@ export default class OperatorTours extends Component {
     }
 
     render() {
-        console.log(this.props.screenProps.operatorId)
         return (
             <ScrollView nestedScrollEnabled style={{}}>
                 {this.state.tours[0] ? 

@@ -41,9 +41,10 @@ class OperatorCard extends React.Component{
             <TouchableWithoutFeedback 
                 onPress={()=>this.props.navigation.push('OperatorProfile', {
                     operatorData : {...this.state.cardData}, operatorId: this.props.operatorId
-                })}>  
+                })}>
+                { this.state.cardData?  
                 <View style={[styles.Container, this.props.style]}>
-                    {this.state.cardData? <View style={{paddingBottom: '2%'}}>
+                    <View style={{paddingBottom: '2%'}}>
                         <View style={{borderWidth: this.state.cardData[0].cover? 0 : 1, borderColor: this.state.cardData[0].cover? 'white' : '#b3b5b4'}}>
                             <ImageBackground
                                 source={{uri: this.state.cardData[0].cover?`http://192.168.100.15:3001/images/${this.state.cardData[0].cover}`:'http://192.168.100.15:3001/images/default.png'}}
@@ -105,12 +106,12 @@ class OperatorCard extends React.Component{
                                 textstyle={{marginLeft: '2%', marginRight: '2%'}}
                             />
                         </View> 
-                    </View> : 
-                    <View style={{backgroundColor: BackgroundColor,padding: 5}}>
-                        <Facebook speed={0.1}/>
-                    </View>
-                    }
+                    </View>  
+                </View> :
+                <View style={{padding: 5}}>
+                    <Facebook speed={0.1}/>
                 </View>
+                }
             </TouchableWithoutFeedback>
         );
     }
