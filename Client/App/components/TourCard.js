@@ -114,7 +114,6 @@ class TourCard extends React.Component {
                 <View style={{padding: 5}}>
                     <Facebook speed={0.1}/>
                 </View>
-
             )
         }
 

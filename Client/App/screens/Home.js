@@ -127,14 +127,14 @@ export default class Home extends Component {
                                 renderItem={({ item }) => <TourCard style={{marginRight:10}}
                                 id={item.tour_id}
                                 seatsLeft={10} ></TourCard>}
-                                keyExtractor={item => item}
+                                keyExtractor={item => item.tour_id}
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>
-                                    <Facebook speed={0.1} height={150}/>
+                                    <ContentLoader speed={0.1} height={150}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <Facebook speed={0.1} height={150}/>
+                                    <ContentLoader speed={0.1} height={150}/>
                                 </View>
                             </View>
                         }
@@ -146,7 +146,7 @@ export default class Home extends Component {
                             <FlatList 
                                 horizontal
                                 data={this.state.operatorids}
-                                keyExtractor={item => item}
+                                keyExtractor={item => item.operator_id}
                                 showsHorizontalScrollIndicator={false}
                                 renderItem= {({item}) => 
                                 <OperatorCard
@@ -172,7 +172,7 @@ export default class Home extends Component {
                         <FlatList
                             horizontal
                             data={this.state.destinationids}
-                            keyExtractor={item => item}
+                            keyExtractor={item => item.destination_id}
                             showsHorizontalScrollIndicator={false}
                             renderItem={({item}) =>
                             <DestinationCard 
