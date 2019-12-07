@@ -26,11 +26,11 @@ const RootStack = createStackNavigator({
   AttractionDetails
 },
 {
-  initialRouteName:'Home',
+  initialRouteName:'ScreenNavigation',
 
-  defaultNavigationOptions: {
-    header:null,
-  }
+  // defaultNavigationOptions: {
+  //   header:null,
+  // }
 }
 );
 

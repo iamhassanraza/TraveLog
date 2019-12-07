@@ -14,7 +14,6 @@ import LoadingIndicator from './LoadingIndicator';
 import {withNavigation} from 'react-navigation';
 import ContentLoader, { Facebook } from 'react-content-loader/native'
 
-
 // Props : id, API
 
 class DestinationCard extends React.Component {

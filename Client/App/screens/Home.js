@@ -131,10 +131,10 @@ export default class Home extends Component {
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>
-                                    <Facebook speed={0.5} height={150}/>
+                                    <Facebook speed={0.1} height={150}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <Facebook speed={0.5} height={150}/>
+                                    <Facebook speed={0.1} height={150}/>
                                 </View>
                             </View>
                         }

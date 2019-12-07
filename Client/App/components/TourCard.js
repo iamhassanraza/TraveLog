@@ -111,8 +111,8 @@ class TourCard extends React.Component {
         }
         else {
             return (
-                <View style={{backgroundColor: BackgroundColor,padding: 5}}>
-                    <Facebook speed={0.5}/>
+                <View style={{padding: 5}}>
+                    <Facebook speed={0.1}/>
                 </View>
 
             )
