@@ -8,6 +8,7 @@ import {Button} from 'native-base';
 import TypeButtonFilters from '../components/TypeButtonFilters';
 
 const textcolor = '#b3b3b5';
+const headingclr = '#6e706f';
 
 export default class Filters extends Component {
   state = {
@@ -68,7 +69,7 @@ export default class Filters extends Component {
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '2%',
-            color: ThemeColor,
+            color: headingclr,
            
           }}>
           Price
@@ -121,7 +122,7 @@ export default class Filters extends Component {
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '1%',
-            color: ThemeColor,
+            color: headingclr,
             marginLeft:18
           }}>
           Duration
@@ -176,7 +177,7 @@ export default class Filters extends Component {
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '1%',
-            color: ThemeColor,
+            color: headingclr,
             marginLeft:18
           }}>
           Departure Date
@@ -223,7 +224,7 @@ export default class Filters extends Component {
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '2%',
-            color: ThemeColor,
+            color: headingclr,
             paddingTop:10
            
           }}>
@@ -264,7 +265,7 @@ export default class Filters extends Component {
             fontSize: 20,
             fontWeight: 'bold',
             marginBottom: '2%',
-            color: ThemeColor,
+            color: headingclr,
             marginBottom:13
            
           }}>
