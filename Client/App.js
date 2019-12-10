@@ -13,6 +13,7 @@ import ContactUs from './App/screens/ContactUs'
 import Filters from './App/screens/Filters'
 import AttractionDetails from './App/screens/AttractionDetails'
 import ScreenNavigation from './App/screens/ScreenNavigation'
+import SearchAndFilter from './App/screens/SearchAndFilter'
 
 const RootStack = createStackNavigator({
   Home,
@@ -23,10 +24,11 @@ const RootStack = createStackNavigator({
   ContactUs,
   Filters,
   ScreenNavigation,
-  AttractionDetails
+  AttractionDetails,
+  SearchAndFilter
 },
 {
-  initialRouteName:'ScreenNavigation',
+  initialRouteName:'Home',
 
   // defaultNavigationOptions: {
   //   header:null,
