@@ -24,12 +24,13 @@ exports.getAllDestinations = (req, res, next) => {
     });
   }
 
-  console.log(sqlQuery);
   con.query(sqlQuery, (err, result) => {
     if (!err) {
       res.status(200).send(result);
-      
-    } else console.log(err);
+      console.log('all destination success')
+    } 
+    else 
+      (err) => console.log(err);
   });
 };
 
@@ -41,8 +42,9 @@ exports.getAttractionsCard = (req, res, next) => {
   con.query(sqlQuery, (err, result) => {
     if (!err) {
       res.status(200).send(result);
-      
-    } else console.log(err);
+      console.log('attraction card success')
+    } else 
+      (err) => console.log(err);
   });
 };
 
@@ -57,8 +59,10 @@ exports.getDestinationCard = (req, res, next) => {
   con.query(sqlQuery, (err, result) => {
     if (!err) {
       res.status(200).send(result);
-     
-    } else console.log(err);
+      console.log('destination card success')
+    } 
+    else 
+      (err) => console.log(err);
   });
 };
 
@@ -87,7 +91,6 @@ con.query(sqlQuery,(err, result) => {
                   console.log('response has attraction Ids')
               }
               else {
-                  console.log(err)
                   response = [...result,null]
                   res.status(200).send(response)
                   console.log("response doesn't have follow status")
@@ -96,6 +99,6 @@ con.query(sqlQuery,(err, result) => {
       })    
   }
   else
-      console.log(err)
+    (err) => console.log(err)
 });
 };

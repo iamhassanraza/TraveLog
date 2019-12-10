@@ -20,7 +20,7 @@ import OperatorIcon from './OperatorIcon';
 class TourCard extends React.Component {
 
     state = {
-        data: undefined,
+        data: [],
         saved: false,
         refreshing: false
     }
@@ -38,16 +38,8 @@ class TourCard extends React.Component {
             }).catch(err => console.log('tour card me error hai', err))
     }
 
-    //     fetchimage = async ()=>{
-    //     console.log('in fetch image')
-    //     console.log(await fetch('http://192.168.100.25:3001/images/1.jpg'))
-    //     console.log('done')
-    // }
-
-
-
     render() {
-        if (this.state.data) {
+        if (this.state.data[0]) {
             const start_Date = new Date(this.state.data[0].date_of_departure)
             const end_date = new Date(this.state.data[0].end_date)
             let formatted_start_date = start_Date.getDate() + "-" + (start_Date.getMonth() + 1) + "-" + start_Date.getFullYear()
@@ -112,7 +104,7 @@ class TourCard extends React.Component {
         else {
             return (
                 <View style={{padding: 5}}>
-                    <Facebook speed={0.1}/>
+                    <Facebook speed={0.5}/>
                 </View>
             )
         }

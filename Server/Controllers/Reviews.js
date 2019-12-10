@@ -18,6 +18,6 @@ exports.getAllReviews = (req, res) => {
                 console.log('reviews are here')
             }
             else
-               console.log("error scenes")
+            (err) => console.log(err)
     })
 }

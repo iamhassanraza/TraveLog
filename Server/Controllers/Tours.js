@@ -48,11 +48,10 @@ exports.getAllTours = (req,res)=>{
              
     con.query(sqlQuery,(err,result)=> {
     if(!err){
-   
-    res.status(200).send(result);
-    console.log("successfull"); }
+        res.status(200).send(result);
+        console.log("all tours successs"); }
     else 
-    console.log(err);      
+        (err) => console.log(err);      
 })
 
   
@@ -65,12 +64,12 @@ exports.getTourById = (req,res) => {
     
     var sqlQuery = `SELECT tours.tour_id, tours.last_date_of_reg, tours.overview,operator.phone as operator_phone,operator.email as operator_email,operator.longitude,operator.latitude FROM tours INNER JOIN operator ON operator.operator_id = tours.operator_id WHERE tour_id = ${tour_id}`
     con.query(sqlQuery,(err,result)=> {
-        if(!err){
-       
-        res.status(200).send(result);
-        console.log(result); }
+        if(!err) {   
+            res.status(200).send(result);
+            console.log("tour by id successfull") 
+        }
         else 
-        console.log(err);      
+        (err) => console.log(err);      
     })
 
 
@@ -84,10 +83,10 @@ exports.getTourPlan = (req,res)=> {
     var sqlQuery = `SELECT plan.plan_id, plan.tour_id,plan.date, plan.time, plan.title, plan.description, attractions.name FROM plan INNER JOIN attractions ON plan.attraction_id = attractions.attraction_id WHERE tour_id = ${tour_id} ORDER BY plan.date`
 
     con.query(sqlQuery,(err,result)=> {
-        if(!err){
-       
-        res.status(200).send(result);
-        console.log(result); }
+        if(!err){   
+            res.status(200).send(result);
+            console.log("plan successfull"); 
+        }
         else 
         console.log(err);      
     })
@@ -116,12 +115,12 @@ exports.getTourCard = (req,res) =>{
       operatorimage.reference_id = tours.operator_id) WHERE tours.tour_id = ${tour_id}`
 
     con.query(sqlQuery,(err,result)=> {
-        if(!err){
-       
+        if(!err){  
         res.status(200).send(result);
-        console.log(result); }
+        console.log("tour card success"); 
+    }
         else 
-        console.log(err);      
+            (err) => console.log(err);      
     })
 
 
@@ -135,17 +134,17 @@ exports.getOperatorCard = (req,res)=> {
     
     var sqlQuery = `SELECT operator.name, operator.phone, operator.email, 
     operator.is_verified,operator.longitude,operator.latitude, rating_review.numeric_rating 
-    FROM operator INNER JOIN rating_review ON (rating_review.category_id = (SELECT category_id 
+    FROM operator LEFT JOIN rating_review ON (rating_review.category_id = (SELECT category_id 
     FROM category WHERE name="operator")) AND (rating_review.reference_id = 1) WHERE operator_id= ${operator_Id}`
 
 
     con.query(sqlQuery,(err,result)=> {
-        if(!err){
-       
-        res.status(200).send(result);
-        console.log(result); }
+        if(!err) { 
+            res.status(200).send(result);
+            console.log("operator data in tours success"); 
+        }
         else 
-        console.log(err);      
+            (err) => console.log(err);      
     })
 
 

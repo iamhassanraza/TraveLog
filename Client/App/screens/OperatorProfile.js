@@ -19,6 +19,8 @@ export default class OperatorProfile extends Component {
     render() {
         const operatorData = this.props.navigation.getParam('operatorData','Got no data from tour card via navigation')
         const operatorId = this.props.navigation.getParam('operatorId','no ope id provided')
+        console.log(operatorData)
+        console.log(operatorId)
         return (
             <ScrollView style={styles.container}>
                 <View style={{}}>

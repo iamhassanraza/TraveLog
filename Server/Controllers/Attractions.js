@@ -3,13 +3,13 @@ const con = require("../db");
 exports.getAllAttractions = (req, res, next) => {
   
 
-  var sqlQuery = `SELECT attractions.name , image.image_path from attractions INNER JOIN image ON ( attractions.attraction_id = image.reference_id AND image.category_id = (SELECT category_id FROM category WHERE name = 'attraction') AND image.image_type_id = 2) `;
+  var sqlQuery = `SELECT attractions.name ,image.image_path from attractions INNER JOIN image ON ( attractions.attraction_id = image.reference_id AND image.category_id = (SELECT category_id FROM category WHERE name = 'attraction') AND image.image_type_id = 2) `;
   
 
   con.query(sqlQuery, (err, result) => {
     if (!err) {
       res.status(200).send(result);
-      console.log("successfull");
+      console.log("all attractions successfull");
     } else console.log(err);
   });
 };
@@ -45,7 +45,7 @@ exports.getDetailsOfAttraction = (req, res, next) => {
         })    
     }
     else
-        console.log(err)
+      (err) => console.log(err)
   });
   };
 

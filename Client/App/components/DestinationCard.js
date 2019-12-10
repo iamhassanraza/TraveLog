@@ -18,7 +18,7 @@ import ContentLoader, { Facebook } from 'react-content-loader/native'
 
 class DestinationCard extends React.Component {
   state = {
-    data: undefined,
+    data: [],
     saved: false,
   };
 
@@ -36,7 +36,7 @@ class DestinationCard extends React.Component {
   }
 
   render() {
-    if (this.state.data) {
+    if (this.state.data[0]) {
       return (
         <TouchableWithoutFeedback
           onPress={() =>
@@ -53,7 +53,7 @@ class DestinationCard extends React.Component {
             <View>
               <Image
                 source={{
-                  uri: `http://192.168.100.16:3001/images/${this.state.data[0].image_path}`,
+                  uri: `http://192.168.100.15:3001/images/${this.state.data[0].image_path}`,
                 }}
                 style={{
                   width: '100%',
@@ -95,7 +95,7 @@ class DestinationCard extends React.Component {
     } else {
       return (
         <View style={{borderWidth: 0,backgroundColor: BackgroundColor,padding: 5}}>
-          <Facebook speed={0.1}/>
+          <Facebook speed={0.5}/>
         </View>
       );
     }

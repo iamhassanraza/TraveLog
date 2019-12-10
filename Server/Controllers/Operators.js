@@ -40,7 +40,7 @@ exports.getAllOperators = (req,res)=>{
     con.query(sqlQuery,(err,result)=> {
         if(!err) {
             res.status(200).send(result);
-            console.log("successfull"); 
+            console.log("all operators successfull"); 
         }
         else 
         console.log(err);      
@@ -91,7 +91,7 @@ exports.operatorCard = (req, res, next) => {
             })    
         }
         else
-            console.log(err)
+        (err) => console.log(err)
     })
     
     

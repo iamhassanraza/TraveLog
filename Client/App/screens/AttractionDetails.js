@@ -36,7 +36,7 @@ export default class AttractionDetails extends Component {
     );
 
     fetch(
-      `http://192.168.100.16:3001/attraction/${AttractionData.attraction_id}`,
+      `http://192.168.100.15:3001/attraction/${AttractionData.attraction_id}`,
     )
       .then(response => {
         return response.json();
@@ -52,7 +52,7 @@ export default class AttractionDetails extends Component {
   renderTop = (image, name) => {
     return (
       <ImageBackground
-        source={{uri: `http://192.168.100.16:3001/images/${image}`}}
+        source={{uri: `http://192.168.100.15:3001/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
@@ -153,7 +153,7 @@ export default class AttractionDetails extends Component {
   };
 
   renderNearbyAttractions = () => {
-    const apiUrl = `http://192.168.100.16:3001/destination/attraction/`;
+    const apiUrl = `http://192.168.100.15:3001/destination/attraction/`;
     console.log(this.state.data);
     return (
       <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">

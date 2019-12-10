@@ -41,7 +41,7 @@ export default class TourDetail extends Component {
 
 
   componentDidMount(){
-    fetch("http://192.168.100.25:3001/tours/1")
+    fetch("http://192.168.100.15:3001/tours/1")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {

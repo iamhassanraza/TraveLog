@@ -16,14 +16,13 @@ import ContentLoader, { Facebook } from 'react-content-loader/native'
 
 const userId = 1
 
-class OperatorCard extends React.Component{
+class OperatorCard extends React.Component {
 
     state = {
-        cardData: null
+        cardData: []
     }
 
     componentDidMount() {
-        console.log("rendered")
         fetch(`http://192.168.100.15:3001/operators/card/${this.props.operatorId}/${userId}`)
         .then(res => {
             return res.json()
@@ -37,12 +36,12 @@ class OperatorCard extends React.Component{
     }
 
     render() {
+        if(this.state.cardData[0]) {
         return (
             <TouchableWithoutFeedback 
                 onPress={()=>this.props.navigation.push('OperatorProfile', {
-                    operatorData : {...this.state.cardData}, operatorId: this.props.operatorId
-                })}>
-                { this.state.cardData?  
+                    operatorData : [...this.state.cardData], operatorId: this.props.operatorId
+                })}> 
                 <View style={[styles.Container, this.props.style]}>
                     <View style={{paddingBottom: '2%'}}>
                         <View style={{borderWidth: this.state.cardData[0].cover? 0 : 1, borderColor: this.state.cardData[0].cover? 'white' : '#b3b5b4'}}>
@@ -106,14 +105,18 @@ class OperatorCard extends React.Component{
                                 textstyle={{marginLeft: '2%', marginRight: '2%'}}
                             />
                         </View> 
-                    </View>  
-                </View> :
-                <View style={{padding: 5}}>
-                    <Facebook speed={0.1}/>
-                </View>
-                }
+                    </View>
+                </View>                 
             </TouchableWithoutFeedback>
         );
+        }
+        else {
+            return (
+                <View style={{padding: 5}}>
+                    <Facebook speed={0.5}/>
+                </View>
+            )
+        }
     }
 }
 

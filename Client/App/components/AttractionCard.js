@@ -9,15 +9,17 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {ThemeColor} from '../assets/Colors/Colors';
+import {ThemeColor, BackgroundColor} from '../assets/Colors/Colors';
 import LoadingIndicator from './LoadingIndicator';
 import {withNavigation} from 'react-navigation';
+import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 // Props : id , API
 
 class AttractionCard extends React.Component {
   state = {
-    data: undefined,
+    data: [],
     saved: false,
   };
 
@@ -35,7 +37,7 @@ class AttractionCard extends React.Component {
   }
 
   render() {
-    if (this.state.data) {
+    if (this.state.data[0]) {
       return (
         <TouchableWithoutFeedback
           onPress={() =>
@@ -51,7 +53,7 @@ class AttractionCard extends React.Component {
             <View>
               <Image
                 source={{
-                  uri: `http://192.168.100.16:3001/images/${this.state.data[0].image_path}`,
+                  uri: `http://192.168.100.15:3001/images/${this.state.data[0].image_path}`,
                 }}
                 style={{
                   width: '100%',
@@ -92,12 +94,8 @@ class AttractionCard extends React.Component {
       );
     } else {
       return (
-        <View
-          style={{
-            width: Dimensions.get('window').width / 2.6,
-            margin: 5,
-          }}>
-          <LoadingIndicator></LoadingIndicator>
+        <View style={{borderWidth: 0, backgroundColor: BackgroundColor, padding: 5}}>
+          <Facebook speed={0.5}/>
         </View>
       );
     }

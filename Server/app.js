@@ -2,20 +2,13 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser')
-
 const TourRoutes = require('./Router/Tours')
 const  OperatorRoutes = require('./Router/Operator')
 const DestinationsRouter = require('./Router/Destinations')
 const imageRoutes = require('./Router/images')
 const AttractionsRoutes = require('./Router/Attractions')
 const reviewRoutes = require('./Router/Reviews')
-
-const con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database:'travelog'
-  });
+const con = require('./db')
 
 
 

@@ -62,7 +62,7 @@ export default class Home extends Component {
     }
 
     fetchDestinations = () => {
-        fetch("http://192.168.100.16:3001/destination/filter?")
+        fetch("http://192.168.100.15:3001/destination/filter?")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -85,11 +85,7 @@ export default class Home extends Component {
     }
 
     render() {
-    
-        const operators = [1,6,2]
-        const tours = [1,2]
-        const destination = [1,2,3,4,5,6,7,8,9,10,11,12,13]
-        const apiUrl= `http://192.168.100.16:3001/destination/card/`
+        const apiUrl= `http://192.168.100.15:3001/destination/card/`
         
 
         return ( 
@@ -131,10 +127,10 @@ export default class Home extends Component {
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>
-                                    <ContentLoader speed={0.1} height={150}/>
+                                    <Facebook speed={0.5} height={150}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <ContentLoader speed={0.1} height={150}/>
+                                    <Facebook speed={0.5} height={150}/>
                                 </View>
                             </View>
                         }
