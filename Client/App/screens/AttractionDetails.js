@@ -234,8 +234,6 @@ export default class AttractionDetails extends Component {
       'default',
     );
 
-    console.log(AttractionData);
-
     return (
       <ScrollView>
         {this.renderTop(AttractionData.image_path, AttractionData.name)}
