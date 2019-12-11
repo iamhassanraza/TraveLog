@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const con = mysql.createConnection({
-    host: "meemz.info",
-    user: "dhlzuejg_tours",
-    password: "Tours14",
-    database:'dhlzuejg_tours'
+    host: "tourdev.chnpxnk9cd85.us-east-2.rds.amazonaws.com",
+    user: "tourMaster",
+    password: "tourMaster1234",
+    database:'tourDev'
   });
 
 

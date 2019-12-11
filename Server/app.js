@@ -48,4 +48,4 @@ const con = require('./db')
     })
   })
 
-app.listen(3001, ()=>console.log('Server connected successfully'));
+app.listen(process.env.PORT, ()=>console.log('Server connected successfully'));
