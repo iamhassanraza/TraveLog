@@ -28,7 +28,7 @@ export default class DestinationDetails extends Component {
     const DestinationData = this.props.navigation.getParam('DestinationData','default');
 
     fetch(
-      `http://192.168.100.15:3001/destination/${DestinationData.destination_id}`,
+      `https://travelog-pk.herokuapp.com/destination/${DestinationData.destination_id}`,
     )
       .then(response => {
         return response.json();
@@ -45,7 +45,7 @@ export default class DestinationDetails extends Component {
   renderTop = (image, name) => {
     return (
       <ImageBackground
-        source={{uri: `http://192.168.100.15:3001/images/${image}`}}
+        source={{uri: `https://travelog-pk.herokuapp.com/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: Dimensions.get('window').width / 1,
@@ -145,7 +145,7 @@ export default class DestinationDetails extends Component {
 
 // "It shows all the attraction cards of the same destination"
   renderNearbyAttractions = () => {
-    const apiUrl = `http://192.168.100.15:3001/destination/attraction/`;
+    const apiUrl = `https://travelog-pk.herokuapp.com/destination/attraction/`;
 
     return (
       <FlatListContainer style={{marginLeft: '3%'}} title="Top Attractions">
@@ -227,7 +227,7 @@ export default class DestinationDetails extends Component {
   render() {
     const DestinationData = this.props.navigation.getParam('DestinationData','default',);
     const attraction = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const apiUrl = `http://192.168.100.15:3001/destination/attraction/`;
+    const apiUrl = `https://travelog-pk.herokuapp.com/destination/attraction/`;
 
     return (
       <ScrollView>

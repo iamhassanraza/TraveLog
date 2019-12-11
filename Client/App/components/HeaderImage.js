@@ -6,7 +6,7 @@ import { ThemeColor } from '../assets/Colors/Colors'
 const HeaderImage = (props) => {
     return (
    
-        <ImageBackground source={{uri:`http://192.168.100.25:3001/images/${props.imageName}`}} style={[styles.ImageContainer,props.style]}>
+        <ImageBackground source={{uri:`https://travelog-pk.herokuapp.com/images/${props.imageName}`}} style={[styles.ImageContainer,props.style]}>
         
         <View style={{flexDirection:'column',flex:1}}>
        {props.price ? ( <View style={{flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>

@@ -15,7 +15,7 @@ import ContentLoader, { Facebook } from 'react-content-loader/native';
 export default class OperatorRating extends Component {
 
     componentDidMount() {
-        fetch(`http://192.168.100.15:3001/reviews/operator/${this.props.screenProps.operatorId}`)
+        fetch(`https://travelog-pk.herokuapp.com/reviews/operator/${this.props.screenProps.operatorId}`)
         .then(res => {
             return res.json()
         })

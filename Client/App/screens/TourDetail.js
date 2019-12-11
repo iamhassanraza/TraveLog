@@ -38,10 +38,11 @@ export default class TourDetail extends Component {
     apiData:undefined
   };
 
-
+  data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
+  tourId = this.props.navigation.getParam('tourId', 'No id provided by card')
 
   componentDidMount(){
-    fetch("http://192.168.100.15:3001/tours/1")
+    fetch(`https://travelog-pk.herokuapp.com/tours/${this.tourId}`)
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -70,7 +71,7 @@ export default class TourDetail extends Component {
   </View>)
   }
 
- renderOperatorCard = (Operator)=>{
+ renderOperatorCard = (Operator) => {
 return (
   <View style={{borderWidth:0.5,marginTop:10,paddingBottom:10,paddingTop:10,backgroundColor:'white',borderColor:BorderColor}}>
   <Text style={{paddingLeft:10,fontSize:15,marginBottom:10}}> This Tour is operated by:</Text>
@@ -132,7 +133,7 @@ return (
  }
 
  renderIcons = (data)=>{
-   const date_of_departure = new Date(data.date_of_departure)
+   const date_of_departure = new Date(this.data.date_of_departure)
    return (
     <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:10,flex:1}}>
     <View style={{flexDirection: 'column',flex:1}}>
@@ -140,7 +141,7 @@ return (
        textstyle={{fontSize:14}}
         icon="account-supervisor"
         title="Speciality:"
-        subtitle={data.speciality}></IconWithText>
+        subtitle={this.data.speciality}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="calendar-check"
@@ -152,7 +153,7 @@ return (
         textstyle={{fontSize:14}}
         icon="timer"
         title="Duration"
-        subtitle={data.duration}></IconWithText>
+        subtitle={this.data.duration}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="seat-recline-normal"
@@ -164,10 +165,10 @@ return (
  }
 
 
- renderPlan = ()=>{
+ renderPlan = () => {
    return( 
           <View style={{marginTop:10,borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,padding:10}}>
-          <PlanCard tour_id='1'></PlanCard>
+          <PlanCard tour_id={this.tourId}></PlanCard>
           </View>
       
    )
@@ -190,22 +191,20 @@ return (
  }
 
   render() {
-   const data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
-
     return (
       <ScrollView>
         
-        <HeaderImage imageName={data.tourcover} style={{height: height / 3}}></HeaderImage>
+        <HeaderImage imageName={this.data.tourcover} style={{height: height / 3}}></HeaderImage>
         <View style={{borderWidth:0.5,borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
-        {this.renderHeading(data.title)}
+        {this.renderHeading(this.data.title)}
         {this.state.apiData ? this.renderOverview(this.state.apiData[0].overview) : this.renderOverview('')}
-        {this.renderIcons({speciality:data.speciality, duration:data.duration, date_of_departure: data.date_of_departure })}
+        {this.renderIcons({speciality:this.data.speciality, duration:this.data.duration, date_of_departure: this.data.date_of_departure })}
         </View>
        
         <View>
 
       
-        {this.state.apiData ? this.renderOperatorCard({name:data.name, rating:data.numeric_rating,is_verified:data.is_verified,dp:data.operatordp}) : <LoadingIndicator></LoadingIndicator>}
+        {this.state.apiData ? this.renderOperatorCard({name:this.data.name, rating:this.data.numeric_rating,is_verified:this.data.is_verified,dp:this.data.operatordp}) : <LoadingIndicator></LoadingIndicator>}
         </View>
         {/* <OperatorCard></OperatorCard> */}
         {this.renderPlan()}

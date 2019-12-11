@@ -4,7 +4,6 @@ import DestinationDetails from './App/screens/DestinationDetails';
 import 'react-native-gesture-handler'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
 import TourDetail from './App/screens/TourDetail'
 import OperatorProfile from './App/screens/OperatorProfile'
 import Home from './App/screens/Home'
@@ -28,8 +27,7 @@ const RootStack = createStackNavigator({
   SearchAndFilter
 },
 {
-  initialRouteName:'Home',
-
+  initialRouteName:'ScreenNavigation',
   // defaultNavigationOptions: {
   //   header:null,
   // }

@@ -8,7 +8,7 @@ import ContentLoader, {Rect, Facebook } from 'react-content-loader/native'
 export default class OperatorTours extends Component {
 
     componentDidMount() {
-        fetch(`http://192.168.100.15:3001/tours/filter?operator_id=${this.props.screenProps.operatorId}`)
+        fetch(`https://travelog-pk.herokuapp.com/tours/filter?operator_id=${this.props.screenProps.operatorId}`)
         .then(response => {
             return response.json()
         })

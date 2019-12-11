@@ -27,7 +27,7 @@ class TourCard extends React.Component {
 
 
     componentDidMount() {
-        fetch(`http://192.168.100.15:3001/tours/card/${this.props.id}`)
+        fetch(`https://travelog-pk.herokuapp.com/tours/card/${this.props.id}`)
             .then(response => {
                 return response.json()
             })
@@ -52,7 +52,8 @@ class TourCard extends React.Component {
 
             return (
                 <TouchableWithoutFeedback onPress={() => this.props.navigation.push('TourDetail', {
-                    TourData: { ...this.state.data[0] }
+                    TourData: [...this.state.data],
+                    tourId: this.props.id 
                 })}>
                     <View>
                         <View style={[styles.Container, this.props.style]} >

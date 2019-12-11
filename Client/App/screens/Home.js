@@ -35,7 +35,7 @@ export default class Home extends Component {
 
 
     fetchTours = () => {
-        fetch("http://192.168.100.15:3001/tours/filter?")
+        fetch("https://travelog-pk.herokuapp.com/tours/filter?")
         .then(response => {
             return response.json()
         })
@@ -49,7 +49,7 @@ export default class Home extends Component {
     }
 
     fetchOperators = () => {
-        fetch("http://192.168.100.15:3001/operators/filter?")
+        fetch("https://travelog-pk.herokuapp.com/operators/filter?")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -62,7 +62,7 @@ export default class Home extends Component {
     }
 
     fetchDestinations = () => {
-        fetch("http://192.168.100.15:3001/destination/filter?")
+        fetch("https://travelog-pk.herokuapp.com/destination/filter?")
         .then(response => {
             return response.json()})
         .then((responseJson)=> {
@@ -85,7 +85,7 @@ export default class Home extends Component {
     }
 
     render() {
-        const apiUrl= `http://192.168.100.15:3001/destination/card/`
+        const apiUrl= `https://travelog-pk.herokuapp.com/destination/card/`
         
 
         return ( 

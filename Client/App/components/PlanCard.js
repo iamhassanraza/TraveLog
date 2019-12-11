@@ -10,7 +10,7 @@ export default class PlanCard extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://192.168.100.15:3001/tours/plan/${this.props.tour_id}`)
+        fetch(`https://travelog-pk.herokuapp.com/tours/plan/${this.props.tour_id}`)
             .then(response => response.json())
             .then((responseJson)=> {
               this.setState({

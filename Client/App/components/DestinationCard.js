@@ -53,7 +53,7 @@ class DestinationCard extends React.Component {
             <View>
               <Image
                 source={{
-                  uri: `http://192.168.100.15:3001/images/${this.state.data[0].image_path}`,
+                  uri: `https://travelog-pk.herokuapp.com/images/${this.state.data[0].image_path}`,
                 }}
                 style={{
                   width: '100%',
