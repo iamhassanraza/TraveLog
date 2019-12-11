@@ -23,6 +23,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FlatListContainer from '../components/FlatListContainer';
 import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
+import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 export default class AttractionDetails extends Component {
   state = {
@@ -241,17 +243,23 @@ export default class AttractionDetails extends Component {
         {this.state.data ? (
           this.renderDetails()
         ) : (
-          <LoadingIndicator></LoadingIndicator>
+          <View style={{width:'60%', marginLeft: '10%'}}>
+            <Facebook speed={0.5} height={150}/>
+          </View>
         )}
         {this.state.data ? (
           this.renderOverview()
         ) : (
-          <LoadingIndicator></LoadingIndicator>
+          <View style={{width:'60%', marginLeft: '10%'}}>
+            <Facebook speed={0.5} height={150}/>
+          </View>
         )}
         {this.state.data ? (
           this.renderNearbyAttractions()
         ) : (
-          <LoadingIndicator></LoadingIndicator>
+          <View style={{width:'60%', marginLeft: '10%'}}>
+            <Facebook speed={0.5} height={150}/>
+          </View>
         )}
         {this.renderMap()}
         {this.renderRelatedTours()}
