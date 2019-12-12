@@ -49,7 +49,7 @@ export default class OperatorProfile extends Component {
                         </Text>
                     </View>
                 </View>
-                <View style={{height: Dimensions.get('window').height*0.88}}>
+                <View style={{height: Dimensions.get('window').height*0.965}}>
                     <Navigation
                         screenProps={{
                                         email: operatorData[0].email,
@@ -69,11 +69,11 @@ export default class OperatorProfile extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: Dimensions.get("window").width/1,
+        width: "100%",
         height: '100%'
     },
     coverPhoto: {
-        height: Dimensions.get("window").height/5
+        height: Dimensions.get("window").height/3
     },
     logoButton: {
         flexDirection: 'row',

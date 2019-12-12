@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     Container: {
         width: Dimensions.get('window').width/1.5,
         backgroundColor: 'white',
-        borderWidth: 0.5,
+        borderWidth: 0,
         borderBottomRightRadius: 5,
         borderBottomLeftRadius: 5,
         borderColor: '#8b8e8f',

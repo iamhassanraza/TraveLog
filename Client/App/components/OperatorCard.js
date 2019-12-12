@@ -122,7 +122,7 @@ export default withNavigation(OperatorCard);
 const styles = StyleSheet.create({
     Container: {
         borderColor: '#8b8e8f',
-        borderWidth: 0.5,  
+        borderWidth: 0,  
         width: Dimensions.get("window").width/1.5 ,
         borderBottomEndRadius:5,
         borderBottomLeftRadius:5 ,

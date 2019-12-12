@@ -50,7 +50,7 @@ export default class DestinationDetails extends Component {
         source={{uri: `https://travelog-pk.herokuapp.com/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
-          width: Dimensions.get('window').width / 1,
+          width: "100%",
         }}>
         <View
           style={{

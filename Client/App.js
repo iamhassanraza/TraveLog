@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import DestinationDetails from './App/screens/DestinationDetails';
 import 'react-native-gesture-handler'
 import { createAppContainer } from 'react-navigation';
@@ -17,7 +17,12 @@ import FiltersListing from './App/screens/FiltersListing'
 
 const RootStack = createStackNavigator({
   Home,
-  OperatorProfile,
+  OperatorProfile: {
+    screen: OperatorProfile,
+    navigationOptions: {
+      header: null
+    }
+  },
   TourDetail,
   DestinationDetails,
   Modal,
