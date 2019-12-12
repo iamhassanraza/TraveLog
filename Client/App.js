@@ -13,13 +13,18 @@ import Filters from './App/screens/Filters'
 import AttractionDetails from './App/screens/AttractionDetails'
 import ScreenNavigation from './App/screens/ScreenNavigation'
 import SearchAndFilter from './App/screens/SearchAndFilter'
-import { ThemeColor, ThemeGrey } from './App/assets/Colors/Colors';
+import { ThemeColor, ThemeGrey, BackgroundColor } from './App/assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 const RootStack = createStackNavigator({
   Home,
-  OperatorProfile,
+  OperatorProfile: {
+    screen: OperatorProfile,
+    navigationOptions: {
+      header: null
+    }
+  },
   TourDetail,
   DestinationDetails,
   Modal,
@@ -33,17 +38,23 @@ const RootStack = createStackNavigator({
   initialRouteName:'ScreenNavigation',
   headerLayoutPreset: 'center',
   defaultNavigationOptions: {
+
+    //header: null
+    
+    //headerTitle:'TRAVELOG',
+    // headerTitleStyle: {
+    //   color:"black",
+    //   fontSize:22
+    // },
     header: (
-    <View style={{backgroundColor: 'black', height: 40,alignItems:'center',justifyContent:'space-between', flexDirection: 'row'}}>
-      <View style={{}}>
-        <Text style={{alignSelf:'center', fontSize:22,fontWeight:'bold', color: "white"}}>
-          TRAVELOG
-        </Text>
+      <View style={{height:50, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+        <View style={{marginLeft:'5%'}}>
+          <Text style={{fontSize:25,fontWeight:'bold', color: ThemeColor}}>TraveLog</Text>
+        </View>
+        <View style={{width:25, height:25,justifyContent:'center', marginRight:'4%',backgroundColor:BackgroundColor, borderRadius:50}}>
+          <Icon name="search" size={20} color={ThemeColor} style={{alignSelf:'center'}}></Icon>
+        </View>
       </View>
-      <View style={{marginLeft:'5%'}}>
-        <Icon style={{color:'white',borderColor:'white'}} size={25} name="search"></Icon>
-      </View>
-    </View>
     )
   }
 }

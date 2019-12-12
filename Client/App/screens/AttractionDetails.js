@@ -57,13 +57,15 @@ export default class AttractionDetails extends Component {
         source={{uri: `https://travelog-pk.herokuapp.com/images/${image}`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
-          width: Dimensions.get('window').width / 1,
+          width: "100%",
         }}>
         <View
           style={{
             flex: 1,
             backgroundColor: 'rgba(0,0,0.3)',
             justifyContent: 'flex-end',
+            borderWidth: 2,
+            flexDirection:'column',
             alignItems: 'center',
           }}>
           <Text

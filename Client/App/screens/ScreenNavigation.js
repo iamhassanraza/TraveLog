@@ -14,6 +14,15 @@ import OperatorProfile from './OperatorProfile';
 
 const TabNavigator = createMaterialTopTabNavigator(
     {
+        Home: {
+            screen: Home,
+            navigationOptions: {
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name="home" color={tintColor}  style={{fontSize:22}}/>
+                ),
+                tabBarLabel: "Home"
+            }
+        },
         followups: {
             screen: IconWithText,
             navigationOptions: {
@@ -31,16 +40,7 @@ const TabNavigator = createMaterialTopTabNavigator(
                 ),
                 tabBarLabel: "Notifications"
             }
-        },
-        Home: {
-            screen: Home,
-            navigationOptions: {
-                tabBarIcon: ({tintColor}) => (
-                    <Icon name="home" color={tintColor}  style={{fontSize:22}}/>
-                ),
-                tabBarLabel: "Home"
-            }
-        },
+        },   
         Profile: {
             screen: Home,
             navigationOptions: {
@@ -49,32 +49,41 @@ const TabNavigator = createMaterialTopTabNavigator(
                 ),
                 tabBarLabel: "Profile"
             }
+        },
+        Settings: {
+            screen: Home,
+            navigationOptions: {
+                tabBarIcon: ({tintColor}) => (
+                    <Icon name="settings" color={tintColor}  style={{fontSize:22}}/>
+                ),
+                tabBarLabel: "Settings"
+            }
         }      
     },
     {
         initialRouteName: 'Home',
-        tabBarPosition: 'bottom',
+        tabBarPosition: 'top',
         swipeEnabled: false,
         tabBarOptions: {
             style: {
-                backgroundColor: BackgroundColor,
+                backgroundColor: "white",
                 height: 50,
             },
-            // tabStyle: {
-            //     width: 40
-            // },
             iconStyle: {
                 marginTop: -7,
             },
             labelStyle: {
-                fontSize: 10,
-                marginTop: -2
+                fontSize: 8,
+                width:'100%',
+                alignSelf:'center',
+                marginTop: -2,
             },
             indicatorStyle: {
-                height:0
+                backgroundColor: ThemeColor,
+                height:2,
             },
             upperCaseLabel: false,
-            inactiveTintColor: 'black',
+            inactiveTintColor: ThemeGrey,
             activeTintColor: ThemeColor,
             showIcon: true
             }
