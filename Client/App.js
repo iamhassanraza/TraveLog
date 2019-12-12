@@ -34,7 +34,7 @@ const RootStack = createStackNavigator({
   FiltersListing
 },
 {
-  initialRouteName:'FiltersListing',
+  initialRouteName:'ScreenNavigation',
   // defaultNavigationOptions: {
   //   header:null,
   // }
