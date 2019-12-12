@@ -40,7 +40,6 @@ const RootStack = createStackNavigator({
   defaultNavigationOptions: {
 
     //header: null
-    
     //headerTitle:'TRAVELOG',
     // headerTitleStyle: {
     //   color:"black",
