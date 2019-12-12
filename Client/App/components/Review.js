@@ -14,7 +14,7 @@ export default class Review extends Component {
                 <View style={styles.avatarName}>
                     <Image style={styles.avatar} source = {logo}></Image>
                     <View style={{flex: 1, padding: '1%'}}>
-                        <Text style={{}}><Text style={{fontWeight: 'bold'}}>{this.props.reviewer} </Text>reviews {"Nomads Adventure society greenland travel"}</Text>
+                        <Text style={{}}><Text style={{fontWeight: 'bold'}}>{this.props.reviewer} </Text>reviews {this.props.reviewed}</Text>
                         <Text style={{fontSize: 12, color: 'grey'}}>{"12th September at 2:52 PM"}</Text>
                         <Rating 
                             type = 'custom'

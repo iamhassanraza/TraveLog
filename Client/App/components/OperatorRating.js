@@ -15,7 +15,7 @@ import ContentLoader, { Facebook } from 'react-content-loader/native';
 export default class OperatorRating extends Component {
 
     componentDidMount() {
-        fetch(`https://travelog-pk.herokuapp.com/reviews/operator/${this.props.screenProps.operatorId}`)
+        fetch(`https://travelog-pk.herokuapp.com/reviews/'operator'/${this.props.screenProps.operatorId}`)
         .then(res => {
             return res.json()
         })
@@ -81,6 +81,7 @@ export default class OperatorRating extends Component {
                                     reviewer = {item.user_name}
                                     rating = {item.numeric_rating}
                                     text = {item.descriptive_review}
+                                    reviewed = {this.props.screenProps.name}
                                 />
                             }}
                             keyExtractor = {item => item.reviewer}

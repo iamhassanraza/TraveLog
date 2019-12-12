@@ -3,6 +3,6 @@ const rout = express.Router()
 
 const reviewControllers = require('../Controllers/Reviews')
 
-rout.get('/operator/:reference', reviewControllers.getAllReviews)
+rout.get('/:category/:reference', reviewControllers.getAllReviews)
 
 module.exports = rout;

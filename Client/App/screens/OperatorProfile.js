@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     coverPhoto: {
-        height: Dimensions.get("window").height/3
+        height: Dimensions.get("window").height/4
     },
     logoButton: {
         flexDirection: 'row',
