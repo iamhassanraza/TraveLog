@@ -9,11 +9,7 @@ export default class ContactUs extends Component {
     render() {
         return (
             <ScrollView>
-                 <ActivityIndicator size="small" color="#00ff00" />
-                <View style={{width:"100%", height:"17%", backgroundColor:ThemeColor,justifyContent:"center"}}>
-                    <Text style={{color:"white", fontSize:22, fontWeight:"bold", alignSelf:"center"}}>Contact Us </Text>
-                </View>
-
+                
                 <View>
                 <ImageBackground
                      source={map}
@@ -24,9 +20,14 @@ export default class ContactUs extends Component {
                 </ImageBackground>
                 </View>
 
-                <View>
-                    <IconWithText title={"Email"} icon={"mail"}>
+                <View style={{alignItems:"center", marginTop:7}}>
+                    <IconWithText title={"Email"} icon={"email"} subtitle={" : salimehdi144@gmai.com"} linear={true}>
+                    </IconWithText>
 
+                    <IconWithText title={"Email"} icon={"email"} subtitle={" : salimehdi144@gmai.com"} linear={true}>
+                    </IconWithText>
+
+                    <IconWithText title={"Email"} icon={"email"} subtitle={" : salimehdi144@gmai.com"} linear={true}>
                     </IconWithText>
                 </View>
 
