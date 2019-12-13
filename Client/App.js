@@ -34,10 +34,11 @@ const RootStack = createStackNavigator({
   ScreenNavigation,
   AttractionDetails,
   SearchAndFilter,
+  FiltersListing
   
 },
 {
-  initialRouteName:'ScreenNavigation',
+  initialRouteName:'ContactUs',
   headerLayoutPreset: 'center',
   defaultNavigationOptions: {
 

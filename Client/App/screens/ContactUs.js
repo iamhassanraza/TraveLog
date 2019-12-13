@@ -1,40 +1,59 @@
-import React, { Component } from 'react'
-import { Text, View,ScrollView,ImageBackground,Dimensions,ActivityIndicator } from 'react-native'
+import React, {Component} from 'react';
+import {
+  Text,
+  View,
+  ScrollView,
+  ImageBackground,
+  Dimensions,
+  ActivityIndicator,
+} from 'react-native';
 import map from '../assets/images/map.jpg';
-
+import {BackgroundColor} from '../assets/Colors/Colors';
 import {ThemeColor, ThemeGrey} from '../assets/Colors/Colors';
-import IconWithText from '../components/IconWithText';
+import IconWithText from '../components/IconAndText';
 
 export default class ContactUs extends Component {
-    render() {
-        return (
-            <ScrollView>
-                
-                <View>
-                <ImageBackground
-                     source={map}
-                     style={{
-                        height: Dimensions.get('window').height / 3.7,
-                        width: Dimensions.get('window').width / 1,
-                            }}>
-                </ImageBackground>
-                </View>
+  render() {
+    return (
+      <ScrollView style={{backgroundColor:BackgroundColor}}>
+        <View>
+          <ImageBackground
+            source={map}
+            style={{
+              height: Dimensions.get('window').height / 3.7,
+              width: Dimensions.get('window').width / 1,
+            }}></ImageBackground>
+        </View>
 
-                <View style={{alignItems:"center", marginTop:7}}>
-                    <IconWithText title={"Email"} icon={"email"} subtitle={" : salimehdi144@gmai.com"} linear={true}>
-                    </IconWithText>
+        <View style={{paddingLeft:"1%", paddingRight:"1%"}}>
 
-                    <IconWithText title={"Email"} icon={"email"} subtitle={" : salimehdi144@gmai.com"} linear={true}>
-                    </IconWithText>
+        <View style={{backgroundColor:"white", marginBottom:"1%", marginTop:"1%"}}>
+          <IconWithText
+            text={'Office 304 , Anum Blessings P.E.C.H.S Karachi'}
+            name={'map-marker'}
+            textstyle={{fontSize:15, marginLeft:"2%"}}
+            iconstyle={{fontSize:30}}
+            
+            ></IconWithText>
+        </View>
 
-                    <IconWithText title={"Email"} icon={"email"} subtitle={" : salimehdi144@gmai.com"} linear={true}>
-                    </IconWithText>
-                </View>
+        <View style={{ backgroundColor:"white", marginBottom:"1%"}}>
+          <IconWithText text={'03132055798'} name={'phone'} textstyle={{fontSize:15 , marginLeft:"2%"}}
+            iconstyle={{fontSize:30}}></IconWithText>
+        </View>
 
-                <View>
 
-                </View>
-            </ScrollView>
-        )
-    }
+        <View style={{ backgroundColor:"white", marginBottom:"1%"}}>
+          <IconWithText
+            text={'salimehdi144@gmai.com'}
+            name={'email'} textstyle={{fontSize:15, marginLeft:"2%"}}
+            iconstyle={{fontSize:30}}></IconWithText>
+        </View>
+
+
+        </View>
+        
+      </ScrollView>
+    );
+  }
 }
