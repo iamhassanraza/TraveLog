@@ -27,19 +27,22 @@ const TabNavigator = createMaterialTopTabNavigator(
             screen: IconWithText,
             navigationOptions: {
                 tabBarIcon: ({tintColor}) => (
-                    <Icon2 name="bookmark" color={tintColor} style={{fontSize:22}}/>
+                        <Icon2 name="bookmark" color={tintColor} style={{fontSize:22}}/>
                 ),
-                tabBarLabel: 'Follow ups'
+                tabBarLabel: 'Follow ups',
+                tabBarPosition: 'bottom'
             }
         },
         Notifications: {
             screen: IconAndText,
-            navigationOptions: {
+            navigationOptions: ({navigation}) => {
+                return {
                 tabBarIcon: ({tintColor}) => (
                     <Icon2 name="bell-ring"color={tintColor}  style={{fontSize:22}}/>
                 ),
                 tabBarLabel: "Notifications"
             }
+        }
         },   
         Profile: {
             screen: Home,
@@ -63,6 +66,7 @@ const TabNavigator = createMaterialTopTabNavigator(
     {
         initialRouteName: 'Home',
         tabBarPosition: 'top',
+        header: null,
         swipeEnabled: false,
         tabBarOptions: {
             style: {
@@ -70,13 +74,13 @@ const TabNavigator = createMaterialTopTabNavigator(
                 height: 50,
             },
             iconStyle: {
-                marginTop: -7,
+                marginTop: 0,
             },
             labelStyle: {
-                fontSize: 8,
+                fontSize: 9,
                 width:'100%',
                 alignSelf:'center',
-                marginTop: -2,
+                marginTop: -5,
             },
             indicatorStyle: {
                 backgroundColor: ThemeColor,

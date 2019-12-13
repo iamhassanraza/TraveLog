@@ -38,13 +38,6 @@ const RootStack = createStackNavigator({
   initialRouteName:'ScreenNavigation',
   headerLayoutPreset: 'center',
   defaultNavigationOptions: {
-
-    //header: null
-    //headerTitle:'TRAVELOG',
-    // headerTitleStyle: {
-    //   color:"black",
-    //   fontSize:22
-    // },
     header: (
       <View style={{height:50, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
         <View style={{marginLeft:'5%'}}>
