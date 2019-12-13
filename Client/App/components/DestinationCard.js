@@ -48,7 +48,7 @@ class DestinationCard extends React.Component {
           <View
             style={{
               width: Dimensions.get('window').width / 2.6,
-              margin: 5
+              margin: 5, ...this.props.style
             }}>
             <View>
               <Image
@@ -57,11 +57,12 @@ class DestinationCard extends React.Component {
                 }}
                 style={{
                   width: '100%',
-                  height: 200,
+                  height: this.props.imageheight ? this.props.imageheight : 200,
                   borderTopLeftRadius: 6,
                   borderTopRightRadius: 6,
                   borderBottomLeftRadius: 6,
                   borderBottomRightRadius: 6,
+                  ...this.props.imageheight
                 }}></Image>
             </View>
 
@@ -72,7 +73,7 @@ class DestinationCard extends React.Component {
                 marginTop: '2%',
               }}>
               <View style={{width: '80%'}}>
-                <Text style={{fontSize: 16}}>{this.state.data[0].name}</Text>
+                <Text style={{fontSize: 16,...this.props.textsize}}>{this.state.data[0].name}</Text>
               </View>
               <View style={{marginRight: '3%'}}>
                 <TouchableWithoutFeedback
@@ -83,7 +84,7 @@ class DestinationCard extends React.Component {
                   }}>
                   <Icon
                     name={this.state.saved ? 'bookmark' : 'bookmark-o'}
-                    size={23}
+                    size={this.props.iconsize ? this.props.iconsize : 23}
                     color={ThemeColor}
                   />
                 </TouchableWithoutFeedback>

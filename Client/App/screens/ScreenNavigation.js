@@ -11,6 +11,7 @@ import AboutOperator from '../components/AboutOperator';
 import IconWithText from '../components/IconWithText';
 import Home from './Home';
 import OperatorProfile from './OperatorProfile';
+import FiltersListing from '../screens/FiltersListing'
 
 const TabNavigator = createMaterialTopTabNavigator(
     {

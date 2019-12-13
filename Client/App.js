@@ -15,6 +15,7 @@ import ScreenNavigation from './App/screens/ScreenNavigation'
 import SearchAndFilter from './App/screens/SearchAndFilter'
 import { ThemeColor, ThemeGrey, BackgroundColor } from './App/assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import FiltersListing from './App/screens/FiltersListing'
 
 
 const RootStack = createStackNavigator({
@@ -32,10 +33,12 @@ const RootStack = createStackNavigator({
   Filters,
   ScreenNavigation,
   AttractionDetails,
-  SearchAndFilter
+  SearchAndFilter,
+  FiltersListing
+  
 },
 {
-  initialRouteName:'ScreenNavigation',
+  initialRouteName:'ContactUs',
   headerLayoutPreset: 'center',
   defaultNavigationOptions: {
     header: (
