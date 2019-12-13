@@ -37,7 +37,7 @@ export default class OperatorTours extends Component {
                     style={{borderWidth: 0, width: Dimensions.get('window').width/1, marginBottom: '8%', paddingLeft: '3%', paddingRight: '3%'}}
                     id={item.tour_id}
                     seatsLeft={10} ></TourCard>}
-                    keyExtractor={item => item}
+                    keyExtractor={item => item.tour_id}
                     />
                 </FlatListContainer> :
                 <View style={{alignSelf:'center'}}>

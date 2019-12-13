@@ -10,8 +10,6 @@ import LoadingIndicator from '../components/LoadingIndicator';
 import ContentLoader, { Facebook } from 'react-content-loader/native';
 
 
-
-
 export default class OperatorRating extends Component {
 
     componentDidMount() {
