@@ -38,7 +38,7 @@ const RootStack = createStackNavigator({
   
 },
 {
-  initialRouteName:'ContactUs',
+  initialRouteName:'FiltersListing',
   headerLayoutPreset: 'center',
   defaultNavigationOptions: {
     header: (
