@@ -14,21 +14,23 @@ import FlatListContainer from '../components/FlatListContainer';
 import {BackgroundColor} from '../assets/Colors/Colors';
 import TourCard from '../components/TourCard';
 import DestinationCard from '../components/DestinationCard'
+import OperatorCard from '../components/OperatorCard'
 
-const tourz = [1, 2, 3, 4, 5];
-const destz = [1,2,3,4,12,13];
+const tourz = [1, 2,1,2, 3, 4, 5];
+const destz = [1,2,3,4,5,6,12,13,1,2,3];
+const operators = [1,2,1,2,2,1]
 const apiUrl= `https://travelog-pk.herokuapp.com/destination/card/`
 
 class SearchBar extends React.PureComponent {
   state = {
-    selected: 'destinations',
+    selected: 'operators',
   };
 
   renderDestinations = () => {
     return (
         <ScrollView nestedScrollEnabled style={{marginBottom:10}}>
             <FlatList
-        veertical
+        vertical
         data={destz}
         keyExtractor={item => item}
         showsHorizontalScrollIndicator={false}
@@ -58,18 +60,20 @@ class SearchBar extends React.PureComponent {
 
   renderTours = () => {
     return (
-      <ScrollView nestedScrollEnabled style={{}}>
+      <ScrollView nestedScrollEnabled style={{marginBottom:"-34%"}}>
         <FlatList
           data={tourz}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <TourCard
               style={{
-                borderWidth: 0,
                 width: Dimensions.get('window').width / 1,
-                marginBottom: '8%',
-                paddingLeft: '3%',
-                paddingRight: '3%',
+                marginBottom: '3%',
+                paddingTop:'2%',
+                paddingLeft: '2%',
+                paddingRight: '2%',
+                backgroundColor:"white",
+                paddingBottom:"1%"
               }}
               id={item}
               seatsLeft={10}></TourCard>
@@ -80,8 +84,33 @@ class SearchBar extends React.PureComponent {
     );
   };
 
+
   renderOperators = () => {
-    return <Text>Operators</Text>;
+    return (
+
+<ScrollView nestedScrollEnabled style={{}}>
+      <FlatList 
+                                vertical
+                                data={operators}
+                                keyExtractor={item => item}
+                                showsHorizontalScrollIndicator={false}
+                                renderItem= {({item}) => 
+                                <OperatorCard
+                                    operatorId = {item}
+                                    style={{
+                                      width: Dimensions.get('window').width / 1,
+        marginBottom: '3%',
+        paddingTop:'2%',
+        paddingLeft: '2%',
+        paddingRight: '2%',
+        backgroundColor:"white",
+        paddingBottom:"1%"
+                                    }}
+                                />
+                                }
+                            />
+                            </ScrollView>
+    );
   };
 
   changeState = type => {

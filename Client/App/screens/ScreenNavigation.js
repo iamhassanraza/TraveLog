@@ -25,7 +25,7 @@ const TabNavigator = createMaterialTopTabNavigator(
             }
         },
         followups: {
-            screen: IconWithText,
+            screen: FiltersListing,
             navigationOptions: {
                 tabBarIcon: ({tintColor}) => (
                         <Icon2 name="bookmark" color={tintColor} style={{fontSize:22}}/>
