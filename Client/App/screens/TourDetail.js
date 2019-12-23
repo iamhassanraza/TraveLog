@@ -38,10 +38,14 @@ export default class TourDetail extends Component {
     apiData:undefined
   };
 
-  data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
-  tourId = this.props.navigation.getParam('tourId', 'No id provided by card')
-
+    data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
+    tourId = this.props.navigation.getParam('tourId', 'No id provided by card')
+    duration = this.props.navigation.getParam('duration', 'No id provided by card')
+    suggestedTours = [1,2,3,4]
   componentDidMount(){
+    
+
+
     fetch(`https://travelog-pk.herokuapp.com/tours/${this.tourId}`)
         .then(response => {
             return response.json()})
@@ -133,7 +137,7 @@ return (
  }
 
  renderIcons = (data)=>{
-   const date_of_departure = new Date(this.data.date_of_departure)
+   const date_of_departure = new Date(this.data[0].date_of_departure)
    return (
     <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:10,flex:1}}>
     <View style={{flexDirection: 'column',flex:1}}>
@@ -141,7 +145,7 @@ return (
        textstyle={{fontSize:14}}
         icon="account-supervisor"
         title="Speciality:"
-        subtitle={this.data.speciality}></IconWithText>
+        subtitle={this.data[0].speciality}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="calendar-check"
@@ -153,7 +157,7 @@ return (
         textstyle={{fontSize:14}}
         icon="timer"
         title="Duration"
-        subtitle={this.data.duration}></IconWithText>
+        subtitle={this.duration}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="seat-recline-normal"
@@ -179,7 +183,7 @@ return (
    <FlatListContainer style={{marginLeft:'3%'}} title="You May Also Like">
    <FlatList
                     horizontal
-                    data={[1,2]}
+                    data={this.suggestedTours}
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item }) => <TourCard style={{marginRight:10}}
                     id={item}
@@ -191,20 +195,22 @@ return (
  }
 
   render() {
+  
+    console.log(this.data[0].date_of_departure )
     return (
       <ScrollView>
         
-        <HeaderImage imageName={this.data.tourcover} style={{height: height / 3}}></HeaderImage>
+        <HeaderImage imageName={this.data[0].tourcover} style={{height: height / 3}}></HeaderImage>
         <View style={{borderWidth:0.5,borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
-        {this.renderHeading(this.data.title)}
+        {this.renderHeading(this.data[0].title)}
         {this.state.apiData ? this.renderOverview(this.state.apiData[0].overview) : this.renderOverview('')}
-        {this.renderIcons({speciality:this.data.speciality, duration:this.data.duration, date_of_departure: this.data.date_of_departure })}
+        {this.renderIcons({speciality:this.data[0].speciality, duration:this.data[0].duration, date_of_departure: this.data[0].date_of_departure })}
         </View>
        
         <View>
 
       
-        {this.state.apiData ? this.renderOperatorCard({name:this.data.name, rating:this.data.numeric_rating,is_verified:this.data.is_verified,dp:this.data.operatordp}) : <LoadingIndicator></LoadingIndicator>}
+        {this.state.apiData ? this.renderOperatorCard({name:this.data[0].name, rating:this.data[0].numeric_rating,is_verified:this.data[0].is_verified,dp:this.data[0].operatordp}) : <LoadingIndicator></LoadingIndicator>}
         </View>
         {/* <OperatorCard></OperatorCard> */}
         {this.renderPlan()}
