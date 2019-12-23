@@ -38,7 +38,7 @@ const RootStack = createStackNavigator({
   
 },
 {
-  initialRouteName:'ScreenNavigation',
+  initialRouteName:'Filters',
   headerLayoutPreset: 'center',
   defaultNavigationOptions: {
     header: (

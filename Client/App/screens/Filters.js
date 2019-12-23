@@ -10,20 +10,14 @@ import TypeButtonFilters from '../components/TypeButtonFilters';
 const textcolor = '#b3b3b5';
 const headingclr = '#6e706f';
 
-export default class Filters extends Component {
+export default class Filters extends React.PureComponent {
   state = {
     rangeLowPrice: 7000,
     rangeHighPrice: 50000,
     Days: 0,
-    Filters: [],
     date: '2019-01-04',
-
-    family: false,
-    boys: false,
-    girls: false,
-    friends: false,
-    honeymoon: false,
-    public: true
+    Speciality: 'Ali',
+    location: ''
   };
 
   addItem = filterName => {
@@ -43,6 +37,13 @@ export default class Filters extends Component {
       }));
     }
   };
+
+
+  changeSpecialityState = (spec) => {
+    this.setState({
+      Speciality: spec
+    })
+  }
 
   renderTop = () => {
     return (
@@ -197,12 +198,13 @@ export default class Filters extends Component {
             customStyles={{
               dateIcon: {
                 position: 'absolute',
-                left: 0,
+                left: 8,
                 top: 4,
                 
               },
               dateInput: {
                 paddingLeft: 2,
+                borderRadius:10
               },
               // ... You can check the source to find the other keys.
             }}
@@ -231,10 +233,10 @@ export default class Filters extends Component {
           Select Destination
         </Text>
         <Picker
-          selectedValue={this.state.language}
+          selectedValue={this.state.location}
           style={{width: '90%', alignSelf: 'center', color:ThemeColor}}
           onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
+            this.setState({location: itemValue})
           }>
           <Picker.Item label="Hunza" value="java" />
           <Picker.Item label="Kashmir" value="js" />
@@ -276,23 +278,26 @@ export default class Filters extends Component {
 
         <TypeButtonFilters
             TourType="Public"
+            onSelect={this.changeSpecialityState}
             style={{
-              color: this.state.public ? 'white' : ThemeColor,
-              backgroundColor: this.state.public ? ThemeColor : '#ebf3fa',
+              color: this.state.Speciality === 'Public' ? 'white' : ThemeColor,
+              backgroundColor: this.state.Speciality === 'Public' ? ThemeColor : '#ebf3fa'
             }}></TypeButtonFilters>
 
           <TypeButtonFilters
             TourType="Only Family"
+            onSelect={this.changeSpecialityState}
             style={{
-              color: this.state.family ? 'white' : ThemeColor,
-              backgroundColor: this.state.family ? ThemeColor : '#ebf3fa',
+              color: this.state.Speciality === 'Only Family' ? 'white' : ThemeColor,
+              backgroundColor: this.state.Speciality === 'Only Family' ? ThemeColor : '#ebf3fa'
             }}></TypeButtonFilters>
 
           <TypeButtonFilters
             TourType="Only Boys"
+            onSelect={this.changeSpecialityState}
             style={{
-              color: this.state.boys ? 'white' : ThemeColor,
-              backgroundColor: this.state.boys ? ThemeColor : '#ebf3fa',
+              color: this.state.Speciality === 'Only Boys' ? 'white' : ThemeColor,
+              backgroundColor: this.state.Speciality === 'Only Boys' ? ThemeColor : '#ebf3fa'
             }}></TypeButtonFilters>
 
          
@@ -302,23 +307,26 @@ export default class Filters extends Component {
 
         <TypeButtonFilters
             TourType="Only Girls"
+            onSelect={this.changeSpecialityState}
             style={{
-              color: this.state.girls ? 'white' : ThemeColor,
-              backgroundColor: this.state.girls ? ThemeColor : '#ebf3fa',
+              color: this.state.Speciality === 'Only Girls' ? 'white' : ThemeColor,
+              backgroundColor: this.state.Speciality === 'Only Girls' ? ThemeColor : '#ebf3fa'
             }}></TypeButtonFilters>
 
           <TypeButtonFilters
             TourType="Friends"
+            onSelect={this.changeSpecialityState}
             style={{
-              color: this.state.friends ? 'white' : ThemeColor,
-              backgroundColor: this.state.friends ? ThemeColor : '#ebf3fa',
+              color: this.state.Speciality === 'Friends' ? 'white' : ThemeColor,
+              backgroundColor: this.state.Speciality === 'Friends' ? ThemeColor : '#ebf3fa'
             }}></TypeButtonFilters>
 
           <TypeButtonFilters
             TourType="Honeymoon"
+            onSelect={this.changeSpecialityState}
             style={{
-              color: this.state.honeymoon ? 'white' : ThemeColor,
-              backgroundColor: this.state.honeymoon ? ThemeColor : '#ebf3fa',
+              color: this.state.Speciality === 'Honeymoon' ? 'white' : ThemeColor,
+              backgroundColor: this.state.Speciality === 'Honeymoon' ? ThemeColor : '#ebf3fa'
             }}></TypeButtonFilters>
 
           
@@ -377,7 +385,7 @@ export default class Filters extends Component {
   };
 
   render() {
-    console.log(this.state.Filters);
+    console.log(this.state.location);
     return (
       <ScrollView style={{backgroundColor: '#white'}}>
         {this.renderTop()}

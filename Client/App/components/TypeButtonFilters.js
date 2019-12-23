@@ -12,19 +12,23 @@ export default class TypeButtonFilters extends Component {
   render() {
     return (
       <TouchableWithoutFeedback
-        onPress={() => {
-          this.setState(prevState => ({
-            check: !prevState.check,
-          }));
+        // onPress={() => {
+        //   this.setState(prevState => ({
+        //     check: !prevState.check,
+        //   }));
 
-          if (!this.state.check) {
-            this.props.addItem(this.props.object);
-          } else {
-            this.props.removeItem(this.props.object);
-          }
-        }}>
+        //   if (!this.state.check) {
+        //     this.props.addItem(this.props.object);
+        //   } else {
+        //     this.props.removeItem(this.props.object);
+        //   }
+        // }}
+        >
         <View>
           <Button
+          onPress={() => {
+            this.props.onSelect(this.props.TourType)
+          }}
             bordered
             style={{
               width: 100,
