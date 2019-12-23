@@ -39,7 +39,7 @@ class SearchBar extends React.PureComponent {
               api={apiUrl}
               style={{
                 width: Dimensions.get('window').width / 1,
-                marginBottom: '3%',
+                marginBottom: '2%',
                 paddingTop: '2%',
                 paddingLeft: '1%',
                 paddingRight: '4%',
@@ -131,24 +131,27 @@ class SearchBar extends React.PureComponent {
                 justifyContent: 'center',
                 backgroundColor:
                   this.state.selected === 'tours'
-                    ? 'rgba(19, 135, 210,0.8)'
+                    ? 'rgba(19, 135, 210,0.2)'
                     : null,
                 width: '25%',
                 borderWidth: 0.5,
                 borderRadius: 30,
-                borderColor:'rgba(19, 135, 210,0.8)'
+                borderWidth: this.state.selected === 'tours' ? 0 : 0.5,
+                borderColor:ThemeGrey
               }}>
               <Icon
                 name="van-passenger"
                 style={{
                   fontSize: 20,
                   paddingRight: 3,
-                  color: this.state.selected === 'tours' ? 'white' : 'rgba(19, 135, 210,0.8)',
+                  color: this.state.selected === 'tours' ?  ThemeColor
+                  : ThemeGrey,
                 }}
               />
               <Text
                 style={{
-                  color: this.state.selected === 'tours' ? 'white' : 'rgba(19, 135, 210,0.8)',
+                  color: this.state.selected === 'tours' ? ThemeColor
+                  : ThemeGrey,
                   fontSize: 13,
                   fontWeight: 'bold',
                 }}>
@@ -166,21 +169,24 @@ class SearchBar extends React.PureComponent {
                 flexDirection: 'row',
                 alignItems: 'center',
                 backgroundColor:
-                  this.state.selected === 'operators' ? 'rgba(19, 135, 210,0.8)' : null,
+                  this.state.selected === 'operators' ? 'rgba(19, 135, 210,0.2)' : null,
                 justifyContent: 'center',
                 width: '34%',
                 borderWidth: 0.5,
                 borderRadius: 30,
+                borderWidth: this.state.selected === 'operators' ? 0 : 0.5,
                 borderColor:ThemeGrey
               }}>
               <Icon name="shopping" style={{fontSize: 18, paddingRight: 3,
-              color: this.state.selected === 'operators' ? 'white' : ThemeGrey,}} />
+              color: this.state.selected === 'operators' ?  ThemeColor
+              : ThemeGrey}} />
               <Text
                 style={{
                   fontSize: 13,
                   fontWeight: 'bold',
                   color:
-                    this.state.selected === 'operators' ? 'white' : ThemeGrey,
+                    this.state.selected === 'operators' ? ThemeColor
+                    : ThemeGrey,
                 }}>
                 Operators
               </Text>
@@ -195,17 +201,21 @@ class SearchBar extends React.PureComponent {
               style={{
                 flexDirection: 'row',
                 backgroundColor:
-                  this.state.selected === 'destinations' ? 'rgba(19, 135, 210,0.8)' : null,
+                  this.state.selected === 'destinations' ? 'rgba(19, 135, 210,0.2)' : null,
                 alignItems: 'center',
                 justifyContent: 'center',
                 width: '35%',
-                borderWidth: 0.5,
+                borderWidth: this.state.selected === 'destinations' ? 0 : 0.5,
                 borderRadius: 30,
-                borderColor:ThemeGrey
+                borderColor: ThemeGrey,
+              
               }}>
               <Icon
                 name="map-marker-radius"
-                style={{fontSize: 18, paddingRight: 3}}
+                style={{fontSize: 18, paddingRight: 3,color:
+                  this.state.selected === 'destinations'
+                    ? ThemeColor
+                    : ThemeGrey,}}
               />
               <Text
                 style={{
@@ -213,7 +223,7 @@ class SearchBar extends React.PureComponent {
                   fontWeight: 'bold',
                   color:
                     this.state.selected === 'destinations'
-                      ? 'white'
+                      ? ThemeColor
                       : ThemeGrey,
                 }}>
                 Destinations
@@ -237,12 +247,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     alignSelf: 'center',
-    height: 40,
+    height: 50,
     backgroundColor: 'white',
     paddingLeft: 10,
     paddingRight: 10,
-    marginBottom:10,
+    marginBottom:5,
     paddingBottom:10,
+    paddingTop:10,
 
     justifyContent: 'space-between',
   },
