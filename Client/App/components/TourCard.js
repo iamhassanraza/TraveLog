@@ -53,7 +53,8 @@ class TourCard extends React.Component {
             return (
                 <TouchableWithoutFeedback onPress={() => this.props.navigation.push('TourDetail', {
                     TourData: [...this.state.data],
-                    tourId: this.props.id 
+                    tourId: this.props.id,
+                    duration:duration
                 })}>
                     <View>
                         <View style={[styles.Container, this.props.style]} >
