@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import FiltersListing from './App/screens/FiltersListing'
 import Login from './App/screens/Login'
 import Selection from './App/screens/Selection'
+import ForgotPassword from './App/screens/ForgotPassword'
 
 const RootStack = createStackNavigator({
   Home,
@@ -64,7 +65,7 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
-      <Selection></Selection>
+     <ForgotPassword></ForgotPassword>
     )
   }
 }
