@@ -17,6 +17,7 @@ import { ThemeColor, ThemeGrey, BackgroundColor } from './App/assets/Colors/Colo
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FiltersListing from './App/screens/FiltersListing'
 import Login from './App/screens/Login'
+import Selection from './App/screens/Selection'
 
 const RootStack = createStackNavigator({
   Home,
@@ -63,7 +64,7 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
-      <Login></Login>
+      <Selection></Selection>
     )
   }
 }
