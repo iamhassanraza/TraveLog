@@ -16,7 +16,7 @@ import SearchAndFilter from './App/screens/SearchAndFilter'
 import { ThemeColor, ThemeGrey, BackgroundColor } from './App/assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FiltersListing from './App/screens/FiltersListing'
-
+import Login from './App/screens/Login'
 
 const RootStack = createStackNavigator({
   Home,
@@ -34,11 +34,12 @@ const RootStack = createStackNavigator({
   ScreenNavigation,
   AttractionDetails,
   SearchAndFilter,
-  FiltersListing
+  FiltersListing,
+  Login
   
 },
 {
-  initialRouteName:'Filters',
+  initialRouteName:'ScreenNavigation',
   headerLayoutPreset: 'center',
   defaultNavigationOptions: {
     header: (
@@ -62,7 +63,7 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
-      <AppContianer></AppContianer>
+      <Login></Login>
     )
   }
 }
