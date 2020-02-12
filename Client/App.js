@@ -19,6 +19,7 @@ import FiltersListing from './App/screens/FiltersListing'
 import Login from './App/screens/Login'
 import Selection from './App/screens/Selection'
 import ForgotPassword from './App/screens/ForgotPassword'
+import RecoveryCode from './App/screens/RecoveryCode'
 
 const RootStack = createStackNavigator({
   Home,
@@ -65,7 +66,7 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
-     <ForgotPassword></ForgotPassword>
+    <RecoveryCode></RecoveryCode>
     )
   }
 }

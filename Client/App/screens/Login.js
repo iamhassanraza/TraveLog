@@ -6,6 +6,8 @@ import {ThemeColor} from '../assets/Colors/Colors'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import gmail from '../assets/images/gm.png'
 import fb from '../assets/images/fb.png'
+import Icon from 'react-native-vector-icons/Ionicons';
+import log from '../assets/images/logo.png';
 
 export default class Login extends Component {
   render() {
@@ -16,7 +18,18 @@ export default class Login extends Component {
          <Container style={{backgroundColor:'black'}}>
         
         <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
-          <Content style={{paddingTop:"5%", marginTop:"45%",paddingBottom:"30%",marginLeft:'5%',marginRight:"5%",borderRadius:20}}>
+        <TouchableOpacity>
+         <Icon name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
+         </TouchableOpacity>
+         <Image
+              source={log}
+              style={{
+                height: '20%',
+                width: '35%',
+                alignSelf: 'center',
+                marginTop: '2%',
+              }}></Image>
+          <Content style={{paddingTop:"5%", marginTop:"5%",paddingBottom:"30%",marginLeft:'5%',marginRight:"5%",borderRadius:20}}>
           <Text style={{marginLeft:"10%", fontSize:17,color:ThemeColor,fontWeight:"bold"}}> Username </Text>
             <Item style={{width:"80%", alignSelf:"center"}}>
               <Input placeholder="travel@log.com" placeholderTextColor="white" style={{color: 'white'}} />
@@ -59,10 +72,3 @@ export default class Login extends Component {
     );
   }
 }
-
-let styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover', // or 'stretch'
-  },
-});
