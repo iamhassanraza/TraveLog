@@ -9,7 +9,35 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export default class ForgotPassword extends Component {
+
+
+  state={
+    email:'',
+    error:''
+  }
+
+  validate = (text) => {
+    console.log(text);
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+    if(reg.test(text) === false)
+    {
+    console.log("Email is Not Correct");
+    this.setState({email:text, error:'Email is Not Correct'})
+    return false;
+      }
+    else {
+      this.setState({email:text, error:''})
+      console.log("Email is Correct");
+      
+    }
+    }
+
+
+
   render() {
+
+
+    console.log(this.state);
     return (
       <ScrollView>
         <Container style={{backgroundColor: 'black'}}>
@@ -67,13 +95,18 @@ export default class ForgotPassword extends Component {
               }}>
               <Item style={{width: '80%', alignSelf: 'center'}}>
                 <Input
+                onChangeText={text => {
+                  this.setState({email: text});
+                  // this.validate(text);
+                }}
                   placeholder="travel@log.com"
                   placeholderTextColor="white"
                   style={{color: 'white'}}
                 />
               </Item>
-
+              {this.state.error === "" ? null : <Text style={{color:"red",marginLeft:"10%"}}>{this.state.error}</Text> }
               <Button
+              onPress={()=>{ this.validate(this.state.email)}}
                 rounded
                 style={{
                   justifyContent: 'center',
