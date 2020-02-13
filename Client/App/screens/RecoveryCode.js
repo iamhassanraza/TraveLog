@@ -8,7 +8,13 @@ import log from '../assets/images/logo.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class RecoveryCode extends Component {
+
+state={
+  code:''
+}
+
     render() {
+      console.log(this.state)
         return (
             <ScrollView>
         <Container style={{backgroundColor: 'black'}}>
@@ -67,6 +73,9 @@ export default class RecoveryCode extends Component {
               }}>
               <Item style={{width: '80%', alignSelf: 'center'}}>
                 <Input
+                onChangeText={text => {
+                  this.setState({code: text});
+                }}
                   placeholder="* * * * * *"
                   placeholderTextColor="white"
                   style={{color: 'white'}}

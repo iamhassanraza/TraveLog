@@ -67,7 +67,7 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
-  <NewPassword></NewPassword>
+<Login></Login>
     )
   }
 }
