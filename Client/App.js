@@ -21,6 +21,7 @@ import Selection from './App/screens/Selection'
 import ForgotPassword from './App/screens/ForgotPassword'
 import RecoveryCode from './App/screens/RecoveryCode'
 import NewPassword from './App/screens/NewPassword'
+import SignUp from './App/screens/SignUp'
 
 const RootStack = createStackNavigator({
   Home,
@@ -78,6 +79,9 @@ const AuthNavigator = createStackNavigator({
   },
   RecoveryCode:{
     screen: RecoveryCode
+  },
+  SignUp: {
+    screen: SignUp
   },
   RootStack
 

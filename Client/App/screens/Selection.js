@@ -14,7 +14,7 @@ export default class Selection extends Component {
 
                 <Image source={log} style={{height:"25%",width:"45%", alignSelf:"center", marginTop:"25%"}}></Image>
                 <View style={{marginTop:"30%"}}>
-                <Button onPress={() => this.props.navigation.push('RecoveryCode')} rounded style={{justifyContent:"center", marginTop:'7%',backgroundColor:"white", marginBottom:"2%",width:"70%",alignSelf:"center"}}>
+                <Button onPress={() => this.props.navigation.push('SignUp')} rounded style={{justifyContent:"center", marginTop:'7%',backgroundColor:"white", marginBottom:"2%",width:"70%",alignSelf:"center"}}>
             <Text style={{color:ThemeColor,fontSize:17,fontWeight:"bold"}}>SIGN UP</Text>
           </Button>
 
