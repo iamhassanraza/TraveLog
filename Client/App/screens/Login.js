@@ -44,6 +44,7 @@ export default class Login extends Component {
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
             <TouchableOpacity>
               <Icon
+              onPress={() => this.props.navigation.push('Selection')}
                 name="ios-arrow-back"
                 style={{
                   color: 'white',
@@ -118,8 +119,9 @@ export default class Login extends Component {
 
               <Button
                 onPress={()=>{
-                  this.validate(this.state.email)
-                
+                  this.validate(this.state.email);
+                  this.props.navigation.push('RootStack')
+              
                 }}
                 rounded
                 style={{
@@ -137,7 +139,8 @@ export default class Login extends Component {
               </Button>
             </Content>
             <Content>
-              <TouchableOpacity>
+              <TouchableOpacity
+              onPress={() => this.props.navigation.push('ForgotPassword')}>
                 <Text
                   style={{alignSelf: 'center', fontSize: 15, color: 'white'}}>
                   Forgot Password ?

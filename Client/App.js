@@ -61,13 +61,47 @@ const RootStack = createStackNavigator({
 );
 
 
-const AppContianer = createAppContainer(RootStack);
+const AuthNavigator = createStackNavigator({
+
+  Login: {
+    screen: Login
+  },
+  
+  Selection: {
+    screen: Selection
+  },
+  ForgotPassword: {
+    screen: ForgotPassword
+  },
+  ResetPassword: {
+    screen: NewPassword
+  },
+  RecoveryCode:{
+    screen: RecoveryCode
+  },
+  RootStack
+
+},
+
+{
+  initialRouteName:'ResetPassword',
+  headerLayoutPreset: 'center',
+  defaultNavigationOptions:{
+    header: null
+  }
+}
+
+)
+
+
+
+const AppContianer = createAppContainer(AuthNavigator);
 
 
 export default class App extends Component {
   render() {
     return (
-<ContactUs></ContactUs>
+<AppContianer></AppContianer>
     )
   }
 }

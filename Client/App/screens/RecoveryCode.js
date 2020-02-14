@@ -20,7 +20,7 @@ state={
         <Container style={{backgroundColor: 'black'}}>
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
          <TouchableOpacity>
-         <Icon name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
+         <Icon onPress={() => this.props.navigation.goBack()} name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
          </TouchableOpacity>
             <Text
               style={{
@@ -83,6 +83,7 @@ state={
               </Item>
 
               <Button
+              onPress={() => this.props.navigation.push('Login')}
                 rounded
                 style={{
                   justifyContent: 'center',

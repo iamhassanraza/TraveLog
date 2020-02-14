@@ -24,6 +24,7 @@ export default class NewPassword extends Component {
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
             <TouchableOpacity>
               <Icon
+              onPress={() => this.props.navigation.goBack()}
                 name="ios-arrow-back"
                 style={{
                   color: 'white',
@@ -111,7 +112,9 @@ export default class NewPassword extends Component {
                 onPress={() => {
                   this.state.newPass != this.state.confirmPass
                     ? this.setState({error: ' Password Not Matched !'})
-                    : this.setState({error:''});
+                    : 
+                    this.setState({error:''});
+                    this.props.navigation.push('Login');
                 }}
                 rounded
                 style={{

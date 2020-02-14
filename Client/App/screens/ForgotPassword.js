@@ -43,7 +43,7 @@ export default class ForgotPassword extends Component {
         <Container style={{backgroundColor: 'black'}}>
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
          <TouchableOpacity>
-         <Icon name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
+         <Icon onPress={() => this.props.navigation.goBack()} name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
          </TouchableOpacity>
             <Text
               style={{
@@ -106,7 +106,10 @@ export default class ForgotPassword extends Component {
               </Item>
               {this.state.error === "" ? null : <Text style={{color:"red",marginLeft:"10%"}}>{this.state.error}</Text> }
               <Button
-              onPress={()=>{ this.validate(this.state.email)}}
+              onPress={()=>{ 
+                this.validate(this.state.email);
+                this.state.error=== '' && this.state.email != '' ? this.props.navigation.push('RecoveryCode'):null
+              }}
                 rounded
                 style={{
                   justifyContent: 'center',
