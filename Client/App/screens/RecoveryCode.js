@@ -83,7 +83,7 @@ state={
               </Item>
 
               <Button
-              onPress={() => this.props.navigation.push('Login')}
+              onPress={() => this.props.navigation.push('ResetPassword')}
                 rounded
                 style={{
                   justifyContent: 'center',

@@ -84,7 +84,7 @@ const AuthNavigator = createStackNavigator({
 },
 
 {
-  initialRouteName:'ResetPassword',
+  initialRouteName:'Selection',
   headerLayoutPreset: 'center',
   defaultNavigationOptions:{
     header: null
