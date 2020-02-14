@@ -8,7 +8,7 @@ import TourDetail from './App/screens/TourDetail'
 import OperatorProfile from './App/screens/OperatorProfile'
 import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
-import ContactUs from './App/screens/ContactUs'
+import ContactUs from './App/screens/Contact'
 import Filters from './App/screens/Filters'
 import AttractionDetails from './App/screens/AttractionDetails'
 import ScreenNavigation from './App/screens/ScreenNavigation'
@@ -105,7 +105,7 @@ const AppContianer = createAppContainer(AuthNavigator);
 export default class App extends Component {
   render() {
     return (
-<AppContianer></AppContianer>
+<ContactUs></ContactUs>
     )
   }
 }

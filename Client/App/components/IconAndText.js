@@ -8,7 +8,7 @@ const IconAndText = props => {
 
     return (
                 <View style={{flexDirection: "row", alignItems: 'center'}}>
-                    <View style={{flex: 1, alignItems: 'center'}}>
+                    <View style={{flex: 2, alignItems: 'center'}}>
                         <Icon style={{color: ThemeColor,fontSize: 16,...props.iconstyle}} name={props.name} />
                     </View> 
                     <View style={{flex: 12}}>

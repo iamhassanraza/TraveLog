@@ -60,7 +60,16 @@ state={
             iconstyle={{fontSize:30}}></IconWithText>
         </View>
         <Text style={{marginTop:"5%"}}> Your Message</Text>
-        <View  style={{ backgroundColor:"white", marginBottom:"1%",width:"90%",height:"50%",alignSelf:"center"}}>
+        <View  style={{ color: 'grey',
+              width: '100%',
+              height: '50%',
+              width: '78%',
+              marginLeft: '2.5%',
+              marginRight: '2.5%',
+              borderColor: 'grey',
+              borderRadius: 8,
+              borderWidth: 1,
+              textAlignVertical:'top'}}>
          
         <TextInput multiline={true} style={{textAlignVertical:'top',height:"60%"}}></TextInput>
         </View>
