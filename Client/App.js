@@ -42,7 +42,8 @@ const RootStack = createStackNavigator({
   AttractionDetails,
   SearchAndFilter,
   FiltersListing,
-  Notifications
+  Notifications,
+  UserProfile
   
 },
 {
