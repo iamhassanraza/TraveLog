@@ -10,13 +10,14 @@ import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons'
 import AboutOperator from '../components/AboutOperator';
 import IconWithText from '../components/IconWithText';
 import Home from './Home';
+import HomeStack from './HomeStack'
 import OperatorProfile from './OperatorProfile';
 import FiltersListing from '../screens/FiltersListing'
 
 const TabNavigator = createMaterialTopTabNavigator(
     {
-        Home: {
-            screen: Home,
+        HomeStack: {
+            screen: HomeStack,
             navigationOptions: {
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="home" color={tintColor}  style={{fontSize:22}}/>
@@ -64,8 +65,8 @@ const TabNavigator = createMaterialTopTabNavigator(
         }      
     },
     {
-        tabBarPosition: 'top',
-        initialRouteName: 'Home',
+        tabBarPosition: 'bottom',
+        initialRouteName: 'HomeStack',
         header: null,
         swipeEnabled: false,
         tabBarOptions: {
