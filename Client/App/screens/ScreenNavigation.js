@@ -13,6 +13,8 @@ import Home from './Home';
 import HomeStack from './HomeStack'
 import OperatorProfile from './OperatorProfile';
 import FiltersListing from '../screens/FiltersListing'
+import Notifications from './Notifications'
+import UserProfile from './UserProfile';
 
 const TabNavigator = createMaterialTopTabNavigator(
     {
@@ -35,7 +37,7 @@ const TabNavigator = createMaterialTopTabNavigator(
             }
         },
         Notifications: {
-            screen: IconAndText,
+            screen: Notifications,
             navigationOptions: ({navigation}) => {
                 return {
                 tabBarIcon: ({tintColor}) => (
@@ -46,7 +48,7 @@ const TabNavigator = createMaterialTopTabNavigator(
         }
         },   
         Profile: {
-            screen: Home,
+            screen: UserProfile,
             navigationOptions: {
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="person" color={tintColor}  style={{fontSize:22}}/>

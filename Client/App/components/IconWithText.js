@@ -5,7 +5,6 @@
 // to style text only: props -> textstyle
 // to add suntitle in same line : props -> linear = true
 // ======================================================= 
-
 import React from 'react'
 import { View, Text ,TouchableWithoutFeedback} from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';

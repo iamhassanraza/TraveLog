@@ -14,6 +14,8 @@ import ForgotPassword from './App/screens/ForgotPassword'
 import RecoveryCode from './App/screens/RecoveryCode'
 import NewPassword from './App/screens/NewPassword'
 import SignUp from './App/screens/SignUp'
+import UserProfile from './App/screens/UserProfile'
+import Notifications from './App/screens/Notifications'
 
 // const HomeStack = createStackNavigator({
 //   Home,
@@ -96,7 +98,7 @@ const AppContianer = createAppContainer(AuthNavigator);
 export default class App extends Component {
   render() {
     return (
-    <AppContianer></AppContianer>
+<AppContianer></AppContianer>
     )
   }
 }
