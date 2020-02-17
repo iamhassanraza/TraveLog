@@ -24,7 +24,6 @@ const TabNavigator = createMaterialTopTabNavigator(
                     <Icon name="home" color={tintColor}  style={{fontSize:22}}/>
                 ),
                 tabBarLabel: "Home",
-                tabBarPosition: 'bottom'
             }
         },
         followups: {
@@ -34,7 +33,6 @@ const TabNavigator = createMaterialTopTabNavigator(
                         <Icon2 name="bookmark" color={tintColor} style={{fontSize:22}}/>
                 ),
                 tabBarLabel: 'Follow ups',
-                tabBarPosition: 'bottom'
             }
         },
         Notifications: {
@@ -45,7 +43,6 @@ const TabNavigator = createMaterialTopTabNavigator(
                     <Icon2 name="bell-ring"color={tintColor}  style={{fontSize:22}}/>
                 ),
                 tabBarLabel: "Notifications",
-                tabBarPosition: 'bottom'
             }
         }
         },   
@@ -56,7 +53,6 @@ const TabNavigator = createMaterialTopTabNavigator(
                     <Icon name="person" color={tintColor}  style={{fontSize:22}}/>
                 ),
                 tabBarLabel: "Profile",
-                tabBarPosition: 'bottom'
             }
         },
         Settings: {
@@ -66,13 +62,12 @@ const TabNavigator = createMaterialTopTabNavigator(
                     <Icon name="settings" color={tintColor}  style={{fontSize:22}}/>
                 ),
                 tabBarLabel: "Settings",
-                tabBarPosition: 'bottom'
             }
         }      
     },
     {
-        initialRouteName: 'Home',
         tabBarPosition: 'top',
+        initialRouteName: 'Home',
         header: null,
         swipeEnabled: false,
         tabBarOptions: {

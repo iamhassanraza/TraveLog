@@ -10,6 +10,8 @@ import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
 import ContactUs from './App/screens/Contact'
 import Filters from './App/screens/Filters'
+import OperatorTours from './App/components/OperatorTours'
+import TourCard from './App/components/TourCard'
 import AttractionDetails from './App/screens/AttractionDetails'
 import ScreenNavigation from './App/screens/ScreenNavigation'
 import SearchAndFilter from './App/screens/SearchAndFilter'
@@ -108,7 +110,11 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
+<<<<<<< HEAD
 <AppContianer></AppContianer>
+=======
+    <AppContianer></AppContianer>
+>>>>>>> 9a8f42eab4112d3ee674a77fc87c9d6202982e37
     )
   }
 }

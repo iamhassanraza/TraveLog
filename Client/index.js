@@ -6,6 +6,7 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {createStore, compose} from 'redux';
 import CombinedReducers from './App/ReduxStore/reducers';
+import 'react-native-gesture-handler'
 
 let composeEnhancer = compose;
 
