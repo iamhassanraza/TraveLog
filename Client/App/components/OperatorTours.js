@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, Dimensions, ScrollView } from 'react-native'
+import { Text, View, FlatList, Dimensions, ScrollView, TouchableWithoutFeedback} from 'react-native'
 import FlatListContainer from '../components/FlatListContainer'
 import TourCard from '../components/TourCard'
 import {BackgroundColor} from '../assets/Colors/Colors'
@@ -13,6 +13,7 @@ export default class OperatorTours extends Component {
             return response.json()
         })
         .then((responseJson)=> {
+            console.log(responseJson)
             this.setState({
                 tours : responseJson
             })
@@ -27,25 +28,28 @@ export default class OperatorTours extends Component {
 
     render() {
         return (
-            <ScrollView nestedScrollEnabled style={{}}>
+                <ScrollView nestedScrollEnabled style={{}}>
                 {this.state.tours[0] ? 
-                <FlatListContainer style={{backgroundColor: BackgroundColor}} title="Tours" >
-                    <FlatList
-                    data={this.state.tours}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item }) => <TourCard 
-                    style={{borderWidth: 0, width: Dimensions.get('window').width/1, marginBottom: '8%', paddingLeft: '3%', paddingRight: '3%'}}
-                    id={item.tour_id}
-                    seatsLeft={10} ></TourCard>}
-                    keyExtractor={item => item.tour_id}
-                    />
-                </FlatListContainer> :
-                <View style={{alignSelf:'center'}}>
-                    <ContentLoader height={Dimensions.get('window').height*1} speed={0.5}/>
-                </View>
+                    // <FlatListContainer style={{backgroundColor: BackgroundColor}} title="Tours" >
+                        <FlatList
+                        data={this.state.tours}
+                        showsHorizontalScrollIndicator={false}
+                        renderItem={({ item }) => 
+                            <TourCard 
+                                style={{borderWidth: 0, width: Dimensions.get('window').width/1, marginBottom: '8%', paddingLeft: '3%', paddingRight: '3%'}}
+                                id={item.tour_id}
+                                seatsLeft={10}
+                            >
+                            </TourCard>}
+                        keyExtractor={item => item.tour_id}
+                        /> :
+                    // </FlatListContainer> 
+                    <View style={{alignSelf:'center'}}>
+                        <ContentLoader height={Dimensions.get('window').height*1} speed={0.5}/>
+                    </View>
                 }
-                
-            </ScrollView>
+                </ScrollView>
+            
         )
     }
 }

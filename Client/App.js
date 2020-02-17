@@ -10,6 +10,8 @@ import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
 import ContactUs from './App/screens/ContactUs'
 import Filters from './App/screens/Filters'
+import OperatorTours from './App/components/OperatorTours'
+import TourCard from './App/components/TourCard'
 import AttractionDetails from './App/screens/AttractionDetails'
 import ScreenNavigation from './App/screens/ScreenNavigation'
 import SearchAndFilter from './App/screens/SearchAndFilter'
@@ -38,8 +40,8 @@ const RootStack = createStackNavigator({
   AttractionDetails,
   SearchAndFilter,
   FiltersListing,
-  Login
-  
+  Login,
+  //TourCard
 },
 {
   initialRouteName:'ScreenNavigation',
@@ -66,7 +68,7 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
-    <RecoveryCode></RecoveryCode>
+    <AppContianer></AppContianer>
     )
   }
 }
