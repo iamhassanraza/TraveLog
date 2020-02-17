@@ -12,6 +12,7 @@ import IconWithText from '../components/IconWithText';
 import Home from './Home';
 import OperatorProfile from './OperatorProfile';
 import FiltersListing from '../screens/FiltersListing'
+import Notifications from './Notifications'
 
 const TabNavigator = createMaterialTopTabNavigator(
     {
@@ -36,7 +37,7 @@ const TabNavigator = createMaterialTopTabNavigator(
             }
         },
         Notifications: {
-            screen: IconAndText,
+            screen: Notifications,
             navigationOptions: ({navigation}) => {
                 return {
                 tabBarIcon: ({tintColor}) => (

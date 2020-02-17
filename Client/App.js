@@ -22,6 +22,8 @@ import ForgotPassword from './App/screens/ForgotPassword'
 import RecoveryCode from './App/screens/RecoveryCode'
 import NewPassword from './App/screens/NewPassword'
 import SignUp from './App/screens/SignUp'
+import UserProfile from './App/screens/UserProfile'
+import Notifications from './App/screens/Notifications'
 
 const RootStack = createStackNavigator({
   Home,
@@ -40,7 +42,7 @@ const RootStack = createStackNavigator({
   AttractionDetails,
   SearchAndFilter,
   FiltersListing,
-  Login
+  Notifications
   
 },
 {
@@ -99,13 +101,13 @@ const AuthNavigator = createStackNavigator({
 
 
 
-const AppContianer = createAppContainer(AuthNavigator);
+const AppContianer = createAppContainer(RootStack);
 
 
 export default class App extends Component {
   render() {
     return (
-<ContactUs></ContactUs>
+<AppContianer></AppContianer>
     )
   }
 }
