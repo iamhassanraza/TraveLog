@@ -8,13 +8,19 @@ import log from '../assets/images/logo.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class RecoveryCode extends Component {
+
+state={
+  code:''
+}
+
     render() {
+      console.log(this.state)
         return (
             <ScrollView>
         <Container style={{backgroundColor: 'black'}}>
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
          <TouchableOpacity>
-         <Icon name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
+         <Icon onPress={() => this.props.navigation.goBack()} name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
          </TouchableOpacity>
             <Text
               style={{
@@ -67,6 +73,9 @@ export default class RecoveryCode extends Component {
               }}>
               <Item style={{width: '80%', alignSelf: 'center'}}>
                 <Input
+                onChangeText={text => {
+                  this.setState({code: text});
+                }}
                   placeholder="* * * * * *"
                   placeholderTextColor="white"
                   style={{color: 'white'}}
@@ -74,6 +83,7 @@ export default class RecoveryCode extends Component {
               </Item>
 
               <Button
+              onPress={() => this.props.navigation.push('ResetPassword')}
                 rounded
                 style={{
                   justifyContent: 'center',

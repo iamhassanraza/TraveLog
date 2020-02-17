@@ -8,7 +8,7 @@ import TourDetail from './App/screens/TourDetail'
 import OperatorProfile from './App/screens/OperatorProfile'
 import Home from './App/screens/Home'
 import Modal from './App/screens/Modal'
-import ContactUs from './App/screens/ContactUs'
+import ContactUs from './App/screens/Contact'
 import Filters from './App/screens/Filters'
 import OperatorTours from './App/components/OperatorTours'
 import TourCard from './App/components/TourCard'
@@ -22,6 +22,8 @@ import Login from './App/screens/Login'
 import Selection from './App/screens/Selection'
 import ForgotPassword from './App/screens/ForgotPassword'
 import RecoveryCode from './App/screens/RecoveryCode'
+import NewPassword from './App/screens/NewPassword'
+import SignUp from './App/screens/SignUp'
 
 const RootStack = createStackNavigator({
   Home,
@@ -62,7 +64,44 @@ const RootStack = createStackNavigator({
 );
 
 
-const AppContianer = createAppContainer(RootStack);
+const AuthNavigator = createStackNavigator({
+
+  Login: {
+    screen: Login
+  },
+  
+  Selection: {
+    screen: Selection
+  },
+  ForgotPassword: {
+    screen: ForgotPassword
+  },
+  ResetPassword: {
+    screen: NewPassword
+  },
+  RecoveryCode:{
+    screen: RecoveryCode
+  },
+  SignUp: {
+    screen: SignUp
+  },
+  RootStack
+
+},
+
+{
+  initialRouteName:'Selection',
+  headerLayoutPreset: 'center',
+  defaultNavigationOptions:{
+    header: null
+  }
+}
+
+)
+
+
+
+const AppContianer = createAppContainer(AuthNavigator);
 
 
 export default class App extends Component {
