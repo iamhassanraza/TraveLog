@@ -110,11 +110,7 @@ const AppContianer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
-<<<<<<< HEAD
 <AppContianer></AppContianer>
-=======
-    <AppContianer></AppContianer>
->>>>>>> 9a8f42eab4112d3ee674a77fc87c9d6202982e37
     )
   }
 }
