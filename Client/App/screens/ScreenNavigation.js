@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { StackActions, NavigationActions } from 'react-navigation';
 import Review from '../components/Review';
 import {ThemeColor, BackgroundColor, ThemeGrey} from '../assets/Colors/Colors'
 import IconAndText from '../components/IconAndText';
@@ -53,7 +54,7 @@ const TabNavigator = createMaterialTopTabNavigator(
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="person" color={tintColor}  style={{fontSize:22}}/>
                 ),
-                tabBarLabel: "Profile",
+                tabBarLabel: "Profile"
             }
         },
         Settings: {
@@ -69,6 +70,12 @@ const TabNavigator = createMaterialTopTabNavigator(
     {
         tabBarPosition: 'bottom',
         initialRouteName: 'HomeStack',
+        defaultNavigationOptions: {
+            tabBarOnPress: ({navigation, defaultHandler}) => {
+                navigation.dispatch(StackActions.popToTop());
+                defaultHandler();
+            }
+        },
         swipeEnabled: false,
         tabBarOptions: {
             style: {

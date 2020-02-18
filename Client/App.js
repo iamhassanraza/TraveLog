@@ -24,9 +24,9 @@ const RootStack = createStackNavigator({
 {
   defaultNavigationOptions: {
     header: (
-      <View style={{backgroundColor: ThemeColor, height:50, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+      <View style={{ height:60, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
         <View style={{marginLeft:'5%'}}>
-          <Text style={{fontSize:25,fontWeight:'bold', color: 'white'}}>TraveLog</Text>
+          <Text style={{fontSize:25,fontWeight:'bold', color: ThemeColor}}>TraveLog</Text>
         </View>
         <View style={{width:25, height:25,justifyContent:'center', marginRight:'4%',backgroundColor:BackgroundColor, borderRadius:50}}>
           <Icon name="search" size={20} color={ThemeColor} style={{alignSelf:'center'}}></Icon>

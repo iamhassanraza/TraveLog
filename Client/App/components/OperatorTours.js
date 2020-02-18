@@ -37,6 +37,7 @@ class OperatorTours extends Component {
                         showsHorizontalScrollIndicator={false}
                         renderItem={({ item }) => 
                             <TourCard 
+                                navigation={this.props.screenProps.navigation}
                                 style={{borderWidth: 0, width: Dimensions.get('window').width/1, marginBottom: '8%', paddingLeft: '3%', paddingRight: '3%'}}
                                 id={item.tour_id}
                                 seatsLeft={10}

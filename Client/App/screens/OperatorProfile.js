@@ -49,9 +49,10 @@ export default class OperatorProfile extends Component {
                         </Text>
                     </View>
                 </View>
-                <View style={{height: Dimensions.get('window').height*0.965}}>
+                <View style={{height: Dimensions.get('window').height*0.965-110}}>
                     <Navigation
                         screenProps={{
+                                        navigation: this.props.navigation,
                                         email: operatorData[0].email,
                                         phone: operatorData[0].phone,
                                         address: operatorData[0].street_address,
