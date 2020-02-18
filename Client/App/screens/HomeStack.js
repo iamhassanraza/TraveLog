@@ -35,16 +35,7 @@ const HomeStack = createStackNavigator({
   {
     headerLayoutPreset: 'center',
     defaultNavigationOptions: {
-      header: (
-        <View style={{height:50, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-          <View style={{marginLeft:'5%'}}>
-            <Text style={{fontSize:25,fontWeight:'bold', color: ThemeColor}}>TraveLog</Text>
-          </View>
-          <View style={{width:25, height:25,justifyContent:'center', marginRight:'4%',backgroundColor:BackgroundColor, borderRadius:50}}>
-            <Icon name="search" size={20} color={ThemeColor} style={{alignSelf:'center'}}></Icon>
-          </View>
-        </View>
-      )
+      header: null
     }
   }
   );

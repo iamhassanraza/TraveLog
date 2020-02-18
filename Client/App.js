@@ -17,45 +17,23 @@ import SignUp from './App/screens/SignUp'
 import UserProfile from './App/screens/UserProfile'
 import Notifications from './App/screens/Notifications'
 
-// const HomeStack = createStackNavigator({
-//   Home,
-//   OperatorProfile: {
-//     screen: OperatorProfile,
-//     navigationOptions: {
-//       header: null
-//     }
-//   },
-//   TourDetail,
-//   DestinationDetails,
-//   Modal,
-//   //ContactUs,
-//   Filters,
-//   //OperatorNavigation,
-//   OperatorTours,
-//   AttractionDetails,
-//   SearchAndFilter,
-//   FiltersListing,
-//   Login,
-//   //TourCard
-// },
-// {
-//   initialRouteName:'ScreenNavigation',
-//   headerLayoutPreset: 'center',
-//   defaultNavigationOptions: {
-//     header: (
-//       <View style={{height:50, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
-//         <View style={{marginLeft:'5%'}}>
-//           <Text style={{fontSize:25,fontWeight:'bold', color: ThemeColor}}>TraveLog</Text>
-//         </View>
-//         <View style={{width:25, height:25,justifyContent:'center', marginRight:'4%',backgroundColor:BackgroundColor, borderRadius:50}}>
-//           <Icon name="search" size={20} color={ThemeColor} style={{alignSelf:'center'}}></Icon>
-//         </View>
-//       </View>
-//     )
-//   }
-// }
-// );
-
+const RootStack = createStackNavigator({
+  MainTab: ScreenNavigation
+},
+{
+  defaultNavigationOptions: {
+    header: (
+      <View style={{backgroundColor: ThemeColor, height:50, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+        <View style={{marginLeft:'5%'}}>
+          <Text style={{fontSize:25,fontWeight:'bold', color: 'white'}}>TraveLog</Text>
+        </View>
+        <View style={{width:25, height:25,justifyContent:'center', marginRight:'4%',backgroundColor:BackgroundColor, borderRadius:50}}>
+          <Icon name="search" size={20} color={ThemeColor} style={{alignSelf:'center'}}></Icon>
+        </View>
+      </View>
+    )
+  },
+})
 
 const AuthNavigator = createStackNavigator({
 
@@ -77,11 +55,11 @@ const AuthNavigator = createStackNavigator({
   SignUp: {
     screen: SignUp
   },
-  ScreenNavigation
+  RootStack
 },
 
 {
-  initialRouteName:'Selection',
+  initialRouteName:'RootStack',
   headerLayoutPreset: 'center',
   defaultNavigationOptions:{
     header: null

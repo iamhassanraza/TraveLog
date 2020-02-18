@@ -69,7 +69,6 @@ const TabNavigator = createMaterialTopTabNavigator(
     {
         tabBarPosition: 'bottom',
         initialRouteName: 'HomeStack',
-        header: null,
         swipeEnabled: false,
         tabBarOptions: {
             style: {
