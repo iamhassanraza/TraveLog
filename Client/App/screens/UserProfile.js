@@ -6,6 +6,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ThemeColor} from '../assets/Colors/Colors' 
 
 export default class UserProfile extends Component {
+
+    static navigationOptions = {
+        header: null
+     }
+
     render() {
         return (
             <View>
