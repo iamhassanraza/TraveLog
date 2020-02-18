@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Text, View, FlatList, Dimensions, ScrollView, TouchableWithoutFeedback} from 'react-native'
 import FlatListContainer from '../components/FlatListContainer'
+import {withNavigation} from 'react-navigation'
 import TourCard from '../components/TourCard'
 import {BackgroundColor} from '../assets/Colors/Colors'
 import ContentLoader, {Rect, Facebook } from 'react-content-loader/native'
 
-export default class OperatorTours extends Component {
+class OperatorTours extends Component {
 
     componentDidMount() {
         fetch(`https://travelog-pk.herokuapp.com/tours/filter?operator_id=${this.props.screenProps.operatorId}`)
@@ -13,7 +14,7 @@ export default class OperatorTours extends Component {
             return response.json()
         })
         .then((responseJson)=> {
-            console.log(responseJson)
+            console.log('response ========= >',responseJson)
             this.setState({
                 tours : responseJson
             })
@@ -30,7 +31,7 @@ export default class OperatorTours extends Component {
         return (
                 <ScrollView nestedScrollEnabled style={{}}>
                 {this.state.tours[0] ? 
-                    // <FlatListContainer style={{backgroundColor: BackgroundColor}} title="Tours" >
+                    <FlatListContainer style={{backgroundColor: BackgroundColor}} title="Tours" >
                         <FlatList
                         data={this.state.tours}
                         showsHorizontalScrollIndicator={false}
@@ -42,8 +43,8 @@ export default class OperatorTours extends Component {
                             >
                             </TourCard>}
                         keyExtractor={item => item.tour_id}
-                        /> :
-                    // </FlatListContainer> 
+                        />
+                    </FlatListContainer> :
                     <View style={{alignSelf:'center'}}>
                         <ContentLoader height={Dimensions.get('window').height*1} speed={0.5}/>
                     </View>
@@ -53,3 +54,5 @@ export default class OperatorTours extends Component {
         )
     }
 }
+
+export default withNavigation(OperatorTours)

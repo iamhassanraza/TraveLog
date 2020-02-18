@@ -120,7 +120,7 @@ export default class Login extends Component {
               <Button
                 onPress={()=>{
                   this.validate(this.state.email);
-                  this.props.navigation.push('RootStack')
+                  this.props.navigation.push('ScreenNavigation')
               
                 }}
                 rounded
