@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { createStackNavigator } from 'react-navigation-stack';
 import Home from '../screens/Home'
 import OperatorProfile from '../screens/OperatorProfile'
+import OperatorNavigation from './OperatorNavigation'
+import TourCard from '../components/TourCard'
 import OperatorTours from '../components/OperatorTours'
 import AttractionDetails from '../screens/AttractionDetails'
 import DestinationDetails from '../screens/DestinationDetails';
@@ -18,21 +20,19 @@ import { ThemeColor, ThemeGrey, BackgroundColor } from '../assets/Colors/Colors'
 const HomeStack = createStackNavigator({
     Home,
     OperatorProfile: {
-      screen: OperatorProfile,
-      navigationOptions: {
-        header: null
-      }
+      screen: OperatorProfile
     },
     TourDetail,
     DestinationDetails,
     Modal,
+    TourCard,
     Filters,
-    OperatorTours,
     AttractionDetails,
     SearchAndFilter,
     FiltersListing
   },
   {
+    initialRouteName: 'Home',
     headerLayoutPreset: 'center',
     defaultNavigationOptions: {
       header: null
