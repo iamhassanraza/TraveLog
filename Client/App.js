@@ -16,6 +16,7 @@ import NewPassword from './App/screens/NewPassword'
 import SignUp from './App/screens/SignUp'
 import UserProfile from './App/screens/UserProfile'
 import Notifications from './App/screens/Notifications'
+import EditProfile from './App/screens/EditProfile'
 
 const RootStack = createStackNavigator({
   MainTab: ScreenNavigation

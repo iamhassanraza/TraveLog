@@ -8,20 +8,22 @@ import {ThemeColor} from '../assets/Colors/Colors'
 export default class UserProfile extends Component {
     render() {
         return (
-            <View>
+            
                  <ImageBackground
             source={head}
             style={{
-              height: '60%',
-              width: '110%',
+              height: '45%',
+              width: '100%',
             }}>
+                <View>
                 
                 <Text style={{color:"white", fontSize:22, fontWeight:"bold", paddingLeft:"3%",paddingTop:"4%"}}>Syed Ali Mehdi</Text>
-                <Image source={pic}style={{ height:120, width:120, borderRadius:120,borderWidth:3,borderColor:'#44a9eb',marginLeft:"50%", marginTop:"5%"}}>
+                <Image source={pic}style={{ height:120, width:120, borderRadius:120,borderWidth:3,borderColor:'#44a9eb',marginLeft:"50%", marginTop:"2%"}}>
                 </Image>
               
+                <Icon style={{alignContent:"flex-end",color: "white",fontSize: 20,position: 'absolute',right:"5%",top:'2%'}} name="square-edit-outline" />
 
-<View style={{alignSelf:"center"}}> 
+<View style={{alignSelf:"center", paddingTop:"5%"}}> 
             
             <View style={{flexDirection:"row", marginTop:'3%'}}>
             <View style={{elevation:1.5,marginRight:"10%", borderRadius:40,height:40,width:40, justifyContent:"center", alignItems:"center"}}>
@@ -83,9 +85,9 @@ export default class UserProfile extends Component {
 
             
 </View>
-
+</View>
 </ImageBackground>
-            </View>
+            
         )
     }
 }
