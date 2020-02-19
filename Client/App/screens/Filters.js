@@ -7,6 +7,7 @@ import DatePicker from 'react-native-datepicker';
 import {Button} from 'native-base';
 import TypeButtonFilters from '../components/TypeButtonFilters';
 
+
 const textcolor = '#b3b3b5';
 const headingclr = '#6e706f';
 
@@ -177,7 +178,7 @@ export default class Filters extends React.PureComponent {
           style={{
             fontSize: 20,
             fontWeight: 'bold',
-            marginBottom: '1%',
+            marginBottom: '3%',
             color: headingclr,
             marginLeft:18
           }}>
@@ -396,7 +397,7 @@ export default class Filters extends React.PureComponent {
         {this.renderDays()}
         {this.renderDepartureDate()}
 
-        <Button
+        {/* <Button
         bordered
           style={{
             justifyContent: 'center',
@@ -404,18 +405,42 @@ export default class Filters extends React.PureComponent {
             alignSelf: 'center',
             borderRadius: 7,
             marginTop: '5%',
-            backgroundColor:ThemeColor
+            backgroundColor:ThemeColor,
+            marginBottom:"10%",
+            alignItems:"center"
           }}>
           <Text
             style={{
               color: 'white',
               fontWeight: 'bold',
               fontSize: 25,
-              alignSelf:"center"
+              alignContent:"center"
+
             }}>
             Apply Filters
           </Text>
-        </Button>
+        </Button> */}
+
+
+
+<Button
+                rounded
+                style={{
+                  justifyContent: 'center',
+                  marginTop: '7%',
+                  backgroundColor: ThemeColor,
+                  marginBottom: '2%',
+                  width: '60%',
+                  alignSelf: 'center',
+                }}>
+                <Text
+                  style={{color: 'white', fontSize: 17, fontWeight: 'bold',alignSelf:"center",paddingTop:30}}>
+                  Apply Filters
+                </Text>
+              </Button>
+
+
+
       </ScrollView>
     );
   }

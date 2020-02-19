@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, TouchableOpacity } from 'react-native'
 import DestinationDetails from './App/screens/DestinationDetails';
 import 'react-native-gesture-handler'
 import { createAppContainer } from 'react-navigation';
@@ -7,7 +7,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import ScreenNavigation from './App/screens/ScreenNavigation'
 import { ThemeColor, ThemeGrey, BackgroundColor } from './App/assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import FiltersListing from './App/screens/FiltersListing'
+import Filters from './App/screens/Filters'
 import Login from './App/screens/Login'
 import Selection from './App/screens/Selection'
 import ForgotPassword from './App/screens/ForgotPassword'
@@ -19,20 +19,25 @@ import Notifications from './App/screens/Notifications'
 import EditProfile from './App/screens/EditProfile'
 
 const RootStack = createStackNavigator({
-  MainTab: ScreenNavigation
+  MainTab: ScreenNavigation,
+  Filters: Filters
 },
 {
-  defaultNavigationOptions: {
+  defaultNavigationOptions: props => {
+    return {
     header: (
       <View style={{ height:60, flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
         <View style={{marginLeft:'5%'}}>
           <Text style={{fontSize:25,fontWeight:'bold', color: ThemeColor}}>TraveLog</Text>
         </View>
-        <View style={{width:25, height:25,justifyContent:'center', marginRight:'4%',backgroundColor:BackgroundColor, borderRadius:50}}>
-          <Icon name="search" size={20} color={ThemeColor} style={{alignSelf:'center'}}></Icon>
+        <TouchableOpacity>
+        <View style={{width:35, height:35,justifyContent:'center', marginRight:'4%',backgroundColor:BackgroundColor, borderRadius:50,elevation:5}}>
+          <Icon onPress={()=> props.navigation.navigate('Filters')} name="search" size={22} color={ThemeColor} style={{alignSelf:'center'}}></Icon>
         </View>
+        </TouchableOpacity>
       </View>
     )
+    }
   },
 })
 

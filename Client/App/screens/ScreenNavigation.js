@@ -13,9 +13,10 @@ import IconWithText from '../components/IconWithText';
 import Home from './Home';
 import HomeStack from './HomeStack'
 import OperatorProfile from './OperatorProfile';
-import FiltersListing from '../screens/FiltersListing'
+import Filters from '../screens/Filters'
 import Notifications from './Notifications'
 import UserProfile from './UserProfile';
+import FiltersListing from './FiltersListing'
 
 const TabNavigator = createMaterialTopTabNavigator(
     {

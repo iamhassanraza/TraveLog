@@ -9,89 +9,121 @@ import {Container, Header, Content, Item, Input, Button} from 'native-base';
 export default class EditProfile extends Component {
     render() {
         return (
-            <ImageBackground
-            source={head}
-            style={{
-              height: '60%',
-              width: '100%',
-            }}>
-            <View>
-           
-           
-           
-           <Text style={{color:"white", fontSize:22, fontWeight:"bold", paddingLeft:"3%",paddingTop:"4%"}}>Syed Ali Mehdi</Text>
-           <Image source={pic}style={{ height:120, width:120, borderRadius:120,borderWidth:3,borderColor:'#44a9eb',marginLeft:"50%", marginTop:"5%"}}>
-           </Image>
-           
-          
-           <Icon style={{alignContent:"flex-end",color: ThemeColor,fontSize: 30,position: 'absolute',right:20,top:'40%'}} name="square-edit-outline" />
-           
-           
-
-<View style={{alignSelf:"center", marginTop:"16%"}}> 
-       
-       <View style={{flexDirection:"row", marginTop:'3%'}}>
-       <View style={{elevation:1.5,marginRight:"10%", borderRadius:40,height:40,width:40, justifyContent:"center", alignItems:"center"}}>
-       <Icon style={{color: ThemeColor,fontSize: 25}} name="phone" />
-       </View>
-          <View>
-          <Text style={{color:"grey"}}>
-               Contact
-           </Text>
-           <Text style={{fontSize:17}}>
-               03132055798
-           </Text>
-          </View>
-       </View>
-
-       <View style={{flexDirection:"row", marginTop:'5%'}}>
-       <View style={{elevation:1.5,marginRight:"10%", borderRadius:40,height:40,width:40, justifyContent:"center", alignItems:"center"}}>
-       <Icon style={{color: ThemeColor,fontSize: 22}} name="email" />
-       </View>
-          <View>
-          <Text style={{color:"grey"}}>
-               Email
-           </Text>
-           <Text style={{fontSize:17}}>
-               salimehdi144@gmail.com
-           </Text>
-          </View>
-       </View>
-
-
-       <View style={{flexDirection:"row", marginTop:'5%'}}>
-       <View style={{elevation:1.5,marginRight:"10%", borderRadius:40,height:40,width:40, justifyContent:"center", alignItems:"center"}}>
-       <Icon style={{color: ThemeColor,fontSize: 22}} name="home-city-outline" />
-       </View>
-          <View>
-          <Text style={{color:"grey"}}>
-               City
-           </Text>
-           <Text style={{fontSize:17}}>
-               Karachi
-           </Text>
-          </View>
-       </View>
-
-
-       <View style={{flexDirection:"row", marginTop:'5%'}}>
-       <View style={{elevation:1.5,marginRight:"10%", borderRadius:40,height:40,width:40, justifyContent:"center", alignItems:"center"}}>
-       <Icon style={{color: ThemeColor,fontSize: 23}} name="security" />
-       </View>
-          <View>
-          <Text style={{color:"grey"}}>
-               Password
-           </Text>
-           <Text style={{fontSize:17}}>
-               *********
-           </Text>
-          </View>
-       </View>
-
-       
-</View>
-</View>
-</ImageBackground>
+            <ScrollView>
+            <Container style={{backgroundColor: 'black'}}>
+              <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
+                <TouchableOpacity>
+                  <Icon
+                  onPress={() => this.props.navigation.goBack()}
+                    name="ios-arrow-back"
+                    style={{
+                      color: 'white',
+                      marginTop: '5%',
+                      marginLeft: '4%',
+                      fontSize: 30,
+                      fontWeight: 'bold',
+                    }}></Icon>
+                </TouchableOpacity>
+                <Image
+                  source={log}
+                  style={{
+                    height: '20%',
+                    width: '35%',
+                    alignSelf: 'center',
+                    marginTop: '2%',
+                  }}></Image>
+                <Text
+                  style={{
+                    color: 'white',
+                    alignSelf: 'center',
+                    fontSize: 30,
+                    fontWeight: 'bold',
+                    marginTop: '5%',
+                  }}>
+                  Change Password
+                </Text>
+                <Content
+                  style={{
+                    paddingTop: '5%',
+                    marginTop: '5%',
+                    paddingBottom: '30%',
+                    marginLeft: '5%',
+                    marginRight: '5%',
+                    borderRadius: 20,
+                  }}>
+                  <Text
+                    style={{
+                      marginLeft: '10%',
+                      fontSize: 20,
+                      color: ThemeColor,
+                      fontWeight: 'bold',
+                    }}>
+                    New Password
+                  </Text>
+                  <Item style={{width: '80%', alignSelf: 'center'}}>
+                    <Input
+                      onChangeText={text => {
+                        this.setState({newPass: text});
+                      }}
+                      secureTextEntry={true}
+                      placeholder="*********"
+                      placeholderTextColor="white"
+                      style={{color: 'white'}}
+                    />
+                  </Item>
+    
+                  <Text
+                    style={{
+                      marginLeft: '10%',
+                      fontSize: 20,
+                      color: ThemeColor,
+                      marginTop: '5%',
+                      fontWeight: 'bold',
+                    }}>
+                    Confirm Password
+                  </Text>
+                  <Item style={{width: '80%', alignSelf: 'center'}}>
+                    <Input
+                      onChangeText={text => {
+                        this.setState({confirmPass: text});
+                      }}
+                      secureTextEntry={true}
+                      placeholder="*********"
+                      placeholderTextColor="white"
+                      style={{color: 'white'}}
+                    />
+                  </Item>
+    
+                  {this.state.error === '' ? null : (
+                    <Text style={{color:"red", marginLeft:"10%"}}> {this.state.error} </Text>
+                  )}
+    
+                  <Button
+                    onPress={() => {
+                      this.state.newPass != this.state.confirmPass
+                        ? this.setState({error: ' Password Not Matched !'})
+                        : 
+                        this.setState({error:''});
+                        this.props.navigation.push('Login');
+                    }}
+                    rounded
+                    style={{
+                      justifyContent: 'center',
+                      marginTop: '7%',
+                      backgroundColor: ThemeColor,
+                      marginBottom: '2%',
+                      width: '60%',
+                      alignSelf: 'center',
+                    }}>
+                    <Text
+                      style={{color: 'white', fontSize: 17, fontWeight: 'bold',alignSelf:"center"}}>
+                      Change Password
+                    </Text>
+                  </Button>
+                </Content>
+              </ImageBackground>
+            </Container>
+          </ScrollView>
 
         )
     }
