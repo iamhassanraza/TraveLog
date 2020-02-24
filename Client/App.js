@@ -17,6 +17,7 @@ import SignUp from './App/screens/SignUp'
 import UserProfile from './App/screens/UserProfile'
 import Notifications from './App/screens/Notifications'
 import EditProfile from './App/screens/EditProfile'
+import Settings from './App/screens/Settings'
 
 const RootStack = createStackNavigator({
   MainTab: ScreenNavigation,
@@ -82,7 +83,7 @@ const AppContianer = createAppContainer(AuthNavigator);
 export default class App extends Component {
   render() {
     return (
-<AppContianer></AppContianer>
+<Settings></Settings>
     )
   }
 }

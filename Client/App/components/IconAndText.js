@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, Image, TouchableWithoutFeedback, TouchableHighl
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import  { ThemeColor } from '../assets/Colors/Colors';
 
+//PROPS : name and text
+
 
 const IconAndText = props => {
 
