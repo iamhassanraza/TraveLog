@@ -17,6 +17,8 @@ import Filters from '../screens/Filters'
 import Notifications from './Notifications'
 import UserProfile from './UserProfile';
 import FiltersListing from './FiltersListing'
+import Settings from './Settings'
+import SettingsStack from './SettingsStack'
 
 const TabNavigator = createMaterialTopTabNavigator(
     {
@@ -59,12 +61,12 @@ const TabNavigator = createMaterialTopTabNavigator(
             }
         },
         Settings: {
-            screen: Home,
+            screen: SettingsStack,
             navigationOptions: {
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="settings" color={tintColor}  style={{fontSize:22}}/>
                 ),
-                tabBarLabel: "Settings",
+                tabBarLabel: "Settings"
             }
         }      
     },

@@ -90,12 +90,13 @@ export default class Contact extends Component {
               <Item style={{width: '80%', alignSelf: 'center'}}>
                 <Input
                 color="black"
+          
                 onChangeText={text => {
                   this.setState({email: text});
                   // this.validate(text);
                 }}
                   placeholder="travel@log.com"
-                  placeholderTextColor="white"
+                  placeholderTextColor="black"
                   style={{color: 'white'}}
                 />
               </Item>

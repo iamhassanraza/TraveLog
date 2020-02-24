@@ -18,10 +18,14 @@ import UserProfile from './App/screens/UserProfile'
 import Notifications from './App/screens/Notifications'
 import EditProfile from './App/screens/EditProfile'
 import Settings from './App/screens/Settings'
+import Contact from './App/screens/Contact'
+
+
 
 const RootStack = createStackNavigator({
   MainTab: ScreenNavigation,
-  Filters: Filters
+  Filters: Filters,
+  Contact : Contact
 },
 {
   defaultNavigationOptions: props => {
@@ -83,7 +87,7 @@ const AppContianer = createAppContainer(AuthNavigator);
 export default class App extends Component {
   render() {
     return (
-<Settings></Settings>
+<AppContianer></AppContianer>
     )
   }
 }
