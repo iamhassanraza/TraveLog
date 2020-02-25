@@ -19,7 +19,8 @@ import Notifications from './App/screens/Notifications'
 import EditProfile from './App/screens/EditProfile'
 import Settings from './App/screens/Settings'
 import Contact from './App/screens/Contact'
-
+import FAQ from './App/screens/FAQ'
+import MAP from './App/screens/MAP'
 
 
 const RootStack = createStackNavigator({
@@ -87,7 +88,7 @@ const AppContianer = createAppContainer(AuthNavigator);
 export default class App extends Component {
   render() {
     return (
-<AppContianer></AppContianer>
+<MAP></MAP>
     )
   }
 }
