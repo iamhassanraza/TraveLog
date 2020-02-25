@@ -17,10 +17,16 @@ import SignUp from './App/screens/SignUp'
 import UserProfile from './App/screens/UserProfile'
 import Notifications from './App/screens/Notifications'
 import EditProfile from './App/screens/EditProfile'
+import Settings from './App/screens/Settings'
+import Contact from './App/screens/Contact'
+import FAQ from './App/screens/FAQ'
+import MAP from './App/screens/MAP'
+
 
 const RootStack = createStackNavigator({
   MainTab: ScreenNavigation,
-  Filters: Filters
+  Filters: Filters,
+  Contact : Contact
 },
 {
   defaultNavigationOptions: props => {

@@ -89,14 +89,16 @@ export default class Contact extends Component {
               </Text>
               <Item style={{width: '80%', alignSelf: 'center'}}>
                 <Input
+                multiline={true}
                 color="black"
+          
                 onChangeText={text => {
                   this.setState({email: text});
                   // this.validate(text);
                 }}
-                  placeholder="travel@log.com"
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  placeholder="Write a message"
+                  placeholderTextColor="grey"
+                  style={{color: 'grey'}}
                 />
               </Item>
 
