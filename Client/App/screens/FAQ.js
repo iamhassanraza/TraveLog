@@ -24,8 +24,8 @@ export default class FAQ extends Component {
             <Accordion
               dataArray={dataArray}
             
-              headerStyle={{ backgroundColor: "#aed9f5", borderBottomWidth:1, borderBottomColor:"white" }}
-              contentStyle={{ backgroundColor: "#ddecf8", }}
+              headerStyle={{ backgroundColor: "#aed9f5", borderTopWidth:15, borderTopColor:"white"}}
+              contentStyle={{ backgroundColor: "#ddecf8" }}
             />
           </Content>
         </Container>
