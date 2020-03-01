@@ -58,57 +58,48 @@ exports.signup = async (req, res) => {
   }
 };
 
+exports.signin = async (req, res) => {
+  const { email, password } = req.body;
 
-// exports.signIn = async (req, res) => {
-//   const { email, password } = req.body;
-//            try {
-//                  const errors = validationResult(req);
-//                  if (!errors.isEmpty()) {
-//                      return res.status(409).send(errors.array());
-//                  }
-//                  con.query(
-//                       "SELECT * FROM `userprofile` WHERE `email`= ?",
-//                       [email],
-//                       async (error, result, fields) => {
-//                         if(error){
-//                           return res
-//                           .status(400)
-//                           .send({ success: false, message: error });
-//                         }
-//                         else{
-//                               //=====email mil gya ========
-//                           if (result.length > 0){
-//                             if(result[0].password == password){
-//                               const token = jwt.sign(password, process.env.JWT_SECRET_KEY);
-//                             return res.status(200).send({
-//                                 user:result[0],
-//                                 message:"login sucessfull",
-//                                 success:true,
-//                                 token
-//                                   });
-//                           }
-//                           else{
-//                             return res.status(204).send({
-//                               user:result[0],
-//                               message:"Email Password Does not match",
-//                               success:false,
-//                                 });
-//                           }
-                        
-            
+  
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(409).send(errors.array());
+  }
+  console.log(req.body ,'body')
+  con.query(
+    "SELECT * FROM `userprofile` WHERE `email`= ?",
+    [email],
+    async (error, fields, result) => {
+      
 
-
-
-//                           //-----email nahi mila empty hai
-
-//                         }
-//                         else{
-
-//                         }
-       
-//   } catch (e) {
-//     console.log("error in signup controller", e);
-//     res.status(401).send(e);
-//     return;
-//   }
-// };
+      if (error) {
+        return res.status(400).send({ success: false, message: error });
+      } else {
+        if (fields.length > 0) {
+          const password_match = await bcrypt.compare(password, fields[0].password);
+          if (password_match) {
+            const token = jwt.sign(password, process.env.JWT_SECRET_KEY);
+            return res.status(200).send({
+              user: fields[0],
+              message: "login sucessfull",
+              success: true,
+              token
+            });
+          } else {
+            return res.status(400).send({
+              message: "Incorrect Passowrd",
+              success: false
+            });
+          }
+        } else {
+          return res.status(400).send({
+            user: fields[0],
+            message: "Email Does not exist",
+            success: false
+          });
+        }
+      }
+    }
+  );
+};
