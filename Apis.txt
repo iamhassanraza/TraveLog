@@ -30,15 +30,47 @@ IF email exist : 401 unauthroize
 
 
 ================================================================================
-API NAME : 
+API NAME : Sign IN
 		
-URL: 
+URL: http://localhost:5000/auth/signup
 
-TYPE:
+TYPE: Post
 
-BODY:{  }
+BODY:{ email,password }
 
 RESPONSE:
+=> if correct -> Status 200
+{
+    "user": {
+        "userProfile_id": 20,
+        "profileType_id": 1,
+        "name": "umair",
+        "email": "m.h.raxa1@gmail.com",
+        "password": "$2b$12$eFx1XFX4z34/zuTi.DtKa.wSrJVGp1EPc3iK42vsz/a/yiV2.uJgO",
+        "phone": "1222121",
+        "created_by": 0,
+        "created_on": "2020-02-25T09:10:31.000Z",
+        "modified_by": 0,
+        "modified_on": "2020-02-25T09:10:31.000Z",
+        "row_version": 0,
+        "row_state": ""
+    },
+    "message": "login sucessfull",
+    "success": true,
+    "token": "eyJhbGciOiJIUzI1NiJ9.aGFzc2FuYmhhaQ.tGzvwaNqVpGbMtnFmbYMBGMsFYoZF9nvahB4tmMkkEI"
+}
+
+=> if email is incorrect -> Status 400 
+{
+    "message": "Email Does not exist",
+    "success": false
+}
+
+=> if passowrd is incorrect -> Status 400
+{
+    "message": "Incorrect Passowrd",
+    "success": false
+}
 
 ================================================================================
 
