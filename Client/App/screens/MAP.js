@@ -1,12 +1,44 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View,Dimensions, StyleSheet } from 'react-native'
+import MapView from 'react-native-maps';
+
+
+const height = Dimensions.get('window').height;
+const width = Dimensions.get("window").width;
 
 export default class MAP extends Component {
     render() {
         return (
-            <View>
-                <Text> textInComponent </Text>
-            </View>
+           
+               <View style={styles.container}>
+                    <MapView
+                    mapType= 'hybrid'
+                style={styles.map}
+                initialRegion={
+                { latitude: 36.319316,
+                longitude: 74.865298,
+                latitudeDelta:0.0122,
+                longitudeDelta: width / height * 0.0122}
+                }
+            
+          />
+               </View>
+        
         )
     }
 }
+
+
+const styles = StyleSheet.create({
+    map: {
+      ...StyleSheet.absoluteFillObject,
+    },
+    container: {
+        height:"40%",
+        marginTop:"20%",
+        width: '100%',
+        justifyContent: "flex-end",
+        alignItems: "center",
+        zIndex: 1
+    },
+});
