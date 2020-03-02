@@ -88,7 +88,7 @@ const AppContianer = createAppContainer(AuthNavigator);
 export default class App extends Component {
   render() {
     return (
-<AppContianer></AppContianer>
+<MAP></MAP>
     )
   }
 }
