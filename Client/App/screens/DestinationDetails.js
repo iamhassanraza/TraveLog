@@ -14,7 +14,7 @@ import FlatListContainer from '../components/FlatListContainer';
 import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
 import ContentLoader, { Facebook } from 'react-content-loader/native'
-
+import Map from '../components/Map'
 
 attraction = [4, 7];
 
@@ -166,15 +166,7 @@ export default class DestinationDetails extends Component {
 // "It shows map (Not completed yet)"
   renderMap = () => {
     return (
-      <View style={{marginLeft: 10, marginRight: 10, marginTop: 15}}>
-        <TouchableWithoutFeedback>
-          <ImageBackground
-            source={map}
-            style={{
-              height: Dimensions.get('window').height / 3.5,
-            }}></ImageBackground>
-        </TouchableWithoutFeedback>
-      </View>
+      <Map></Map>
     );
   };
 
