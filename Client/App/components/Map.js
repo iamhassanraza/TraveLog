@@ -10,7 +10,7 @@ export default class Map extends Component {
     render() {
         return (
             <View style={styles.container}>
-            <MapView
+            {/* <MapView
             // mapType= 'hybrid'
         style={styles.map}
         initialRegion={
@@ -20,7 +20,28 @@ export default class Map extends Component {
         longitudeDelta: width / height * 0.0122}
         }
     
-  />
+
+
+        
+  /> */}
+
+
+<MapView style={styles.map}
+ mapType= 'hybrid'
+          initialRegion={{
+              latitude: 36.319316,
+              longitude: 74.865298,
+              latitudeDelta:0.0122,
+              longitudeDelta: width / height * 0.0122
+          }}
+        >
+        <MapView.Marker
+            coordinate={{latitude: 36.319316,
+            longitude: 74.865298}}
+            title={"title"}
+            description={"description"}
+         />
+      </MapView>
        </View>
         )
     }
@@ -35,6 +56,7 @@ const styles = StyleSheet.create({
     container: {
         height:"12%",
         marginTop:"2%",
+        marginBottom:"2%",
         width: '100%',
         justifyContent: "flex-end",
         alignItems: "center",

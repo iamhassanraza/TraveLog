@@ -163,7 +163,7 @@ export default class DestinationDetails extends Component {
   };
 
 
-// "It shows map (Not completed yet)"
+// "It shows map 
   renderMap = () => {
     return (
       <Map></Map>
