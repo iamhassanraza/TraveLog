@@ -17,7 +17,7 @@ exports.getAllAttractions = (req, res, next) => {
 
 exports.getDetailsOfAttraction = (req, res, next) => {
   var id = req.params.id;
-  var sqlQuery = `SELECT attractions.attraction_id,attractions.name AS attraction_name,attractions.destination_id,attractions.latitude,attractions.longitude,attractions.description,attractions.recommended_season,destination.city_id,city.name AS city_name,image.image_path FROM attractions INNER JOIN destination ON destination.destination_id = attractions.destination_id INNER JOIN city ON destination.city_id = city.city_id INNER JOIN image ON (image.category_id = 4 AND image.image_type_id = 1 AND image.reference_id = ${id}) WHERE attractions.attraction_id =${id} `
+  var sqlQuery = `SELECT attractions.attraction_id,attractions.name AS attraction_name,attractions.latitude,attractions.longitude,attractions.destination_id,attractions.latitude,attractions.longitude,attractions.description,attractions.recommended_season,destination.city_id,city.name AS city_name,image.image_path FROM attractions INNER JOIN destination ON destination.destination_id = attractions.destination_id INNER JOIN city ON destination.city_id = city.city_id INNER JOIN image ON (image.category_id = 4 AND image.image_type_id = 1 AND image.reference_id = ${id}) WHERE attractions.attraction_id =${id} `
   var sqlQuery2 = `SELECT attractions.attraction_id FROM attractions WHERE attractions.destination_id = (SELECT attractions.destination_id FROM attractions WHERE attraction_id = ${id})`
 
 
