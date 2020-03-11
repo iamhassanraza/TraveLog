@@ -72,7 +72,7 @@ const AuthNavigator = createStackNavigator({
 },
 
 {
-  initialRouteName:'SignUp',
+  initialRouteName:'Selection',
   headerLayoutPreset: 'center',
   defaultNavigationOptions:{
     header: null
