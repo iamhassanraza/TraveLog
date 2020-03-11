@@ -21,6 +21,7 @@ import Settings from './App/screens/Settings'
 import Contact from './App/screens/Contact'
 import FAQ from './App/screens/FAQ'
 import MAP from './App/screens/MAP'
+import Check from './App/screens/Check'
 
 
 const RootStack = createStackNavigator({
