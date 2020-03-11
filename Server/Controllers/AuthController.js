@@ -32,15 +32,22 @@ exports.signup = async (req, res) => {
             params,
             (err, result, fields) => {
               if (!err) {
-                const token = jwt.sign(password, process.env.JWT_SECRET_KEY);
+                const token = jwt.sign( {email,id:result.insertId}, process.env.JWT_SECRET_KEY);
                 res.status(200).send({
                   success: true,
                   message: "Registration Successfull",
+                  user:{
+                  id:result.insertId,
                   name,
                   email,
                   phone,
                   token,
-                  refreshtoken: null
+
+                  },
+                  
+                  refreshtoken: null,
+                  
+
                 });
                 console.log("all tours successs");
               } else {
@@ -67,6 +74,8 @@ exports.signin = async (req, res) => {
     return res.status(409).send(errors.array());
   }
   console.log(req.body ,'body')
+
+  //================= check if email already exist ================== // 
   con.query(
     "SELECT * FROM `userprofile` WHERE `email`= ?",
     [email],
@@ -79,7 +88,7 @@ exports.signin = async (req, res) => {
         if (fields.length > 0) {
           const password_match = await bcrypt.compare(password, fields[0].password);
           if (password_match) {
-            const token = jwt.sign(password, process.env.JWT_SECRET_KEY);
+            const token = jwt.sign({email,id:fields[0].userProfile_id}, process.env.JWT_SECRET_KEY);
             return res.status(200).send({
               user: fields[0],
               message: "login sucessfull",
@@ -102,4 +111,30 @@ exports.signin = async (req, res) => {
       }
     }
   );
+};
+
+
+exports.facebookLogin = async (req, res) => {
+  try {
+    const { user } = req;
+    console.log(user)
+    // if (user.err) {
+    //   return res.status(401).send({
+    //     message: 'Facebook authentication failed!',
+    //     error: user.err
+    //   });
+    // } else if (user) {
+    //   const token = signToken(user);
+    //   return res.status(200).send({
+    //     token,
+    //     message: 'Logged in successfully via facebook!'
+    //   });
+    // } else {
+    //   return res.status(401).send({
+    //     message: 'Facebook authentication failed!'
+    //   });
+    // }
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };

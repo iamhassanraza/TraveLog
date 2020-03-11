@@ -77,15 +77,24 @@ RESPONSE:
 
 
 ================================================================================
-API NAME : 
+API NAME : LOGIN WITH GOOGLE || Facebook
 		
-URL: 
+URL: http://localhost:5000/auth/google || http://localhost:5000/auth/facebook
 
-TYPE:
-
-BODY:{  }
+TYPE: GET
 
 RESPONSE:
+
+ {
+user: {
+id: 26,
+email: "campus.gruv.2020@gmail.com",
+name: "Campus Gruv",
+phone: "",
+profileType_id: 1
+},
+token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6eyJ2YWx1ZSI6ImNhbXB1cy5ncnV2LjIwMjBAZ21haWwuY29tIiwidmVyaWZpZWQiOnRydWV9LCJpYXQiOjE1ODM5MzQ4NzF9.vjyXpVfWmdtAsBDsBNxRx2KjOETXIDUVvoyvlFlTtmg"
+ }
 
 ================================================================================
 
