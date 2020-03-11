@@ -23,6 +23,7 @@ import FAQ from './App/screens/FAQ'
 import MAP from './App/screens/MAP'
 
 
+
 const RootStack = createStackNavigator({
   MainTab: ScreenNavigation,
   Filters: Filters,
@@ -71,7 +72,7 @@ const AuthNavigator = createStackNavigator({
 },
 
 {
-  initialRouteName:'RootStack',
+  initialRouteName:'Selection',
   headerLayoutPreset: 'center',
   defaultNavigationOptions:{
     header: null

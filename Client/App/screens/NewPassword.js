@@ -65,7 +65,7 @@ export default class NewPassword extends Component {
                 style={{
                   marginLeft: '10%',
                   fontSize: 20,
-                  color: ThemeColor,
+                  color: "white",
                   fontWeight: 'bold',
                 }}>
                 New Password
@@ -86,7 +86,7 @@ export default class NewPassword extends Component {
                 style={{
                   marginLeft: '10%',
                   fontSize: 20,
-                  color: ThemeColor,
+                  color: "white",
                   marginTop: '5%',
                   fontWeight: 'bold',
                 }}>

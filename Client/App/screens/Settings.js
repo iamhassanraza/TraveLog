@@ -22,8 +22,8 @@ export default class Settings extends Component {
 </TouchableOpacity>
 
 
-<TouchableOpacity  onPress = {()=> alert("ha")}>
-<IconWithText name="phone" text="FAQs" iconstyle={styles.IconStyle} textstyle={styles.TextStyle} style={styles.Line}></IconWithText>
+<TouchableOpacity style={{borderWidth:1}}  onPress = {()=> alert("ha")}>
+<IconWithText name="comment-question-outline" text="FAQs" iconstyle={styles.IconStyle} textstyle={styles.TextStyle} style={styles.Line}></IconWithText>
 </TouchableOpacity>
 
 <TouchableOpacity  onPress = {()=> alert("ha")}>

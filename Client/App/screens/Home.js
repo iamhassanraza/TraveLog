@@ -9,7 +9,7 @@ import FlatListContainer from '../components/FlatListContainer'
 import OperatorProfile from './OperatorProfile'
 import image2 from "../assets/images/im5.jpg"
 import ContentLoader, { Facebook } from 'react-content-loader/native'
-
+import Slider from '../components/ImageSlider'
 
 export default class Home extends Component {
 
@@ -95,7 +95,7 @@ export default class Home extends Component {
                         <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onPageRefresh}/>
                     }>
                     
-                    <View style={{height: Dimensions.get('window').height*0.3}}>
+                    {/* <View style={{height: Dimensions.get('window').height*0.3}}>
                         <ImageBackground source={image2} style={{width:'100%',height:"100%"}}>
                             <View style={{backgroundColor:'rgba(0,0,0,0.4)',flex:1,justifyContent:'flex-end',paddingBottom:30}}>
                             <Text style={{color:'white',fontWeight:'bold',fontSize:20,alignSelf:'center',width:'80%'}}>
@@ -108,7 +108,10 @@ export default class Home extends Component {
                         </ImageBackground>
 
 
-                    </View>
+                    </View> */}
+
+
+                    <Slider></Slider>
                 
 
                     <View style={{flexDirection:'column'}}>

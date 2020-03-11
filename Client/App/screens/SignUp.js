@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, ImageBackground, Image, StyleSheet} from 'react-native';
 import {Container, Header, Content, Item, Input, Button} from 'native-base';
-import pic from '../assets/images/a13.jpg';
+import pic from '../assets/images/a36.jpeg';
 import {ThemeColor} from '../assets/Colors/Colors';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import gmail from '../assets/images/gm.png';
@@ -48,7 +48,7 @@ export default class SignUp extends Component {
                   fontWeight: 'bold',
                 }}></Icon>
             </TouchableOpacity>
-            <Text style={{fontSize:40,color:"white", alignSelf:"center", fontWeight:"bold",paddingTop:"2%", paddingLeft:"3%"}}> Sign Up</Text>
+            {/* <Text style={{fontSize:40,color:"white", alignSelf:"center", fontWeight:"bold",paddingTop:"2%", paddingLeft:"3%"}}> Sign Up</Text> */}
            </View>
             {/* <Image
               source={log}
@@ -59,8 +59,8 @@ export default class SignUp extends Component {
               }}></Image> */}
             <Content
               style={{
-                paddingTop: '1%',
-                marginTop: '5%',
+                
+                marginTop: '1%',
                 paddingBottom: '30%',
                 marginLeft: '5%',
                 marginRight: '5%',
@@ -74,7 +74,7 @@ export default class SignUp extends Component {
                     this.setState({name: text});
                   }}
                   placeholder="Lionel Messi "
-                  placeholderTextColor={ThemeColor}
+                  placeholderTextColor="white"
                   style={{color: 'white'}}
                 />
               </Item>
@@ -87,7 +87,7 @@ export default class SignUp extends Component {
                     // this.validate(text);
                   }}
                   placeholder="travel@log.com"
-                  placeholderTextColor={ThemeColor}
+                  placeholderTextColor="white"
                   style={{color: 'white'}}
                 />
               </Item>
@@ -105,7 +105,7 @@ export default class SignUp extends Component {
                   }}
                   secureTextEntry={true}
                   placeholder="* * * * * "
-                  placeholderTextColor={ThemeColor}
+                  placeholderTextColor="white"
                   style={{color: 'white'}}
                 />
               </Item>
@@ -116,8 +116,8 @@ export default class SignUp extends Component {
                   onChangeText={text => {
                     this.setState({Contact: text});
                   }}
-                  placeholder="Lionel Messi "
-                  placeholderTextColor={ThemeColor}
+                  placeholder="03139099324 "
+                  placeholderTextColor="white"
                   style={{color: 'white'}}
                 />
               </Item>
@@ -130,9 +130,9 @@ export default class SignUp extends Component {
                 rounded
                 style={{
                   justifyContent: 'center',
-                  marginTop: '3%',
+                  marginTop: '5%',
                   backgroundColor: ThemeColor,
-                  marginBottom: '2%',
+                  marginBottom: '1%',
                   width: '40%',
                   alignSelf: 'center',
                 }}>
@@ -149,7 +149,7 @@ export default class SignUp extends Component {
                 rounded
                 style={{
                   justifyContent: 'center',
-                  marginTop: '4%',
+                  marginTop: 0,
                   backgroundColor: 'white',
                   width: '35%',
                   alignSelf: 'center',
@@ -168,7 +168,7 @@ export default class SignUp extends Component {
                 rounded
                 style={{
                   justifyContent: 'center',
-                  marginTop: '4%',
+                  marginTop: 0,
                   backgroundColor: 'white',
                   width: '35%',
                   alignSelf: 'center',

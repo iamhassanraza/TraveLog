@@ -24,7 +24,7 @@ import FlatListContainer from '../components/FlatListContainer';
 import {Rating} from 'react-native-elements';
 import LoadingIndicator from '../components/LoadingIndicator';
 import ContentLoader, { Facebook } from 'react-content-loader/native'
-
+import Map from '../components/Map'
 
 export default class AttractionDetails extends Component {
   state = {
@@ -174,15 +174,7 @@ export default class AttractionDetails extends Component {
 
   renderMap = () => {
     return (
-      <View style={{marginLeft: 10, marginRight: 10, marginTop: 15}}>
-        <TouchableWithoutFeedback>
-          <ImageBackground
-            source={map}
-            style={{
-              height: Dimensions.get('window').height / 3.5,
-            }}></ImageBackground>
-        </TouchableWithoutFeedback>
-      </View>
+     <Map></Map>
     );
   };
 

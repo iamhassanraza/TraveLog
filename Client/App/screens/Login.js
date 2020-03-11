@@ -74,7 +74,7 @@ export default class Login extends Component {
                 style={{
                   marginLeft: '10%',
                   fontSize: 17,
-                  color: ThemeColor,
+                  color: "white",
                   fontWeight: 'bold',
                 }}>
                 {' '}
@@ -98,7 +98,7 @@ export default class Login extends Component {
                 style={{
                   marginLeft: '10%',
                   fontSize: 17,
-                  color: ThemeColor,
+                  color: "white",
                   marginTop: '5%',
                   fontWeight: 'bold',
                 }}>

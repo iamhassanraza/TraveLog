@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, ImageBackground, Image, StyleSheet} from 'react-native';
 import {Container, Header, Content, Item, Input, Button} from 'native-base';
-import pic from '../assets/images/a14.jpg';
+import pic from '../assets/images/a35.jpeg';
 import {ThemeColor} from '../assets/Colors/Colors';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import log from '../assets/images/logo.png';
