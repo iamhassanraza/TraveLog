@@ -14,26 +14,133 @@ export default class SignUp extends Component {
     email: '',
     password: '',
     error: '',
+    contact:'',
+    confirmPassword:''
   };
 
   validate = text => {
     console.log(text);
-    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (reg.test(text) === false) {
-      console.log('Email is Not Correct');
+    // let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    // if (reg.test(text) === false) {
+    //   console.log('Email is Not Correct');
+    //   this.setState({email: text, error: 'Email is Not Correct'});
+    //   return false;
+    // } else {
+    //   this.setState({email: text, error: ''});
+    //   console.log('Email is Correct');
+    // }
+    if(!this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
       this.setState({email: text, error: 'Email is Not Correct'});
       return false;
-    } else {
-      this.setState({email: text, error: ''});
-      console.log('Email is Correct');
+    }
+    else {
+      return true;
     }
   };
+
+
+
+  
+onSubmission = async () => {
+
+  console.log('chalra ye')
+
+  let response = await fetch(
+    'http://192.168.100.46:5000/auth/signup',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email : this.state.email,
+        password : this.state.password ,
+        confirm_password : this.state.confirmPassword,
+        phone : this.state.contact,
+        name: this.state.name
+      })  
+    }
+    )
+    
+  const User = await response.json();
+    console.log(response.status,'-------------Signup Scnz -----------------')
+  if(parseInt(response.status) === 401) {
+    console.log(User.message);
+    alert(User.message);
+  }
+  else if (parseInt(response.status) === 200){
+    console.log(User.message);
+    alert(User.message);
+    this.props.navigation.push('RootStack');
+  }
+  else if (parseInt(response.status) === 409){
+    alert(User[0].msg);
+    console.log(User[0].msg)
+  }
+  else{
+    alert('something went wrong')
+  }
+
+   
+};
+
+  
+
+// gmailSignup  = async () => {
+
+//   console.log('gmail wala chala do')
+
+//   let response = await fetch(
+//     'http://192.168.100.46:5000/auth/signup',
+//     {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         email : this.state.email,
+//         password : this.state.password ,
+      
+//       })  
+//     }
+//     )
+    
+//   const User = await response.json();
+//     console.log(response.status,'-------------Signup Scnz -----------------')
+//    if (parseInt(response.status) === 200){
+//     console.log(User.message);
+//     alert(User.message);
+//     this.props.navigation.push('RootStack');
+//   }
+//   else if (parseInt(response.status) === 409){
+//     alert(User[0].msg);
+//     console.log(User[0].msg)
+//   }
+//   else{
+//     alert('something went wrong')
+//   }
+
+   
+// };
+
+
+
+
+
+
+
+
+
+
 
   render() {
     console.log(this.state);
     return (
-      <ScrollView>
-        <Container style={{backgroundColor: 'black'}}>
+
+
+
+      <ScrollView >
+        <Container style={{backgroundColor: 'black',height:'100%'}}>
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
            <View style={{flexDirection:"row"}}>
            <TouchableOpacity>
@@ -59,9 +166,9 @@ export default class SignUp extends Component {
               }}></Image> */}
             <Content
               style={{
-                
-                marginTop: '1%',
-                paddingBottom: '30%',
+              height:'50%',
+                marginTop: 0,
+                paddingBottom: '10%',
                 marginLeft: '5%',
                 marginRight: '5%',
                 borderRadius: 20,
@@ -110,11 +217,25 @@ export default class SignUp extends Component {
                 />
               </Item>
 
+
+              <Text style={styles.Title}> Confirm Password </Text>
+              <Item style={{width: '80%', alignSelf: 'center'}}>
+                <Input
+                  onChangeText={text => {
+                    this.setState({confirmPassword: text});
+                  }}
+                  secureTextEntry={true}
+                  placeholder="* * * * * "
+                  placeholderTextColor="white"
+                  style={{color: 'white'}}
+                />
+              </Item>
+
               <Text style={styles.Title}> Contact No</Text>
               <Item style={{width: '80%', alignSelf: 'center'}}>
                 <Input
                   onChangeText={text => {
-                    this.setState({Contact: text});
+                    this.setState({contact: text});
                   }}
                   placeholder="03139099324 "
                   placeholderTextColor="white"
@@ -123,10 +244,32 @@ export default class SignUp extends Component {
               </Item>
 
               <Button
+                // onPress={() => {
+                //   this.validate(this.state.email);
+                //   this.props.navigation.push('RootStack');
+                // }}
+
                 onPress={() => {
+
                   this.validate(this.state.email);
-                  this.props.navigation.push('RootStack');
+
+                  if(this.state.error === ''){
+                    if( this.state.password != this.state.confirmPassword ) {
+                          this.setState({error: ' Password Not Matched !'})
+                    }
+
+                    else if (this.state.password === this.state.confirmPassword){
+                      this.setState({error:''});
+                      this.onSubmission();
+                    }
+                  }
+
+                  
+                 
                 }}
+
+
+
                 rounded
                 style={{
                   justifyContent: 'center',
@@ -187,6 +330,7 @@ export default class SignUp extends Component {
           </ImageBackground>
         </Container>
       </ScrollView>
+ 
     );
   }
 }
@@ -196,7 +340,7 @@ const styles = StyleSheet.create({
     marginLeft: '10%',
     fontSize: 20,
     color: 'white',
-    marginTop: '5%',
+    marginTop: '1%',
     fontWeight: 'bold',
   },
 });
