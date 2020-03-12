@@ -86,42 +86,35 @@ onSubmission = async () => {
 
   
 
-// gmailSignup  = async () => {
+gmailSignup  = async () => {
 
-//   console.log('gmail wala chala do')
+  console.log('gmail wala chala do')
 
-//   let response = await fetch(
-//     'http://192.168.100.46:5000/auth/signup',
-//     {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         email : this.state.email,
-//         password : this.state.password ,
-      
-//       })  
-//     }
-//     )
+  let response = await fetch(
+    'http://192.168.100.46:5000/auth/google',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+        
+    }
+    )
     
-//   const User = await response.json();
-//     console.log(response.status,'-------------Signup Scnz -----------------')
-//    if (parseInt(response.status) === 200){
-//     console.log(User.message);
-//     alert(User.message);
-//     this.props.navigation.push('RootStack');
-//   }
-//   else if (parseInt(response.status) === 409){
-//     alert(User[0].msg);
-//     console.log(User[0].msg)
-//   }
-//   else{
-//     alert('something went wrong')
-//   }
+  const User = await response.json();
+    console.log(response.status,'-------------Gmailll Signup Scnz -----------------')
+   if (parseInt(response.status) === 200){
+    console.log(User.message,User);
+    alert(User.message);
+    // this.props.navigation.push('RootStack');
+  }
+  
+  else{
+    alert('Something went wrong')
+  }
 
    
-// };
+};
 
 
 
@@ -308,6 +301,7 @@ onSubmission = async () => {
                 </Text>
               </Button>
               <Button
+              onPress={()=>{ this.gmailSignup()}}
                 rounded
                 style={{
                   justifyContent: 'center',
