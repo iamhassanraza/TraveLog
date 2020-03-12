@@ -15,7 +15,7 @@ exports.validatePassword = body(
   "password",
   "Please enter a alphanumeric password and at least 6 characters long."
 )
-  .isLength({ min: 6 })
+  .isLength({ min: 4 })
   .isAlphanumeric()
   .trim().custom((val, { req }) => {
     if (val !== req.body.confirm_password) {
