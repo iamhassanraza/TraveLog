@@ -42,7 +42,6 @@ exports.signup = async (req, res) => {
                   email,
                   phone,
                   token,
-
                   },
                   
                   refreshtoken: null,
