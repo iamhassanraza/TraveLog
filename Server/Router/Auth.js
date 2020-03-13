@@ -48,6 +48,7 @@ AuthRouter.get(
   "/facebook/callback/",
   passport.authenticate("facebook", { failureRedirect: "/login",session:false,scope:['email'] }),
   function(req, res) {
+    console.log('agaya isme')
     res.send(req.user);
   }
 );

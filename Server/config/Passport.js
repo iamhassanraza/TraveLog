@@ -109,6 +109,7 @@ passport.use(
       // user's fb dp = 'https://graph.facebook.com/' + profile.id + '/picture?height=350&width=250';
       //check if user already exist
       //================================================================
+      console.log('yaha tk tw agya')
       con.query(
         "SELECT * FROM `userprofile` WHERE `email`= ?",
         [profile.emails[0].value],
