@@ -6,6 +6,7 @@ import pic from '../assets/images/a5.jpg';
 import log from '../assets/images/logo.png'
 
 
+
 export default class Selection extends Component {
     render() {
         return (
@@ -13,6 +14,7 @@ export default class Selection extends Component {
                 <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
 
                 <Image source={log} style={{height:"25%",width:"45%", alignSelf:"center", marginTop:"25%"}}></Image>
+        
                 <View style={{marginTop:"30%"}}>
                 <Button onPress={() => this.props.navigation.push('SignUp')} rounded style={{justifyContent:"center", marginTop:'7%',backgroundColor:"white", marginBottom:"2%",width:"70%",alignSelf:"center"}}>
             <Text style={{color:ThemeColor,fontSize:17,fontWeight:"bold"}}>SIGN UP</Text>
