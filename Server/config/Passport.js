@@ -19,7 +19,8 @@ passport.use(
         [profile.emails[0].value],
         async (error, fields, result) => {
           if (error) {
-            return res.status(400).send({ success: false, message: error });
+            // return res.status(400).send({ success: false, message: error });
+            console.log(error)
             done(error, null);
           } else {
             //user exists
@@ -115,7 +116,8 @@ passport.use(
         [profile.emails[0].value],
         async (error, fields, result) => {
           if (error) {
-            return res.status(400).send({ success: false, message: error });
+            // return res.status(400).send({ success: false, message: error });
+            console.log(error)
             done(error, null);
           } else {
             //user exists
