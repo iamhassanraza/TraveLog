@@ -173,9 +173,11 @@ export default class AttractionDetails extends Component {
   };
 
   renderMap = () => {
-    return (
-     <Map></Map>
-    );
+    if(this.state.data !== undefined){
+      return (
+        <Map latitude={this.state.data[0].longitude} longitude={this.state.data[0].latitude}></Map>
+      );
+      }
   };
 
   renderRelatedTours = () => {

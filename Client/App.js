@@ -83,7 +83,7 @@ const AuthNavigator = createStackNavigator({
 
 
 
-const AppContianer = createAppContainer(AuthNavigator);
+const AppContianer = createAppContainer(RootStack);
 
 
 export default class App extends Component {

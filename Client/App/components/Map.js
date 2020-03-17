@@ -8,6 +8,9 @@ const width = Dimensions.get("window").width;
 
 export default class Map extends Component {
     render() {
+
+        console.log(" parseFloat(this.props.latitude)" +  parseFloat(this.props.latitude));
+        console.log(" parseFloat(this.props.longitude)" +  parseFloat(this.props.longitude));
         return (
             <View style={styles.container}>
             {/* <MapView
@@ -29,17 +32,18 @@ export default class Map extends Component {
 <MapView style={styles.map}
  mapType= 'hybrid'
           initialRegion={{
-              latitude: 36.319316,
-              longitude: 74.865298,
+              latitude: parseFloat(this.props.latitude),
+              longitude: parseFloat(this.props.longitude),
               latitudeDelta:0.0122,
               longitudeDelta: width / height * 0.0122
           }}
         >
         <MapView.Marker
-            coordinate={{latitude: 36.319316,
-            longitude: 74.865298}}
-            title={"title"}
-            description={"description"}
+            coordinate={{
+            latitude: parseFloat(this.props.latitude),
+            longitude: parseFloat(this.props.longitude)}}
+            // title={"title"}
+            // description={"description"}
          />
       </MapView>
        </View>

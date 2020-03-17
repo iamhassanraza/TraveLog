@@ -165,9 +165,11 @@ export default class DestinationDetails extends Component {
 
 // "It shows map 
   renderMap = () => {
+    if(this.state.data !== undefined){
     return (
-      <Map></Map>
+      <Map latitude={this.state.data[0].latitude} longitude={this.state.data[0].longitude}></Map>
     );
+    }
   };
 
 
@@ -219,10 +221,14 @@ export default class DestinationDetails extends Component {
   };
 
   render() {
+
+
+
+
     const DestinationData = this.props.navigation.getParam('DestinationData','default',);
     const attraction = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     const apiUrl = `https://travelog-pk.herokuapp.com/destination/attraction/`;
-
+console.log(this.state.data);
     return (
       <ScrollView>
         {this.renderTop(DestinationData.image_path, DestinationData.name)}
