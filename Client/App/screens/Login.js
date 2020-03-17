@@ -9,6 +9,8 @@ import fb from '../assets/images/fb.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import log from '../assets/images/logo.png';
 
+
+
 export default class Login extends Component {
   state = {
     email: '',
@@ -170,6 +172,7 @@ export default class Login extends Component {
                   </Text>
                 </Button>
                 <Button
+                  onPress={()=>this.props.navigation.push('Webview')}
                   rounded
                   style={{
                     justifyContent: 'center',

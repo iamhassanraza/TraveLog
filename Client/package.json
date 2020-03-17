@@ -35,6 +35,7 @@
     "react-native-thumbnail-grid": "^0.3.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-viewpager": "^0.2.13",
+    "react-native-webview": "^8.2.0",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.10.3",
     "react-navigation-tabs": "^2.5.6",
