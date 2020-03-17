@@ -21,7 +21,7 @@ import Settings from './App/screens/Settings'
 import Contact from './App/screens/Contact'
 import FAQ from './App/screens/FAQ'
 import MAP from './App/screens/MAP'
-
+import Webview from "./App/screens/webview"
 
 
 const RootStack = createStackNavigator({
@@ -56,6 +56,10 @@ const AuthNavigator = createStackNavigator({
   Selection: {
     screen: Selection
   },
+  Webview: {
+    screen: Webview
+  },
+
   ForgotPassword: {
     screen: ForgotPassword
   },
