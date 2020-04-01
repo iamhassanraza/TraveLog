@@ -7,7 +7,7 @@ import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import gmail from '../assets/images/gm.png';
 import fb from '../assets/images/fb.png';
 import Icon from 'react-native-vector-icons/Ionicons';
-import log from '../assets/images/logo.png';
+import log from '../assets/images/jpeg.jpg';
 
 export default class NewPassword extends Component {
   state = {
@@ -38,8 +38,9 @@ export default class NewPassword extends Component {
               source={log}
               style={{
                 height: '20%',
-                width: '35%',
+                width: '45%',
                 alignSelf: 'center',
+                borderRadius:20,
                 marginTop: '2%',
               }}></Image>
             <Text

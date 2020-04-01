@@ -4,7 +4,7 @@ import {Container, Header, Content, Item, Input, Button} from 'native-base';
 import pic from '../assets/images/a38.jpeg';
 import {ThemeColor} from '../assets/Colors/Colors';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
-import log from '../assets/images/logo.png';
+import log from '../assets/images/jpeg.jpg';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -58,10 +58,12 @@ export default class ForgotPassword extends Component {
             <Image
               source={log}
               style={{
-                height: '20%',
-                width: '35%',
+               marginTop:"10%",
                 alignSelf: 'center',
-                marginTop: '15%',
+               height: '20%',
+                width: '45%',
+                alignSelf: 'center',
+                borderRadius:20
               }}></Image>
             <Text
               style={{

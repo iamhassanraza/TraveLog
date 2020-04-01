@@ -4,7 +4,7 @@ import {Container, Header, Content, Item, Input, Button} from 'native-base';
 import pic from '../assets/images/a35.jpeg';
 import {ThemeColor} from '../assets/Colors/Colors';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
-import log from '../assets/images/logo.png';
+import log from '../assets/images/jpeg.jpg';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class RecoveryCode extends Component {
@@ -36,9 +36,10 @@ state={
               source={log}
               style={{
                 height: '20%',
-                width: '35%',
+                width: '45%',
                 alignSelf: 'center',
-                marginTop: '15%',
+                borderRadius:20,
+                marginTop: '10%',
               }}></Image>
             <Text
               style={{
