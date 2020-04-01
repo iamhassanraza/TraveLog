@@ -11,6 +11,8 @@ const DestinationsRouter = require("./Router/Destinations");
 const imageRoutes = require("./Router/images");
 const AttractionsRoutes = require("./Router/Attractions");
 const reviewRoutes = require("./Router/Reviews");
+const ContactRoute = require("./Router/Contact")
+
 const con = require("./db");
 const passport = require("passport");
 app.use(express.static("public"));
@@ -40,6 +42,7 @@ app.use("/destination", DestinationsRouter);
 app.use("/images", imageRoutes);
 app.use("/attraction", AttractionsRoutes);
 app.use("/reviews", reviewRoutes);
+app.use("/contact", ContactRoute)
 
 app.listen(process.env.PORT, () =>
   console.log("Server running successfully on Port", process.env.PORT)

@@ -3,7 +3,7 @@ import { Text, View, Image, TouchableOpacity } from 'react-native'
 import DestinationDetails from './App/screens/DestinationDetails';
 import 'react-native-gesture-handler'
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+
 import ScreenNavigation from './App/screens/ScreenNavigation'
 import { ThemeColor, ThemeGrey, BackgroundColor } from './App/assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -22,6 +22,9 @@ import Contact from './App/screens/Contact'
 import FAQ from './App/screens/FAQ'
 import MAP from './App/screens/MAP'
 import Webview from "./App/screens/webview"
+import { createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import AuthLoading from './App/screens/AuthLoading'
 
 
 const RootStack = createStackNavigator({
@@ -87,7 +90,22 @@ const AuthNavigator = createStackNavigator({
 
 
 
-const AppContianer = createAppContainer(AuthNavigator);
+
+
+ const SwitchNav = createSwitchNavigator(
+    {
+      AuthLoading: AuthLoading,
+      App: RootStack,
+      Auth: AuthNavigator,
+    },
+    {
+      initialRouteName: 'AuthLoading',
+    }
+  )
+
+
+
+const AppContianer = createAppContainer(SwitchNav);
 
 
 export default class App extends Component {

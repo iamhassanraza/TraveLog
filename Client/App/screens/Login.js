@@ -8,15 +8,49 @@ import gmail from '../assets/images/gm.png';
 import fb from '../assets/images/fb.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import log from '../assets/images/jpeg.jpg';
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 export default class Login extends Component {
   state = {
-    email: '',
-    password: '',
+    email: 'm.h.raxa8@gmail.com',
+    password: 'hassanbhai',
     error:''
   };
+
+
+
+  
+
+
+  signIn = async () => {
+    const res = await fetch('https://travelog-pk.herokuapp.com/auth/signin',{
+      method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+      body:JSON.stringify({
+        email:this.state.email,
+        password:this.state.password
+      })
+    })
+    console.log(res,"res");
+    const responsejson =  await res.json();
+    console.log(responsejson,"response in json");
+
+    //Storing data in AsycStorage
+
+    await AsyncStorage.setItem('UserId', JSON.stringify(responsejson.user.userProfile_id));
+    await AsyncStorage.setItem('UserName', JSON.stringify(responsejson.user.name));
+    await AsyncStorage.setItem('UserEmail', JSON.stringify(responsejson.user.email));
+    await AsyncStorage.setItem('UserPhone', JSON.stringify(responsejson.user.phone));
+    await AsyncStorage.setItem('UserToken', JSON.stringify(responsejson.message));
+
+  
+
+
+  } 
 
 
   validate = (text) => {
@@ -32,7 +66,7 @@ export default class Login extends Component {
     else {
       this.setState({email:text, error:''})
       console.log("Email is Correct");
-      
+      return true;
     }
     }
 
@@ -122,9 +156,13 @@ export default class Login extends Component {
 
               <Button
                 onPress={()=>{
-                  this.validate(this.state.email);
-                  this.props.navigation.push('ScreenNavigation')
-              
+                  if(this.validate(this.state.email)){
+                    this.signIn();
+                  }
+                  
+                  // this.props.navigation.push('ScreenNavigation')
+                  
+
                 }}
                 rounded
                 style={{
