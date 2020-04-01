@@ -27,6 +27,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import AuthLoading from './App/screens/AuthLoading'
 
 
+
 const RootStack = createStackNavigator({
   MainTab: ScreenNavigation,
   Filters: Filters,

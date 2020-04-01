@@ -7,7 +7,7 @@ import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import gmail from '../assets/images/gm.png';
 import fb from '../assets/images/fb.png';
 import Icon from 'react-native-vector-icons/Ionicons';
-import log from '../assets/images/logo.png';
+import log from '../assets/images/jpeg.jpg';
 
 export default class SignUp extends Component {
   state = {
