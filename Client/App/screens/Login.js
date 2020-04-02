@@ -201,6 +201,7 @@ export default class Login extends Component {
               <View
                 style={{justifyContent: 'space-around', flexDirection: 'row'}}>
                 <Button
+                onPress={()=> alert("Work in Progress")}
                   rounded
                   style={{
                     justifyContent: 'center',
@@ -220,7 +221,7 @@ export default class Login extends Component {
                   </Text>
                 </Button>
                 <Button
-                  onPress={()=>this.props.navigation.push('Webview')}
+                  onPress={()=> alert("Work in Progress")}
                   rounded
                   style={{
                     justifyContent: 'center',
