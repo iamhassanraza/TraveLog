@@ -13,14 +13,11 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default class Login extends Component {
   state = {
-    email: '',
-    password: '',
+    email: 'ali@travelog.com',
+    password: 'travelog',
     error:''
   };
 
-
-
-  
 
 
   signIn = async () => {
@@ -40,12 +37,20 @@ export default class Login extends Component {
     console.log(responsejson,"response in json");
 
     //Storing data in AsycStorage
+    if(res.status === 200){
 
-    await AsyncStorage.setItem('UserId', JSON.stringify(responsejson.user.userProfile_id));
-    await AsyncStorage.setItem('UserName', JSON.stringify(responsejson.user.name));
-    await AsyncStorage.setItem('UserEmail', JSON.stringify(responsejson.user.email));
-    await AsyncStorage.setItem('UserPhone', JSON.stringify(responsejson.user.phone));
-    await AsyncStorage.setItem('UserToken', JSON.stringify(responsejson.message));
+      await AsyncStorage.setItem('User', JSON.stringify(responsejson));
+      this.props.navigation.navigate('App');
+      // 
+  
+      // await AsyncStorage.setItem('UserId', JSON.stringify(responsejson.user.userProfile_id));
+      // await AsyncStorage.setItem('UserName', JSON.stringify(responsejson.user.name));
+      // await AsyncStorage.setItem('UserEmail', JSON.stringify(responsejson.user.email));
+      // await AsyncStorage.setItem('UserPhone', JSON.stringify(responsejson.user.phone));
+      // await AsyncStorage.setItem('UserToken', JSON.stringify(responsejson.message));
+
+    }
+    
 
   } 
 
@@ -182,6 +187,14 @@ export default class Login extends Component {
                 <Text
                   style={{alignSelf: 'center', fontSize: 15, color: 'white'}}>
                   Forgot Password ?
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+              onPress={() => this.props.navigation.push('SignUp')}>
+                <Text
+                  style={{alignSelf: 'center', fontSize: 15, color: 'white'}}>
+                  Don't have an account ?
                 </Text>
               </TouchableOpacity>
               {/* <Text style={{alignSelf:"center", fontSize:18, color:"white"}}>OR</Text> */}

@@ -57,9 +57,7 @@ const AuthNavigator = createStackNavigator({
   Login: {
     screen: Login
   },
-  Selection: {
-    screen: Selection
-  },
+  
   Webview: {
     screen: Webview
   },
@@ -80,7 +78,7 @@ const AuthNavigator = createStackNavigator({
 },
 
 {
-  initialRouteName:'Selection',
+  initialRouteName:'Login',
   headerLayoutPreset: 'center',
   defaultNavigationOptions:{
     header: null

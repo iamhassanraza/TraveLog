@@ -35,12 +35,12 @@ export default class Settings extends Component {
             <TouchableOpacity onPress={() => this._signOutAsync()}>
               <IconWithText
                 name="phone"
-                text="Contact Us"
+                text="Logout"
                 iconstyle={styles.IconStyle}
                 textstyle={styles.TextStyle}
                 style={styles.Line}></IconWithText>
             </TouchableOpacity>
-
+{/* 
             <TouchableOpacity
               style={{borderWidth: 1}}
               onPress={() => alert('ha')}>
@@ -95,7 +95,7 @@ export default class Settings extends Component {
                 iconstyle={styles.IconStyle}
                 textstyle={styles.TextStyle}
                 style={styles.Line}></IconWithText>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </ImageBackground>
       </View>
