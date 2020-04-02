@@ -13,8 +13,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default class Login extends Component {
   state = {
-    email: 'ali@travelog.com',
-    password: 'travelog',
+    email: '',
+    password: '',
     error:''
   };
 
@@ -38,17 +38,18 @@ export default class Login extends Component {
 
     //Storing data in AsycStorage
     if(res.status === 200){
-
       await AsyncStorage.setItem('User', JSON.stringify(responsejson));
       this.props.navigation.navigate('App');
-      // 
-  
+    
       // await AsyncStorage.setItem('UserId', JSON.stringify(responsejson.user.userProfile_id));
       // await AsyncStorage.setItem('UserName', JSON.stringify(responsejson.user.name));
       // await AsyncStorage.setItem('UserEmail', JSON.stringify(responsejson.user.email));
       // await AsyncStorage.setItem('UserPhone', JSON.stringify(responsejson.user.phone));
       // await AsyncStorage.setItem('UserToken', JSON.stringify(responsejson.message));
 
+    }
+    else if(res.status === 400 ){
+      alert(responsejson.message);
     }
     
 
@@ -80,7 +81,7 @@ export default class Login extends Component {
       <ScrollView>
         <Container style={{backgroundColor: 'black'}}>
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Icon
               onPress={() => this.props.navigation.push('Selection')}
                 name="ios-arrow-back"
@@ -91,14 +92,15 @@ export default class Login extends Component {
                   fontSize: 30,
                   fontWeight: 'bold',
                 }}></Icon>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <Image
               source={log}
               style={{
                 height: '20%',
                 width: '45%',
                 alignSelf: 'center',
-                borderRadius:20
+                borderRadius:20,
+                marginTop:'10%'
               }}></Image>
             <Content
               style={{
@@ -161,10 +163,7 @@ export default class Login extends Component {
                   if(this.validate(this.state.email)){
                     this.signIn();
                   }
-                  
-                  // this.props.navigation.push('ScreenNavigation')
-                  
-
+  
                 }}
                 rounded
                 style={{
@@ -185,7 +184,7 @@ export default class Login extends Component {
               <TouchableOpacity
               onPress={() => this.props.navigation.push('ForgotPassword')}>
                 <Text
-                  style={{alignSelf: 'center', fontSize: 15, color: 'white'}}>
+                  style={{alignSelf: 'center', fontSize: 16, color: 'white'}}>
                   Forgot Password ?
                 </Text>
               </TouchableOpacity>
@@ -193,7 +192,7 @@ export default class Login extends Component {
               <TouchableOpacity
               onPress={() => this.props.navigation.push('SignUp')}>
                 <Text
-                  style={{alignSelf: 'center', fontSize: 15, color: 'white'}}>
+                  style={{alignSelf: 'center', fontSize: 16, color: 'white',marginTop:'2%'}}>
                   Don't have an account ?
                 </Text>
               </TouchableOpacity>

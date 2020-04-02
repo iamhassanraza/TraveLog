@@ -17,7 +17,7 @@ export default class Settings extends Component {
 
   _signOutAsync = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Selection');
+    this.props.navigation.navigate('Login');
     console.log('Logged Out');
   };
 
