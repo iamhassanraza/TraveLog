@@ -13,8 +13,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default class Login extends Component {
   state = {
-    email: 'm.h.raxa8@gmail.com',
-    password: 'hassanbhai',
+    email: '',
+    password: '',
     error:''
   };
 
@@ -46,9 +46,6 @@ export default class Login extends Component {
     await AsyncStorage.setItem('UserEmail', JSON.stringify(responsejson.user.email));
     await AsyncStorage.setItem('UserPhone', JSON.stringify(responsejson.user.phone));
     await AsyncStorage.setItem('UserToken', JSON.stringify(responsejson.message));
-
-  
-
 
   } 
 

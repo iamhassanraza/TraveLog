@@ -46,7 +46,7 @@ onSubmission = async () => {
   console.log('chalra ye')
 
   let response = await fetch(
-    'http://192.168.100.46:5000/auth/signup',
+    'https://travelog-pk.herokuapp.com/auth/signup',
     {
       method: 'POST',
       headers: {
