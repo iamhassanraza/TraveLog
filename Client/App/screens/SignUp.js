@@ -8,6 +8,17 @@ import gmail from '../assets/images/gm.png';
 import fb from '../assets/images/fb.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import log from '../assets/images/jpeg.jpg';
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
 
 export default class SignUp extends Component {
   state = {
@@ -16,6 +27,7 @@ export default class SignUp extends Component {
     error: '',
     contact: '',
     confirmPassword: '',
+    loading: false
   };
 
   validate = text => {
@@ -66,9 +78,8 @@ export default class SignUp extends Component {
       alert(User.message);
     } else if (parseInt(response.status) === 200) {
       console.log(User.message);
-      alert(User.message);
-
       this.props.navigation.navigate('Login');
+      this.setState({ loading: false})
     } else if (parseInt(response.status) === 409) {
       alert(User[0].msg);
       console.log(User[0].msg);
@@ -220,6 +231,7 @@ export default class SignUp extends Component {
                     } else if (
                       this.state.password === this.state.confirmPassword
                     ) {
+                      this.setState({loading:true})
                       this.setState({error: ''});
                       this.onSubmission();
                     }
@@ -238,6 +250,7 @@ export default class SignUp extends Component {
                   style={{color: 'white', fontSize: 17, fontWeight: 'bold'}}>
                   Signup
                 </Text>
+                {this.state.loading ? <WaveIndicator style={{paddingLeft:"20%"}} color="white"  /> : null}
               </Button>
             </Content>
 

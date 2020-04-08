@@ -9,13 +9,24 @@ import fb from '../assets/images/fb.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 import log from '../assets/images/jpeg.jpg';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
 
 export default class Login extends Component {
   state = {
     email: '',
     password: '',
-    error:''
+    error:'',
+    loading: false
   };
 
 
@@ -38,8 +49,10 @@ export default class Login extends Component {
 
     //Storing data in AsycStorage
     if(res.status === 200){
+      
       await AsyncStorage.setItem('User', JSON.stringify(responsejson));
       this.props.navigation.navigate('App');
+      this.setState({ loading: false})
     
       // await AsyncStorage.setItem('UserId', JSON.stringify(responsejson.user.userProfile_id));
       // await AsyncStorage.setItem('UserName', JSON.stringify(responsejson.user.name));
@@ -162,7 +175,9 @@ export default class Login extends Component {
 
               <Button
                 onPress={()=>{
+                  
                   if(this.validate(this.state.email)){
+                    this.setState({loading:true})
                     this.signIn();
                   }
   
@@ -180,6 +195,7 @@ export default class Login extends Component {
                   style={{color: 'white', fontSize: 17, fontWeight: 'bold'}}>
                   Login
                 </Text>
+                {this.state.loading ? <WaveIndicator style={{paddingLeft:"20%"}} color="white"  /> : null}
               </Button>
             </Content>
             <Content>
