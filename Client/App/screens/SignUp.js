@@ -104,7 +104,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <ScrollView>
-        <Container style={{backgroundColor: 'black', height: '100%'}}>
+        <Container style={{flex:1}}>
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity>

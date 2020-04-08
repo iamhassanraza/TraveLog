@@ -78,9 +78,11 @@ export default class Login extends Component {
 
     console.log(this.state);
     return (
+    
       <ScrollView>
-        <Container style={{backgroundColor: 'black'}}>
-          <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
+         
+        <Container style={{flex:1}}>
+        <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
             {/* <TouchableOpacity>
               <Icon
               onPress={() => this.props.navigation.push('Selection')}
@@ -242,9 +244,11 @@ export default class Login extends Component {
                 </Button>
               </View>
             </Content>
-          </ImageBackground>
+            </ImageBackground>
         </Container>
+ 
       </ScrollView>
+   
     );
   }
 }
