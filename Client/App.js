@@ -30,8 +30,14 @@ import AuthLoading from './App/screens/AuthLoading'
 
 const RootStack = createStackNavigator({
   MainTab: ScreenNavigation,
-  Filters: Filters,
-  Contact : Contact
+  Filters: {
+    screen: Filters,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Contact : Contact,
+  FAQ: FAQ
 },
 {
   defaultNavigationOptions: props => {
@@ -104,7 +110,7 @@ const AuthNavigator = createStackNavigator({
 
 
 
-const AppContianer = createAppContainer(SwitchNav);
+const AppContianer = createAppContainer(RootStack);
 
 
 export default class App extends Component {
