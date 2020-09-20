@@ -6,11 +6,11 @@ import { ThemeColor } from '../assets/Colors/Colors'
 const HeaderImage = (props) => {
     return (
    
-        <ImageBackground source={{uri:`https://travelog-pk.herokuapp.com/images/${props.imageName}`}} style={[styles.ImageContainer,props.style]}>
+        <ImageBackground source={{uri:props.imageUrl ? props.imageUrl :`https://travelog-pk.herokuapp.com/images/${props.imageName}`}} style={[styles.ImageContainer,props.style]}>
         
         <View style={{flexDirection:'column',flex:1}}>
        {props.price ? ( <View style={{flexDirection:'row',alignSelf:'flex-end',backgroundColor:'white',padding:'2%'}}>
-             <Text style={{fontSize:16,fontWeight:'bold',color:'#6A6A6A'}}>{props.price}$</Text>
+             <Text style={{fontSize:16,fontWeight:'bold',color:'#6A6A6A'}}>{props.price/1000}K</Text>
          </View>) : null}
          {props.tag ? (<Text style={{fontWeight:'900',backgroundColor:ThemeColor,padding: '2%',alignSelf: 'flex-start', color:'white'}}>{props.tag}</Text>
 ) : null}

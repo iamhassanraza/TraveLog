@@ -1,23 +1,12 @@
 import React from 'react';
 import {
-  ActivityIndicator,
   AsyncStorage,
-  StatusBar,
-  StyleSheet,
   View,
   Image,
 } from 'react-native';
 import { ThemeColor } from '../assets/Colors/Colors';
 import pic from '../assets/images/authloading.jpg'
 import {
-    BallIndicator,
-    BarIndicator,
-    DotIndicator,
-    MaterialIndicator,
-    PacmanIndicator,
-    PulseIndicator,
-    SkypeIndicator,
-    UIActivityIndicator,
     WaveIndicator,
   } from 'react-native-indicators';
 

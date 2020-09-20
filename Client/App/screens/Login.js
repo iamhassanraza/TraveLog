@@ -32,7 +32,7 @@ export default class Login extends Component {
 
 
   signIn = async () => {
-    const res = await fetch('https://travelog-pk.herokuapp.com/auth/signin',{
+    const res = await fetch('https://travelog-adonis.herokuapp.com/api/v1/user/signin',{
       method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -49,23 +49,14 @@ export default class Login extends Component {
 
     //Storing data in AsycStorage
     if(res.status === 200){
-      
       await AsyncStorage.setItem('User', JSON.stringify(responsejson));
       this.props.navigation.navigate('App');
-      this.setState({ loading: false})
-    
-      // await AsyncStorage.setItem('UserId', JSON.stringify(responsejson.user.userProfile_id));
-      // await AsyncStorage.setItem('UserName', JSON.stringify(responsejson.user.name));
-      // await AsyncStorage.setItem('UserEmail', JSON.stringify(responsejson.user.email));
-      // await AsyncStorage.setItem('UserPhone', JSON.stringify(responsejson.user.phone));
-      // await AsyncStorage.setItem('UserToken', JSON.stringify(responsejson.message));
-
+      this.setState({ loading: false});
     }
     else if(res.status === 400 ){
+      console.log("FAIL")
       alert(responsejson.message);
     }
-    
-
   } 
 
 
@@ -175,12 +166,10 @@ export default class Login extends Component {
 
               <Button
                 onPress={()=>{
-                  
                   if(this.validate(this.state.email)){
                     this.setState({loading:true})
                     this.signIn();
                   }
-  
                 }}
                 rounded
                 style={{
@@ -216,7 +205,7 @@ export default class Login extends Component {
               </TouchableOpacity>
               {/* <Text style={{alignSelf:"center", fontSize:18, color:"white"}}>OR</Text> */}
 
-              <View
+              {/* <View
                 style={{justifyContent: 'space-around', flexDirection: 'row'}}>
                 <Button
                 onPress={()=> alert("Work in Progress")}
@@ -258,7 +247,7 @@ export default class Login extends Component {
                     Google
                   </Text>
                 </Button>
-              </View>
+              </View> */}
             </Content>
             </ImageBackground>
         </Container>

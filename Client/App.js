@@ -110,7 +110,7 @@ const AuthNavigator = createStackNavigator({
 
 
 
-const AppContianer = createAppContainer(RootStack);
+const AppContianer = createAppContainer(SwitchNav);
 
 
 export default class App extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView,FlatList,Dimensions, ImageBackground,RefreshControl,TouchableWithoutFeedback} from 'react-native'
+import { Text, View, ScrollView,FlatList,Dimensions, ImageBackground,AsyncStorage,RefreshControl,TouchableWithoutFeedback} from 'react-native'
 import {BackgroundColor} from '../assets/Colors/Colors'
 import TourCard from '../components/TourCard'
 import OperatorCard from '../components/OperatorCard'
@@ -18,34 +18,44 @@ export default class Home extends Component {
         tourids:[],
         operatorids: [],
         destinationids: [],
-        refreshing: false
+        refreshing: false,
+        tourData:[]
     } 
 
 
     componentDidMount(){
-        this.fetchData()
+       // this.fetchData()
+       this.fetchTours()
     }
 
     fetchData = () => {
         this.fetchTours()
         this.fetchOperators()
         this.fetchDestinations()
-        console.log(this.state)
+      
     }
 
 
-    fetchTours = () => {
-        fetch("https://travelog-pk.herokuapp.com/tours/filter?")
+     fetchTours = async () => {
+        const User = JSON.parse(await AsyncStorage.getItem('User'));
+        console.log(typeof(User.token),"TOKEN")
+        fetch("https://travelog-adonis.herokuapp.com/api/v1/search/post?type=post_all&page=1",{
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${User.token}`,
+              }
+            })
         .then(response => {
             return response.json()
         })
         .then((responseJson)=> {
+            console.log(responseJson,"RESPONSEJSONNNNNNNNN")
             this.setState({
                 refreshing: false,
-                tourids : responseJson
+                tourData : responseJson.data
             })
         })
-        .catch(err => console.log(err))    
+        .catch(err => console.log(err,"ERRRRRRRRRRRRRRRRRR"))    
     }
 
     fetchOperators = () => {
@@ -87,7 +97,7 @@ export default class Home extends Component {
     render() {
         const apiUrl= `https://travelog-pk.herokuapp.com/destination/card/`
         
-
+console.log(this.state.tourData,"TOUR DATA")
         return ( 
                     <ScrollView 
                         style={{backgroundColor:'#F0F0F0', height: '100%'}}
@@ -117,15 +127,23 @@ export default class Home extends Component {
                     <View style={{flexDirection:'column'}}>
 
                     <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
-                        {
-                            this.state.tourids[0] ? 
-                            <FlatList
+                   
+                         {this.state.tourData ?  <FlatList
                                 horizontal
-                                data={this.state.tourids}
+                                data={this.state.tourData}
                                 showsHorizontalScrollIndicator={false}
-                                renderItem={({ item }) => <TourCard style={{marginRight:10}}
-                                id={item.tour_id}
-                                seatsLeft={10} ></TourCard>}
+                                renderItem={({ item }) => 
+                                <TourCard style={{marginRight:10}}
+                                id={item.id}
+                                seatsLeft={10}
+                                title={item.title}
+                                price={item.price}
+                                departure_date={item.departure_date}
+                                number_of_days={item.number_of_days}
+                                speciality={item.speciality}
+                                operator={item.users.first_name + ' ' + item.users.last_name}
+                                photoUrl={item.postDetail.image_url}
+                                ></TourCard>}
                                 keyExtractor={item => item.tour_id}
                             /> : 
                             <View style={{flexDirection:'row'}}>
@@ -135,8 +153,8 @@ export default class Home extends Component {
                                 <View style={{width:'60%', marginLeft: '10%'}}>
                                     <Facebook speed={0.5} height={150}/>
                                 </View>
-                            </View>
-                        }
+                            </View>}
+                        
                     </FlatListContainer>
                  
                     <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
