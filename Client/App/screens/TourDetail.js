@@ -39,25 +39,8 @@ export default class TourDetail extends Component {
   };
 
     data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
-    tourId = this.props.navigation.getParam('tourId', 'No id provided by card')
-    duration = this.props.navigation.getParam('duration', 'No id provided by card')
     suggestedTours = [1,2,3,4]
-  componentDidMount(){
-    
-
-
-    fetch(`https://travelog-pk.herokuapp.com/tours/${this.tourId}`)
-        .then(response => {
-            return response.json()})
-        .then((responseJson)=> {
-          this.setState({
-            apiData : responseJson
-          })
-        }).catch(err=>console.log('tour details me error hai',err))
-}
-
-
-
+ 
 
   renderHeading = (title)=>{
     return (<View style={{flex:1,flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -137,19 +120,19 @@ return (
  }
 
  renderIcons = (data)=>{
-   const date_of_departure = new Date(this.data[0].date_of_departure)
+   const date_of_departure = new Date(this.data.departure_date)
    return (
     <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop:10,flex:1}}>
     <View style={{flexDirection: 'column',flex:1}}>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="account-supervisor"
-        title="Speciality:"
-        subtitle={this.data[0].speciality}></IconWithText>
+        title="Speciality"
+        subtitle={this.data.speciality}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="calendar-check"
-        title="Departure:"
+        title="Departure"
         subtitle={date_of_departure.getDate() + "-" + (date_of_departure.getMonth() + 1) + "-" + date_of_departure.getFullYear()}></IconWithText>
     </View>
     <View style={{flexDirection: 'column',flex:1}}>
@@ -157,7 +140,7 @@ return (
         textstyle={{fontSize:14}}
         icon="timer"
         title="Duration"
-        subtitle={this.duration}></IconWithText>
+        subtitle={`${this.data.number_of_days} Days`}></IconWithText>
       <IconWithText
        textstyle={{fontSize:14}}
         icon="seat-recline-normal"
@@ -196,25 +179,25 @@ return (
 
   render() {
   
-    console.log(this.data[0].date_of_departure )
+
     return (
       <ScrollView>
         
-        <HeaderImage imageName={this.data[0].tourcover} style={{height: height / 3}}></HeaderImage>
+        <HeaderImage imageUrl={this.data.postDetail[0].image_url} style={{height: height / 3}}></HeaderImage>
         <View style={{borderWidth:0.5,borderColor:BorderColor,paddingLeft:10,paddingRight:10,paddingBottom:10}}>
-        {this.renderHeading(this.data[0].title)}
-        {this.state.apiData ? this.renderOverview(this.state.apiData[0].overview) : this.renderOverview('')}
-        {this.renderIcons({speciality:this.data[0].speciality, duration:this.data[0].duration, date_of_departure: this.data[0].date_of_departure })}
+        {this.renderHeading(this.data.title)}
+        {this.state.apiData ? this.renderOverview(this.data.description) : this.renderOverview('')}
+        {this.renderIcons({speciality:this.data.speciality, duration:this.data.number_of_days, date_of_departure: this.data.departure_date })}
         </View>
        
         <View>
 
       
-        {this.state.apiData ? this.renderOperatorCard({name:this.data[0].name, rating:this.data[0].numeric_rating,is_verified:this.data[0].is_verified,dp:this.data[0].operatordp}) : <LoadingIndicator></LoadingIndicator>}
+        {/* {this.state.apiData ? this.renderOperatorCard({name:this.data[0].name, rating:this.data[0].numeric_rating,is_verified:this.data[0].is_verified,dp:this.data[0].operatordp}) : <LoadingIndicator></LoadingIndicator>} */}
         </View>
         {/* <OperatorCard></OperatorCard> */}
-        {this.renderPlan()}
-        {this.renderTourList()}
+        {/* {this.renderPlan()}
+        {this.renderTourList()} */}
        
 
         

@@ -55,18 +55,16 @@ class TourCard extends React.Component {
     //     (end_date.getTime() - start_Date.getTime()) / (1000 * 3600 * 24);
 
 
-        const {id,seatsLeft,title,price,departure_date,speciality,operator,photoUrl,number_of_days} = this.props;
-
-      return (
+        const {id,seatsLeft,title,price,departure_date,speciality,operator,photoUrl,number_of_days,wholeData} = this.props;
         
+      return (
+  
         <TouchableWithoutFeedback
-         // onPress={() =>
-            // this.props.navigation.navigate('TourDetail', {
-            //   TourData: [...this.state.data],
-            //   tourId: this.props.id,
-            //   duration: duration,
-            // })
-         // }
+         onPress={() =>
+            this.props.navigation.navigate('TourDetail', {
+              TourData: wholeData
+            })
+         }
           >
           <View>
             <View style={[styles.Container, this.props.style]}>

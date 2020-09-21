@@ -142,7 +142,8 @@ console.log(this.state.tourData,"TOUR DATA")
                                 number_of_days={item.number_of_days}
                                 speciality={item.speciality}
                                 operator={item.users.first_name + ' ' + item.users.last_name}
-                                photoUrl={item.postDetail.image_url}
+                                photoUrl={item.postDetail[0].image_url}
+                                wholeData={item}
                                 ></TourCard>}
                                 keyExtractor={item => item.tour_id}
                             /> : 
