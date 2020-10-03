@@ -12,21 +12,9 @@ import ContentLoader, { Facebook } from 'react-content-loader/native';
 
 export default class OperatorRating extends Component {
 
-    componentDidMount() {
-        fetch(`https://travelog-pk.herokuapp.com/reviews/'operator'/${this.props.screenProps.operatorId}`)
-        .then(res => {
-            return res.json()
-        })
-        .then(resJson => {
-            this.setState({
-                reviews: resJson
-            })
-        })
-        .catch(err => console.log(err))
-    }
 
     state = {
-        reviews: undefined
+        reviews: true
     }
 
     render() {
@@ -71,7 +59,7 @@ export default class OperatorRating extends Component {
                         <View style={{marginTop: '2%', paddingLeft: '1%'}}>
                             <Text style={{fontSize: 22, fontWeight: '400'}}>Reviews</Text>
                         </View>
-                        <FlatList
+                        {/* <FlatList
                             data = {this.state.reviews}
                             showsScrollIndicator = {false}
                             renderItem = {({item}) => {
@@ -84,7 +72,7 @@ export default class OperatorRating extends Component {
                             }}
                             keyExtractor = {item => item.reviewer}
                             style={{paddingBottom: '1%'}}
-                        />
+                        /> */}
                     </View>
                 </ScrollView> :
                 <View style={{alignItems: 'center'}}>

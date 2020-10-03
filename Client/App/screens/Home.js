@@ -19,13 +19,14 @@ export default class Home extends Component {
         operatorids: [],
         destinationids: [],
         refreshing: false,
-        tourData:[]
+        tourData:[],
+        operatorsData:[]
     } 
 
 
     componentDidMount(){
-       // this.fetchData()
-       this.fetchTours()
+       this.fetchData()
+    //    this.fetchTours()
     }
 
     fetchData = () => {
@@ -58,17 +59,26 @@ export default class Home extends Component {
         .catch(err => console.log(err,"ERRRRRRRRRRRRRRRRRR"))    
     }
 
-    fetchOperators = () => {
-        fetch("https://travelog-pk.herokuapp.com/operators/filter?")
+    fetchOperators  = async () => {
+        const User = JSON.parse(await AsyncStorage.getItem('User'));
+        console.log(typeof(User.token),"TOKEN")
+        fetch("https://travelog-adonis.herokuapp.com/api/v1/get/operators",{
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${User.token}`,
+              }
+            })
         .then(response => {
-            return response.json()})
+            return response.json()
+        })
         .then((responseJson)=> {
+            console.log(responseJson,"OPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
             this.setState({
                 refreshing: false,
-                operatorids : responseJson,
+                operatorsData : responseJson
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err,"ERRRRRRRRRRRRRRRRRR")) 
     }
 
     fetchDestinations = () => {
@@ -97,7 +107,7 @@ export default class Home extends Component {
     render() {
         const apiUrl= `https://travelog-pk.herokuapp.com/destination/card/`
         
-console.log(this.state.tourData,"TOUR DATA")
+console.log(this.state.operatorsData,"OPP DATA")
         return ( 
                     <ScrollView 
                         style={{backgroundColor:'#F0F0F0', height: '100%'}}
@@ -160,16 +170,23 @@ console.log(this.state.tourData,"TOUR DATA")
                  
                     <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
                         {
-                            this.state.operatorids[0] ? 
+                            this.state.operatorsData ? 
                             <FlatList 
                                 horizontal
-                                data={this.state.operatorids}
-                                keyExtractor={item => item.operator_id}
+                                data={this.state.operatorsData}
+                                keyExtractor={item => item.id}
                                 showsHorizontalScrollIndicator={false}
                                 renderItem= {({item}) => 
                                 <OperatorCard
-                                    operatorId = {item.operator_id}
-                                    style={{marginRight:10}}
+                                id={item.id}
+                                first_name={item.first_name}
+                                email={item.email}
+                                profile_pic_url={item.profile_pic_url}
+                                contact_no={item.contact_no}
+                                address={item.major}
+                                followStatus={item.userFollowing.length === 0 ? false : true}
+                                data={item}
+                                style={{marginRight:10}}
                                 />
                                 }
                             /> : 

@@ -31,16 +31,6 @@ export default class SignUp extends Component {
   };
 
   validate = text => {
-    console.log(text);
-    // let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    // if (reg.test(text) === false) {
-    //   console.log('Email is Not Correct');
-    //   this.setState({email: text, error: 'Email is Not Correct'});
-    //   return false;
-    // } else {
-    //   this.setState({email: text, error: ''});
-    //   console.log('Email is Correct');
-    // }
     if (
       !this.state.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
     ) {
@@ -55,70 +45,69 @@ export default class SignUp extends Component {
     console.log('chalra ye');
 
     let response = await fetch(
-      'https://travelog-pk.herokuapp.com/auth/signup',
+      'https://travelog-adonis.herokuapp.com/api/v1/user/signup',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          first_name: this.state.name,
           email: this.state.email,
           password: this.state.password,
-          confirm_password: this.state.confirmPassword,
-          phone: this.state.contact,
-          name: this.state.name,
+          contact_no: this.state.contact,
         }),
       },
     );
 
     const User = await response.json();
-    console.log(response.status, '-------------Signup Scnz -----------------');
-    if (parseInt(response.status) === 401) {
+    console.log(User, response.status, '-------------Signup Scnz -----------------');
+    if (parseInt(response.status) === 722) {
       console.log(User.message);
       alert(User.message);
-    } else if (parseInt(response.status) === 200) {
+    } else if (parseInt(response.status) === 201) {
       console.log(User.message);
       this.props.navigation.navigate('Login');
       this.setState({ loading: false})
-    } else if (parseInt(response.status) === 409) {
-      alert(User[0].msg);
-      console.log(User[0].msg);
-    } else {
-      alert('something went wrong');
-    }
+    } else if (parseInt(response.status) === 400) {
+      alert("Something Went Wrong");
+      
+    } 
   };
 
-  gmailSignup = async () => {
-    console.log('gmail wala chala do');
+  // gmailSignup = async () => {
+  //   console.log('gmail wala chala do');
 
-    let response = await fetch('http://192.168.100.46:5000/auth/google', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  //   let response = await fetch('http://192.168.100.46:5000/auth/google', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
 
-    const User = await response.json();
-    console.log(
-      response.status,
-      '-------------Gmailll Signup Scnz -----------------',
-    );
-    if (parseInt(response.status) === 200) {
-      console.log(User.message, User);
-      alert(User.message);
-      this.props.navigation.navigate('RootStack');
-    } else {
-      alert('Something went wrong');
-    }
-  };
+  //   const User = await response.json();
+  //   console.log(
+  //     response.status,
+  //     '-------------Gmailll Signup Scnz -----------------',
+  //   );
+  //   if (parseInt(response.status) === 200) {
+  //     console.log(User.message, User);
+  //     alert(User.message);
+  //     this.props.navigation.navigate('RootStack');
+  //   } else {
+  //     alert('Something went wrong');
+  //   }
+  // };
 
   render() {
+    
     return (
       <ScrollView>
         <Container style={{flex:1}}>
           <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
+          <View style={styles.colorOverlay}>
             <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity>
+              {/* <TouchableOpacity>
                 <Icon
                   onPress={() => this.props.navigation.push('Selection')}
                   name="ios-arrow-back"
@@ -129,7 +118,7 @@ export default class SignUp extends Component {
                     fontSize: 30,
                     fontWeight: 'bold',
                   }}></Icon>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               {/* <Text style={{fontSize:40,color:"white", alignSelf:"center", fontWeight:"bold",paddingTop:"2%", paddingLeft:"3%"}}> Sign Up</Text> */}
             </View>
             {/* <Image
@@ -141,12 +130,14 @@ export default class SignUp extends Component {
               }}></Image> */}
             <Content
               style={{
-                height: '50%',
+                //backgroundColor:'rgba(230, 226, 216,0.5)',
+                
                 marginTop: 0,
                 paddingBottom: '10%',
                 marginLeft: '5%',
                 marginRight: '5%',
                 borderRadius: 20,
+                paddingTop:'20%'
               }}>
               <Text style={styles.Title}> User Name</Text>
               <Item style={{width: '80%', alignSelf: 'center'}}>
@@ -154,9 +145,9 @@ export default class SignUp extends Component {
                   onChangeText={text => {
                     this.setState({name: text});
                   }}
-                  placeholder="Lionel Messi "
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  // placeholder="Lionel Messi "
+                  // placeholderTextColor="#eddedd"
+                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
                 />
               </Item>
 
@@ -167,9 +158,9 @@ export default class SignUp extends Component {
                     this.setState({email: text});
                     // this.validate(text);
                   }}
-                  placeholder="travel@log.com"
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  // placeholder="travel@log.com"
+                  // placeholderTextColor="white"
+                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
                 />
               </Item>
               {this.state.error === '' ? null : (
@@ -185,9 +176,9 @@ export default class SignUp extends Component {
                     this.setState({password: text});
                   }}
                   secureTextEntry={true}
-                  placeholder="* * * * * "
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  // placeholder="* * * * * "
+                  // placeholderTextColor="white"
+                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
                 />
               </Item>
 
@@ -198,9 +189,9 @@ export default class SignUp extends Component {
                     this.setState({confirmPassword: text});
                   }}
                   secureTextEntry={true}
-                  placeholder="* * * * * "
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  // placeholder="* * * * * "
+                  // placeholderTextColor="white"
+                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
                 />
               </Item>
 
@@ -210,9 +201,9 @@ export default class SignUp extends Component {
                   onChangeText={text => {
                     this.setState({contact: text});
                   }}
-                  placeholder="03139099324 "
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  // placeholder="03139099324 "
+                  // placeholderTextColor="white"
+                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
                 />
               </Item>
 
@@ -254,54 +245,7 @@ export default class SignUp extends Component {
               </Button>
             </Content>
 
-            <View
-              style={{
-                justifyContent: 'space-around',
-                flexDirection: 'row',
-                paddingBottom: '2%',
-              }}>
-              <Button
-                rounded
-                style={{
-                  justifyContent: 'center',
-                  marginTop: 0,
-                  backgroundColor: 'white',
-                  width: '35%',
-                  alignSelf: 'center',
-                }}>
-                <Image source={fb} style={{height: 20, width: 20}}></Image>
-                <Text
-                  style={{
-                    color: '#3b5998',
-                    fontWeight: 'bold',
-                    paddingLeft: '4%',
-                  }}>
-                  Facebook
-                </Text>
-              </Button>
-              <Button
-                onPress={() => {
-                  this.gmailSignup();
-                }}
-                rounded
-                style={{
-                  justifyContent: 'center',
-                  marginTop: 0,
-                  backgroundColor: 'white',
-                  width: '35%',
-                  alignSelf: 'center',
-                }}>
-                <Image source={gmail} style={{height: 20, width: 20}}></Image>
-                <Text
-                  style={{
-                    color: 'red',
-                    fontWeight: 'bold',
-                    paddingLeft: '4%',
-                  }}>
-                  Google
-                </Text>
-              </Button>
-            </View>
+           </View>
           </ImageBackground>
         </Container>
       </ScrollView>
@@ -312,9 +256,15 @@ export default class SignUp extends Component {
 const styles = StyleSheet.create({
   Title: {
     marginLeft: '10%',
-    fontSize: 20,
+    fontSize: 22,
     color: 'white',
-    marginTop: '1%',
+    marginBottom: '-5%',
     fontWeight: 'bold',
+    marginTop:'5%'
+  },
+  colorOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(230, 226, 216,0.2)',
+    justifyContent: 'center',
   },
 });
