@@ -81,7 +81,7 @@ class OperatorCard extends React.Component {
       address,
       followStatus,
     } = this.props;
-    console.log(followStatus, 'Follow status');
+   
     return (
       <TouchableWithoutFeedback
       onPress={()=>this.props.navigation.push('OperatorProfile', {

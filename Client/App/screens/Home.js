@@ -32,7 +32,7 @@ export default class Home extends Component {
     fetchData = () => {
         this.fetchTours()
         this.fetchOperators()
-        this.fetchDestinations()
+        //this.fetchDestinations()
       
     }
 
@@ -107,7 +107,7 @@ export default class Home extends Component {
     render() {
         const apiUrl= `https://travelog-pk.herokuapp.com/destination/card/`
         
-console.log(this.state.operatorsData,"OPP DATA")
+console.log(this.state.tourData,"OPP DATA")
         return ( 
                     <ScrollView 
                         style={{backgroundColor:'#F0F0F0', height: '100%'}}
@@ -154,6 +154,7 @@ console.log(this.state.operatorsData,"OPP DATA")
                                 operator={item.users.first_name + ' ' + item.users.last_name}
                                 photoUrl={item.postDetail[0].image_url}
                                 wholeData={item}
+                                saved={item.userSavedPost.length > 0 ? true : false}
                                 ></TourCard>}
                                 keyExtractor={item => item.tour_id}
                             /> : 

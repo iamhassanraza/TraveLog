@@ -8,6 +8,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   TouchableHighlight,
+  AsyncStorage
 } from 'react-native';
 import {ThemeColor, BackgroundColor} from '../assets/Colors/Colors';
 
@@ -28,8 +29,49 @@ import OperatorIcon from './OperatorIcon';
 class TourCard extends React.Component {
   state = {
     data: this.props.tourData,
-    saved: false,
+    saved: this.props.saved,
     refreshing: false,
+  };
+
+
+
+  savePost = async postId => {
+    this.setState(prevState => ({
+      saved: !prevState.saved,
+    }));
+    const User = JSON.parse(await AsyncStorage.getItem('User'));
+    var Response = null;
+    if (this.state.saved) {
+      Response = await fetch(
+        `https://travelog-adonis.herokuapp.com/api/v1/user/save/post?post_id=${postId}&user_id=${User.id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${User.token}`,
+          },
+        },
+      );
+    } else {
+      Response = await fetch(
+        `https://travelog-adonis.herokuapp.com/api/v1/user/unsave/post?post_id=${postId}&user_id=${User.id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${User.token}`,
+          },
+        },
+      );
+    }
+    const JsonResponse = await Response.json();
+    if (parseInt(Response.status) === 400) {
+      alert(JsonResponse.message);
+    } else if (parseInt(Response.status) === 200) {
+      alert(JsonResponse.message);
+    } else {
+      alert('something is wrong');
+    }
   };
 
   render() {
@@ -62,7 +104,8 @@ class TourCard extends React.Component {
         <TouchableWithoutFeedback
          onPress={() =>
             this.props.navigation.navigate('TourDetail', {
-              TourData: wholeData
+              TourData: wholeData,
+              saved: this.state.saved
             })
          }
           >
@@ -108,11 +151,7 @@ class TourCard extends React.Component {
 
                 <View style={{alignItems: 'center', paddingTop: '2%'}}>
                   <TouchableWithoutFeedback
-                    onPress={() => {
-                      this.setState(prevState => ({
-                        saved: !prevState.saved,
-                      }));
-                    }}>
+                    onPress={() => {this.savePost(id)}}>
                     <View style={{padding: 5, alignItems: 'center'}}>
                       <Icon
                         name={this.state.saved ? 'bookmark' : 'bookmark-o'}
@@ -126,7 +165,7 @@ class TourCard extends React.Component {
                           fontSize: 13,
                           fontWeight: 'bold',
                         }}>
-                        {this.state.saved ? 'saved' : 'save'}
+                        {this.state.saved ? 'Saved' : 'Save'}
                       </Text>
                     </View>
                   </TouchableWithoutFeedback>

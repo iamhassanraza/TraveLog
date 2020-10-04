@@ -5,7 +5,8 @@ import {
   ScrollView,
   Dimensions,
   FlatList,
- Linking
+ Linking,
+ AsyncStorage
 } from 'react-native';
 import HeaderImage from '../components/HeaderImage';
 
@@ -34,22 +35,59 @@ import FlatListContainer from '../components/FlatListContainer'
 
 export default class TourDetail extends Component {
   state = {
-    saved: false,
+    saved: this.props.navigation.getParam('saved','Nothin') ,
     apiData:undefined
   };
 
-    data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation')
-    suggestedTours = [1,2,3,4]
- 
+    data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation') 
+
+    savePost = async postId => {
+      this.setState(prevState => ({
+        saved: !prevState.saved,
+      }));
+      const User = JSON.parse(await AsyncStorage.getItem('User'));
+      var Response = null;
+      if (this.state.saved) {
+        Response = await fetch(
+          `https://travelog-adonis.herokuapp.com/api/v1/user/save/post?post_id=${postId}&user_id=${User.id}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${User.token}`,
+            },
+          },
+        );
+      } else {
+        Response = await fetch(
+          `https://travelog-adonis.herokuapp.com/api/v1/user/unsave/post?post_id=${postId}&user_id=${User.id}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${User.token}`,
+            },
+          },
+        );
+      }
+      const JsonResponse = await Response.json();
+      if (parseInt(Response.status) === 400) {
+        alert(JsonResponse.message);
+      } else if (parseInt(Response.status) === 200) {
+        alert(JsonResponse.message);
+      } else {
+        alert('something is wrong');
+      }
+    };
 
   renderHeading = (title)=>{
     return (<View style={{flex:1,flexDirection: 'row', justifyContent: 'space-between'}}>
     <Text style={{fontSize: 25, fontWeight: 'bold',flex:1,marginBottom:10}}>
       {title ? title :'loading...'}
     </Text>
-
     <Text >
       <Icon
+        onPress={() => {this.savePost(this.data.id)}}
         name={this.state.saved ? 'bookmark' : 'bookmark-o'}
         size={35}
         color={ThemeColor}

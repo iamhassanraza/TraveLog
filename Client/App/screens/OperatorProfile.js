@@ -139,6 +139,7 @@ export default class OperatorProfile extends Component {
               operatorId: operatorData.id,
               name: operatorData.first_name,
               numeric_rating: 4,
+              reviewsData: operatorData.reviews
             }}
           />
         </View>
