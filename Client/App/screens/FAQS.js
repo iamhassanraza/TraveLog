@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Header, Content, Accordion } from "native-base";
-import { StatusBar} from 'react-native';
+import { StatusBar, View, Text} from 'react-native';
 import {ThemeColor} from '../assets/Colors/Colors';
 
 
@@ -16,7 +16,7 @@ const dataArray = [
 ];
 
  
-export default class FAQ extends Component {
+export default class FAQS extends Component {
     render() {
       return (
         <Container>
@@ -25,6 +25,18 @@ export default class FAQ extends Component {
     backgroundColor={ThemeColor}
     barStyle="light-content"
   />
+   <View style={{backgroundColor: ThemeColor, height: 40}}>
+    <Text
+style={{
+  alignSelf: 'center',
+  fontSize: 20,
+  color: 'white',
+  fontWeight: 'bold',
+  marginTop: 5,
+}}>
+FAQs
+    </Text>
+  </View>
           <Content padder>
             <Accordion
               dataArray={dataArray}

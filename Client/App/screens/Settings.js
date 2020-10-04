@@ -7,6 +7,7 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import IconWithText from '../components/IconAndText';
 import head from '../assets/images/blueHead.png';
@@ -26,7 +27,11 @@ export default class Settings extends Component {
     return (
       <View style={{flex:1}}>
         
-       
+        <StatusBar
+    animated={true}
+    backgroundColor={ThemeColor}
+    barStyle="light-content"
+  />
             {/* <TouchableOpacity onPress={() => this._signOutAsync()}>
               <IconWithText
                 name="phone"
@@ -38,7 +43,7 @@ export default class Settings extends Component {
             </TouchableOpacity> */}
 <View style={{marginTop:'5%',marginLeft:30}}>
   
-<TouchableOpacity onPress={()=> this.props.navigation.navigate('Contact')}>
+<TouchableOpacity onPress={()=> this.props.navigation.navigate('Feedback')}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -60,7 +65,7 @@ export default class Settings extends Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity  onPress={()=> this.props.navigation.navigate('FAQ')}>
+            <TouchableOpacity  onPress={()=> this.props.navigation.navigate('FAQS')}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -104,7 +109,7 @@ export default class Settings extends Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <View
                 style={{
                   flexDirection: 'row',
@@ -168,7 +173,7 @@ export default class Settings extends Component {
                   </Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity onPress={() => this._signOutAsync()}>
               <View

@@ -18,14 +18,15 @@ import UserProfile from './App/screens/UserProfile'
 import Notifications from './App/screens/Notifications'
 import EditProfile from './App/screens/EditProfile'
 import Settings from './App/screens/Settings'
-import Contact from './App/screens/Contact'
-import FAQ from './App/screens/FAQ'
+
+import FAQS from './App/screens/FAQS'
 import MAP from './App/screens/MAP'
 import Webview from "./App/screens/webview"
 import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import AuthLoading from './App/screens/AuthLoading'
 import TermsConditions from './App/screens/TermsConditions'
+import Feedback from './App/screens/Feedback'
 
 
 
@@ -37,10 +38,20 @@ const RootStack = createStackNavigator({
       header: null,
     },
   },
-  Contact : Contact,
-  FAQ: FAQ,
+  FAQS:{
+    screen: FAQS,
+    navigationOptions: {
+      header: null,
+    }
+  }, 
   TermsConditions: {
     screen: TermsConditions,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Feedback: {
+    screen: Feedback,
     navigationOptions: {
       header: null,
     },

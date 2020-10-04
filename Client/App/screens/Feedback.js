@@ -1,17 +1,18 @@
+
+
+
+
 import React, {Component} from 'react';
 import {Text, View, ImageBackground, Image, StyleSheet, Dimensions} from 'react-native';
 import {Container, Header, Content, Item, Input, Button} from 'native-base';
-import pic from '../assets/images/a4.jpg';
+
 import {ThemeColor,ThemeGrey} from '../assets/Colors/Colors';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
-import gmail from '../assets/images/gm.png';
-import fb from '../assets/images/fb.png';
-import Icon from 'react-native-vector-icons/Ionicons';
-import log from '../assets/images/jpeg.jpg';
+
 import map from '../assets/images/map.jpg';
 import IconWithText from '../components/IconAndText';
 
-export default class Contact extends Component {
+export default class Feedback extends Component {
   state = {
     email: '',
     
