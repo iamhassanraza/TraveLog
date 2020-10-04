@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ImageBackground,Image } from 'react-native'
+import { Text, View, ImageBackground,Image, AsyncStorage } from 'react-native'
 import head from '../assets/images/blueHead.png'
 import pic from '../assets/images/pf.jpeg'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,10 +8,26 @@ import {ThemeColor} from '../assets/Colors/Colors'
 export default class UserProfile extends Component {
 
     static navigationOptions = {
-        header: null
+        header: null,
+    
+     }
+
+     state={
+         Data:[]
+     }
+
+     componentDidMount(){
+         this.getDetails()
+     }
+
+     getDetails = async () => {
+        const User = JSON.parse(await AsyncStorage.getItem('User'));
+        this.setState({Data:User})
      }
 
     render() {
+        console.log(this.state.Data,"DADAD")
+    
         return (
             
                  <ImageBackground
@@ -22,7 +38,7 @@ export default class UserProfile extends Component {
             }}>
                 <View>
                 
-                <Text style={{color:"white", fontSize:22, fontWeight:"bold", paddingLeft:"3%",paddingTop:"4%"}}>Syed Ali Mehdi</Text>
+                <Text style={{color:"white", fontSize:22, fontWeight:"bold", paddingLeft:"3%",paddingTop:"4%"}}>{this.state.Data.first_name}</Text>
                 <Image source={pic}style={{ height:120, width:120, borderRadius:120,borderWidth:3,borderColor:'#44a9eb',marginLeft:"50%", marginTop:"2%"}}>
                 </Image>
               
@@ -39,7 +55,7 @@ export default class UserProfile extends Component {
                     Contact
                 </Text>
                 <Text style={{fontSize:17}}>
-                    03132055798
+                    {this.state.Data.contact_no}
                 </Text>
                </View>
             </View>
@@ -53,7 +69,7 @@ export default class UserProfile extends Component {
                     Email
                 </Text>
                 <Text style={{fontSize:17}}>
-                    salimehdi144@gmail.com
+                    {this.state.Data.email}
                 </Text>
                </View>
             </View>

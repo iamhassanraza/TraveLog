@@ -9,6 +9,7 @@ import {
   Button,
   TouchableWithoutFeedback,
   FlatList,
+  AsyncStorage
 } from 'react-native';
 import image from '../assets/images/shan.jpg';
 import image5 from '../assets/images/im5.jpg';
@@ -28,33 +29,23 @@ import Map from '../components/Map'
 
 export default class AttractionDetails extends Component {
   state = {
-    data: undefined,
-  };
-
-  componentDidMount() {
-    const AttractionData = this.props.navigation.getParam(
+    //data: this.props.navigation.getParam('AttractionData','default',),
+    data:this.props.navigation.getParam(
       'AttractionData',
       'default',
-    );
+    ),
+    attractionsData:[]
+  };
 
-    fetch(
-      `https://travelog-pk.herokuapp.com/attraction/${AttractionData.attraction_id}`,
-    )
-      .then(response => {
-        return response.json();
-      })
-      .then(responseJson => {
-        this.setState({
-          data: responseJson,
-        });
-      })
-      .catch(err => console.log(err));
+  componentDidMount(){
+    this.fetchAttractions();
   }
+ 
 
   renderTop = (image, name) => {
     return (
       <ImageBackground
-        source={{uri: `https://travelog-pk.herokuapp.com/images/${image}`}}
+        source={{uri: image}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: "100%",
@@ -78,27 +69,6 @@ export default class AttractionDetails extends Component {
             {name.toUpperCase()}
           </Text>
 
-          <View
-            style={{
-              backgroundColor: 'white',
-              backgroundColor: 'rgba(255,255,255,0.5)',
-              borderRadius: 2,
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              paddingBottom: '1%',
-            }}>
-            <Text onPress={() => alert('Navigate to Albums')}>
-              {' '}
-              <Icon name="image-album" style={{fontSize: 17, color: 'white'}} />
-            </Text>
-            <Text
-              onPress={() => alert('Navigate to Albums')}
-              style={{fontSize: 17, color: 'white'}}>
-              {' '}
-              Album{' '}
-            </Text>
-          </View>
         </View>
       </ImageBackground>
     );
@@ -109,7 +79,7 @@ export default class AttractionDetails extends Component {
       <View style={{marginLeft: '4%'}}>
         <IconWithText
           title={'Best Time To Visit : '}
-          subtitle={this.state.data[0].recommended_season}
+          subtitle={this.state.data.recommended_season}
           linear={'true'}
           icon={'calendar-month-outline'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -118,7 +88,7 @@ export default class AttractionDetails extends Component {
 
         <IconWithText
           title={'City : '}
-          subtitle={this.state.data[0].city_name}
+          subtitle={this.state.data.name}
           linear={'true'}
           icon={'map-marker-radius'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -131,14 +101,14 @@ export default class AttractionDetails extends Component {
           showRating={false}
           imageSize={15}
           fractions={1}
-          startingValue={this.props.rating}
+          startingValue={4}
           style={{alignSelf: 'flex-start', marginTop: '3%'}}
         />
       </View>
     );
   };
 
-  renderOverview = () => {
+  renderOverview = (desc) => {
     return (
       <View style={{padding: 5, paddingBottom: 0}}>
         <TextCutter
@@ -151,22 +121,46 @@ export default class AttractionDetails extends Component {
             color: ThemeGrey,
           }}
           limit={350}
-          text={this.state.data[0].description}></TextCutter>
+          text={desc}></TextCutter>
       </View>
     );
   };
 
+  fetchAttractions = async () => {
+    const User = JSON.parse(await AsyncStorage.getItem('User'));
+    console.log(typeof User.token, 'TOKEN');
+    fetch(`https://travelog-adonis.herokuapp.com/api/v1/get/attractions?destination_id=${this.state.data.destination_id}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${User.token}`,
+      },
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        console.log(responseJson, 'ATTTTTTTTT');
+        this.setState({
+     
+          attractionsData: responseJson,
+      
+        });
+      })
+      .catch(err => console.log(err, 'ERRRRRRRRRRRRRRRRRR'));
+  };
+
+
+// "It shows all the attraction cards of the same destination"
   renderNearbyAttractions = () => {
-    const apiUrl = `https://travelog-pk.herokuapp.com/destination/attraction/`;
-    console.log(this.state.data);
+
     return (
-      <FlatListContainer style={{marginLeft: 8}} title="Nearby Attractions">
+      <FlatListContainer NoViewAll={true} style={{marginLeft: '3%'}} title="Top Attractions">
         <FlatList
           horizontal
-          data={this.state.data ? this.state.data[1] : null}
+          data={this.state.attractionsData}
           keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => <AttractionCard id={item} api={apiUrl} />}
+          renderItem={({item}) => <AttractionCard id={item.attraction_id} name={item.name} wholeData={item} />}
         />
       </FlatListContainer>
     );
@@ -175,7 +169,7 @@ export default class AttractionDetails extends Component {
   renderMap = () => {
     if(this.state.data !== undefined){
       return (
-        <Map latitude={this.state.data[0].longitude} longitude={this.state.data[0].latitude}></Map>
+        <Map latitude={this.state.data.latitude} longitude={this.state.data.longitude}></Map>
       );
       }
   };
@@ -225,39 +219,18 @@ export default class AttractionDetails extends Component {
   };
 
   render() {
-    const AttractionData = this.props.navigation.getParam(
-      'AttractionData',
-      'default',
-    );
-
+   
+    console.log(this.state.data,"ATTT DETAILS")
     return (
       <ScrollView>
-        {this.renderTop(AttractionData.image_path, AttractionData.name)}
+        {this.renderTop("https://skygreenengg.com/images/avatar.jpg", this.state.data.name)}
         {/* {this.renderSelections()} */}
-        {this.state.data ? (
-          this.renderDetails()
-        ) : (
-          <View style={{width:'60%', marginLeft: '10%'}}>
-            <Facebook speed={0.5} height={150}/>
-          </View>
-        )}
-        {this.state.data ? (
-          this.renderOverview()
-        ) : (
-          <View style={{width:'60%', marginLeft: '10%'}}>
-            <Facebook speed={0.5} height={150}/>
-          </View>
-        )}
-        {this.state.data ? (
-          this.renderNearbyAttractions()
-        ) : (
-          <View style={{width:'60%', marginLeft: '10%'}}>
-            <Facebook speed={0.5} height={150}/>
-          </View>
-        )}
+        { this.renderDetails() }
+        { this.renderOverview(this.state.data.description)}
+        { this.renderNearbyAttractions() }
         {this.renderMap()}
-        {this.renderRelatedTours()}
-        {this.renderReviews()}
+   
+ 
       </ScrollView>
     );
   }

@@ -38,6 +38,7 @@ const TabNavigator = createMaterialTopTabNavigator(
                         <Icon2 name="bookmark" color={tintColor} style={{fontSize:22}}/>
                 ),
                 tabBarLabel: 'Follow ups',
+                
             }
         },
         Notifications: {
@@ -57,7 +58,10 @@ const TabNavigator = createMaterialTopTabNavigator(
                 tabBarIcon: ({tintColor}) => (
                     <Icon name="person" color={tintColor}  style={{fontSize:22}}/>
                 ),
-                tabBarLabel: "Profile"
+                tabBarLabel: "Profile",
+                headerVisible: false,
+                header:null
+                
             }
         },
         Settings: {

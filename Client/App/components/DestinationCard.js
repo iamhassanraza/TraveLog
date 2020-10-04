@@ -12,14 +12,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {ThemeColor, BackgroundColor} from '../assets/Colors/Colors';
 import LoadingIndicator from './LoadingIndicator';
 import {withNavigation} from 'react-navigation';
-import ContentLoader, { Facebook } from 'react-content-loader/native'
+
 
 // Props : id, API
 
 class DestinationCard extends React.Component {
   state = {
     data: [],
-    saved: false,
+    saved: this.props.saved,
   };
 
   componentDidMount() {
@@ -36,13 +36,13 @@ class DestinationCard extends React.Component {
   }
 
   render() {
-    if (this.state.data[0]) {
+ 
       return (
         <TouchableWithoutFeedback
           onPress={() =>
             this.props.navigation.push('DestinationDetails', {
-              DestinationData: this.state.data[0],
-              AttractionCardIds: this.state.data[1],
+              DestinationData: this.props.wholeData,
+              // AttractionCardIds: this.state.data[1],
             })
           }>
           <View
@@ -53,7 +53,7 @@ class DestinationCard extends React.Component {
             <View>
               <Image
                 source={{
-                  uri: `https://travelog-pk.herokuapp.com/images/${this.state.data[0].image_path}`,
+                  uri: `https://c7.uihere.com/files/136/22/549/user-profile-computer-icons-girl-customer-avatar.jpg`,
                 }}
                 style={{
                   width: '100%',
@@ -73,7 +73,7 @@ class DestinationCard extends React.Component {
                 marginTop: '2%',
               }}>
               <View style={{width: '80%'}}>
-                <Text style={{fontSize: 16,...this.props.textsize}}>{this.state.data[0].name}</Text>
+                <Text style={{fontSize: 16,...this.props.textsize}}>{this.props.name}</Text>
               </View>
               <View style={{marginRight: '3%'}}>
                 <TouchableWithoutFeedback
@@ -93,14 +93,8 @@ class DestinationCard extends React.Component {
           </View>
         </TouchableWithoutFeedback>
       );
-    } else {
-      return (
-        <View style={{borderWidth: 0,backgroundColor: BackgroundColor,padding: 5}}>
-          <Facebook speed={0.5}/>
-        </View>
-      );
     }
   }
-}
+
 
 export default withNavigation(DestinationCard);

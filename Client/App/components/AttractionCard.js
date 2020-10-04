@@ -24,25 +24,15 @@ class AttractionCard extends React.Component {
   };
 
   componentDidMount() {
-    fetch(this.props.api + `${this.props.id}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(responseJson => {
-        this.setState({
-          data: responseJson,
-        });
-      })
-      .catch(err => console.log(err));
+    
   }
 
   render() {
-    if (this.state.data[0]) {
       return (
         <TouchableWithoutFeedback
           onPress={() =>
             this.props.navigation.push('AttractionDetails', {
-              AttractionData: this.state.data[0],
+               AttractionData: this.props.wholeData,
             })
           }>
           <View
@@ -53,7 +43,7 @@ class AttractionCard extends React.Component {
             <View>
               <Image
                 source={{
-                  uri: `https://travelog-pk.herokuapp.com/images/${this.state.data[0].image_path}`,
+                  uri: `https://img.pngio.com/computer-icons-avatar-user-login-avatar-man-wearing-blue-shirt-user-login-png-728_512.jpg`,
                 }}
                 style={{
                   width: '100%',
@@ -72,9 +62,9 @@ class AttractionCard extends React.Component {
                 marginTop: '2%',
               }}>
               <View style={{width: '80%'}}>
-                <Text style={{fontSize: 16}}>{this.state.data[0].name}</Text>
+                <Text style={{fontSize: 16}}>{this.props.name}</Text>
               </View>
-              <View style={{marginRight: '3%'}}>
+              {/* <View style={{marginRight: '3%'}}>
                 <TouchableWithoutFeedback
                   onPress={() => {
                     this.setState(prevState => ({
@@ -87,18 +77,12 @@ class AttractionCard extends React.Component {
                     color={ThemeColor}
                   />
                 </TouchableWithoutFeedback>
-              </View>
+              </View> */}
             </View>
           </View>
         </TouchableWithoutFeedback>
       );
-    } else {
-      return (
-        <View style={{borderWidth: 0, backgroundColor: BackgroundColor, padding: 5}}>
-          <Facebook speed={0.5}/>
-        </View>
-      );
-    }
+    
   }
 }
 

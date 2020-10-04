@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
       ...StyleSheet.absoluteFillObject,
     },
     container: {
-        height:"12%",
+        height:240,
         marginTop:"2%",
         marginBottom:"2%",
         width: '100%',

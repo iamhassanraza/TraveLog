@@ -10,8 +10,7 @@ const FlatListContainer = (props) => {
         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginBottom:8,marginTop:15}}>
         <Text style={{fontSize:18, fontWeight:'bold', marginLeft: '2%'}}>{props.title}</Text>
         <View style={{flexDirection:'row',alignItems:'center'}}>
-        <Text style={{fontWeight:'bold',color:ThemeColor}}>View all </Text> 
-        <Text style={{marginRight:5}}><Icon name="dots-vertical" style={{fontSize:25,color:'grey'}}></Icon></Text>
+        {props.NoViewAll ? null : <Text style={{fontWeight:'bold',color:ThemeColor,marginRight:'3%'}}>View all </Text>} 
         </View>
         </View>
         {props.children}
