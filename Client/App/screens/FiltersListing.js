@@ -25,11 +25,42 @@ class SearchBar extends React.PureComponent {
   state = {
     selected: 'operators',
     savedTours: [],
+    savedOperators:[]
   };
 
   componentDidMount() {
     this.fetchSavedTours();
+    this.fetchSavedOperators();
   }
+
+
+  
+
+  fetchSavedOperators = async () => {
+    const User = JSON.parse(await AsyncStorage.getItem('User'));
+    console.log(User.id, "USER ID")
+    fetch(
+      `https://travelog-adonis.herokuapp.com/api/v1/following/users?user_id=${User.id}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${User.token}`,
+        },
+      },
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        console.log(responseJson, 'OPPPPPPPPPPPPPPPPPPPPPPPPPPPP');
+        this.setState({
+          refreshing: false,
+          savedOperators: responseJson,
+        });
+      })
+      .catch(err => console.log(err, 'ERRRRRRRRRRRRRRRRRR'));
+  };
+
 
   fetchSavedTours = async () => {
     const User = JSON.parse(await AsyncStorage.getItem('User'));
@@ -90,7 +121,7 @@ class SearchBar extends React.PureComponent {
   };
 
   renderTours = () => {
-    return (
+    return this.state.savedTours.data.length > 0 ? (
       <ScrollView nestedScrollEnabled style={{marginBottom: '-34%'}}>
         <FlatList
           data={this.state.savedTours.data}
@@ -123,6 +154,8 @@ class SearchBar extends React.PureComponent {
           keyExtractor={item => item}
         />
       </ScrollView>
+    ) : (
+      <Text>You Don't Have Any Followed Tours</Text>
     );
   };
 
@@ -131,12 +164,19 @@ class SearchBar extends React.PureComponent {
       <ScrollView nestedScrollEnabled style={{}}>
         <FlatList
           vertical
-          data={operators}
+          data={this.state.savedOperators}
           keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <OperatorCard
-              operatorId={item}
+            id={item.id}
+            first_name={item.first_name}
+            email={item.email}
+            profile_pic_url={item.profile_pic_url}
+            contact_no={item.contact_no}
+            address={item.major}
+            followStatus={item.userFollowing.length === 0 ? false : true}
+            data={item}
               style={{
                 width: Dimensions.get('window').width / 1,
                 marginBottom: '3%',
@@ -160,7 +200,7 @@ class SearchBar extends React.PureComponent {
   };
 
   render() {
-    console.log(this.state.selected,this.state.savedTours);
+    console.log(this.state.selected, this.state.savedOperators);
     return (
       <View style={{paddingBottom: '8%', backgroundColor: BackgroundColor}}>
         <View style={styles.container}>

@@ -25,6 +25,7 @@ import Webview from "./App/screens/webview"
 import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import AuthLoading from './App/screens/AuthLoading'
+import TermsConditions from './App/screens/TermsConditions'
 
 
 
@@ -37,7 +38,13 @@ const RootStack = createStackNavigator({
     },
   },
   Contact : Contact,
-  FAQ: FAQ
+  FAQ: FAQ,
+  TermsConditions: {
+    screen: TermsConditions,
+    navigationOptions: {
+      header: null,
+    },
+  }
 },
 {
   defaultNavigationOptions: props => {

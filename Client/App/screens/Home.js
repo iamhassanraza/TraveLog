@@ -20,7 +20,10 @@ export default class Home extends Component {
         destinationids: [],
         refreshing: false,
         tourData:[],
-        operatorsData:[]
+        operatorsData:[],
+        toursLoading:true,
+        operatorsLoading:true,
+        destinationLoading:true
     } 
 
 
@@ -53,7 +56,8 @@ export default class Home extends Component {
             console.log(responseJson,"RESPONSEJSONNNNNNNNN")
             this.setState({
                 refreshing: false,
-                tourData : responseJson.data
+                tourData : responseJson.data,
+                toursLoading:false
             })
         })
         .catch(err => console.log(err,"ERRRRRRRRRRRRRRRRRR"))    
@@ -75,7 +79,8 @@ export default class Home extends Component {
             console.log(responseJson,"OPPPPPPPPPPPPPPPPPPPPPPPPPPPP")
             this.setState({
                 refreshing: false,
-                operatorsData : responseJson
+                operatorsData : responseJson,
+                operatorsLoading:false
             })
         })
         .catch(err => console.log(err,"ERRRRRRRRRRRRRRRRRR")) 
@@ -138,7 +143,7 @@ console.log(this.state.tourData,"OPP DATA")
 
                     <FlatListContainer style={{marginLeft:'3%'}} title="Popular Tours">
                    
-                         {this.state.tourData ?  <FlatList
+                         {!this.state.toursLoading ?  <FlatList
                                 horizontal
                                 data={this.state.tourData}
                                 showsHorizontalScrollIndicator={false}
@@ -163,7 +168,7 @@ console.log(this.state.tourData,"OPP DATA")
                                     <Facebook speed={0.5} height={150}/>
                                 </View>
                                 <View style={{width:'60%', marginLeft: '10%'}}>
-                                    <Facebook speed={0.5} height={150}/>
+                                    <Facebook speed={2} height={150}/>
                                 </View>
                             </View>}
                         
@@ -171,7 +176,7 @@ console.log(this.state.tourData,"OPP DATA")
                  
                     <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
                         {
-                            this.state.operatorsData ? 
+                            !this.state.operatorsLoading ? 
                             <FlatList 
                                 horizontal
                                 data={this.state.operatorsData}

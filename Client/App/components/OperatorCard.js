@@ -36,7 +36,7 @@ class OperatorCard extends React.Component {
     const Token = User.token;
     const id = this.props.id;
     var Response = null;
-    console.log('followed ==========> ', this.state.followed, id);
+    console.log('followed ==========> ', this.state.followed, this.props.id);
     if (this.state.followed) {
       Response = await fetch(
         `https://travelog-adonis.herokuapp.com/api/v1/user/follow?user_id=${id}`,

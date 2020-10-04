@@ -30,8 +30,8 @@ export default class OperatorProfile extends Component {
         followed: this.props.followStatus,
       };
     
-      followButton = async () => {
-        console.log('id -------------->', this.props.id);
+      followButton = async (id) => {
+      
         this.setState(prevState => ({
           followed: !prevState.followed,
         }));
@@ -39,7 +39,7 @@ export default class OperatorProfile extends Component {
         const User = JSON.parse(await AsyncStorage.getItem('User'));
         console.log(User, 'CUSER FROM ASYNC');
         const Token = User.token;
-        const id = this.props.id;
+    
         var Response = null;
         console.log('followed ==========> ', this.state.followed, id);
         if (this.state.followed) {
@@ -71,6 +71,7 @@ export default class OperatorProfile extends Component {
           alert(JsonResponse.message);
         } else if (parseInt(Response.status) === 200) {
           console.log('200', JsonResponse);
+          alert("Done")
         } else {
           alert('something is wrong');
         }
@@ -112,7 +113,7 @@ export default class OperatorProfile extends Component {
                 style={styles.logo}
               />
             </View>
-          <TouchableOpacity style={{marginLeft:'20%',width: '100%'}} onPress={()=> this.followButton()}>
+          <TouchableOpacity style={{marginLeft:'20%',width: '100%'}} onPress={()=> this.followButton(operatorData.id)}>
      
               <View style={styles.followButton}>
                 <FollowIcon name="user-follow" color="white" />

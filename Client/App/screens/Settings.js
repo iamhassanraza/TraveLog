@@ -82,7 +82,7 @@ export default class Settings extends Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity  onPress={()=> this.props.navigation.navigate('TermsConditions')}>
               <View
                 style={{
                   flexDirection: 'row',
