@@ -156,7 +156,7 @@ console.log(this.state.tourData,"OPP DATA")
                                 wholeData={item}
                                 saved={item.userSavedPost.length > 0 ? true : false}
                                 ></TourCard>}
-                                keyExtractor={item => item.tour_id}
+                                keyExtractor={item => item.id}
                             /> : 
                             <View style={{flexDirection:'row'}}>
                                 <View style={{width:'60%'}}>

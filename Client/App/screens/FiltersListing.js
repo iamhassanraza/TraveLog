@@ -7,6 +7,7 @@ import {
   FlatList,
   Dimensions,
   ScrollView,
+  AsyncStorage,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {BackgroundColor} from '../assets/Colors/Colors';
@@ -23,6 +24,38 @@ const apiUrl = `https://travelog-pk.herokuapp.com/destination/card/`;
 class SearchBar extends React.PureComponent {
   state = {
     selected: 'operators',
+    savedTours: [],
+  };
+
+  componentDidMount() {
+    this.fetchSavedTours();
+  }
+
+  fetchSavedTours = async () => {
+    const User = JSON.parse(await AsyncStorage.getItem('User'));
+    console.log(User.token, 'TOKENNNNNNNNNNN');
+    fetch(
+      `https://travelog-adonis.herokuapp.com/api/v1/fetch/saved/posts?page=${
+        this.state.pageNo
+      }&user_id=${User.id}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${User.token}`,
+        },
+      },
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        console.log(responseJson, 'OPPPPPPPPPPPPPPPPPPPPPPPPPPPP');
+        this.setState({
+          refreshing: false,
+          savedTours: responseJson,
+        });
+      })
+      .catch(err => console.log(err, 'ERRRRRRRRRRRRRRRRRR'));
   };
 
   renderDestinations = () => {
@@ -60,8 +93,9 @@ class SearchBar extends React.PureComponent {
     return (
       <ScrollView nestedScrollEnabled style={{marginBottom: '-34%'}}>
         <FlatList
-          data={tourz}
+          data={this.state.savedTours.data}
           showsHorizontalScrollIndicator={false}
+          keyExtractor={item => item.id}
           renderItem={({item}) => (
             <TourCard
               style={{
@@ -73,8 +107,18 @@ class SearchBar extends React.PureComponent {
                 backgroundColor: 'white',
                 paddingBottom: '1%',
               }}
-              id={item}
-              seatsLeft={10}></TourCard>
+              id={item.id}
+              seatsLeft={10}
+              title={item.title}
+              price={item.price}
+              departure_date={item.departure_date}
+              number_of_days={item.number_of_days}
+              speciality={item.speciality}
+              operator={item.users.first_name + ' ' + item.users.last_name}
+              photoUrl={item.postDetail[0].image_url}
+              wholeData={item}
+              saved={item.userSavedPost.length > 0 ? true : false}
+            />
           )}
           keyExtractor={item => item}
         />
@@ -116,7 +160,7 @@ class SearchBar extends React.PureComponent {
   };
 
   render() {
-    console.log(this.state.selected);
+    console.log(this.state.selected,this.state.savedTours);
     return (
       <View style={{paddingBottom: '8%', backgroundColor: BackgroundColor}}>
         <View style={styles.container}>
@@ -137,21 +181,21 @@ class SearchBar extends React.PureComponent {
                 borderWidth: 0.5,
                 borderRadius: 30,
                 borderWidth: this.state.selected === 'tours' ? 0 : 0.5,
-                borderColor:ThemeGrey
+                borderColor: ThemeGrey,
               }}>
               <Icon
                 name="van-passenger"
                 style={{
                   fontSize: 20,
                   paddingRight: 3,
-                  color: this.state.selected === 'tours' ?  ThemeColor
-                  : ThemeGrey,
+                  color:
+                    this.state.selected === 'tours' ? ThemeColor : ThemeGrey,
                 }}
               />
               <Text
                 style={{
-                  color: this.state.selected === 'tours' ? ThemeColor
-                  : ThemeGrey,
+                  color:
+                    this.state.selected === 'tours' ? ThemeColor : ThemeGrey,
                   fontSize: 13,
                   fontWeight: 'bold',
                 }}>
@@ -169,24 +213,35 @@ class SearchBar extends React.PureComponent {
                 flexDirection: 'row',
                 alignItems: 'center',
                 backgroundColor:
-                  this.state.selected === 'operators' ? 'rgba(19, 135, 210,0.2)' : null,
+                  this.state.selected === 'operators'
+                    ? 'rgba(19, 135, 210,0.2)'
+                    : null,
                 justifyContent: 'center',
                 width: '34%',
                 borderWidth: 0.5,
                 borderRadius: 30,
                 borderWidth: this.state.selected === 'operators' ? 0 : 0.5,
-                borderColor:ThemeGrey
+                borderColor: ThemeGrey,
               }}>
-              <Icon name="shopping" style={{fontSize: 18, paddingRight: 3,
-              color: this.state.selected === 'operators' ?  ThemeColor
-              : ThemeGrey}} />
+              <Icon
+                name="shopping"
+                style={{
+                  fontSize: 18,
+                  paddingRight: 3,
+                  color:
+                    this.state.selected === 'operators'
+                      ? ThemeColor
+                      : ThemeGrey,
+                }}
+              />
               <Text
                 style={{
                   fontSize: 13,
                   fontWeight: 'bold',
                   color:
-                    this.state.selected === 'operators' ? ThemeColor
-                    : ThemeGrey,
+                    this.state.selected === 'operators'
+                      ? ThemeColor
+                      : ThemeGrey,
                 }}>
                 Operators
               </Text>
@@ -201,21 +256,26 @@ class SearchBar extends React.PureComponent {
               style={{
                 flexDirection: 'row',
                 backgroundColor:
-                  this.state.selected === 'destinations' ? 'rgba(19, 135, 210,0.2)' : null,
+                  this.state.selected === 'destinations'
+                    ? 'rgba(19, 135, 210,0.2)'
+                    : null,
                 alignItems: 'center',
                 justifyContent: 'center',
                 width: '35%',
                 borderWidth: this.state.selected === 'destinations' ? 0 : 0.5,
                 borderRadius: 30,
                 borderColor: ThemeGrey,
-              
               }}>
               <Icon
                 name="map-marker-radius"
-                style={{fontSize: 18, paddingRight: 3,color:
-                  this.state.selected === 'destinations'
-                    ? ThemeColor
-                    : ThemeGrey,}}
+                style={{
+                  fontSize: 18,
+                  paddingRight: 3,
+                  color:
+                    this.state.selected === 'destinations'
+                      ? ThemeColor
+                      : ThemeGrey,
+                }}
               />
               <Text
                 style={{
@@ -251,9 +311,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 10,
     paddingRight: 10,
-    marginBottom:5,
-    paddingBottom:10,
-    paddingTop:10,
+    marginBottom: 5,
+    paddingBottom: 10,
+    paddingTop: 10,
 
     justifyContent: 'space-between',
   },
