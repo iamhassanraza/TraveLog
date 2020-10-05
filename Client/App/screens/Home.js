@@ -238,7 +238,7 @@ export default class Home extends Component {
                 keyExtractor={item => item.destination_id}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({item}) => (
-                  <DestinationCard wholeData={item} id={item.destination_id} imageUrl={item.image} name={item.city.name} followed= {true}/>
+                  <DestinationCard wholeData={item} id={item.destination_id} imageUrl={item.image} name={item.city.name} followed= {item.followstatus.length > 0 ? true : false}/>
                 )}
               />
             ) : (

@@ -25,16 +25,15 @@ class SearchBar extends React.PureComponent {
   state = {
     selected: 'operators',
     savedTours: [],
-    savedOperators:[]
+    savedOperators:[],
+    destinationData:[]
   };
 
   componentDidMount() {
     this.fetchSavedTours();
     this.fetchSavedOperators();
+    this.fetchSavedDestinations();
   }
-
-
-  
 
   fetchSavedOperators = async () => {
     const User = JSON.parse(await AsyncStorage.getItem('User'));
@@ -89,18 +88,43 @@ class SearchBar extends React.PureComponent {
       .catch(err => console.log(err, 'ERRRRRRRRRRRRRRRRRR'));
   };
 
+ 
+  fetchSavedDestinations = async () => {
+    const User = JSON.parse(await AsyncStorage.getItem('User'));
+ 
+    fetch(
+      `https://travelog-adonis.herokuapp.com/api/v1/get/followed/destinations`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${User.token}`,
+        },
+      },
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        console.log(responseJson, 'OPPPPPPPPPPPPPPPPPPPPPPPPPPPP');
+        this.setState({
+          refreshing: false,
+          destinationData: responseJson,
+        });
+      })
+      .catch(err => console.log(err, 'ERRRRRRRRRRRRRRRRRR'));
+  };
+
   renderDestinations = () => {
     return (
       <ScrollView nestedScrollEnabled style={{marginBottom: 10}}>
         <FlatList
           vertical
-          data={destz}
+          data={this.state.destinationData}
           keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <DestinationCard
-              id={item}
-              api={apiUrl}
+            wholeData={item} id={item.destination_id} imageUrl={item.image} name={item.city.name} followed= {item.followstatus.length > 0 ? true : false}
               style={{
                 width: Dimensions.get('window').width / 1,
                 marginBottom: '2%',

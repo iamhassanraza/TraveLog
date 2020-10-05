@@ -8,6 +8,7 @@ import { ThemeColor } from '../assets/Colors/Colors';
 import pic from '../assets/images/authloading.jpg'
 import {
     WaveIndicator,
+    
   } from 'react-native-indicators';
 
 export default class AuthLoading extends React.Component {
@@ -37,10 +38,11 @@ export default class AuthLoading extends React.Component {
               source={pic}
               style={{
                 height: '30%',
-                width: '95%',
-               marginTop:"40%"
+                width: '75%',
+               marginTop:"5%",
+               alignSelf:'center'
               }}></Image>
-               <WaveIndicator color={ThemeColor}  />
+               <WaveIndicator style={{marginTop:'-100%'}} color={ThemeColor}  />
                
       </View>
     );

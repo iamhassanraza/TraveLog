@@ -20,7 +20,7 @@ import {withNavigation} from 'react-navigation';
 class DestinationCard extends React.Component {
   state = {
     data: [],
-    saved: this.props.saved,
+    saved: this.props.followed,
   };
 
   componentDidMount() {

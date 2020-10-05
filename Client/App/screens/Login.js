@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, ImageBackground, Image, StyleSheet} from 'react-native';
+import {Text, View, ImageBackground, Image, StyleSheet, StatusBar} from 'react-native';
 import {Container, Header, Content, Item, Input, Button} from 'native-base';
 import pic from '../assets/images/a4.jpg';
 import {ThemeColor} from '../assets/Colors/Colors';
@@ -10,14 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import log from '../assets/images/jpeg.jpg';
 import AsyncStorage from '@react-native-community/async-storage';
 import {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
+ 
   WaveIndicator,
 } from 'react-native-indicators';
 
@@ -89,7 +82,11 @@ export default class Login extends Component {
     return (
     
       <ScrollView>
-         
+          <StatusBar
+    animated={true}
+    backgroundColor={ThemeColor}
+    barStyle="light-content"
+  />
         <Container style={{flex:1}}>
         {/* <ImageBackground source={pic} style={{width: '100%', height: '100%'}}> */}
             {/* <TouchableOpacity>
