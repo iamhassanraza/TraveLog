@@ -17,44 +17,43 @@ state={
       console.log(this.state)
         return (
             <ScrollView>
-        <Container style={{backgroundColor: 'black'}}>
-          <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
-         <TouchableOpacity>
-         <Icon onPress={() => this.props.navigation.goBack()} name="ios-arrow-back" style={{color:"white", marginTop:"5%", marginLeft:"4%", fontSize:30, fontWeight:"bold"}}></Icon>
-         </TouchableOpacity>
-            <Text
-              style={{
-                color: 'white',
-                alignSelf: 'center',
-                fontSize: 25,
-                marginTop: '5%',
-                fontWeight: 'bold',
-              }}>
-              Verification Code
-            </Text>
+        <Container>
+            
             <Image
               source={log}
               style={{
                 height: '20%',
-                width: '45%',
+                width: '65%',
                 alignSelf: 'center',
                 borderRadius:20,
                 marginTop: '10%',
               }}></Image>
+
+<Text
+              style={{
+                color: ThemeColor,
+                alignSelf: 'center',
+                fontSize: 25,
+                marginTop: '15%',
+                fontWeight: 'bold',
+              }}>
+              Verification Code
+            </Text>
+
             <Text
               style={{
-                color: 'white',
+                color: '#64a6d1',
                 paddingLeft:"10%",
                 paddingRight:"10%",
                 fontSize: 17,
                 fontWeight:"bold",
-                marginTop: '10%',
+                marginTop: '5%',
               }}>
               Please enter your Verification Code.
             </Text>
             <Text
               style={{
-                color: 'white',
+                color: '#64a6d1',
                 paddingLeft:"10%",
                 paddingRight:"10%",
                 fontSize: 14,
@@ -78,8 +77,8 @@ state={
                   this.setState({code: text});
                 }}
                   placeholder="* * * * * *"
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor}}
                 />
               </Item>
 
@@ -100,7 +99,7 @@ state={
                 </Text>
               </Button>
             </Content>
-          </ImageBackground>
+ 
         </Container>
       </ScrollView>
         )

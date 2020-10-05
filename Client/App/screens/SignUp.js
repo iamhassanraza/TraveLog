@@ -102,42 +102,30 @@ export default class SignUp extends Component {
   render() {
     
     return (
-      <ScrollView>
-        <Container style={{flex:1}}>
-          <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
-          <View style={styles.colorOverlay}>
-            <View style={{flexDirection: 'row'}}>
-              {/* <TouchableOpacity>
-                <Icon
-                  onPress={() => this.props.navigation.push('Selection')}
-                  name="ios-arrow-back"
-                  style={{
-                    color: 'white',
-                    paddingTop: '6%',
-                    paddingLeft: '4%',
-                    fontSize: 30,
-                    fontWeight: 'bold',
-                  }}></Icon>
-              </TouchableOpacity> */}
-              {/* <Text style={{fontSize:40,color:"white", alignSelf:"center", fontWeight:"bold",paddingTop:"2%", paddingLeft:"3%"}}> Sign Up</Text> */}
-            </View>
-            {/* <Image
+     
+        <Container >
+          {/* <ImageBackground source={pic} style={{width: '100%', height: '100%'}}> */}
+        
+          
+            <Image
               source={log}
               style={{
                 height: '20%',
-                width: '35%',
+                width: '65%',
+                marginTop:'10%',
                 alignSelf: 'center',
-              }}></Image> */}
+              }}></Image>
             <Content
               style={{
                 //backgroundColor:'rgba(230, 226, 216,0.5)',
-                
-                marginTop: 0,
-                paddingBottom: '10%',
+                marginTop: '1%',
+                borderWidth:1,
+                borderColor:'#d7e9f5',
                 marginLeft: '5%',
                 marginRight: '5%',
                 borderRadius: 20,
-                paddingTop:'20%'
+                marginBottom:'6%'
+                
               }}>
               <Text style={styles.Title}> User Name</Text>
               <Item style={{width: '80%', alignSelf: 'center'}}>
@@ -147,9 +135,12 @@ export default class SignUp extends Component {
                   }}
                   // placeholder="Lionel Messi "
                   // placeholderTextColor="#eddedd"
-                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
+                  //style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor, fontSize:15}}
                 />
               </Item>
+              
 
               <Text style={styles.Title}> User Email </Text>
               <Item style={{width: '80%', alignSelf: 'center'}}>
@@ -160,7 +151,8 @@ export default class SignUp extends Component {
                   }}
                   // placeholder="travel@log.com"
                   // placeholderTextColor="white"
-                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor, fontSize:15}}
                 />
               </Item>
               {this.state.error === '' ? null : (
@@ -178,11 +170,14 @@ export default class SignUp extends Component {
                   secureTextEntry={true}
                   // placeholder="* * * * * "
                   // placeholderTextColor="white"
-                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor, fontSize:15}}
                 />
               </Item>
 
-              <Text style={styles.Title}> Confirm Password </Text>
+              
+
+              {/* <Text style={styles.Title}> Confirm Password </Text>
               <Item style={{width: '80%', alignSelf: 'center'}}>
                 <Input
                   onChangeText={text => {
@@ -191,9 +186,10 @@ export default class SignUp extends Component {
                   secureTextEntry={true}
                   // placeholder="* * * * * "
                   // placeholderTextColor="white"
-                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor, fontSize:15}}
                 />
-              </Item>
+              </Item> */}
 
               <Text style={styles.Title}> Contact No</Text>
               <Item style={{width: '80%', alignSelf: 'center'}}>
@@ -203,11 +199,14 @@ export default class SignUp extends Component {
                   }}
                   // placeholder="03139099324 "
                   // placeholderTextColor="white"
-                  style={{color: 'white', fontSize:15, marginBottom:'-2.5%'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor, fontSize:15}}
                 />
               </Item>
 
-              <Button
+              
+            </Content>
+<Button
                 // onPress={() => {
                 //   this.validate(this.state.email);
                 //   this.props.navigation.push('RootStack');
@@ -231,24 +230,24 @@ export default class SignUp extends Component {
                 rounded
                 style={{
                   justifyContent: 'center',
-                  marginTop: '5%',
+                  // marginTop: '0%',
                   backgroundColor: ThemeColor,
                   marginBottom: '1%',
-                  width: '40%',
+                  width: '35%',
                   alignSelf: 'center',
+                  marginBottom:'5%',
+                  
                 }}>
                 <Text
-                  style={{color: 'white', fontSize: 17, fontWeight: 'bold'}}>
+                  style={{color: 'white', fontSize: 17, fontWeight: 'bold',marginTop:'15%'}}>
                   Signup
                 </Text>
                 {this.state.loading ? <WaveIndicator style={{paddingLeft:"20%"}} color="white"  /> : null}
               </Button>
-            </Content>
-
-           </View>
-          </ImageBackground>
+       
+          {/* </ImageBackground> */}
         </Container>
-      </ScrollView>
+  
     );
   }
 }
@@ -256,15 +255,11 @@ export default class SignUp extends Component {
 const styles = StyleSheet.create({
   Title: {
     marginLeft: '10%',
-    fontSize: 22,
-    color: 'white',
+    fontSize: 18,
+    color: ThemeColor,
     marginBottom: '-5%',
     fontWeight: 'bold',
     marginTop:'5%'
   },
-  colorOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(230, 226, 216,0.2)',
-    justifyContent: 'center',
-  },
+
 });

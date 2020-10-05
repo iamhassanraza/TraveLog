@@ -20,39 +20,28 @@ export default class NewPassword extends Component {
     console.log(this.state);
     return (
       <ScrollView>
-        <Container style={{backgroundColor: 'black'}}>
-          <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
-            <TouchableOpacity>
-              <Icon
-              onPress={() => this.props.navigation.goBack()}
-                name="ios-arrow-back"
-                style={{
-                  color: 'white',
-                  marginTop: '5%',
-                  marginLeft: '4%',
-                  fontSize: 30,
-                  fontWeight: 'bold',
-                }}></Icon>
-            </TouchableOpacity>
+        <Container>
+          {/* <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
+             */}
             <Image
               source={log}
               style={{
-                height: '20%',
-                width: '45%',
+                height: '35%',
+                width: '65%',
                 alignSelf: 'center',
                 borderRadius:20,
                 marginTop: '2%',
               }}></Image>
-            <Text
+            {/* <Text
               style={{
-                color: 'white',
+                color: ThemeColor,
                 alignSelf: 'center',
-                fontSize: 30,
+                fontSize: 28,
                 fontWeight: 'bold',
                 marginTop: '5%',
               }}>
               Change Password
-            </Text>
+            </Text> */}
             <Content
               style={{
                 paddingTop: '5%',
@@ -66,7 +55,7 @@ export default class NewPassword extends Component {
                 style={{
                   marginLeft: '10%',
                   fontSize: 20,
-                  color: "white",
+                  color: ThemeColor,
                   fontWeight: 'bold',
                 }}>
                 New Password
@@ -78,8 +67,8 @@ export default class NewPassword extends Component {
                   }}
                   secureTextEntry={true}
                   placeholder="*********"
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor}}
                 />
               </Item>
 
@@ -87,7 +76,7 @@ export default class NewPassword extends Component {
                 style={{
                   marginLeft: '10%',
                   fontSize: 20,
-                  color: "white",
+                  color: ThemeColor,
                   marginTop: '5%',
                   fontWeight: 'bold',
                 }}>
@@ -100,10 +89,12 @@ export default class NewPassword extends Component {
                   }}
                   secureTextEntry={true}
                   placeholder="*********"
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor}}
                 />
               </Item>
+
+
 
               {this.state.error === '' ? null : (
                 <Text style={{color:"red", marginLeft:"10%"}}> {this.state.error} </Text>
@@ -132,7 +123,7 @@ export default class NewPassword extends Component {
                 </Text>
               </Button>
             </Content>
-          </ImageBackground>
+      
         </Container>
       </ScrollView>
     );

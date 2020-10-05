@@ -59,8 +59,6 @@ const TabNavigator = createMaterialTopTabNavigator(
                     <Icon name="person" color={tintColor}  style={{fontSize:22}}/>
                 ),
                 tabBarLabel: "Profile",
-                headerVisible: false,
-                header:null
                 
             }
         },

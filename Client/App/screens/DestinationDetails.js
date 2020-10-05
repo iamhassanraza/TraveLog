@@ -51,7 +51,7 @@ export default class DestinationDetails extends Component {
   renderTop = (image, name) => {
     return (
       <ImageBackground
-        source={{uri: `https://c7.uihere.com/files/136/22/549/user-profile-computer-icons-girl-customer-avatar.jpg`}}
+        source={{uri: image ? image:`https://c7.uihere.com/files/136/22/549/user-profile-computer-icons-girl-customer-avatar.jpg`}}
         style={{
           height: Dimensions.get('window').height / 1.8,
           width: "100%",
@@ -65,7 +65,7 @@ export default class DestinationDetails extends Component {
           }}>
           <Text style={{fontSize: 32, color: 'white', fontWeight: 'bold'}}>
             {' '}
-            {name.toUpperCase()}{' '}
+            {name}{' '}
           </Text>
 
           {/* <View
@@ -183,7 +183,7 @@ export default class DestinationDetails extends Component {
           data={this.state.attractionsData}
           keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => <AttractionCard id={item.attraction_id} name={item.name} wholeData={item} />}
+          renderItem={({item}) => <AttractionCard id={item.attraction_id} imageUrl={item.image} name={item.name} wholeData={item} city={this.state.data.city.name} />}
         />
       </FlatListContainer>
     );
@@ -257,9 +257,9 @@ export default class DestinationDetails extends Component {
    console.log(this.state.attractionsData[0],"ATT DATA")
     return (
       <ScrollView style={{flex:1}}>
-        {this.renderTop(DestinationData.image_path, this.state.data.recommended_season)}
+        {this.renderTop(DestinationData.image, this.state.data.city.name)}
         {/* {this.renderSelections()} */}
-        {this.renderDetails(this.state.data.recommended_season) }
+        {this.renderDetails(this.state.data.city.name) }
         { this.renderOverview()}
         {/* {this.state.data ? (this.renderNearbyAttractions()) : 
         (

@@ -41,8 +41,10 @@ export default class PlanItem extends Component {
 
             
             <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+            
               <Text style={{fontSize: 17, fontWeight: 'bold',color:'#00001a'}}>{this.props.title}
               </Text>
+              
               <Text>
                 <MyIcon name={this.state.expand ? 'menu-up' : 'menu-down'} size={24} color={ThemeColor}></MyIcon>
               </Text>

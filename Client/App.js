@@ -18,6 +18,7 @@ import UserProfile from './App/screens/UserProfile'
 import Notifications from './App/screens/Notifications'
 import EditProfile from './App/screens/EditProfile'
 import Settings from './App/screens/Settings'
+import AllTours from './App/screens/AllTours'
 
 import FAQS from './App/screens/FAQS'
 import MAP from './App/screens/MAP'

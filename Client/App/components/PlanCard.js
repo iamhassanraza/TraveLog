@@ -9,15 +9,15 @@ export default class PlanCard extends Component {
         plan:null
     }
 
-    componentDidMount(){
-        fetch(`https://travelog-pk.herokuapp.com/tours/plan/${this.props.tour_id}`)
-            .then(response => response.json())
-            .then((responseJson)=> {
-              this.setState({
-               plan : responseJson
-              })
-            }).catch(err=>console.log(err))
-    }
+    // componentDidMount(){
+    //     fetch(`https://travelog-pk.herokuapp.com/tours/plan/${this.props.tour_id}`)
+    //         .then(response => response.json())
+    //         .then((responseJson)=> {
+    //           this.setState({
+    //            plan : responseJson
+    //           })
+    //         }).catch(err=>console.log(err))
+    // }
 
 
     RenderPlan = (array)=>{
@@ -36,7 +36,7 @@ export default class PlanCard extends Component {
             <Text style={{fontSize:20,fontWeight:'bold'}}>Plan</Text>
 
    
-            {this.state.plan ? this.RenderPlan(this.state.plan) : <LoadingIndicator></LoadingIndicator> }
+            {this.props.tourPlan ? this.RenderPlan(this.props.tourPlan) : <LoadingIndicator></LoadingIndicator> }
             </View>
         )
     }

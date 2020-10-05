@@ -14,6 +14,9 @@ import TourDetail from '../screens/TourDetail'
 import Modal from '../screens/Modal'
 import Filters from '../screens/Filters'
 import SearchAndFilter from '../screens/SearchAndFilter'
+import AllDestinations from '../screens/AllDestinations'
+import AllOperators from '../screens/AllOperators'
+import AllTours from '../screens/AllTours'
 import { ThemeColor, ThemeGrey, BackgroundColor } from '../assets/Colors/Colors';
 
 
@@ -29,7 +32,10 @@ const HomeStack = createStackNavigator({
     Filters,
     AttractionDetails,
     SearchAndFilter,
-    FiltersListing
+    FiltersListing,
+    AllTours,
+    AllDestinations,
+    AllOperators
   },
   {
     initialRouteName: 'Home',

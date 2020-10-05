@@ -36,10 +36,15 @@ import FlatListContainer from '../components/FlatListContainer'
 export default class TourDetail extends Component {
   state = {
     saved: this.props.navigation.getParam('saved','Nothin') ,
-    apiData:undefined
+    apiData:undefined,
+    plan: []
   };
 
     data = this.props.navigation.getParam('TourData','Got no data from tour card via navigation') 
+
+componentDidMount(){
+  this.getPlan()
+}
 
     savePost = async postId => {
       this.setState(prevState => ({
@@ -80,6 +85,42 @@ export default class TourDetail extends Component {
       }
     };
 
+
+    getPlan = async () => {
+      const User = JSON.parse(await AsyncStorage.getItem('User'));
+      var Response = null;
+
+      const res = await fetch('https://travelog-adonis.herokuapp.com/api/v1/get/plan',{
+        method: 'POST',
+          headers: {
+            Authorization: `Bearer ${User.token}`,
+              'Content-Type': 'application/json',
+          },
+        body:JSON.stringify({
+          post_id:this.data.postDetail[0].post_id,
+            })
+      })
+      console.log(res,"res");
+      const responsejson =  await res.json();
+      console.log(responsejson,"response in json");
+  
+      //Storing data in AsycStorage
+      if(res.status === 200){
+       
+        this.setState({ loading: false, plan:responsejson.plan});
+        
+      }
+      else if(res.status === 400 ){
+        console.log("FAIL")
+        this.setState({ loading: false, plan:"No Plan"});
+       
+      }
+      else {
+        this.setState({ loading: false});
+      
+      }
+    }
+
   renderHeading = (title)=>{
     return (<View style={{flex:1,flexDirection: 'row', justifyContent: 'space-between'}}>
     <Text style={{fontSize: 25, fontWeight: 'bold',flex:1,marginBottom:10}}>
@@ -108,7 +149,7 @@ return (
     style={{margin: 10}}></OperatorIcon>
   <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
     <IconWithText
-      onPress={() => {this.state.apiData ? Linking.openURL(`tel:${this.state.apiData.operator_phone}`) : Linking.openURL(`tel:${'0020202'}`)}}
+      onPress={() => {Operator.contact_no ? Linking.openURL(`tel:${Operator.contact_no}`) : Linking.openURL(`tel:${'0020202'}`)}}
       icon="phone"
       title="Call"
       textstyle={{marginLeft: 3}}
@@ -116,11 +157,12 @@ return (
         borderWidth: 0.5,
         padding: 5,
         borderRadius: 10,
-        borderColor: ThemeColor
+        borderColor: ThemeColor,
+        
       }}></IconWithText>
 
     <IconWithText
-      onPress={() => Linking.openURL('mailto:touroperator@gmail.com')}
+      onPress={() => Linking.openURL(`mailto:${Operator.email}`)}
       icon="email"
       title="Mail"
       textstyle={{marginLeft: 3}}
@@ -131,7 +173,7 @@ return (
         borderColor: ThemeColor,
       }}></IconWithText>
 
-    <IconWithText
+    {/* <IconWithText
       onPress={() =>
         Linking.openURL(
           `https://maps.apple.com/?q=${'Orangi Town'}&ll=${'24.950083'},${'66.992844'}`,
@@ -145,7 +187,7 @@ return (
         padding: 5,
         borderRadius: 10,
         borderColor: ThemeColor
-      }}></IconWithText>
+      }}></IconWithText> */}
   </View>
   </View>
 
@@ -193,7 +235,7 @@ return (
  renderPlan = () => {
    return( 
           <View style={{marginTop:10,borderWidth:0.5,backgroundColor:'white',borderColor:BorderColor,padding:10}}>
-          <PlanCard tour_id={this.tourId}></PlanCard>
+          <PlanCard tourPlan={this.state.plan}></PlanCard>
           </View>
       
    )
@@ -231,11 +273,11 @@ return (
         <View>
 
       
-        {/* {this.state.apiData ? this.renderOperatorCard({name:this.data[0].name, rating:this.data[0].numeric_rating,is_verified:this.data[0].is_verified,dp:this.data[0].operatordp}) : <LoadingIndicator></LoadingIndicator>} */}
+        { this.renderOperatorCard({name:this.data.users.first_name, rating:4,is_verified:true,dp:this.data.users.profile_pic_url, contact_no:this.data.users.contact_no, email: this.data.users.email}) } 
         </View>
         {/* <OperatorCard></OperatorCard> */}
-        {/* {this.renderPlan()}
-        {this.renderTourList()} */}
+        {this.renderPlan()}
+        {/* {this.renderTourList()} */}
        
 
         

@@ -55,7 +55,12 @@ export default class Login extends Component {
     }
     else if(res.status === 400 ){
       console.log("FAIL")
+      this.setState({ loading: false});
       alert(responsejson.message);
+    }
+    else {
+      this.setState({ loading: false});
+      alert(responsejson.message)
     }
   } 
 
@@ -86,7 +91,7 @@ export default class Login extends Component {
       <ScrollView>
          
         <Container style={{flex:1}}>
-        <ImageBackground source={pic} style={{width: '100%', height: '100%'}}>
+        {/* <ImageBackground source={pic} style={{width: '100%', height: '100%'}}> */}
             {/* <TouchableOpacity>
               <Icon
               onPress={() => this.props.navigation.push('Selection')}
@@ -103,7 +108,7 @@ export default class Login extends Component {
               source={log}
               style={{
                 height: '20%',
-                width: '45%',
+                width: '65%',
                 alignSelf: 'center',
                 borderRadius:20,
                 marginTop:'10%'
@@ -112,16 +117,19 @@ export default class Login extends Component {
               style={{
                 paddingTop: '5%',
                 marginTop: '5%',
-                paddingBottom: '30%',
+                paddingBottom: '50%',
                 marginLeft: '5%',
                 marginRight: '5%',
-                borderRadius: 20,
+                borderRadius: 10,
+                borderWidth:1,
+                borderColor:'#d7e9f5',
+              
               }}>
               <Text
                 style={{
                   marginLeft: '10%',
                   fontSize: 17,
-                  color: "white",
+                  color: ThemeColor,
                   fontWeight: 'bold',
                 }}>
                 {' '}
@@ -134,8 +142,8 @@ export default class Login extends Component {
                   // this.validate(text);
                 }}
                   placeholder="travel@log.com"
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor}}
                 />
               </Item>
 {this.state.error === "" ? null : <Text style={{color:"red",marginLeft:"10%"}}>{this.state.error}</Text> }
@@ -145,8 +153,8 @@ export default class Login extends Component {
                 style={{
                   marginLeft: '10%',
                   fontSize: 17,
-                  color: "white",
-                  marginTop: '5%',
+                  color: ThemeColor,
+                  marginTop: '10%',
                   fontWeight: 'bold',
                 }}>
                 {' '}
@@ -159,8 +167,8 @@ export default class Login extends Component {
                 }}
                 secureTextEntry={true}
                   placeholder="* * * * * "
-                  placeholderTextColor="white"
-                  style={{color: 'white'}}
+                  placeholderTextColor="#ebeced"
+                  style={{color: ThemeColor, borderBottomWidth:2,borderColor:ThemeColor}}
                 />
               </Item>
 
@@ -174,7 +182,7 @@ export default class Login extends Component {
                 rounded
                 style={{
                   justifyContent: 'center',
-                  marginTop: '3%',
+                  marginTop: '10%',
                   backgroundColor: ThemeColor,
                   marginBottom: '2%',
                   width: '40%',
@@ -191,7 +199,7 @@ export default class Login extends Component {
               <TouchableOpacity
               onPress={() => this.props.navigation.push('ForgotPassword')}>
                 <Text
-                  style={{alignSelf: 'center', fontSize: 16, color: 'white'}}>
+                  style={{alignSelf: 'center', fontSize: 16, color: ThemeColor, marginTop:'5%'}}>
                   Forgot Password ?
                 </Text>
               </TouchableOpacity>
@@ -199,7 +207,7 @@ export default class Login extends Component {
               <TouchableOpacity
               onPress={() => this.props.navigation.push('SignUp')}>
                 <Text
-                  style={{alignSelf: 'center', fontSize: 16, color: 'white',marginTop:'2%'}}>
+                  style={{alignSelf: 'center', fontSize: 16, color: ThemeColor,marginTop:'2%'}}>
                   Don't have an account ?
                 </Text>
               </TouchableOpacity>
@@ -249,7 +257,7 @@ export default class Login extends Component {
                 </Button>
               </View> */}
             </Content>
-            </ImageBackground>
+            {/* </ImageBackground> */}
         </Container>
  
       </ScrollView>

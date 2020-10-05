@@ -34,6 +34,10 @@ export default class AttractionDetails extends Component {
       'AttractionData',
       'default',
     ),
+    city:this.props.navigation.getParam(
+      'city',
+      'N/A',
+    ),
     attractionsData:[]
   };
 
@@ -88,7 +92,7 @@ export default class AttractionDetails extends Component {
 
         <IconWithText
           title={'City : '}
-          subtitle={this.state.data.name}
+          subtitle={this.state.city}
           linear={'true'}
           icon={'map-marker-radius'}
           style={{alignItems: 'center', marginTop: '2%'}}
@@ -160,7 +164,7 @@ export default class AttractionDetails extends Component {
           data={this.state.attractionsData}
           keyExtractor={item => item}
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => <AttractionCard id={item.attraction_id} name={item.name} wholeData={item} />}
+          renderItem={({item}) => <AttractionCard city={this.state.city} id={item.attraction_id} imageUrl={item.image} name={item.name} wholeData={item} />}
         />
       </FlatListContainer>
     );
@@ -223,7 +227,7 @@ export default class AttractionDetails extends Component {
     console.log(this.state.data,"ATTT DETAILS")
     return (
       <ScrollView>
-        {this.renderTop("https://skygreenengg.com/images/avatar.jpg", this.state.data.name)}
+        {this.renderTop(this.state.data.image, this.state.data.name)}
         {/* {this.renderSelections()} */}
         { this.renderDetails() }
         { this.renderOverview(this.state.data.description)}

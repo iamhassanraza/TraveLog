@@ -9,7 +9,7 @@ const OperatorIcon = (props) => {
         <View style={[{flexDirection:'row',alignItems:'center'},props.style]}>
         
         {props.avatar ? (<View>
-        <Image source={{uri:`https://travelog-pk.herokuapp.com/images/${props.avatar}`}} style={{height:50,width:50,borderRadius:50}}></Image> 
+        <Image source={{uri:props.avatar}} style={{height:50,width:50,borderRadius:50}}></Image> 
         </View> ): null}
         
                                 <View style={{flex:4, marginLeft:'1%'}}>

@@ -33,6 +33,7 @@ class AttractionCard extends React.Component {
           onPress={() =>
             this.props.navigation.push('AttractionDetails', {
                AttractionData: this.props.wholeData,
+               city: this.props.city
             })
           }>
           <View
@@ -43,7 +44,7 @@ class AttractionCard extends React.Component {
             <View>
               <Image
                 source={{
-                  uri: `https://img.pngio.com/computer-icons-avatar-user-login-avatar-man-wearing-blue-shirt-user-login-png-728_512.jpg`,
+                  uri: this.props.imageUrl ? this.props.imageUrl : `https://img.pngio.com/computer-icons-avatar-user-login-avatar-man-wearing-blue-shirt-user-login-png-728_512.jpg`,
                 }}
                 style={{
                   width: '100%',

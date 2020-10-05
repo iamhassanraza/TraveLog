@@ -20,6 +20,7 @@ import OperatorProfile from './OperatorProfile';
 import image2 from '../assets/images/im5.jpg';
 import ContentLoader, {Facebook} from 'react-content-loader/native';
 import Slider from '../components/ImageSlider';
+import AllTours from './AllTours';
 
 export default class Home extends Component {
   state = {
@@ -156,7 +157,7 @@ export default class Home extends Component {
         <Slider />
 
         <View style={{flexDirection: 'column'}}>
-          <FlatListContainer style={{marginLeft: '3%'}} title="Popular Tours">
+          <FlatListContainer style={{marginLeft: '3%'}} navigation={this.props.navigation} title="Popular Tours" navigateTo="AllTours">
             {!this.state.toursLoading ? (
               <FlatList
                 horizontal
@@ -175,7 +176,7 @@ export default class Home extends Component {
                     operator={
                       item.users.first_name + ' ' + item.users.last_name
                     }
-                    photoUrl={item.postDetail.image_url && item.postDetail.image_url}
+                    photoUrl={item.postDetail[0].image_url && item.postDetail[0].image_url}
                     wholeData={item}
                     saved={item.userSavedPost.length > 0 ? true : false}
                   />
@@ -237,7 +238,7 @@ export default class Home extends Component {
                 keyExtractor={item => item.destination_id}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({item}) => (
-                  <DestinationCard wholeData={item} id={item.destination_id} name={item.recommended_season} followed= {true}/>
+                  <DestinationCard wholeData={item} id={item.destination_id} imageUrl={item.image} name={item.city.name} followed= {true}/>
                 )}
               />
             ) : (
