@@ -216,15 +216,11 @@ export default class SignUp extends Component {
                   this.validate(this.state.email);
 
                   if (this.state.error === '') {
-                    if (this.state.password != this.state.confirmPassword) {
-                      this.setState({error: ' Password Not Matched !'});
-                    } else if (
-                      this.state.password === this.state.confirmPassword
-                    ) {
+                    
                       this.setState({loading:true})
                       this.setState({error: ''});
                       this.onSubmission();
-                    }
+                    
                   }
                 }}
                 rounded

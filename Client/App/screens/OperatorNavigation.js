@@ -15,7 +15,7 @@ import OperatorTours from '../components/OperatorTours';
 const TabNavigator = createMaterialTopTabNavigator(
     {
         About: { screen: AboutOperator},
-        // Tours: { screen: OperatorTours},
+        Tours: { screen: OperatorTours},
         // Gallery: { screen: Gallery},
         Reviews: { screen: OperatorRating}
     },

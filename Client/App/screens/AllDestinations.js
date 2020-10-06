@@ -73,7 +73,7 @@ class AllDestinations extends React.PureComponent {
             id={item.destination_id}
             imageUrl={item.image}
             name={item.city.name}
-            followed={true}
+            followed= {item.followstatus.length > 0 ? true : false}
           />
         )}
       />

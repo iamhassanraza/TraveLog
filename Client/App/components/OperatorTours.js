@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, Dimensions, ScrollView, TouchableWithoutFeedback} from 'react-native'
+import { Text, View, FlatList, Dimensions, ScrollView, TouchableWithoutFeedback,AsyncStorage} from 'react-native'
 import FlatListContainer from '../components/FlatListContainer'
 import {withNavigation} from 'react-navigation'
 import TourCard from '../components/TourCard'
@@ -9,18 +9,35 @@ import ContentLoader, {Rect, Facebook } from 'react-content-loader/native'
 class OperatorTours extends Component {
 
     componentDidMount() {
-        fetch(`https://travelog-pk.herokuapp.com/tours/filter?operator_id=${this.props.screenProps.operatorId}`)
-        .then(response => {
-            return response.json()
-        })
-        .then((responseJson)=> {
-            console.log('response ========= >',responseJson)
-            this.setState({
-                tours : responseJson
-            })
-        })
-        .catch(err=>console.log('error in operatorTours',err))
+        this.fetchTours();
     }
+
+
+    
+  fetchTours = async () => {
+    const User = JSON.parse(await AsyncStorage.getItem('User'));
+    console.log(typeof User.token, 'TOKEN');
+    fetch(
+      `https://travelog-adonis.herokuapp.com/api/v1/search/user?type=post&user_id=${this.props.screenProps.user_id}&page=1`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${User.token}`,
+        },
+      },
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        this.setState({
+          refreshing: false,
+          tours: responseJson.data,
+          toursLoading: false,
+        });
+      })
+      .catch(err => console.log(err, 'ERRRRRRRRRRRRRRRRRR'));
+  };
 
     state = {
         tours: [],
@@ -28,9 +45,10 @@ class OperatorTours extends Component {
     }
 
     render() {
+        console.log(this.props.screenProps.user_id,"AsaTT")
         return (
                 <ScrollView nestedScrollEnabled style={{}}>
-                {this.state.tours[0] ? 
+                {this.state.tours ? 
                     <FlatListContainer style={{backgroundColor: BackgroundColor}} title="Tours" >
                         <FlatList
                         data={this.state.tours}
@@ -39,11 +57,22 @@ class OperatorTours extends Component {
                             <TourCard 
                                 navigation={this.props.screenProps.navigation}
                                 style={{borderWidth: 0, width: Dimensions.get('window').width/1, marginBottom: '8%', paddingLeft: '3%', paddingRight: '3%'}}
-                                id={item.tour_id}
+                                id={item.id}
                                 seatsLeft={10}
+                                title={item.title}
+                                price={item.price}
+                                departure_date={item.departure_date}
+                                number_of_days={item.number_of_days}
+                                speciality={item.speciality}
+                                operator={
+                                  item.users.first_name + ' ' + item.users.last_name
+                                }
+                                photoUrl={item.postDetail[0].image_url && item.postDetail[0].image_url}
+                                wholeData={item}
+                                saved={item.userSavedPost.length > 0 ? true : false}
                             >
                             </TourCard>}
-                        keyExtractor={item => item.tour_id}
+                        keyExtractor={item => item.id}
                         />
                     </FlatListContainer> :
                     <View style={{alignSelf:'center'}}>

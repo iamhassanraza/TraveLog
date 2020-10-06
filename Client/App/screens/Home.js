@@ -37,6 +37,13 @@ export default class Home extends Component {
 
   componentDidMount() {
     this.fetchData();
+    const {navigation} = this.props;
+    this.focusListener = navigation.addListener('didFocus', () => {
+      // The screen is focused
+      this.fetchTours();
+      this.fetchOperators();
+      this.fetchDestinations();
+    });
   }
 
   fetchData = () => {
@@ -195,7 +202,7 @@ export default class Home extends Component {
             )}
           </FlatListContainer>
 
-          <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators">
+          <FlatListContainer style={{marginLeft: '3%'}} title="Tour Operators" navigateTo="AllOperators">
             {!this.state.operatorsLoading ? (
               <FlatList
                 horizontal
@@ -230,7 +237,7 @@ export default class Home extends Component {
             )}
           </FlatListContainer>
 
-          <FlatListContainer style={{marginLeft: '3%'}} title="Top Attractions">
+          <FlatListContainer style={{marginLeft: '3%'}} title="Top Attractions" navigateTo="AllDestinations">
             {!this.state.destinationLoading ? (
               <FlatList
                 horizontal

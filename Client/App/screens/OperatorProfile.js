@@ -21,63 +21,58 @@ import OperatorCard from '../components/OperatorCard';
 import AboutOperator from '../components/AboutOperator';
 import Gallery from '../components/Gallery';
 import Navigation from './OperatorNavigation';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default class OperatorProfile extends Component {
+  state = {
+    followed: this.props.followStatus,
+  };
 
+  followButton = async id => {
+    this.setState(prevState => ({
+      followed: !prevState.followed,
+    }));
 
-    state = {
-        followed: this.props.followStatus,
-      };
-    
-      followButton = async (id) => {
-      
-        this.setState(prevState => ({
-          followed: !prevState.followed,
-        }));
-    
-        const User = JSON.parse(await AsyncStorage.getItem('User'));
-        console.log(User, 'CUSER FROM ASYNC');
-        const Token = User.token;
-    
-        var Response = null;
-        console.log('followed ==========> ', this.state.followed, id);
-        if (this.state.followed) {
-          Response = await fetch(
-            `https://travelog-adonis.herokuapp.com/api/v1/user/follow?user_id=${id}`,
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${Token}`,
-              },
-            },
-          );
-        } else {
-          Response = await fetch(
-            `https://travelog-adonis.herokuapp.com/api/v1/user/unfollow?user_id=${id}`,
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${Token}`,
-              },
-            },
-          );
-        }
-        const JsonResponse = await Response.json();
-        if (parseInt(Response.status) === 400) {
-          console.log('400');
-          alert(JsonResponse.message);
-        } else if (parseInt(Response.status) === 200) {
-          console.log('200', JsonResponse);
-          alert("Done")
-        } else {
-          alert('something is wrong');
-        }
-      };
+    const User = JSON.parse(await AsyncStorage.getItem('User'));
+    console.log(User, 'CUSER FROM ASYNC');
+    const Token = User.token;
 
-
+    var Response = null;
+    console.log('followed ==========> ', this.state.followed, id);
+    if (this.state.followed) {
+      Response = await fetch(
+        `https://travelog-adonis.herokuapp.com/api/v1/user/follow?user_id=${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${Token}`,
+          },
+        },
+      );
+    } else {
+      Response = await fetch(
+        `https://travelog-adonis.herokuapp.com/api/v1/user/unfollow?user_id=${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${Token}`,
+          },
+        },
+      );
+    }
+    const JsonResponse = await Response.json();
+    if (parseInt(Response.status) === 400) {
+      console.log('400');
+      alert(JsonResponse.message);
+    } else if (parseInt(Response.status) === 200) {
+      console.log('200', JsonResponse);
+      alert('Done');
+    } else {
+      alert('something is wrong');
+    }
+  };
 
   render() {
     const operatorData = this.props.navigation.getParam(
@@ -88,17 +83,21 @@ export default class OperatorProfile extends Component {
     console.log(operatorData, 'OPP DATAATATA');
 
     return (
+    
       <ScrollView style={styles.container}>
         <View style={{}}>
           <View
-            style={{
-            //   borderWidth: operatorData[0].cover ? 0 : 1,
-            //   borderColor: operatorData[0].cover ? 'white' : '#b3b5b4',
-            }}>
+            style={
+              {
+                //   borderWidth: operatorData[0].cover ? 0 : 1,
+                //   borderColor: operatorData[0].cover ? 'white' : '#b3b5b4',
+              }
+            }>
             <ImageBackground
               source={{
                 uri: operatorData.profile_pic_url
-                ? operatorData.profile_pic_url : 'https://travelog-pk.herokuapp.com/images/default.png',
+                  ? operatorData.profile_pic_url
+                  : 'https://travelog-pk.herokuapp.com/images/default.png',
               }}
               style={styles.coverPhoto}
             />
@@ -108,24 +107,29 @@ export default class OperatorProfile extends Component {
               <Image
                 source={{
                   uri: operatorData.profile_pic_url
-                  ? operatorData.profile_pic_url : 'https://travelog-pk.herokuapp.com/images/default.png',
+                    ? operatorData.profile_pic_url
+                    : 'https://travelog-pk.herokuapp.com/images/default.png',
                 }}
                 style={styles.logo}
               />
             </View>
-          <TouchableOpacity style={{marginLeft:'20%',width: '100%'}} onPress={()=> this.followButton(operatorData.id)}>
-     
+            <TouchableOpacity
+              style={{marginLeft: '20%', width: '100%'}}
+              onPress={() => this.followButton(operatorData.id)}>
               <View style={styles.followButton}>
                 <FollowIcon name="user-follow" color="white" />
                 <Text style={{color: 'white'}}>
-                  { operatorData.userFollowing.length > 0 ? 'Unfollow' : 'Follow'} 
+                  {operatorData.userFollowing.length > 0
+                    ? 'Unfollow'
+                    : 'Follow'}
                 </Text>
               </View>
-         
-          </TouchableOpacity>
+            </TouchableOpacity>
           </View>
           <View style={{marginTop: '2%', marginLeft: '5%'}}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>{operatorData.first_name}</Text>
+            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+              {operatorData.first_name}
+            </Text>
             {/* <Text style={styles.shortIntro}>{operatorData.bio}</Text> */}
           </View>
         </View>
@@ -133,6 +137,7 @@ export default class OperatorProfile extends Component {
           <Navigation
             screenProps={{
               navigation: this.props.navigation,
+              user_id: operatorData.id,
               email: operatorData.email,
               phone: operatorData.contact_no,
               address: operatorData.major,
@@ -140,7 +145,7 @@ export default class OperatorProfile extends Component {
               operatorId: operatorData.id,
               name: operatorData.first_name,
               numeric_rating: 4,
-              reviewsData: operatorData.reviews
+              reviewsData: operatorData.reviews,
             }}
           />
         </View>

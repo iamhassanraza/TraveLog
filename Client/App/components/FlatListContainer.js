@@ -10,7 +10,7 @@ const FlatListContainer = (props) => {
         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginBottom:8,marginTop:15}}>
         <Text style={{fontSize:18, fontWeight:'bold', marginLeft: '2%'}}>{props.title}</Text>
         <View style={{flexDirection:'row',alignItems:'center'}}>
-        {props.NoViewAll ? null : <Text onPress={()=> props.navigation.push("AllTours","null")} style={{fontWeight:'bold',color:ThemeColor,marginRight:'3%'}}>View all </Text>} 
+        {props.NoViewAll ? null : <Text onPress={()=> props.navigation.push(props.navigateTo,"null")} style={{fontWeight:'bold',color:ThemeColor,marginRight:'3%'}}>View all </Text>} 
         </View>
         </View>
         {props.children}
@@ -18,4 +18,4 @@ const FlatListContainer = (props) => {
     )
 }
 
-export default FlatListContainer
+export default withNavigation(FlatListContainer);

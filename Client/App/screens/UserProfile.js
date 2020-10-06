@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, ImageBackground,Image, AsyncStorage } from 'react-native'
 import head from '../assets/images/blueHead.png'
-import pic from '../assets/images/pf.jpeg'
+import pic from '../assets/images/harvey.jpg'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ThemeColor} from '../assets/Colors/Colors' 
 

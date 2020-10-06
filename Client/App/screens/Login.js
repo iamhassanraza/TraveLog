@@ -10,7 +10,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import log from '../assets/images/jpeg.jpg';
 import AsyncStorage from '@react-native-community/async-storage';
 import {
- 
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
   WaveIndicator,
 } from 'react-native-indicators';
 

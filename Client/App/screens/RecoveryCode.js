@@ -13,6 +13,40 @@ state={
   code:''
 }
 
+
+checkOTP = async () => {
+  const email = await this.props.navigation.getParam('email', 'no email');
+
+  if (this.state.code !== '') {
+    this.setState({
+      spinner: true,
+    });
+    const Response = await fetch(
+      `https://travelog-adonis.herokuapp.com/api/v1/user/verify_otp?otp=${
+        this.state.code
+      }&type=reset_password&email=${email}`,
+    );
+    const JsonResponse = await Response.json();
+    this.setState({
+      spinner: false,
+    });
+
+    if (parseInt(Response.status) === 404) {
+      alert(JsonResponse.message);
+    } else if (parseInt(Response.status) === 200) {
+      this.props.navigation.navigate('ResetPassword', {
+        OTP: this.state.code,
+        email,
+      });
+      this.setState({code: ''});
+    } else {
+      alert('something went wront');
+    }
+  } else {
+    alert('Enter CODE');
+  }
+};
+
     render() {
       console.log(this.state)
         return (
@@ -83,7 +117,7 @@ state={
               </Item>
 
               <Button
-              onPress={() => this.props.navigation.push('ResetPassword')}
+              onPress={() => this.checkOTP()}
                 rounded
                 style={{
                   justifyContent: 'center',

@@ -33,6 +33,14 @@ class SearchBar extends React.PureComponent {
     this.fetchSavedTours();
     this.fetchSavedOperators();
     this.fetchSavedDestinations();
+
+    const {navigation} = this.props;
+    this.focusListener = navigation.addListener('didFocus', () => {
+      // The screen is focused
+      this.fetchSavedTours();
+      this.fetchSavedOperators();
+      this.fetchSavedDestinations();
+    });
   }
 
   fetchSavedOperators = async () => {
